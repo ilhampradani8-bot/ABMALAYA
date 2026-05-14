@@ -1,0 +1,23 @@
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches:
+      - master  # Atau 'main' tergantung nama branch Anda
+
+jobs:
+  deploy:
+    name: FTP Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: 📂 Sync files to InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftpupload.net
+          username: if0_41922321
+          password: ${{ secrets.FTP_PASSWORD }}
+          # InfinityFree menyimpan file di folder htdocs
+          server-dir: /htdocs/
