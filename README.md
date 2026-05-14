@@ -9,9 +9,8 @@ This project is a high-performance PHP-based redesign of the AB MALAYA corporate
 - **Core**: PHP 8.x (Clean Architecture)
 - **Styling**: Vanilla CSS3 (Premium Glassmorphism & Custom Transitions)
 - **Typography**: 
-    - **Cinzel**: Used for Hero Headers (Premium & Authority)
-    - **Outfit**: Used for Section Headers (Modern & Clean)
-    - **Inter**: Used for Body Text (Readability)
+    - **Nunito**: Used for Section Headers & Body Text (Clean, Modern, and Friendly)
+    - **Cinzel**: Used for Branding & Premium Titles (Corporate Authority)
 - **Routing**: Custom `router.php` for Clean URLs (e.g., `/about` instead of `about.php`).
 
 ## 📂 Project Structure

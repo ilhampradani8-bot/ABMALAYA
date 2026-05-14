@@ -19,7 +19,7 @@ include 'includes/header.php';
         <div style="display: flex; gap: 4rem; flex-wrap: wrap; align-items: center;">
             <div style="flex: 1; min-width: 300px;">
                 <h5 style="color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">Our Journey</h5>
-                <h2 style="font-size: 3rem; color: var(--secondary); margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">Pioneering the <span style="color: var(--primary);">Industrial Evolution</span></h2>
+                <h2 style="font-size: 3rem; color: var(--secondary); margin-bottom: 2rem; font-family: 'Nunito', sans-serif;">Pioneering the <span style="color: var(--primary);">Industrial Evolution</span></h2>
                 <p style="margin-bottom: 1.5rem; color: var(--text-light); font-size: 1.2rem; line-height: 1.8;">
                     The idea to form AB MALAYA Sdn Bhd began when a group of industrial experts from various fields assembled to discuss the current market pressures evolving towards a modern revolution.
                 </p>

@@ -22,7 +22,7 @@ include 'includes/header.php';
             <div class="accordion-header" style="padding: 4rem 5%; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #fff;" onclick="toggleAccordion('marine')">
                 <div style="display: flex; align-items: center; gap: 3rem;">
                     <span style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #cbd5e1; font-weight: 300;">01</span>
-                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.5rem; color: var(--secondary); font-weight: 600; margin: 0; text-transform: uppercase; letter-spacing: -1px;">Maritime & Subsea</h2>
+                    <h2 style="font-family: 'Nunito', sans-serif; font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: -1px;">Maritime & Subsea Services</h2>
                 </div>
                 <div class="toggle-icon-wrap" id="marine-icon-wrap" style="font-size: 1.5rem; color: var(--primary); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
                     <i class="fas fa-plus"></i>
@@ -33,18 +33,16 @@ include 'includes/header.php';
                 <div style="padding: 0 5% 5rem 5%; padding-left: calc(5% + 5rem);">
                     <div style="max-width: 900px;">
                         <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 3rem; line-height: 1.8;">
-                            Engineered for resilience. We provide critical maintenance, structural integrity solutions, and specialized logistics for the most demanding maritime environments.
+                            Comprehensive engineering solutions for the marine industry, ensuring your vessels and maritime assets operate optimally with the highest safety standards.
                         </p>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
                             <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Ship Rust Coating</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Marine Logistics & Delivery</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Offshore Crew Management</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Marine Consumables</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Logistics & Crew Transition</li>
                             </ul>
                             <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Vessel Repairs & Maintenance</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Fresh Water & Bunkering</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Boiler Chemicals (VECOM)</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Engineering & Maintenance</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Ship Boiler Solutions (VECOM)</li>
                             </ul>
                         </div>
                     </div>
@@ -52,32 +50,32 @@ include 'includes/header.php';
             </div>
         </div>
 
-        <!-- Division 02: Industrial IT -->
+        <!-- Division 02: Cross-Border -->
         <div class="premium-accordion-item" style="border-bottom: 1px solid #e2e8f0; transition: var(--transition);">
-            <div class="accordion-header" style="padding: 4rem 5%; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #fff;" onclick="toggleAccordion('it')">
+            <div class="accordion-header" style="padding: 4rem 5%; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #fff;" onclick="toggleAccordion('cross')">
                 <div style="display: flex; align-items: center; gap: 3rem;">
                     <span style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #cbd5e1; font-weight: 300;">02</span>
-                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.5rem; color: var(--secondary); font-weight: 600; margin: 0; text-transform: uppercase; letter-spacing: -1px;">IT & Digital Infrastructure</h2>
+                    <h2 style="font-family: 'Nunito', sans-serif; font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: -1px;">Cross-Border Solutions</h2>
                 </div>
-                <div class="toggle-icon-wrap" id="it-icon-wrap" style="font-size: 1.5rem; color: var(--primary); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                <div class="toggle-icon-wrap" id="cross-icon-wrap" style="font-size: 1.5rem; color: var(--primary); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
                     <i class="fas fa-plus"></i>
                 </div>
             </div>
             
-            <div id="it-content" class="accordion-body" style="max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); background: #fcfcfc;">
+            <div id="cross-content" class="accordion-body" style="max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); background: #fcfcfc;">
                 <div style="padding: 0 5% 5rem 5%; padding-left: calc(5% + 5rem);">
                     <div style="max-width: 900px;">
                         <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 3rem; line-height: 1.8;">
-                            Secure connectivity in the most remote locations. We bridge the gap between heavy industry and digital intelligence through robust IT infrastructure.
+                            Seamless logistics between Singapore, Malaysia, and Thailand with professional handling to ensure your goods arrive on time.
                         </p>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
                             <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Remote Area Networks</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Industrial Hardware Supply</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Logistics Planning & Transport</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Cargo Handling & Storage</li>
                             </ul>
                             <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Data Diode Security</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Asset Monitoring Systems</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Documentation & Compliance</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> 24/7 Operations Support</li>
                             </ul>
                         </div>
                     </div>
@@ -85,12 +83,12 @@ include 'includes/header.php';
             </div>
         </div>
 
-        <!-- Division 03: Environment -->
+        <!-- Division 03: Environmental -->
         <div class="premium-accordion-item" style="border-bottom: 1px solid #e2e8f0; transition: var(--transition);">
             <div class="accordion-header" style="padding: 4rem 5%; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #fff;" onclick="toggleAccordion('env')">
                 <div style="display: flex; align-items: center; gap: 3rem;">
                     <span style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #cbd5e1; font-weight: 300;">03</span>
-                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.5rem; color: var(--secondary); font-weight: 600; margin: 0; text-transform: uppercase; letter-spacing: -1px;">Environment & Energy</h2>
+                    <h2 style="font-family: 'Nunito', sans-serif; font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: -1px;">Environmental Solutions</h2>
                 </div>
                 <div class="toggle-icon-wrap" id="env-icon-wrap" style="font-size: 1.5rem; color: var(--primary); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
                     <i class="fas fa-plus"></i>
@@ -101,16 +99,16 @@ include 'includes/header.php';
                 <div style="padding: 0 5% 5rem 5%; padding-left: calc(5% + 5rem);">
                     <div style="max-width: 900px;">
                         <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 3rem; line-height: 1.8;">
-                            Sustainable operations for a greener tomorrow. We provide environmental compliance and renewable energy investment strategies for industrial growth.
+                            Protecting your valuable assets with industry-leading anti-corrosion techniques and managing industrial waste responsibly.
                         </p>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
                             <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Wastewater Management</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Industrial Solar Energy</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Corrosion Prevention & Control</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Maintenance & Equipment Repair</li>
                             </ul>
                             <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Compliance & HSE Audits</li>
-                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Energy Transition Consultancy</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Training & Expert Consultancy</li>
+                                <li style="margin-bottom: 1.5rem; font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 1rem;"><span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span> Wastewater & Spill Management</li>
                             </ul>
                         </div>
                     </div>
@@ -122,7 +120,7 @@ include 'includes/header.php';
 </section>
 
 <style>
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
         .accordion-header {
             padding: 2.5rem 5% !important;
             flex-direction: row !important;
@@ -151,7 +149,6 @@ include 'includes/header.php';
     function toggleAccordion(id) {
         const content = document.getElementById(id + '-content');
         const iconWrap = document.getElementById(id + '-icon-wrap');
-        const parent = content.parentElement;
 
         // Close others
         const allContents = document.querySelectorAll('.accordion-body');
