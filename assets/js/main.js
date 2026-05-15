@@ -13,14 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function initServiceSlider() {
     const swiperOptions = {
-        slidesPerView: "auto",
+        slidesPerView: "auto", /* Gunakan auto agar CSS 75vw yang mengatur centering */
         centeredSlides: true,
         loop: true,
         speed: 1000,
         grabCursor: true,
+        spaceBetween: 12, /* Jarak tipis antar card */
         autoplay: {
             delay: 5000,
             disableOnInteraction: false,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: "auto",
+                spaceBetween: 30,
+                centeredSlides: true,
+            }
         },
         pagination: {
             el: ".swiper-pagination",

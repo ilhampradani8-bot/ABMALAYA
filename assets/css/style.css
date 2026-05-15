@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
 
 @font-face {
-    font-family: 'Averta';
-    src: url('../fonts/AvertaDemoPE-Regular.otf') format('opentype');
+    font-family: 'Aeonik';
+    src: url('../fonts/aeonik/fonnts.com-Aeonik-Regular.ttf') format('truetype');
     font-weight: 400;
 }
 
 @font-face {
-    font-family: 'Averta';
-    src: url('../fonts/AvertaDemoPE-ExtraboldItalic.otf') format('opentype');
-    font-weight: 800;
+    font-family: 'Aeonik';
+    src: url('../fonts/aeonik/fonnts.com-Aeonik-Bold.ttf') format('truetype');
+    font-weight: 700;
 }
 
 :root {
     --primary: #005EE9;
-    --secondary: #093863;
+    --secondary: #000000;
     --accent: #1191CC;
     --background: #F8FAFC;
     --text: #0F172A;
@@ -31,7 +31,7 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Aeonik', sans-serif;
     background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
@@ -46,8 +46,8 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
+    font-family: 'Aeonik', sans-serif;
+    font-weight: 700;
 }
 
 a {
@@ -87,8 +87,8 @@ img {
 }
 
 .hero-content h1 {
-    font-family: 'Averta', sans-serif;
-    font-weight: 800;
+    font-family: 'Aeonik', sans-serif;
+    font-weight: 700;
     font-size: 4rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;

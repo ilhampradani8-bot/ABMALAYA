@@ -85,8 +85,8 @@ include 'includes/header.php';
     }
 
     .detail-header h2 {
-        font-family: 'Averta', sans-serif;
-        font-weight: 800; /* Uses Averta Demo PE Extrabold Italic */
+        font-family: 'Aeonik', sans-serif;
+        font-weight: 700; 
         color: var(--secondary);
         font-size: 2.8rem;
         margin: 0;

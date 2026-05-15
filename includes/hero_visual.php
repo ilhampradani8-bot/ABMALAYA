@@ -10,29 +10,18 @@
 ?>
 <section class="intro-visual">
     <div class="intro-bg-wrap">
-        <img src="assets/img/head/langit-laut-bg.png" class="bg-img" alt="Sea Sky">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-art-blob"></div>
     </div>
     
-    <!-- Title behind ship -->
-    <div class="intro-content-back">
+    <div class="intro-content">
         <div class="container">
-            <h1><?php echo $heroTitle; ?> <br><span style="color: var(--accent);"><?php echo $heroSubtitle; ?></span></h1>
-        </div>
-    </div>
-
-    <!-- Ship in middle -->
-    <div class="ship-wrap">
-        <img src="assets/img/head/kapal-thanker.png" class="tanker-img" alt="Marine Logistics">
-    </div>
-
-    <!-- Paragraph and Buttons in front -->
-    <div class="intro-content-front">
-        <div class="container">
+            <h1><?php echo $heroTitle; ?> <br><span style="color: #005ee9;"><?php echo $heroSubtitle; ?></span></h1>
             <p><?php echo $heroDesc; ?></p>
             <?php if(isset($showButtons) && $showButtons): ?>
             <div class="hero-btns">
-                <a href="services.php" class="cta-btn">Our Services</a>
-                <a href="contact.php" class="cta-btn" style="background: transparent; border: 2px solid #555; color: #333; margin-left: 1rem;">Get a Quote</a>
+                <a href="services.php" class="hero-link">Our Services <i class="fas fa-arrow-right"></i></a>
+                <a href="contact.php" class="hero-link secondary-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
             </div>
             <?php endif; ?>
         </div>
@@ -45,157 +34,201 @@
         height: 100vh;
         width: 100%;
         overflow: hidden;
-        background: #fff;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: center; /* Centered vertically but aligned left */
+        justify-content: flex-start;
+        text-align: left;
+        background: #ffffff;
+        padding-left: 6vw;
     }
-    .intro-bg-wrap, .ship-wrap {
+    .intro-bg-wrap {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none;
+        z-index: 1;
     }
-    .intro-bg-wrap { z-index: 1; }
-    .ship-wrap {
-        z-index: 5;
-        animation: shipFadeIn 2.5s ease forwards;
-    }
-    .bg-img, .tanker-img {
+    #hero-canvas {
         width: 100%;
         height: 100%;
-        object-fit: cover;
         display: block;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: smooth;
-        filter: brightness(1.1) contrast(1.2) saturate(1.1);
     }
-    @keyframes shipFadeIn {
-        from { opacity: 0; transform: scale(1.02); }
-        to { opacity: 1; transform: scale(1); }
-    }
-    .intro-content-back {
+    .hero-art-blob {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -60%); /* Default for mobile */
+        top: 20%;
+        right: -10%;
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle, rgba(0, 94, 233, 0.05) 0%, transparent 70%);
+        filter: blur(80px);
         z-index: 2;
-        text-align: center;
-        width: 100%;
+        pointer-events: none;
     }
-    
-    /* Desktop-only shift */
-    @media (min-width: 993px) {
-        .intro-content-back {
-            transform: translate(-50%, -65%); /* Move up more on desktop */
-        }
-    }
-
-    .intro-content-back h1 {
-        font-family: 'Averta', sans-serif;
-        font-size: 3.5rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: #0f172a; /* Dark Navy Blue */
-        opacity: 1;
-        text-shadow: 0 0 50px rgba(0,0,0,0.05);
-    }
-    .intro-content-front {
-        position: absolute;
-        bottom: 12%;
-        left: 0;
-        width: 100%;
+    .intro-content {
+        position: relative;
         z-index: 10;
-        text-align: center;
-        color: #fff;
+        color: #000; /* Pure Black as requested */
+        max-width: 50%; /* Exactly half screen on desktop */
+        animation: fadeInLeft 1.2s ease forwards;
     }
-    .intro-content-front p {
-        font-size: 1.25rem;
-        max-width: 900px;
-        margin: 0 auto 2rem;
+    .intro-content h1 {
+        font-family: 'Aeonik', sans-serif;
+        font-size: 3.2rem; /* Adjusted for longer title */
         font-weight: 700;
-        line-height: 1.6;
-        text-shadow: 0 5px 20px rgba(0,0,0,0.9);
+        color: #000; /* Pure Black */
+        letter-spacing: -1.5px;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
     }
-    .blue-text {
-        color: #3b82f6;
+    .intro-content p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        opacity: 0.8;
+        color: #475569;
+        max-width: 90%;
     }
     .hero-btns {
         display: flex;
-        justify-content: center;
-        gap: 1.5rem;
+        justify-content: flex-start;
+        gap: 3rem;
     }
-    
-    /* Tidy up Mobile Hero - Sync 3D Visuals */
-    @media (max-width: 992px) {
+    .hero-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #0f172a;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 8px;
+        transition: 0.3s;
+    }
+    .hero-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background: #005ee9;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hero-link i {
+        font-size: 0.8rem;
+        transition: 0.3s;
+    }
+    .hero-link:hover::after {
+        width: 100%;
+    }
+    .hero-link:hover i {
+        transform: translateX(5px);
+    }
+    .secondary-link {
+        color: #64748b;
+    }
+    .secondary-link::after {
+        background: #cbd5e1;
+    }
+
+    @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (max-width: 768px) {
         .intro-visual { 
-            height: 100vh;
-            overflow: hidden;
+            padding-left: 6vw; /* Exact same as Header Logo padding */
+            padding-right: 20px;
+            padding-top: 140px; /* Positioned right under the logo */
+            padding-bottom: 60px; 
+            justify-content: flex-start; 
+            text-align: left; 
+            align-items: flex-start;
+            height: auto;
+            min-height: 100vh;
         }
-
-        .intro-bg-wrap, .ship-wrap {
-            height: 100vh;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
+        .intro-content { 
+            max-width: 100%; 
         }
-
-        .bg-img, .tanker-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center; /* Ensures layers stay aligned for 3D */
-            image-rendering: -webkit-optimize-contrast;
-            filter: brightness(1.1) contrast(1.1);
-        }
-
-        .intro-content-back {
-            top: 35%; /* Title higher up on mobile */
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .intro-content-back h1 { 
-            font-size: 2.2rem;
-            letter-spacing: 1px;
-            line-height: 1.1;
-            text-shadow: 0 0 20px rgba(255,255,255,0.4);
-        }
-
-        .intro-content-front { 
-            bottom: 0;
-            padding: 80px 20px 40px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-            z-index: 10;
-        }
-
-        .intro-content-front p { 
-            font-size: 0.95rem;
-            line-height: 1.5;
-            padding: 0 10px;
-            margin-bottom: 2rem;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .hero-btns {
-            flex-direction: row;
-            gap: 12px;
-            padding: 0;
-        }
-
-        .hero-btns a { 
-            font-size: 0.75rem;
-            padding: 1rem 0.5rem;
-            flex: 1;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-            border-radius: 8px;
-        }
+        .intro-content h1 { font-size: 2.2rem; letter-spacing: -1px; }
+        .intro-content p { font-size: 1rem; max-width: 100%; margin-bottom: 2rem; }
+        .hero-btns { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
     }
 </style>
+
+<script>
+(function() {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let dots = [];
+    const spacing = 35; /* Grid spacing */
+    let mouse = { x: -1000, y: -1000, radius: 150 };
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function init() {
+        dots = [];
+        for (let x = 0; x < canvas.width; x += spacing) {
+            for (let y = 0; y < canvas.height; y += spacing) {
+                dots.push({
+                    x: x,
+                    y: y,
+                    baseX: x,
+                    baseY: y,
+                    size: 1.5
+                });
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(0, 94, 233, 0.4)';
+        
+        for (let i = 0; i < dots.length; i++) {
+            let dot = dots[i];
+            let dx = mouse.x - dot.x;
+            let dy = mouse.y - dot.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < mouse.radius) {
+                let force = (mouse.radius - distance) / mouse.radius;
+                let moveX = (dx / distance) * force * 15;
+                let moveY = (dy / distance) * force * 15;
+                dot.x = dot.baseX - moveX;
+                dot.y = dot.baseY - moveY;
+                ctx.fillStyle = `rgba(0, 94, 233, ${0.4 + force * 0.6})`;
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.size + force * 2, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                dot.x = dot.baseX;
+                dot.y = dot.baseY;
+                ctx.fillStyle = 'rgba(0, 94, 233, 0.2)';
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+})();
+</script>
+
