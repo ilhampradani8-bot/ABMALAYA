@@ -94,7 +94,7 @@
     }
 
     .intro-content-back h1 {
-        font-family: 'Cinzel', serif;
+        font-family: 'Averta', sans-serif;
         font-size: 3.5rem;
         font-weight: 800;
         text-transform: uppercase;

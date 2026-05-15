@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
 
 @font-face {
-    font-family: 'Cinzel';
-    src: url('../fonts/cinzel/static/Cinzel-Bold.ttf') format('truetype');
-    font-weight: 700;
+    font-family: 'Averta';
+    src: url('../fonts/AvertaDemoPE-Regular.otf') format('opentype');
+    font-weight: 400;
 }
 
 @font-face {
-    font-family: 'Relicta';
-    src: url('../fonts/relicta/Relicta-UltraboldItalic.otf') format('opentype');
+    font-family: 'Averta';
+    src: url('../fonts/AvertaDemoPE-ExtraboldItalic.otf') format('opentype');
+    font-weight: 800;
 }
 
 :root {
@@ -86,7 +87,8 @@ img {
 }
 
 .hero-content h1 {
-    font-family: 'Cinzel', serif;
+    font-family: 'Averta', sans-serif;
+    font-weight: 800;
     font-size: 4rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;

@@ -87,6 +87,7 @@
         }
 
         .nav-links a {
+            font-family: 'Averta', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
             color: var(--secondary);

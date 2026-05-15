@@ -7,219 +7,149 @@ include 'includes/header.php';
 <link rel="stylesheet" href="assets/css/home.css">
 
 <style>
-    /* Services Page Expanding Card Logic */
+    /* Simple Service Cards - Matches index.php */
     .services-page-slider {
         padding: 60px 0;
     }
-    
+
     .service-card-item {
         position: relative;
         width: 350px;
         height: 500px;
-        cursor: pointer;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        overflow: hidden;
         border-radius: 24px;
-        background: #000;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .service-card-item.expanded {
-        width: 800px;
-        z-index: 1000;
-        cursor: default;
-        aspect-ratio: auto; /* Fix for home.css aspect-ratio */
-    }
-
-    .card-front {
-        flex: 0 0 350px;
-        height: 100%;
-        position: relative;
         overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.4s ease;
     }
 
-    .card-info-pane {
-        flex: 1;
-        background: var(--white);
-        padding: 4rem 3rem;
-        display: flex;
-        flex-direction: column;
-        opacity: 0;
-        transform: translateX(40px);
-        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
-        visibility: hidden;
-        color: var(--secondary);
+    .service-card-item:hover {
+        transform: translateY(-10px);
     }
 
-    .service-card-item.expanded .card-info-pane {
-        opacity: 1;
-        transform: translateX(0);
-        visibility: visible;
-    }
-
-    /* Keep card image for front */
-    .card-front .card-image {
+    .service-card-item .card-image {
         width: 100%;
         height: 100%;
         background-size: cover;
         background-position: center;
-        display: flex;
-        align-items: flex-end;
         transition: transform 0.8s ease;
     }
 
     .service-card-item:hover .card-image {
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
 
-    .card-info-pane h3 {
-        font-family: 'Cinzel', serif;
-        color: var(--primary);
+    /* Details Section Styling */
+    .details-section {
+        padding: 60px 0 100px;
+        background: #fff;
+        min-height: 200px; /* Space for content to appear */
+    }
+
+    .service-detail-block {
+        display: none; /* Hide by default */
+        margin-bottom: 0;
+        padding: 50px;
+        border-radius: 40px;
+        background: #f8fafc;
+        border: 2px solid #edf2f7;
+        animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    .service-detail-block.active {
+        display: block;
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-header {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .detail-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #fff;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 2rem;
-        margin-bottom: 2rem;
-        border-bottom: 2px solid var(--accent);
-        padding-bottom: 1rem;
+        box-shadow: 0 15px 30px rgba(0, 94, 233, 0.2);
     }
 
-    .card-info-pane ul {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 2rem;
+    .detail-header h2 {
+        font-family: 'Averta', sans-serif;
+        font-weight: 800; /* Uses Averta Demo PE Extrabold Italic */
+        color: var(--secondary);
+        font-size: 2.8rem;
+        margin: 0;
+        letter-spacing: -1px;
     }
 
-    .card-info-pane li {
-        margin-bottom: 1.2rem;
-        font-weight: 700;
-        font-size: 1.1rem;
+    .more-arrow-btn {
+        width: 45px !important;
+        height: 45px !important;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem !important;
+        transition: 0.3s;
+        border: none;
+        flex-shrink: 0;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .desc-row {
         display: flex;
         align-items: center;
         gap: 15px;
-        color: #475569;
+        justify-content: flex-end;
+        overflow: visible !important;
     }
 
-    .card-info-pane li::before {
-        content: '\f00c';
-        font-family: 'Font Awesome 5 Free';
-        font-weight: 900;
+    .service-content-inner {
+        overflow: visible !important;
+    }
+
+    .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .detail-item {
+        background: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    }
+
+    .detail-item h4 {
         color: var(--primary);
-        font-size: 0.9rem;
+        margin-bottom: 10px;
+        font-weight: 700;
     }
 
-    .close-card {
-        margin-top: auto;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        color: #fff;
-        background: var(--primary);
-        padding: 12px 24px;
-        border-radius: 50px;
-        font-weight: 800;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        transition: all 0.3s ease;
-        width: fit-content;
-        box-shadow: 0 4px 15px rgba(0, 94, 233, 0.3);
-    }
-
-    .close-card:hover {
-        background: var(--secondary);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .expanded-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark without blur */
-        z-index: 9000; /* Very high */
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.5s ease;
-        backdrop-filter: none !important; /* Force remove any blur */
-        -webkit-backdrop-filter: none !important;
-    }
-
-    .expanded-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    @media (max-width: 992px) {
-        .service-card-item.expanded {
-            width: 90vw;
-            flex-direction: column;
-            height: auto;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .card-front {
-            flex: 0 0 300px;
-        }
+    .detail-item p {
+        font-size: 0.95rem;
+        color: #64748b;
+        line-height: 1.5;
     }
 
     @media (max-width: 768px) {
-        .service-card-item { width: 100%; height: 450px; }
-        .card-info-pane { padding: 2rem; }
-    }
-
-    /* Fix Swiper Stacking Context */
-    .service-swiper.has-expanded {
-        z-index: 9001 !important;
-    }
-
-    .swiper-slide.slide-expanded {
-        z-index: 9002 !important;
-        overflow: visible !important;
-        filter: none !important;
-        opacity: 1 !important;
-    }
-    
-    .service-card-item.expanded {
-        position: relative;
-        z-index: 9003;
-        filter: none !important;
-        transform: translateX(-225px); /* Center when expanding from 350 to 800 */
-    }
-
-    @media (max-width: 992px) {
-        .service-card-item.expanded {
-            width: 90vw;
-            flex-direction: column;
-            height: auto;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: translateX(0) !important; /* No translation on mobile */
-            margin: 0 auto;
-        }
-        .card-front {
-            flex: 0 0 300px;
-            width: 100%;
-        }
-    }
-
-    .desc-row-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-top: 10px;
-        justify-content: flex-end; /* Keep text right-aligned but button on its left */
-    }
-
-    .desc-row-left .more-arrow-btn {
-        order: -1; /* Move button to left of text */
-    }
-
-    .desc-row-left p {
-        margin: 0;
-        font-size: 1rem;
-        opacity: 0.9;
+        .service-card-item { width: 100%; height: 400px; }
+        .detail-header h2 { font-size: 1.8rem; }
     }
 </style>
 
@@ -234,156 +164,86 @@ include 'includes/hero_visual.php';
         <div class="swiper service-swiper services-page-slider">
             <div class="swiper-wrapper">
                 
-                <!-- Industri Kelautan -->
+                <!-- Slide 1: Industri Kelautan -->
                 <div class="swiper-slide">
-                    <div class="service-card-item" onclick="expandCard(this)">
-                        <div class="card-front">
-                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800&h=1000&auto=format&fit=crop');">
-                                <div class="service-overlay">
-                                    <div class="service-content-inner">
-                                        <h3>Industri Kelautan</h3>
-                                        <div class="desc-row-left">
-                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
-                                            <p>Layanan teknis & logistik kelautan.</p>
-                                        </div>
+                    <div class="service-card-item" onclick="showDetail('marine')">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800&h=1000&auto=format&fit=crop');">
+                            <div class="service-overlay">
+                                <div class="service-content-inner">
+                                    <h3>Industri Kelautan</h3>
+                                    <div class="desc-row">
+                                        <div class="more-arrow-btn"><i class="fas fa-arrow-down"></i></div>
+                                        <p>Layanan teknis & logistik kelautan.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-info-pane">
-                            <h3>Industri Kelautan</h3>
-                            <ul>
-                                <li>Perlengkapan Habis Pakai Kapal</li>
-                                <li>Logistik dan Transisi Awak Kapal</li>
-                                <li>Teknik & Pemeliharaan Kapal</li>
-                                <li>Solusi Boiler Kapal (Vecom)</li>
-                            </ul>
-                            <div class="close-card" onclick="closeAllCards(event)">
-                                <i class="fas fa-times"></i> Close Info
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Layanan Lintas Batas -->
+                <!-- Slide 2: Layanan Lintas Batas -->
                 <div class="swiper-slide">
-                    <div class="service-card-item" onclick="expandCard(this)">
-                        <div class="card-front">
-                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2000');">
-                                <div class="service-overlay">
-                                    <div class="service-content-inner">
-                                        <h3>Layanan Lintas Batas</h3>
-                                        <div class="desc-row-left">
-                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
-                                            <p>Logistik SGP - MY - TH.</p>
-                                        </div>
+                    <div class="service-card-item" onclick="showDetail('logistics')">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2000');">
+                            <div class="service-overlay">
+                                <div class="service-content-inner">
+                                    <h3>Layanan Lintas Batas</h3>
+                                    <div class="desc-row">
+                                        <div class="more-arrow-btn"><i class="fas fa-arrow-down"></i></div>
+                                        <p>Logistik SGP - MY - TH.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-info-pane">
-                            <h3>Layanan Lintas Batas</h3>
-                            <ul>
-                                <li>Perencanaan Logistik & Transportasi</li>
-                                <li>Penanganan & Penyimpanan Barang</li>
-                                <li>Dokumentasi & Kepatuhan Bea Cukai</li>
-                                <li>Operasional 24/7 & Armada Khusus</li>
-                            </ul>
-                            <div class="close-card" onclick="closeAllCards(event)">
-                                <i class="fas fa-times"></i> Close Info
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Solusi Lingkungan -->
+                <!-- Slide 3: Solusi Lingkungan -->
                 <div class="swiper-slide">
-                    <div class="service-card-item" onclick="expandCard(this)">
-                        <div class="card-front">
-                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2000');">
-                                <div class="service-overlay">
-                                    <div class="service-content-inner">
-                                        <h3>Solusi Lingkungan</h3>
-                                        <div class="desc-row-left">
-                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
-                                            <p>Proteksi aset & kelola limbah.</p>
-                                        </div>
+                    <div class="service-card-item" onclick="showDetail('env')">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2000');">
+                            <div class="service-overlay">
+                                <div class="service-content-inner">
+                                    <h3>Solusi Lingkungan</h3>
+                                    <div class="desc-row">
+                                        <div class="more-arrow-btn"><i class="fas fa-arrow-down"></i></div>
+                                        <p>Proteksi aset & kelola limbah.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-info-pane">
-                            <h3>Solusi Lingkungan</h3>
-                            <ul>
-                                <li>Pencegahan & Pengendalian Korosi</li>
-                                <li>Perawatan & Perbaikan Peralatan</li>
-                                <li>Pelatihan & Konsultasi Ahli</li>
-                                <li>Pengelolaan Air Limbah & Tumpahan</li>
-                            </ul>
-                            <div class="close-card" onclick="closeAllCards(event)">
-                                <i class="fas fa-times"></i> Close Info
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Industri IT -->
+                <!-- Slide 4: Industri IT -->
                 <div class="swiper-slide">
-                    <div class="service-card-item" onclick="expandCard(this)">
-                        <div class="card-front">
-                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000&auto=format&fit=crop');">
-                                <div class="service-overlay">
-                                    <div class="service-content-inner">
-                                        <h3>Industri IT</h3>
-                                        <div class="desc-row-left">
-                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
-                                            <p>Infrastruktur IT lokasi terpencil.</p>
-                                        </div>
+                    <div class="service-card-item" onclick="showDetail('it')">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000&auto=format&fit=crop');">
+                            <div class="service-overlay">
+                                <div class="service-content-inner">
+                                    <h3>Industri IT</h3>
+                                    <div class="desc-row">
+                                        <div class="more-arrow-btn"><i class="fas fa-arrow-down"></i></div>
+                                        <p>Infrastruktur IT lokasi terpencil.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-info-pane">
-                            <h3>Industri IT</h3>
-                            <ul>
-                                <li>Penyebaran Infrastruktur IT</li>
-                                <li>Sistem Pemantauan Jarak Jauh</li>
-                                <li>Keamanan Siber Industri (ICS)</li>
-                                <li>Dukungan Teknis 24/7</li>
-                            </ul>
-                            <div class="close-card" onclick="closeAllCards(event)">
-                                <i class="fas fa-times"></i> Close Info
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pengadaan Global -->
+                <!-- Slide 5: Pengadaan Global -->
                 <div class="swiper-slide">
-                    <div class="service-card-item" onclick="expandCard(this)">
-                        <div class="card-front">
-                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000');">
-                                <div class="service-overlay">
-                                    <div class="service-content-inner">
-                                        <h3>Pengadaan Global</h3>
-                                        <div class="desc-row-left">
-                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
-                                            <p>Sourcing global komponen teknik.</p>
-                                        </div>
+                    <div class="service-card-item" onclick="showDetail('procurement')">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000');">
+                            <div class="service-overlay">
+                                <div class="service-content-inner">
+                                    <h3>Pengadaan Global</h3>
+                                    <div class="desc-row">
+                                        <div class="more-arrow-btn"><i class="fas fa-arrow-down"></i></div>
+                                        <p>Sourcing global komponen teknik.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-info-pane">
-                            <h3>Pengadaan Global</h3>
-                            <ul>
-                                <li>Sourcing Global Strategis</li>
-                                <li>Jaminan Kualitas (Quality Assurance)</li>
-                                <li>Manajemen Inventaris Teknik</li>
-                                <li>Pengadaan Suku Cadang Kritis</li>
-                            </ul>
-                            <div class="close-card" onclick="closeAllCards(event)">
-                                <i class="fas fa-times"></i> Close Info
                             </div>
                         </div>
                     </div>
@@ -401,52 +261,155 @@ include 'includes/hero_visual.php';
     </div>
 </section>
 
-<div class="expanded-overlay" id="services-overlay" onclick="closeAllCards(event)"></div>
+<!-- Detailed Information Section -->
+<section class="details-section">
+    <div class="container">
+        
+        <!-- 1. Industri Kelautan -->
+        <div id="marine" class="service-detail-block">
+            <div class="detail-header">
+                <div class="detail-icon"><i class="fas fa-ship"></i></div>
+                <h2>Industri Kelautan</h2>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <h4>Perlengkapan Kapal</h4>
+                    <p>Menyediakan perlengkapan habis pakai berkualitas tinggi untuk operasional kapal harian.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Logistik & Awak Kapal</h4>
+                    <p>Memastikan pergantian kru dan dukungan logistik yang lancar di berbagai pelabuhan.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Teknik & Pemeliharaan</h4>
+                    <p>Solusi rekayasa komprehensif dan perawatan rutin untuk memastikan kesiapan armada.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Solusi Boiler Kapal</h4>
+                    <p>Penyedia resmi bahan kimia Vecom Marine untuk perawatan boiler dan peningkatan kinerja.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Layanan Lintas Batas -->
+        <div id="logistics" class="service-detail-block">
+            <div class="detail-header">
+                <div class="detail-icon"><i class="fas fa-truck-moving"></i></div>
+                <h2>Layanan Lintas Batas</h2>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <h4>Logistik & Transportasi</h4>
+                    <p>Perencanaan logistik terpadu antara Singapura, Malaysia, dan Thailand.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Penyimpanan Barang</h4>
+                    <p>Penanganan dan penyimpanan barang lintas batas yang aman dan efisien.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Dokumentasi & Bea Cukai</h4>
+                    <p>Memastikan kepatuhan regulasi dan kelancaran proses kepabeanan antar negara.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Operasional 24/7</h4>
+                    <p>Tim khusus yang siap siaga mengelola operasi kapan saja dan di mana saja.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Solusi Lingkungan -->
+        <div id="env" class="service-detail-block">
+            <div class="detail-header">
+                <div class="detail-icon"><i class="fas fa-leaf"></i></div>
+                <h2>Solusi Lingkungan</h2>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <h4>Pencegahan Korosi</h4>
+                    <p>Melindungi aset berharga dengan teknik anti-korosi terdepan di industri.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Perawatan & Perbaikan</h4>
+                    <p>Layanan perbaikan khusus untuk memperpanjang umur peralatan industri.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Pelatihan & Konsultasi</h4>
+                    <p>Pelatihan ahli tentang praktik terbaik pencegahan korosi dan efisiensi aset.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Pengelolaan Limbah</h4>
+                    <p>Solusi air limbah dan tumpahan untuk menjaga kelestarian lingkungan operasional.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Industri IT -->
+        <div id="it" class="service-detail-block">
+            <div class="detail-header">
+                <div class="detail-icon"><i class="fas fa-microchip"></i></div>
+                <h2>Industri IT</h2>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <h4>Infrastruktur IT</h4>
+                    <p>Penyebaran infrastruktur IT yang kokoh untuk lokasi industri terpencil.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Pemantauan Jarak Jauh</h4>
+                    <p>Sistem monitoring real-time untuk memastikan operasional tetap berjalan optimal.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Keamanan Siber ICS</h4>
+                    <p>Perlindungan sistem kontrol industri dari ancaman siber modern.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Pengadaan Global -->
+        <div id="procurement" class="service-detail-block">
+            <div class="detail-header">
+                <div class="detail-icon"><i class="fas fa-globe"></i></div>
+                <h2>Pengadaan Global</h2>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <h4>Sourcing Strategis</h4>
+                    <p>Pencarian komponen teknik global dengan harga kompetitif dan kualitas terjamin.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Jaminan Kualitas</h4>
+                    <p>Proses QC ketat untuk memastikan setiap bagian memenuhi standar industri.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Manajemen Inventaris</h4>
+                    <p>Solusi pengelolaan stok untuk meminimalkan waktu tunggu operasional.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 <script src="assets/js/main.js"></script>
 <script>
-    function expandCard(card) {
-        if (card.classList.contains('expanded')) return;
+    function showDetail(id) {
+        // Hide all blocks
+        document.querySelectorAll('.service-detail-block').forEach(block => {
+            block.classList.remove('active');
+        });
         
-        // Close others first
-        closeAllCards();
-        
-        card.classList.add('expanded');
-        const slide = card.closest('.swiper-slide');
-        if (slide) slide.classList.add('slide-expanded');
-        
-        const swiperContainer = document.querySelector('.service-swiper');
-        if (swiperContainer) swiperContainer.classList.add('has-expanded');
-        
-        document.getElementById('services-overlay').classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Stop swiper autoplay if exists
-        const swiperEl = document.querySelector('.service-swiper');
-        if (swiperEl && swiperEl.swiper) {
-            swiperEl.swiper.autoplay.stop();
-        }
-    }
-
-    function closeAllCards(e) {
-        if (e) e.stopPropagation();
-        
-        const cards = document.querySelectorAll('.service-card-item');
-        cards.forEach(c => c.classList.remove('expanded'));
-        
-        const slides = document.querySelectorAll('.swiper-slide');
-        slides.forEach(s => s.classList.remove('slide-expanded'));
-        
-        const swiperContainer = document.querySelector('.service-swiper');
-        if (swiperContainer) swiperContainer.classList.remove('has-expanded');
-        
-        document.getElementById('services-overlay').classList.remove('active');
-        document.body.style.overflow = 'auto';
-        
-        // Restart swiper autoplay
-        const swiperEl = document.querySelector('.service-swiper');
-        if (swiperEl && swiperEl.swiper) {
-            swiperEl.swiper.autoplay.start();
+        // Show the targeted block
+        const target = document.getElementById(id);
+        if (target) {
+            target.classList.add('active');
+            
+            // Scroll to it
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
         }
     }
 </script>
