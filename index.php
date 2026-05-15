@@ -270,7 +270,7 @@ include 'includes/hero_visual.php';
             }
             .slide.position-1, .slide.position-5 { display: none; }
             
-            .slider-nav-bottom { margin-top: 2rem; }
+            .slider-nav-bottom { margin-top: 4rem; }
         }
 
         /* Card Elements */

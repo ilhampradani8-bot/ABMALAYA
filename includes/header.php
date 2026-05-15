@@ -324,11 +324,13 @@
 
         // Initialize Lenis Smooth Scroll
         const lenis = new Lenis({
-            duration: 1.4, /* Slightly slower for that luxurious feel */
+            duration: 1.5,
+            lerp: 0.08, /* Consistency of the 'soft' feel */
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
             smooth: true,
+            smoothWheel: true,
             mouseMultiplier: 1,
             smoothTouch: false,
             touchMultiplier: 2,

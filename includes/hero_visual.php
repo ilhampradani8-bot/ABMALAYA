@@ -11,7 +11,38 @@
 <section class="intro-visual">
     <div class="intro-bg-wrap">
         <canvas id="hero-canvas"></canvas>
-        <div class="hero-art-blob"></div>
+        <div class="hero-art-container" id="hero-art">
+            <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
+                <!-- Background Glow (Blurred inside SVG) -->
+                <defs>
+                    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
+                    </filter>
+                    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#005ee9" stop-opacity="0.3" />
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- The Glow Beam -->
+                <circle cx="300" cy="250" r="150" fill="url(#beamGrad)" filter="url(#softGlow)" />
+
+                <!-- Industrial 'h' / Basket Shape (Sharp) -->
+                <g class="sharp-art">
+                    <path d="M100 150V380" stroke="#005ee9" stroke-width="4" stroke-linecap="round" />
+                    <path d="M100 240C100 200 160 180 220 180C280 180 340 200 340 240V380" stroke="#005ee9" stroke-width="4" stroke-linecap="round" />
+                    <path d="M100 380H340" stroke="#005ee9" stroke-width="2" stroke-opacity="0.3" stroke-dasharray="8 8" />
+                </g>
+                
+                <!-- Detailed Gear (Sharp) -->
+                <g class="sharp-art" transform="translate(380, 180) scale(0.8)">
+                    <circle cx="50" cy="50" r="35" stroke="#005ee9" stroke-width="3" stroke-opacity="0.6" />
+                    <circle cx="50" cy="50" r="10" stroke="#005ee9" stroke-width="2" stroke-opacity="0.6" />
+                    <!-- Gear Teeth -->
+                    <path d="M50 5V15M50 85V95M5 50H15M85 50H95M18 18L25 25M75 75L82 82M18 82L25 75M75 18L82 25" stroke="#005ee9" stroke-width="4" stroke-linecap="round" stroke-opacity="0.8" />
+                </g>
+            </svg>
+        </div>
     </div>
     
     <div class="intro-content">
@@ -54,16 +85,23 @@
         height: 100%;
         display: block;
     }
-    .hero-art-blob {
+    .hero-art-container {
         position: absolute;
-        top: 20%;
-        right: -10%;
+        top: 15%;
+        right: -5%;
         width: 60%;
-        height: 60%;
-        background: radial-gradient(circle, rgba(0, 94, 233, 0.05) 0%, transparent 70%);
-        filter: blur(80px);
+        height: 70%;
         z-index: 2;
         pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: blur(40px); /* Creates the "beam of light" pancaran look */
+        opacity: 0.6;
+    }
+    .hero-svg {
+        width: 100%;
+        height: 100%;
     }
     .intro-content {
         position: relative;
@@ -200,11 +238,17 @@
         }
     }
 
+    const art = document.getElementById('hero-art');
     const easing = 0.08; /* Smoothing factor - lower is smoother/slower */
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
+        // Parallax for Art
+        const artMoveX = (mouse.x - window.innerWidth / 2) * -0.02;
+        const artMoveY = (mouse.y - window.innerHeight / 2) * -0.02;
+        art.style.transform = `translate(${artMoveX}px, ${artMoveY}px)`;
+
         for (let i = 0; i < dots.length; i++) {
             let dot = dots[i];
             let dx = mouse.x - dot.baseX;
