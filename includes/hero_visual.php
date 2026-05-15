@@ -134,61 +134,45 @@
         .intro-visual { 
             height: 100vh; 
             display: flex;
-            flex-direction: column; /* Stack vertically for better control */
             align-items: center;
-            justify-content: flex-start;
-            padding-top: 20%;
+            justify-content: center;
         }
         .intro-bg-wrap, .ship-wrap {
             height: 100vh;
             width: 100%;
         }
-        .bg-img {
-            object-position: 70% center; /* Shift background for better framing */
-        }
-        .tanker-img {
-            width: 120%; /* Slightly larger for impact */
-            max-width: none;
-            height: auto;
-            object-fit: contain;
-            transform: translateX(10%); /* Shift ship to the right */
-        }
-        .intro-content-back {
-            top: 30%; /* Move title higher */
-            transform: translate(-50%, -50%);
-            padding: 0 20px;
+        .bg-img, .tanker-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: -webkit-optimize-contrast;
+            filter: brightness(1.1) contrast(1.2) saturate(1.1);
         }
         .intro-content-back h1 { 
-            font-size: 2.2rem; /* Smaller font to avoid wrap issues */
-            line-height: 1.2;
-            letter-spacing: 1px; 
+            font-size: 2.8rem;
+            letter-spacing: 2px; 
             margin: 0;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+            text-shadow: 0 0 30px rgba(0,0,0,0.1);
         }
         .intro-content-front { 
-            bottom: 8%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7)); /* Better text contrast */
-            padding: 40px 20px 20px;
+            bottom: 10%; 
         }
         .intro-content-front p { 
-            font-size: 0.9rem; 
-            padding: 0 10px; 
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-            line-height: 1.5;
+            font-size: 1rem; 
+            padding: 0 30px; 
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
         .hero-btns {
             flex-direction: row;
             gap: 10px;
-            padding: 0;
-            justify-content: center;
+            padding: 0 20px;
         }
         .hero-btns a { 
-            font-size: 0.75rem; 
-            padding: 0.8rem 1rem; 
+            font-size: 0.8rem; 
+            padding: 1rem 0.5rem; 
             flex: 1; 
-            margin: 0 !important;
-            white-space: nowrap;
+            margin: 0 !important; 
         }
     }
 </style>
