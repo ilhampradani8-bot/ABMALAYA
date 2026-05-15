@@ -258,6 +258,10 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -273,7 +277,6 @@
             <!-- Logo (Center Mobile / Left PC) -->
             <a href="/" class="logo">
                 <img src="/assets/img/logo-abmalaya.png" alt="AB Malaya Logo">
-                <span class="logo-text">Malaya</span>
             </a>
             
             <!-- Nav Links (PC Center) -->

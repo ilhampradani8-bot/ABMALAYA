@@ -1,0 +1,273 @@
+/* Home Page Specific Styles */
+
+/* Swiper Service Slider (Standard Clean Cards) */
+.service-swiper {
+    width: 100%;
+    padding: 20px 0 80px 0;
+}
+
+.swiper-slide {
+    width: 350px; /* Narrower for 4:5 aspect ratio */
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.3;
+    filter: blur(8px);
+    transform: scale(0.8);
+    margin: 0 15px; /* Consistent spacing */
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+}
+
+.service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top left, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 30%, rgba(15, 23, 42, 0) 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 3rem;
+    color: #fff;
+}
+
+.service-content-inner {
+    max-width: 90%;
+    text-align: right;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.6s ease 0.3s;
+}
+
+.swiper-slide-active .service-content-inner {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.service-content-inner h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.desc-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.desc-row p {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.more-arrow-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.more-arrow-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
+    color: var(--primary);
+}
+
+/* Custom Navigation */
+.swiper-nav-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 94, 233, 0.2);
+}
+
+
+.swiper-pagination {
+    bottom: 0 !important;
+}
+
+.swiper-pagination-bullet {
+    background: #cbd5e1 !important;
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary) !important;
+    width: 20px !important;
+    border-radius: 10px !important;
+}
+
+/* Logo Slider */
+.logo-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.logo-track {
+    display: flex;
+    width: calc(250px * 16); /* Adjusted for 8 logos */
+    animation: scroll 40s linear infinite;
+    align-items: center;
+    gap: 3rem; /* Reduced gap */
+}
+.client-logo {
+    width: 180px; /* More compact width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.client-logo img {
+    height: 65px; /* Larger logos */
+    width: auto;
+    opacity: 0.9;
+    transition: all 0.4s ease;
+}
+.client-logo img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 8 - 40rem)); }
+}
+
+/* 3D Floating Animations for Contact Icons */
+.icon-box-3d {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+.contact-item:hover .icon-box-3d {
+    transform: translateY(-10px) rotateX(10deg) rotateY(10deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.pulse-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: inherit;
+    opacity: 0.3;
+    animation: pulse 2s infinite;
+    z-index: -1;
+}
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    #service .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+    }
+    .services-slider-wrapper {
+        border-radius: 0 !important;
+        height: 600px !important;
+    }
+    .swiper-slide {
+        width: 85% !important; /* Consistent vertical look on mobile */
+        aspect-ratio: 4/5 !important;
+        margin: 0 10px !important;
+    }
+    .service-content-inner h3 {
+        font-size: 1.5rem !important;
+    }
+    .service-overlay {
+        padding: 1.5rem !important;
+    }
+    .desc-row p {
+        font-size: 0.85rem !important;
+    }
+    .service-floating-card {
+        max-width: 92% !important;
+        padding: 1.5rem !important;
+        margin-bottom: 20px !important;
+        text-align: center;
+    }
+    .slider-dots {
+        bottom: 20px !important;
+        right: 0 !important;
+        left: 0 !important;
+        justify-content: center !important;
+    }
+    
+    #cta {
+        padding: 100px 0 !important;
+        background-attachment: scroll !important;
+    }
+    .cta-title {
+        font-size: 2rem !important;
+    }
+    .cta-main-btn {
+        width: 90% !important;
+    }
+}
