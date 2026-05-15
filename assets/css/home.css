@@ -6,7 +6,7 @@
     padding: 20px 0 80px 0;
 }
 
-.swiper-slide {
+.service-card-item {
     width: 350px; /* Narrower for 4:5 aspect ratio */
     aspect-ratio: 4/5;
     border-radius: 24px;
@@ -14,13 +14,23 @@
     background: #000;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.service-swiper .swiper-slide {
+    width: 350px;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
     opacity: 0.3;
     filter: blur(8px);
     transform: scale(0.8);
-    margin: 0 15px; /* Consistent spacing */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 15px;
 }
 
-.swiper-slide-active {
+.service-swiper .swiper-slide-active {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
@@ -60,7 +70,8 @@
     transition: all 0.6s ease 0.3s;
 }
 
-.swiper-slide-active .service-content-inner {
+.service-swiper .swiper-slide-active .service-content-inner,
+.service-card-item:hover .service-content-inner {
     transform: translateY(0);
     opacity: 1;
 }
@@ -154,38 +165,44 @@
     border-radius: 10px !important;
 }
 
-/* Logo Slider */
-.logo-slider {
+/* Logo Slider (Swiper Marquee) */
+.logo-swiper {
     width: 100%;
-    overflow: hidden;
-    position: relative;
 }
-.logo-track {
-    display: flex;
-    width: calc(250px * 16); /* Adjusted for 8 logos */
-    animation: scroll 40s linear infinite;
-    align-items: center;
-    gap: 3rem; /* Reduced gap */
+
+.logo-swiper .swiper-wrapper {
+    transition-timing-function: linear !important; /* Smooth Marquee Effect */
 }
-.client-logo {
-    width: 180px; /* More compact width */
+
+.client-logo-slide {
+    width: 180px; /* Original width */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.client-logo img {
-    height: 65px; /* Larger logos */
-    width: auto;
-    opacity: 0.9;
+
+.client-logo-slide a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     transition: all 0.4s ease;
 }
-.client-logo img:hover {
-    opacity: 1;
-    transform: scale(1.1);
+
+.client-logo-slide img {
+    height: 60px; /* Original height-ish */
+    width: auto;
+    opacity: 0.9;
+    filter: grayscale(0); 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * 8 - 40rem)); }
+
+.client-logo-slide:hover a {
+    transform: scale(1.15);
+}
+
+.client-logo-slide:hover img {
+    opacity: 1;
 }
 
 /* 3D Floating Animations for Contact Icons */
@@ -233,7 +250,7 @@
         border-radius: 0 !important;
         height: 600px !important;
     }
-    .swiper-slide {
+    .service-swiper .swiper-slide {
         width: 85% !important; /* Consistent vertical look on mobile */
         aspect-ratio: 4/5 !important;
         margin: 0 10px !important;

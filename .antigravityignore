@@ -1,0 +1,14 @@
+# Ignore system files
+.git/
+.DS_Store
+Thumbs.db
+
+# Ignore large binary assets to save tokens
+assets/img/**/*.jpg
+assets/img/**/*.png
+assets/img/**/*.svg
+assets/img/**/*.webp
+assets/fonts/
+
+# Ignore documentation that doesn't affect code logic (optional)
+# ABMALAYA_Content_Clean.txt

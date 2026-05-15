@@ -20,16 +20,43 @@
     <style>
         header {
             position: fixed;
-            top: 0;
+            top: 10px; /* Even thinner distance */
             left: 0;
             width: 100%;
-            height: 80px;
             z-index: 1000;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .header-card {
+            width: 98%; /* Closer to edges */
+            max-width: 1600px;
+            background: rgba(255, 255, 255, 0.4); /* More transparent for glass effect */
+            backdrop-filter: blur(35px); /* Stronger premium blur */
+            border: 1px solid rgba(255, 255, 255, 0.6); /* Clearer glassy border */
+            padding: 0.3rem 1.5rem; /* Even thinner */
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            /* Sharp Corners */
+            border-radius: 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        /* The "Double Card" inner border effect */
+        .header-card::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .header-container {
@@ -37,78 +64,62 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            padding: 0 5%;
             position: relative;
         }
 
         .logo {
             display: flex;
-            flex-direction: column;
             align-items: center;
             text-decoration: none;
-            gap: 2px;
+            gap: 15px;
         }
 
         .logo img {
-            height: 40px;
+            height: 35px;
             width: auto;
             display: block;
         }
 
-        .logo-text {
-            font-size: 0.65rem;
-            color: var(--secondary);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 700;
-            line-height: 1;
-        }
-
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-links a {
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 0.85rem;
             color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             position: relative;
+            transition: 0.3s;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
         }
 
         .cta-btn {
-            background: var(--primary);
+            background: #000; /* Sharp black for contrast */
             color: var(--white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 10px 20px rgba(0, 94, 233, 0.2);
+            padding: 0.6rem 2rem;
+            border-radius: 0; 
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             transition: var(--transition);
+            border: 1px solid #000;
         }
 
         .cta-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(0, 94, 233, 0.3);
+            background: var(--primary);
+            border-color: var(--primary);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 94, 233, 0.2);
         }
 
         .menu-toggle {
@@ -168,26 +179,29 @@
             }
 
             .nav-links {
-                position: fixed;
-                top: -120%;
+                position: absolute; /* Relative to header-card */
+                top: calc(100% + 5px);
                 left: 0;
                 width: 100%;
-                height: 100vh;
-                background: var(--white);
+                height: auto;
+                background: rgba(255, 255, 255, 0.6);
+                backdrop-filter: blur(40px);
+                border: 1px solid rgba(255, 255, 255, 0.5);
                 flex-direction: column;
-                justify-content: center;
-                padding: 2rem;
-                gap: 2rem;
-                transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+                padding: 2.5rem 2rem;
+                gap: 1.5rem;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 1050;
                 opacity: 0;
                 visibility: hidden;
+                transform: translateY(-20px);
+                border-radius: 0;
             }
 
             #mobile-menu-checkbox:checked ~ .nav-links {
-                top: 0;
                 opacity: 1;
                 visibility: visible;
+                transform: translateY(0);
             }
 
             #mobile-menu-checkbox:checked ~ .menu-toggle .bars-icon {
@@ -199,13 +213,21 @@
             }
 
             .nav-links a {
-                font-size: 1.5rem;
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(0,0,0,0.03);
             }
             
             .cta-btn {
                 width: 100%;
                 text-align: center;
-                margin-top: 1rem;
+                margin-top: 2rem;
+                display: block;
+                background: var(--primary); /* Re-enable primary for mobile */
+                border: none;
+                padding: 1rem;
             }
         }
 
@@ -265,19 +287,20 @@
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <input type="checkbox" id="mobile-menu-checkbox">
-            
-            <!-- Burger (Mobile Left) -->
-            <label for="mobile-menu-checkbox" class="menu-toggle">
-                <i class="fas fa-bars bars-icon"></i>
-                <i class="fas fa-times close-icon"></i>
-            </label>
+        <div class="header-card">
+            <div class="header-container">
+                <input type="checkbox" id="mobile-menu-checkbox">
+                
+                <!-- Burger (Mobile Left) -->
+                <label for="mobile-menu-checkbox" class="menu-toggle">
+                    <i class="fas fa-bars bars-icon"></i>
+                    <i class="fas fa-times close-icon"></i>
+                </label>
 
-            <!-- Logo (Center Mobile / Left PC) -->
-            <a href="/" class="logo">
-                <img src="/assets/img/logo-abmalaya.png" alt="AB Malaya Logo">
-            </a>
+                <!-- Logo (Center Mobile / Left PC) -->
+                <a href="/" class="logo">
+                    <img src="/assets/img/logo-abmalaya.png" alt="AB Malaya Logo">
+                </a>
             
             <!-- Nav Links (PC Center) -->
             <div class="nav-links">
@@ -349,6 +372,7 @@
                     }
                 }
             </script>
+            </div>
         </div>
     </header>
     <main>

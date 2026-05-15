@@ -6,19 +6,13 @@ include 'includes/header.php';
 
 <link rel="stylesheet" href="assets/css/home.css">
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <h1>Marine Authority & <br><span style="color: var(--accent);">Industrial Excellence</span></h1>
-            <p>Delivering tailored engineering and logistics solutions across industries and borders. Your strategic partner for Maritime, IT, and Energy solutions in Malaysia.</p>
-            <div class="hero-btns">
-                <a href="services.php" class="cta-btn">Our Services</a>
-                <a href="contact.php" class="cta-btn" style="background: transparent; border: 2px solid var(--white); margin-left: 1rem;">Get a Quote</a>
-            </div>
-        </div>
-    </div>
-</section>
+<?php 
+$heroTitle = "Marine Authority &";
+$heroSubtitle = "Industrial Excellence";
+$heroDesc = "Delivering tailored engineering and logistics solutions across industries and borders. <br><span class='blue-text'>Your strategic partner for Maritime, IT, and Energy solutions in Malaysia.</span>";
+$showButtons = true;
+include 'includes/hero_visual.php';
+?>
 
 <!-- Stats / Highlights Section -->
 <section style="background: var(--white); padding: 60px 0;">
@@ -73,7 +67,7 @@ include 'includes/header.php';
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
                 <div class="swiper-slide">
-                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516216628859-9bccecad13c7?q=80&w=2000');">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800&h=1000&auto=format&fit=crop');">
                         <div class="service-overlay">
                             <div class="service-content-inner">
                                 <h3>Maritime & Subsea</h3>
@@ -88,7 +82,7 @@ include 'includes/header.php';
 
                 <!-- Slide 2 -->
                 <div class="swiper-slide">
-                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000');">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000&auto=format&fit=crop');">
                         <div class="service-overlay">
                             <div class="service-content-inner">
                                 <h3>Industrial IT</h3>
@@ -179,19 +173,51 @@ include 'includes/header.php';
     <div class="container">
         <h5 style="text-align: center; color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 4rem;">Trusted by Industry Leaders</h5>
         
-        <div class="logo-slider">
-            <div class="logo-track">
+        <div class="swiper logo-swiper">
+            <div class="swiper-wrapper">
                 <!-- Logos from Partners Folder -->
-                <div class="client-logo"><img src="assets/img/partners/vecom-logo.jpg" alt="Vecom"></div>
-                <div class="client-logo"><img src="assets/img/partners/durachem-logo.png" alt="Durachem"></div>
-                <div class="client-logo"><img src="assets/img/partners/belzona-logo.png" alt="Belzona"></div>
-                <div class="client-logo"><img src="assets/img/partners/loctite-logo.png" alt="Loctite"></div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
+                    </a>
+                </div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                    </a>
+                </div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://www.belzona.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                    </a>
+                </div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                    </a>
+                </div>
                 
-                <!-- Repeat for infinite loop -->
-                <div class="client-logo"><img src="assets/img/partners/vecom-logo.jpg" alt="Vecom"></div>
-                <div class="client-logo"><img src="assets/img/partners/durachem-logo.png" alt="Durachem"></div>
-                <div class="client-logo"><img src="assets/img/partners/belzona-logo.png" alt="Belzona"></div>
-                <div class="client-logo"><img src="assets/img/partners/loctite-logo.png" alt="Loctite"></div>
+                <!-- Repeat for loop stability in marquee mode -->
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
+                    </a>
+                </div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                    </a>
+                </div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://www.belzona.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                    </a>
+                </div>
+                <div class="swiper-slide client-logo-slide">
+                    <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
