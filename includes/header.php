@@ -147,16 +147,24 @@
         }
         /* Mobile View */
         @media (max-width: 992px) {
+            .header-card {
+                padding: 0.3rem 0.8rem; /* Tighter padding */
+            }
             .header-container {
                 display: grid;
-                grid-template-columns: 50px 1fr 50px;
+                grid-template-columns: 40px 1fr 40px; /* Thinner side columns */
                 align-items: center;
                 text-align: center;
+                gap: 5px;
             }
 
             .logo {
                 grid-column: 2;
                 margin: 0 auto;
+            }
+
+            .logo img {
+                height: 28px; /* Slightly smaller for mobile */
             }
 
             .menu-toggle {
