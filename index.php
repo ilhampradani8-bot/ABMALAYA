@@ -198,7 +198,7 @@ include 'includes/hero_visual.php';
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
@@ -575,9 +575,23 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePositions();
     }
 
+    // Autoplay Logic
+    let autoPlayInterval = setInterval(rightScroll, 5000);
+
+    function resetAutoplay() {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(rightScroll, 5000);
+    }
+
     // Event Listeners
-    document.querySelector(".left-arrow").addEventListener("click", leftScroll);
-    document.querySelector(".right-arrow").addEventListener("click", rightScroll);
+    document.querySelector(".left-arrow").addEventListener("click", () => {
+        leftScroll();
+        resetAutoplay();
+    });
+    document.querySelector(".right-arrow").addEventListener("click", () => {
+        rightScroll();
+        resetAutoplay();
+    });
 
     // Initial positioning
     updatePositions();
@@ -594,6 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderContent.addEventListener('touchend', e => {
         touchendX = e.changedTouches[0].screenX;
         handleGesture();
+        resetAutoplay();
     }, false);
 
     function handleGesture() {

@@ -85,7 +85,6 @@
     <div class="right-indicator-container">
         <div class="scroll-line-bg"></div>
         <div class="scroll-line-active" id="scrollLine"></div>
-        <div class="scroll-label"><?php echo strtoupper($currentPage); ?></div>
     </div>
 
     <!-- Scripts -->
