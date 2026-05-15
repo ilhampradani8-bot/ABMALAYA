@@ -327,6 +327,68 @@ include 'includes/hero_visual.php';
                     </div>
                 </div>
 
+                <!-- Industri IT -->
+                <div class="swiper-slide">
+                    <div class="service-card-item" onclick="expandCard(this)">
+                        <div class="card-front">
+                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000&auto=format&fit=crop');">
+                                <div class="service-overlay">
+                                    <div class="service-content-inner">
+                                        <h3>Industri IT</h3>
+                                        <div class="desc-row-left">
+                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
+                                            <p>Infrastruktur IT lokasi terpencil.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-info-pane">
+                            <h3>Industri IT</h3>
+                            <ul>
+                                <li>Penyebaran Infrastruktur IT</li>
+                                <li>Sistem Pemantauan Jarak Jauh</li>
+                                <li>Keamanan Siber Industri (ICS)</li>
+                                <li>Dukungan Teknis 24/7</li>
+                            </ul>
+                            <div class="close-card" onclick="closeAllCards(event)">
+                                <i class="fas fa-times"></i> Close Info
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pengadaan Global -->
+                <div class="swiper-slide">
+                    <div class="service-card-item" onclick="expandCard(this)">
+                        <div class="card-front">
+                            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000');">
+                                <div class="service-overlay">
+                                    <div class="service-content-inner">
+                                        <h3>Pengadaan Global</h3>
+                                        <div class="desc-row-left">
+                                            <div class="more-arrow-btn"><i class="fas fa-plus"></i></div>
+                                            <p>Sourcing global komponen teknik.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-info-pane">
+                            <h3>Pengadaan Global</h3>
+                            <ul>
+                                <li>Sourcing Global Strategis</li>
+                                <li>Jaminan Kualitas (Quality Assurance)</li>
+                                <li>Manajemen Inventaris Teknik</li>
+                                <li>Pengadaan Suku Cadang Kritis</li>
+                            </ul>
+                            <div class="close-card" onclick="closeAllCards(event)">
+                                <i class="fas fa-times"></i> Close Info
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Swiper Nav -->

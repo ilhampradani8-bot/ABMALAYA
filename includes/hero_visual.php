@@ -132,35 +132,45 @@
     /* Maintain Desktop look on Mobile */
     @media (max-width: 992px) {
         .intro-visual { 
-            height: 100vh; /* Keep same height */
+            height: 100vh; 
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .intro-bg-wrap, .ship-wrap {
-            height: 100vh; /* Keep same ship visual */
+            height: 100vh;
+            width: 100%;
+        }
+        .bg-img, .tanker-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: -webkit-optimize-contrast;
+            filter: brightness(1.1) contrast(1.2) saturate(1.1);
         }
         .intro-content-back h1 { 
-            font-size: 2.2rem; 
+            font-size: 2.8rem;
             letter-spacing: 2px; 
             margin: 0;
+            text-shadow: 0 0 30px rgba(0,0,0,0.1);
         }
         .intro-content-front { 
-            bottom: 8%; /* Adjust slightly for mobile screen ratio */
+            bottom: 10%; 
         }
         .intro-content-front p { 
-            font-size: 0.9rem; 
-            padding: 0 20px; 
-            margin-bottom: 1.5rem;
+            font-size: 1rem; 
+            padding: 0 30px; 
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
         .hero-btns {
-            flex-direction: row; /* Keep buttons horizontal if possible */
+            flex-direction: row;
             gap: 10px;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         .hero-btns a { 
-            font-size: 0.7rem; 
-            padding: 0.8rem 0.5rem; 
+            font-size: 0.8rem; 
+            padding: 1rem 0.5rem; 
             flex: 1; 
             margin: 0 !important; 
         }
