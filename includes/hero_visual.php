@@ -189,42 +189,50 @@
                 dots.push({
                     x: x,
                     y: y,
+                    targetX: x,
+                    targetY: y,
                     baseX: x,
                     baseY: y,
-                    size: 1.5
+                    size: 1.2,
+                    color: 'rgba(0, 94, 233, 0.2)'
                 });
             }
         }
     }
 
+    const easing = 0.08; /* Smoothing factor - lower is smoother/slower */
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(0, 94, 233, 0.4)';
         
         for (let i = 0; i < dots.length; i++) {
             let dot = dots[i];
-            let dx = mouse.x - dot.x;
-            let dy = mouse.y - dot.y;
+            let dx = mouse.x - dot.baseX;
+            let dy = mouse.y - dot.baseY;
             let distance = Math.sqrt(dx * dx + dy * dy);
             
+            // Calculate where the dot WANTs to be
             if (distance < mouse.radius) {
                 let force = (mouse.radius - distance) / mouse.radius;
-                let moveX = (dx / distance) * force * 15;
-                let moveY = (dy / distance) * force * 15;
-                dot.x = dot.baseX - moveX;
-                dot.y = dot.baseY - moveY;
-                ctx.fillStyle = `rgba(0, 94, 233, ${0.4 + force * 0.6})`;
-                ctx.beginPath();
-                ctx.arc(dot.x, dot.y, dot.size + force * 2, 0, Math.PI * 2);
-                ctx.fill();
+                let moveX = (dx / distance) * force * 25;
+                let moveY = (dy / distance) * force * 25;
+                dot.targetX = dot.baseX - moveX;
+                dot.targetY = dot.baseY - moveY;
+                dot.color = `rgba(0, 94, 233, ${0.2 + force * 0.4})`;
             } else {
-                dot.x = dot.baseX;
-                dot.y = dot.baseY;
-                ctx.fillStyle = 'rgba(0, 94, 233, 0.2)';
-                ctx.beginPath();
-                ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-                ctx.fill();
+                dot.targetX = dot.baseX;
+                dot.targetY = dot.baseY;
+                dot.color = 'rgba(0, 94, 233, 0.15)';
             }
+
+            // Smoothly move the dot TOWARDS its target
+            dot.x += (dot.targetX - dot.x) * easing;
+            dot.y += (dot.targetY - dot.y) * easing;
+
+            ctx.fillStyle = dot.color;
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+            ctx.fill();
         }
         requestAnimationFrame(animate);
     }
