@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1.1">
     
     <!-- Header-Specific Styles (Laptop & Mobile) -->
     <style>
@@ -299,7 +299,7 @@
 
                 <!-- Logo (Center Mobile / Left PC) -->
                 <a href="/" class="logo">
-                    <img src="/assets/img/logo-abmalaya.png" alt="AB Malaya Logo">
+                    <img src="/assets/img/logo-abmalaya.png?v=1.2" alt="AB Malaya Logo">
                 </a>
             
             <!-- Nav Links (PC Center) -->

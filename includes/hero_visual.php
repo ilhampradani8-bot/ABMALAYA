@@ -129,50 +129,73 @@
         gap: 1.5rem;
     }
     
-    /* Maintain Desktop look on Mobile */
+    /* Tidy up Mobile Hero - Sync 3D Visuals */
     @media (max-width: 992px) {
         .intro-visual { 
-            height: 100vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
         }
+
         .intro-bg-wrap, .ship-wrap {
             height: 100vh;
             width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
+
         .bg-img, .tanker-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center; /* Ensures layers stay aligned for 3D */
             image-rendering: -webkit-optimize-contrast;
-            filter: brightness(1.1) contrast(1.2) saturate(1.1);
+            filter: brightness(1.1) contrast(1.1);
         }
+
+        .intro-content-back {
+            top: 35%; /* Title higher up on mobile */
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
         .intro-content-back h1 { 
-            font-size: 2.8rem;
-            letter-spacing: 2px; 
-            margin: 0;
-            text-shadow: 0 0 30px rgba(0,0,0,0.1);
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(255,255,255,0.4);
         }
+
         .intro-content-front { 
-            bottom: 10%; 
+            bottom: 0;
+            padding: 80px 20px 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            z-index: 10;
         }
+
         .intro-content-front p { 
-            font-size: 1rem; 
-            padding: 0 30px; 
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding: 0 10px;
             margin-bottom: 2rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
+
         .hero-btns {
             flex-direction: row;
-            gap: 10px;
-            padding: 0 20px;
+            gap: 12px;
+            padding: 0;
         }
+
         .hero-btns a { 
-            font-size: 0.8rem; 
-            padding: 1rem 0.5rem; 
-            flex: 1; 
-            margin: 0 !important; 
+            font-size: 0.75rem;
+            padding: 1rem 0.5rem;
+            flex: 1;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 8px;
         }
     }
 </style>
