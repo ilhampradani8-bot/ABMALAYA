@@ -3,41 +3,38 @@
 A high-end, premium corporate website for **AB Malaya Sdn Bhd**, a leading contractor and technical service provider in the Maritime, Oil & Gas, and Energy sectors in Malaysia.
 
 ## 🚀 Overview
-This project is a high-performance PHP-based redesign of the AB MALAYA corporate profile. It emphasizes a "Marine Authority" aesthetic with modern web standards, featuring glassmorphism, fluid animations, and a sophisticated industrial design.
+This project is a high-performance PHP-based redesign of the AB MALAYA corporate profile. It emphasizes a "Modern Industrial Authority" aesthetic with high-end web standards, featuring custom 3D perspective sliders, fluid animations, and a sophisticated minimalist design inspired by modern tech brands.
 
 ## 🛠 Tech Stack
-- **Core**: PHP 8.x (Clean Architecture)
-- **Slider**: SwiperJS (Modern 3D Focus Slider)
-- **Styling**: Vanilla CSS3 (Externalized for performance: `style.css`, `home.css`)
-- **Interactive**: Vanilla JavaScript (Externalized: `main.js`)
-- **Typography**: 
-    - **Nunito / Outfit**: Primary font for a clean, modern feel.
-    - **Cinzel**: Used for branding and premium headings.
+- **Core**: PHP 8.x
+- **Typography**: **Aeonik** (Primary font for a clean, professional, high-end feel).
+- **Styling**: Vanilla CSS3 (Externalized for performance: `home.css`).
+- **Interactive**: Custom Vanilla JavaScript (No heavy libraries, ensuring maximum performance).
+- **Slider**: Proprietary **Horizontal 3D Perspective Slider** with dynamic depth-of-field and focus effects.
 
 ## 📂 Project Structure
-- `index.php`: High-impact landing page featuring the cinematic 3D Ship Hero.
-- `services.php`: Division-based service catalog with interactive **3D Flip Card** specs.
+- `index.php`: High-impact landing page featuring the custom 3D perspective service showcase.
+- `services.php`: Advanced service catalog featuring a **Synced 3D Slider** and detailed division blocks.
 - `includes/`:
-    - `header.php / footer.php`: Core modular components.
-    - `hero_visual.php`: Shared **3D Ship Hero** component with layered depth.
+    - `header.php / footer.php`: Core modular components with capsule-style navigation.
+    - `hero_visual.php`: Shared cinematic hero component with parallax-ready background assets.
 - `assets/`:
-    - `css/home.css`: Page-specific styles for the Home Page and Hero visuals.
-    - `js/main.js`: Core interactive logic (Swiper and Flip Card handlers).
+    - `css/home.css`: Core design system, typography tokens, and layout logic.
 
 ## ✨ Key Features
-- **Cinematic 3D Ship Hero**: Layered visual depth using PNG transparency, navy branding, and atmospheric animations.
-- **3D Flip Interaction**: Service cards that flip 180° to reveal technical specs on the back.
-- **Shared Hero Component**: Reusable visual system across Index and Services for brand consistency.
-- **Mobile Fidelity**: Strictly maintained 100vh hero experience on mobile devices.
-- **High-Clarity AI Rendering**: Optimized CSS filters to enhance sharpness of AI-generated industrial assets.
-- **Glassmorphism UI**: Fixed headers and cards with sophisticated backdrop filters.
+- **Horizontal 3D Perspective Slider**: A unique, high-performance slider that uses 3D rotation and scaling to highlight active services.
+- **Synced Detail Interaction**: Seamless integration between the service slider and detailed content sections for a fluid user journey.
+- **Modern Industrial Aesthetic**: Clean lines, subtle shadows, and a professional blue/navy color palette.
+- **Full English Localization**: Entire platform content translated to English for international business reach.
+- **Mobile First Optimization**: Precision-engineered responsive layouts, including full-width service cards for optimal mobile viewing.
+- **Premium Shadows & Depth**: Use of layered box-shadows and backdrop filters to create a tactile, premium feel.
 
 ## 🖥 Local Development
-To run this project locally with Clean URLs, use the built-in PHP server:
+To run this project locally, use a PHP-enabled server or the built-in PHP server:
 ```bash
-php -S localhost:8000 router.php
+php -S localhost:8000
 ```
 Access the site at `http://localhost:8000`.
 
 ---
-*Built with precision for AB MALAYA by MIJ DIGITAL*
+*Built with precision for AB MALAYA by Antigravity*
