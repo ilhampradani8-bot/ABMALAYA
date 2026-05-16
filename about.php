@@ -69,7 +69,6 @@ include 'includes/header.php';
             <!-- Right Side: Brand Visuals -->
             <div class="story-visual-right">
                 <div class="brand-showcase">
-                    <img src="/assets/img/logo-abmalaya.png" alt="AB MALAYA Logo" class="showcase-logo-faded">
                     <div class="journey-badge-minimal">
                         <span class="badge-subtitle">Our Journey Excellence</span>
                         <div class="badge-main-content">
@@ -222,18 +221,28 @@ include 'includes/header.php';
         }
         .story-grid-minimal {
             grid-template-columns: 1fr;
-            gap: 4rem;
+            gap: 3rem;
             text-align: left;
         }
         .story-title-main {
-            font-size: 2.5rem;
-        }
-        .showcase-logo {
-            width: 60%;
-            margin: 0;
+            font-size: 2.2rem;
         }
         .story-visual-right {
-            justify-content: flex-start;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+        .badge-number {
+            font-size: 4.5rem;
+        }
+        .badge-years {
+            font-size: 1.2rem;
+        }
+        .brand-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: auto;
         }
     }
 </style>
@@ -243,7 +252,7 @@ include 'includes/header.php';
     <div class="container-fluid px-lg-5">
         <div class="vm-parallax-grid">
             <!-- Vision Card -->
-            <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?auto=format&fit=crop&q=80&w=1200">
+            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcool.png">
                 <div class="vm-parallax-card neumorphic-card">
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
@@ -255,7 +264,7 @@ include 'includes/header.php';
             </div>
 
             <!-- Mission Card -->
-            <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200">
+            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcoolnew.png">
                 <div class="vm-parallax-card neumorphic-card">
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
@@ -319,10 +328,20 @@ include 'includes/header.php';
         width: 100%; height: 100%;
         background-size: cover;
         background-position: center;
-        opacity: 0.05;
-        filter: grayscale(1) contrast(1.2);
+        opacity: 0.3; /* Increased for better visibility */
+        filter: grayscale(0.5) brightness(1.1); /* Industrial look but clearer */
         transition: 0.8s ease;
         pointer-events: none;
+    }
+
+    /* Add a wash to keep text readable */
+    .neumorphic-bg-overlay::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to top, rgba(224, 233, 240, 0.9) 20%, rgba(224, 233, 240, 0.4) 100%);
+        z-index: 1;
     }
 
     .neumorphic-info {
@@ -377,7 +396,8 @@ include 'includes/header.php';
     }
 
     .vm-parallax-wrap:hover .neumorphic-bg-overlay {
-        opacity: 0.15;
+        opacity: 0.6;
+        filter: grayscale(0) brightness(1);
     }
 
     .vm-parallax-wrap:hover .neumorphic-info p {
@@ -386,9 +406,45 @@ include 'includes/header.php';
     }
 
     @media (max-width: 992px) {
-        .vm-parallax-grid { flex-direction: column; padding: 0 20px; gap: 40px; }
-        .vm-parallax-wrap { height: 450px; width: 100%; }
-        .neumorphic-info p { opacity: 1; transform: translateY(0); }
+        .vm-parallax-grid { 
+            display: block !important;
+            padding: 0 15px; 
+        }
+        .vm-parallax-wrap { 
+            height: auto !important; 
+            min-height: 400px;
+            width: 100% !important; 
+            margin-bottom: 30px;
+            perspective: 1000px !important; /* Re-enabled for tilt */
+            transform-style: preserve-3d !important;
+            opacity: 1 !important;
+            display: block !important;
+        }
+        .neumorphic-card {
+            transform-style: preserve-3d !important;
+            opacity: 1 !important;
+            display: flex !important;
+            flex-direction: column;
+            height: 400px !important;
+            transition: transform 0.2s ease-out;
+        }
+        .neumorphic-info {
+            position: absolute !important; /* Back to absolute for better 3D depth */
+            top: 0; left: 0;
+            height: 100% !important;
+            padding: 30px !important;
+            opacity: 1 !important;
+            justify-content: flex-end !important;
+            transform: translateZ(50px) !important; /* Lift text off card */
+        }
+        .neumorphic-info p { 
+            opacity: 1 !important; 
+            transform: none !important; 
+            display: block !important;
+        }
+        .neumorphic-num { font-size: 3rem; top: 15px; right: 20px; opacity: 0.1 !important; transform: translateZ(20px); }
+        .neumorphic-info h3 { font-size: 2rem; transform: translateZ(40px); }
+        .neumorphic-bg-overlay { opacity: 0.4 !important; }
     }
 
     /* Section Parallax */
@@ -732,14 +788,38 @@ include 'includes/header.php';
     }
 
     @media (max-width: 992px) {
-        .funky-layout { flex-direction: column; text-align: center; }
-        .funky-left { width: 100%; padding-right: 0; margin-bottom: 50px; }
+        .funky-values-section { padding: 60px 0; }
+        .funky-layout { flex-direction: column; text-align: left; padding: 0 25px; }
+        .funky-left { width: 100%; padding-right: 0; margin-bottom: 40px; }
+        .funky-title { font-size: 2.2rem; }
         .funky-right { width: 100%; }
-        .funky-app { margin: 0 auto; }
-        .tab-right { text-align: center; width: 100%; right: 0; left: 0; padding: 0 30px; }
-        .tab-left { display: none; }
-        .funky-tab h2 { right: 0; width: 100%; text-align: center; }
-        input[type="radio"]:checked + label .funky-tab { height: 260px; }
+        .funky-app { margin: 0; width: 100%; max-width: none; }
+        
+        .funky-tab { padding: 20px; }
+        .funky-tab h2 { left: 20px; right: auto; text-align: left; top: 35px; font-size: 14px; }
+        
+        .tab-left { display: block; width: 60px; left: 10px; opacity: 0.3; }
+        .big-icon { font-size: 120px; left: -20px; top: 10px; }
+        .tab-icon-image { width: 50px; height: 50px; left: 15px; border-radius: 12px; font-size: 20px; }
+        
+        .tab-right { text-align: left; width: calc(100% - 80px); left: 80px; right: auto; padding: 0; }
+        .tab-right h3 { font-size: 1.1rem; }
+        .tab-right h4 { font-size: 0.75rem; }
+        .tab-right p { font-size: 0.85rem; margin: 8px 0; max-width: 100%; }
+        .funky-btn { padding: 4px 12px; font-size: 0.75rem; }
+
+        input[type="radio"]:checked + label .funky-tab { height: 280px; }
+        input[type="radio"]:checked + label .funky-tab h2 { top: 10px; }
+        input[type="radio"]:checked + label .funky-tab .tab-right { top: 55px; }
+        
+        /* Ensure animations work on mobile */
+        input[type="radio"]:checked + label .tab-icon-image {
+            animation: funky-move-in .55s .05s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+        }
+        input[type="radio"]:checked + label .big-icon {
+            left: 200px;
+            opacity: 0.08;
+        }
     }
 </style>
 
@@ -1220,10 +1300,10 @@ include 'includes/header.php';
         }
 
         // --- SECTION PARALLAX LOGIC ---
-        gsap.set('.vm-card-metal, .value-card, .story-detail-left', { opacity: 1, y: 0 });
+        gsap.set('.neumorphic-card, .funky-tab, .story-detail-left', { opacity: 1, y: 0 });
 
         gsap.to('.story-visual-right', {
-            y: 100,
+            y: 50,
             scrollTrigger: {
                 trigger: '#story-section',
                 start: "top bottom",
@@ -1232,8 +1312,9 @@ include 'includes/header.php';
             }
         });
 
-        gsap.to('.vision-metal', {
-            y: -50,
+        // Vision & Mission Scroll Parallax
+        gsap.to('.vm-parallax-wrap', {
+            y: (i) => i === 0 ? -30 : 30, // Vision goes up, Mission goes down slightly
             scrollTrigger: {
                 trigger: '.vision-mission-section',
                 start: "top bottom",
@@ -1242,20 +1323,10 @@ include 'includes/header.php';
             }
         });
 
-        gsap.to('.mission-metal', {
-            y: 50,
+        gsap.to('.funky-app', {
+            y: -20,
             scrollTrigger: {
-                trigger: '.vision-mission-section',
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-
-        gsap.to('.values-grid', {
-            y: -30,
-            scrollTrigger: {
-                trigger: '.core-values',
+                trigger: '.funky-values-section',
                 start: "top bottom",
                 end: "bottom top",
                 scrub: true
@@ -1324,6 +1395,42 @@ include 'includes/header.php';
             });
         });
 
+        // --- MOBILE GYRO TILT (USER SPEC) ---
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (e) => {
+                // beta: front back (-180 to 180)
+                // gamma: left right (-90 to 90)
+                let beta = e.beta; 
+                let gamma = e.gamma;
+
+                // Limit and Normalize
+                let tiltX = Math.max(-30, Math.min(30, beta - 45)) / 2; // Offset for natural holding angle
+                let tiltY = Math.max(-30, Math.min(30, gamma)) / 2;
+
+                parallaxWraps.forEach(wrap => {
+                    const card = wrap.querySelector('.vm-parallax-card');
+                    const bg = wrap.querySelector('.vm-parallax-bg');
+                    
+                    // Only apply if in view (simple check)
+                    const rect = wrap.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        gsap.to(card, {
+                            rotateX: tiltX,
+                            rotateY: tiltY,
+                            duration: 0.6,
+                            ease: "power2.out"
+                        });
+                        gsap.to(bg, {
+                            x: tiltY * -2,
+                            y: tiltX * -2,
+                            duration: 0.6,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            }, true);
+        }
+
         // Toggle Story Text Function
         window.toggleStoryText = function() {
             const content = document.getElementById('story-text');
@@ -1350,23 +1457,32 @@ include 'includes/header.php';
     /* Performance Optimizations */
     .story-detail-left, 
     .story-visual-right, 
-    .vm-card-metal, 
-    .values-grid,
-    .value-card {
+    .neumorphic-card, 
+    .funky-tab {
         will-change: transform, opacity;
         backface-visibility: hidden;
     }
 
     .parallax-section {
         position: relative;
-        z-index: 2;
-        overflow: hidden;
+        z-index: 10; /* Higher z-index to ensure visibility */
     }
 
-    /* Refined Backgrounds */
-    .our-story.clean-white { background: #ffffff; }
-    .vision-mission-section.metal-theme { background: #0a0c10; }
-    .core-values { background: #f8fafc; padding: 120px 0; }
+    @media (max-width: 992px) {
+        .parallax-section {
+            overflow: visible !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        .vm-parallax-wrap {
+            perspective: 1000px !important;
+            transform-style: preserve-3d !important;
+        }
+        .neumorphic-card {
+            transform-style: preserve-3d !important;
+            backface-visibility: visible !important;
+        }
+    }
 </style>
 
 <?php include 'includes/footer.php'; ?>
