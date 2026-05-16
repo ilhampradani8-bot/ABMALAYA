@@ -195,13 +195,24 @@ include 'includes/header.php';
     }
 
     @media (max-width: 768px) {
-        .service-detail-block { border-radius: 0 !important; margin-bottom: 60px; padding: 60px 0 30px !important; border: none !important; }
+        .services-card-slider {
+            padding: 40px 0;
+        }
+        .details-section {
+            padding: 40px 0;
+        }
+        .service-detail-block { 
+            border-radius: 0 !important; 
+            margin-bottom: 40px; 
+            padding: 40px 0 20px !important; 
+            border: none !important; 
+        }
         .detail-icon { left: 20px; width: 60px; height: 60px; font-size: 1.5rem; top: -30px; }
-        .detail-header { padding: 0 20px !important; }
+        .detail-header { padding: 0 20px !important; text-align: left; }
         .detail-header h2 { font-size: 2rem !important; }
         .details-section .container { padding: 0 !important; max-width: 100% !important; }
         .detail-grid { padding: 0 !important; gap: 10px !important; width: 100% !important; grid-template-columns: 1fr !important; }
-        .detail-item { width: 100% !important; border-radius: 0 !important; margin: 0 !important; padding: 25px 20px !important; box-sizing: border-box !important; }
+        .detail-item { width: 100% !important; border-radius: 0 !important; margin: 0 !important; padding: 25px 20px !important; box-sizing: border-box !important; text-align: left; }
     }
 </style>
 

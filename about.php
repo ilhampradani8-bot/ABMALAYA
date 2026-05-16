@@ -170,16 +170,23 @@ include 'includes/header.php';
     }
 
     @media (max-width: 992px) {
+        .our-story.clean-white {
+            padding: 60px 0;
+        }
         .story-grid-minimal {
             grid-template-columns: 1fr;
             gap: 4rem;
-            text-align: center;
+            text-align: left;
         }
         .story-title-main {
             font-size: 2.5rem;
         }
         .showcase-logo {
             width: 60%;
+            margin: 0;
+        }
+        .story-visual-right {
+            justify-content: flex-start;
         }
     }
 </style>
@@ -354,6 +361,39 @@ include 'includes/header.php';
     /* Section Parallax */
     .parallax-section {
         will-change: transform;
+    }
+
+    @media (max-width: 768px) {
+        .vision-mission-section.metal-theme {
+            padding: 60px 0;
+        }
+        .vm-card-metal {
+            padding: 3rem 2rem;
+            min-height: auto;
+        }
+        .vm-card-metal h3 {
+            font-size: 2rem;
+        }
+        .core-values {
+            padding: 60px 0;
+        }
+        .section-header-centered {
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+        .section-header-centered h2 {
+            font-size: 2.2rem;
+        }
+        .values-grid {
+            text-align: left;
+        }
+        .value-card {
+            text-align: left;
+            padding: 2rem;
+        }
+        .value-icon {
+            margin: 0 0 1.5rem 0;
+        }
     }
 </style>
 

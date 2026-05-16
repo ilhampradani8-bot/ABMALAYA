@@ -302,7 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease, filter 1.2s ease, box-shadow 1.2s ease;
+            will-change: transform, opacity; /* GPU acceleration for smoothness */
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
@@ -343,6 +344,12 @@ document.addEventListener('DOMContentLoaded', () => {
             transform: translate(-50%, 0) rotateY(20deg) scale(0.6) !important;
             opacity: 0.1 !important;
             filter: blur(12px);
+        }
+        .slide.position-none {
+            opacity: 0 !important;
+            transform: translate(-50%, 20px) scale(0.5) !important;
+            z-index: 0 !important;
+            pointer-events: none;
         }
 
         /* Mobile Fixes - 3 Card Preview */
@@ -460,12 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 </section>
 
-<!-- Core Services Slider -->
-<section id="service" style="background: #ffffff; padding: 80px 0; overflow: hidden; border-top: 1px solid #f1f5f9;">
+<section id="service" style="background: #ffffff; padding: 40px 0 20px; overflow: hidden; border-top: 1px solid #f1f5f9;">
     <div class="container">
-        <div class="section-title" style="text-align: center; margin-bottom: 2.5rem;">
-            <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Solutions</h5>
-            <h2 style="font-size: 3rem; color: #000; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1px;">Integrated Expertise</h2>
+        <div class="section-title" style="text-align: left; margin-bottom: 3rem;">
+            <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 0.5rem; font-family: 'Aeonik', sans-serif;">Solutions</h5>
+            <h2 style="font-size: 3rem; color: #000; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Integrated Expertise</h2>
         </div>
     </div>
         
@@ -562,11 +568,8 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 </section>
 
-<!-- Trusted Clients Section -->
-<!-- Clients section moved to top -->
-
 <!-- Map & Location Section -->
-<section id="location" style="background: #fff; padding: 60px 0 0 0;">
+<section id="location" style="background: #fff; padding: 40px 0 0 0;">
     <div style="width: 100%; padding: 0 6vw;">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 5rem;">
             <!-- Left Side: Address & Map Info -->
