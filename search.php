@@ -32,10 +32,10 @@ $siteContent = [
         'tags' => 'about, vision, mission, journey, history, team'
     ],
     [
-        'title' => 'Careers & Recruitment',
-        'desc' => 'Join our team and explore opportunities in the maritime and technical sectors.',
-        'link' => '/careers',
-        'tags' => 'jobs, career, recruitment, hire, join, vacancy'
+        'title' => 'Certified & Excellence',
+        'desc' => 'Our commitment to global standards, ISO certifications, and industrial excellence.',
+        'link' => '/certified',
+        'tags' => 'certified, certification, iso, quality, safety, petronas, license'
     ],
     [
         'title' => 'Contact Us',
