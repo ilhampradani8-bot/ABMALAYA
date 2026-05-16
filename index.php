@@ -72,7 +72,7 @@ include 'includes/hero_visual.php';
 <style>
     .client-marquee-section {
         background: #fff;
-        padding: 60px 0;
+        padding: 100px 0;
         border-bottom: 1px solid #f1f5f9;
         overflow: hidden;
     }
@@ -82,37 +82,46 @@ include 'includes/hero_visual.php';
         text-transform: uppercase;
         letter-spacing: 3px;
         font-size: 0.7rem;
-        margin-bottom: 3.5rem;
+        margin-bottom: 4.5rem;
         font-family: 'Aeonik', sans-serif;
     }
     .marquee-content {
         width: 100%;
         mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85% , transparent);
     }
     .marquee-track {
         display: flex;
         align-items: center;
         width: max-content;
         gap: 8rem;
-        animation: marqueeScroll 30s linear infinite;
+        animation: marqueeScroll 40s linear infinite;
+        transform-style: preserve-3d;
     }
     .client-logo-item {
         flex-shrink: 0;
+        cursor: pointer;
+        padding: 20px;
+        border-radius: 20px;
+        background: transparent;
+        transition: background 0.4s ease;
+        transform-style: preserve-3d;
+    }
+    .client-logo-item:hover {
+        background: #f8fafc;
     }
     .client-logo-item img {
-        height: 50px;
+        height: 55px;
         width: auto;
-        filter: grayscale(1);
-        opacity: 0.6;
+        filter: none;
+        opacity: 0.9;
         transition: 0.4s ease;
         display: block;
         object-fit: contain;
+        transform: translateZ(20px); /* 3D Depth */
     }
-    .client-logo-item img:hover {
-        filter: grayscale(0);
+    .client-logo-item:hover img {
         opacity: 1;
-        transform: scale(1.1);
     }
 
     @keyframes marqueeScroll {
@@ -121,11 +130,27 @@ include 'includes/hero_visual.php';
     }
 
     @media (max-width: 768px) {
-        .marquee-track { gap: 4rem; animation-duration: 20s; }
-        .client-logo-item img { height: 40px; }
-        .marquee-title { margin-bottom: 2.5rem; }
+        .marquee-track { gap: 4rem; animation-duration: 25s; }
+        .client-logo-item img { height: 45px; }
+        .marquee-title { margin-bottom: 2rem; }
+        .client-marquee-section { padding: 40px 0; }
     }
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Vanilla Tilt for partner logos
+    VanillaTilt.init(document.querySelectorAll(".client-logo-item"), {
+        max: 15,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+        perspective: 1000,
+        scale: 1.05
+    });
+});
+</script>
 
 <style>
     .mobile-only-logo { display: none; }
@@ -150,6 +175,7 @@ include 'includes/hero_visual.php';
         }
 
         /* About Section Mobile Fix */
+        #about { padding: 60px 0 !important; }
         #about > div > div {
             flex-direction: column !important;
             gap: 2rem !important;
@@ -162,6 +188,15 @@ include 'includes/hero_visual.php';
         }
         #about h2 { font-size: 2.2rem !important; }
         #about .hero-link { margin-top: 2rem; }
+
+        /* Service Section Mobile Fix */
+        #service { padding: 40px 0 !important; }
+        #service .section-title { 
+            text-align: left !important; 
+            padding: 0 6vw !important; 
+            margin-bottom: 1.5rem !important; 
+        }
+        #service h2 { font-size: 2.2rem !important; }
 
         /* Location & CTA Mobile Fix */
         #location > div > div, 

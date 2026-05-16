@@ -16,16 +16,16 @@
     <!-- Machinery Layer (Full Height, Right, Sequential) -->
     <div class="hero-images-layer">
         <div class="sequential-container">
-            <div class="img-wrap s-1">
+            <div class="img-wrap s-1" data-tilt>
                 <img src="assets/img/head/remove-bg-escavator.png" alt="Engineering Operations">
             </div>
-            <div class="img-wrap s-2">
+            <div class="img-wrap s-2" data-tilt>
                 <img src="assets/img/head/bgcool.png" alt="Industrial Maintenance">
             </div>
-            <div class="img-wrap s-3">
+            <div class="img-wrap s-3" data-tilt>
                 <img src="assets/img/head/bgcoolnew.png" alt="Technical Services">
             </div>
-            <div class="img-wrap s-4">
+            <div class="img-wrap s-4" data-tilt>
                 <img src="assets/img/head/remove-bg-rust-bawah-kanan.png" alt="Engineering Component">
             </div>
         </div>
@@ -71,22 +71,23 @@
         width: 100%;
         height: 100%;
         display: block;
-        pointer-events: auto;
+        pointer-events: none; /* Let clicks/hovers pass to machinery below */
     }
     
     .hero-images-layer {
         position: absolute;
         top: 0;
         right: 0;
-        width: 55%; /* Half screen + overflow for impact */
+        width: 55%;
         height: 100%;
-        z-index: 2; /* Behind dots */
+        z-index: 2;
         pointer-events: none;
     }
     .sequential-container {
         position: relative;
         width: 100%;
         height: 100%;
+        pointer-events: none;
     }
     
     .img-wrap {
@@ -97,18 +98,24 @@
         height: 100%;
         opacity: 0;
         display: flex;
-        align-items: flex-end; /* Mentok bawah */
-        justify-content: flex-end; /* Mentok kanan */
+        align-items: flex-end; 
+        justify-content: flex-end; 
         transition: opacity 2.5s ease-in-out;
+        pointer-events: auto; /* Enable for Tilt */
+        transform-style: preserve-3d;
+        perspective: 1800px;
+        will-change: transform, margin-top;
     }
     .img-wrap img {
-        height: 100%; /* Full height atas bawah */
+        height: 100%; 
         width: auto;
         max-width: 100%;
         object-fit: contain;
-        object-position: right bottom; /* Ensures alignment even if aspect ratio differs */
+        object-position: right bottom; 
         filter: none;
         pointer-events: none;
+        transform: translateZ(80px); /* Deeper depth */
+        will-change: transform;
     }
 
     /* Sequential Animation - 20s cycle (5s each) */
@@ -128,6 +135,7 @@
         z-index: 20;
         color: #000;
         max-width: 45%;
+        padding-top: 160px; /* Increased to avoid logo collision */
         animation: fadeInLeft 1.2s ease forwards;
     }
     .intro-content h1 {
@@ -191,16 +199,40 @@
         .intro-visual { 
             padding-left: 6vw;
             padding-right: 20px;
-            padding-top: 140px;
-            padding-bottom: 60px; 
+            padding-top: 0;
+            padding-bottom: 30px; 
             justify-content: flex-start; 
             text-align: left; 
             align-items: flex-start;
             height: auto;
             min-height: 100vh;
+            overflow: hidden;
         }
-        .hero-images-layer { display: none; }
-        .intro-content { max-width: 100%; }
+        .hero-images-layer { 
+            display: block; 
+            width: 100%; 
+            height: 55%; 
+            top: auto; 
+            bottom: 0; 
+            right: 0; 
+            z-index: 1; 
+            opacity: 0.9;
+            mask-image: linear-gradient(to bottom, transparent, black 15%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%);
+        }
+        .img-wrap img {
+            height: 100%;
+            width: auto;
+            object-position: right bottom;
+        }
+        .intro-content { 
+            max-width: 100%; 
+            width: 100%;
+            padding-top: 100px; 
+            padding-bottom: 20px;
+            z-index: 20; 
+            position: relative;
+        } 
         .intro-content h1 { font-size: 2.2rem; letter-spacing: -1px; }
         .intro-content p { font-size: 1rem; max-width: 100%; margin-bottom: 2rem; }
         .hero-btns { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
@@ -213,7 +245,7 @@
     const ctx = canvas.getContext('2d');
     let dots = [];
     const spacing = 38; 
-    let mouse = { x: -1000, y: -1000, radius: 200 };
+    let mouse = { x: -1000, y: -1000, radius: 220 };
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.x;
@@ -243,15 +275,41 @@
         }
     }
 
+    const imageWraps = document.querySelectorAll('.img-wrap');
     const easing = 0.08;
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
+        const moveX = (mouse.x - window.innerWidth / 2);
+        const moveY = (mouse.y - window.innerHeight / 2);
+        const scrollY = window.scrollY;
+        
+        imageWraps.forEach((wrap, index) => {
+            // Scroll Parallax only (Tilt handled by VanillaTilt)
+            const scrollSpeed = 0.2 + (index * 0.1);
+            wrap.style.marginTop = `${scrollY * scrollSpeed}px`;
+        });
+
+        // Initialize Tilt for Machinery
+        if (typeof VanillaTilt !== 'undefined' && !window.tiltInitialized) {
+            window.tiltInitialized = true; // Prevent double init
+            VanillaTilt.init(document.querySelectorAll(".img-wrap"), {
+                max: 10,
+                speed: 500,
+                perspective: 1800,
+                glare: true,
+                "max-glare": 0.15,
+                scale: 1.04,
+                gyroscope: true,
+                "full-page-listening": true // Ensure it picks up movement even if kursor over canvas
+            });
+        }
+
         for (let i = 0; i < dots.length; i++) {
             let dot = dots[i];
             let dx = mouse.x - dot.baseX;
-            let dy = mouse.y - dot.baseY;
+            let dy = (mouse.y + scrollY) - dot.baseY; // Adjust for scroll in interaction
             let distance = Math.sqrt(dx * dx + dy * dy);
             
             if (distance < mouse.radius) {

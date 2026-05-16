@@ -10,9 +10,8 @@ include 'includes/header.php';
     /* 3D Slider Styles from Index.php */
     .services-card-slider {
         background: #fff;
-        padding: 0 0 60px; /* Removed top padding */
+        padding: 40px 0 60px; /* Added breathing room */
         overflow: hidden;
-        margin-top: -50px; /* Pull up closer to hero */
     }
 
     .intro-visual {

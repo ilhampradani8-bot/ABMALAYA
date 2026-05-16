@@ -16,221 +16,10 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/style.css?v=1.1">
     
-    <!-- Header-Specific Styles (Laptop & Mobile) -->
-    <style>
-        header {
-            position: fixed;
-            top: 25px; /* More breathing room */
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            transition: all 0.4s ease;
-            padding: 0 6vw; /* Aligned with Hero Content */
-        }
-
-        .header-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 50/50 Split concept */
-            align-items: center;
-            width: 100%;
-            max-width: 1600px;
-        }
-
-        .logo {
-            justify-self: start;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            display: block;
-        }
-
-        /* Class to hide logo on scroll */
-        .logo-hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.8) translateX(-20px);
-        }
-
-        /* Modern Capsule Card for Right Side */
-        .nav-links {
-            justify-self: end;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 0.6rem 2.5rem; /* Slightly wider */
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-links a {
-            font-family: 'Aeonik', sans-serif;
-            font-weight: 400; /* Thinner font as requested */
-            font-size: 0.85rem;
-            color: var(--secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            transition: 0.3s;
-            padding: 5px 10px;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .cta-btn {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.6rem 1.8rem;
-            border-radius: 50px; 
-            font-weight: 800;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        .cta-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 94, 233, 0.2);
-        }
-
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.8rem;
-            color: var(--secondary);
-            position: relative;
-            z-index: 1100;
-        }
-
-        #mobile-menu-checkbox {
-            display: none;
-        }
-
-        /* Laptop / Desktop View */
-        @media (min-width: 993px) {
-            .mobile-close-label {
-                display: none !important;
-            }
-        }
-        /* Mobile View */
-        @media (max-width: 992px) {
-            .header-container {
-                display: grid;
-                grid-template-columns: 50px 1fr 50px;
-                align-items: center;
-                text-align: center;
-            }
-
-            .logo {
-                grid-column: 2;
-                margin: 0 auto;
-            }
-
-            .logo img {
-                height: 38px; /* Larger mobile logo */
-            }
-
-            .menu-toggle {
-                display: block;
-                grid-column: 1;
-                justify-self: start;
-            }
-
-        /* Mobile View */
-        @media (max-width: 992px) {
-            header {
-                padding: 0 20px;
-                top: 10px;
-            }
-
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .logo img {
-                height: 60px; /* Scaled down for mobile */
-            }
-
-            .nav-links {
-                position: absolute;
-                top: calc(100% + 15px);
-                left: 20px;
-                right: 20px;
-                width: auto;
-                height: auto;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(40px);
-                flex-direction: column;
-                padding: 2.5rem 2rem;
-                gap: 1.2rem;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 1050;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-20px);
-                border-radius: 30px;
-                box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-                border: 1px solid rgba(0,0,0,0.05);
-            }
-
-            #mobile-menu-checkbox:checked ~ .nav-links {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            .nav-links a {
-                font-size: 1.1rem;
-                width: 100%;
-                text-align: center;
-                padding: 0.8rem 0;
-                border-bottom: 1px solid rgba(0,0,0,0.03);
-            }
-            
-            .cta-btn {
-                width: 100%;
-                text-align: center;
-                margin-top: 1rem;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .search-wrap-pc {
-                display: none !important;
-            }
-        }
-    </style>
-    
-    <!-- jQuery (Required for Makisu) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- SwiperJS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Header Styles -->
+    <!-- Header-Specific Styles -->
     <style>
         header {
             position: fixed;
@@ -246,60 +35,183 @@
         }
 
         .header-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
             max-width: 1600px;
+            gap: 1.5rem;
+        }
+
+        .nav-wrapper-desktop {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .logo {
-            justify-self: start;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1001;
+            opacity: 1;
+            transform: translateY(0);
+            display: flex;
+            align-items: center;
         }
 
         .logo img { height: 60px; width: auto; display: block; }
-        .logo-hidden { opacity: 0; pointer-events: none; transform: scale(0.8) translateX(-20px); }
+        .logo-hidden { 
+            opacity: 0 !important; 
+            visibility: hidden !important; 
+            pointer-events: none; 
+            transform: translateY(-120%) !important; 
+        }
 
-        /* Desktop Capsule Navigation */
+        /* Desktop Inline Search */
+        .search-wrapper-desktop {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
+            padding: 4px;
+            border-radius: 50px;
+            box-shadow: 4px 4px 8px #d1d4d9, -4px -4px 8px #ffffff;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            width: 42px; /* Circle state */
+            height: 42px;
+            overflow: hidden;
+        }
+
+        .search-wrapper-desktop.active {
+            width: 250px; /* Expanded state */
+            padding-left: 15px;
+        }
+
+        .search-input-inline {
+            width: 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1.5px solid #005ee9;
+            font-family: 'Aeonik', sans-serif;
+            font-size: 0.9rem;
+            color: #1e293b;
+            outline: none;
+            transition: width 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .search-wrapper-desktop.active .search-input-inline {
+            width: 170px;
+            opacity: 1;
+            margin-right: 10px;
+        }
+
+        .search-btn-inline {
+            background: none;
+            border: none;
+            color: #475569;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+        .search-btn-inline:hover { color: #005ee9; }
+
+        /* Mobile Glassmorphism Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .search-overlay.active { display: flex; opacity: 1; }
+        .search-box-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            width: 90%; max-width: 500px; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: scale(0.9); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .search-overlay.active .search-box-glass { transform: scale(1); }
+        .search-box-glass input {
+            width: 100%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.2rem; border-radius: 15px; font-size: 1.2rem; color: #000;
+            outline: none; margin-bottom: 1.5rem; text-align: center; font-family: 'Aeonik', sans-serif;
+        }
+        .search-close { position: absolute; top: 30px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #000; }
+
+        /* Neuromorphic Desktop Navigation */
         .nav-links {
             justify-self: end;
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: center;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 0.6rem 2.5rem;
+            background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
+            padding: 0.5rem 2rem;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 5px 5px 10px #d1d4d9, -5px -5px 10px #ffffff;
+            border: none;
+            transition: all 0.4s ease;
         }
 
         .nav-links a {
             font-family: 'Aeonik', sans-serif;
-            font-weight: 400;
-            font-size: 0.85rem;
-            color: #1e293b;
+            font-weight: 500;
+            font-size: 0.82rem;
+            color: #475569;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-decoration: none;
-            transition: 0.3s;
-            padding: 5px 10px;
+            transition: all 0.3s ease;
+            padding: 6px 14px;
+            border-radius: 25px;
+            display: inline-block;
         }
 
-        .nav-links a:hover, .nav-links a.active { color: #005ee9; }
+        .nav-links a:hover {
+            color: #005ee9;
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.active {
+            color: #005ee9;
+            background: #eef1f4;
+            box-shadow: inset 3px 3px 6px #c8cbd0, inset -3px -3px 6px #ffffff;
+        }
 
         .cta-btn {
-            background: #005ee9;
+            background: linear-gradient(145deg, #005ee9, #0055d2) !important;
             color: #fff !important;
-            padding: 0.6rem 1.8rem;
+            padding: 0.5rem 1.8rem;
             border-radius: 50px;
             font-weight: 700;
-            transition: 0.3s;
+            box-shadow: 4px 4px 8px #c1c4c9, -4px -4px 8px #ffffff;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.8rem;
         }
 
-        .cta-btn:hover { background: #003da0; transform: translateY(-2px); }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 12px #b8bbbf, -6px -6px 12px #ffffff;
+            filter: brightness(1.1);
+        }
 
         /* Mobile Makisu Menu - Hidden by Default on Desktop */
         .mobile-nav-wrapper {
@@ -314,13 +226,31 @@
             z-index: 1100;
         }
 
+        .search-btn-mobile {
+            display: none;
+            background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
+            box-shadow: 4px 4px 8px #d1d4d9, -4px -4px 8px #ffffff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: #005ee9;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
         /* Responsive Logic */
         @media (max-width: 992px) {
             header { top: 15px; padding: 0 20px; }
-            .header-container { display: flex; justify-content: space-between; align-items: center; }
+            .header-container { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
             .logo img { height: 45px; }
-            .nav-links { display: none; } /* Hide Desktop Nav */
+            .nav-links { display: none; } 
             .menu-toggle { display: block; }
+            .nav-wrapper-desktop { gap: 0.8rem; }
+            
+            .search-wrapper-desktop { display: none; }
+            .search-btn-mobile { display: flex; }
             
             .mobile-nav-wrapper {
                 display: block;
@@ -355,6 +285,9 @@
         .lenis.lenis-stopped { overflow: hidden; }
         .lenis.lenis-scrolling iframe { pointer-events: none; }
     </style>
+
+    <!-- jQuery (Required for Makisu) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <header>
@@ -363,19 +296,36 @@
             <a href="/" class="logo">
                 <img src="/assets/img/logo-abmalaya.png?v=1.2" alt="AB Malaya Logo">
             </a>
+ 
+            <!-- Desktop Navigation & Search (Right) -->
+            <div class="nav-wrapper-desktop">
+                <div class="nav-links">
+                    <a href="/" class="<?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home</a>
+                    <a href="/about" class="<?php echo $currentPage == 'about' ? 'active' : ''; ?>">About</a>
+                    <a href="/services" class="<?php echo $currentPage == 'services' ? 'active' : ''; ?>">Services</a>
+                    <a href="/careers" class="<?php echo $currentPage == 'careers' ? 'active' : ''; ?>">Careers</a>
+                    <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact</a>
+                </div>
 
-            <!-- Desktop Navigation (Right) -->
-            <div class="nav-links">
-                <a href="/" class="<?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home</a>
-                <a href="/about" class="<?php echo $currentPage == 'about' ? 'active' : ''; ?>">About</a>
-                <a href="/services" class="<?php echo $currentPage == 'services' ? 'active' : ''; ?>">Services</a>
-                <a href="/careers" class="<?php echo $currentPage == 'careers' ? 'active' : ''; ?>">Careers</a>
-                <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact</a>
-            </div>
+                <!-- Desktop Inline Search -->
+                <div class="search-wrapper-desktop" id="search-desktop-container">
+                    <form action="search.php" method="GET" style="display: flex; align-items: center;">
+                        <input type="text" name="q" class="search-input-inline" placeholder="Search..." id="search-inline-input">
+                        <button type="button" class="search-btn-inline" id="search-desktop-trigger">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
 
-            <!-- Mobile Burger -->
-            <div class="menu-toggle" id="burger-btn">
-                <i class="fas fa-bars"></i>
+                <!-- Mobile Search Trigger -->
+                <div class="search-btn-mobile" id="search-mobile-trigger">
+                    <i class="fas fa-search"></i>
+                </div>
+
+                <!-- Mobile Burger -->
+                <div class="menu-toggle" id="burger-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
 
             <!-- Mobile Makisu Menu -->
@@ -392,8 +342,30 @@
         </div>
     </header>
 
+    <!-- Search Overlay (Mobile Only Glassmorphism) -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-close" id="search-close"><i class="fas fa-times"></i></div>
+        <div class="search-box-glass">
+            <h2 style="font-family: 'Aeonik', sans-serif; margin-bottom: 2rem; color: #000; font-weight: 700;">Search AB Malaya</h2>
+            <form action="search.php" method="GET">
+                <input type="text" name="q" placeholder="Type here..." autocomplete="off" id="search-input-mobile">
+                <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer; display: block;">Search Now</button>
+            </form>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script>
+        // Initialize Lenis FIRST to ensure it's available for all listeners
+        const lenis = new Lenis({
+            duration: 1.2,
+            lerp: 0.1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        })
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
         /**
          * Makisu jQuery Plugin (Integrated & Fixed)
          */
@@ -512,31 +484,66 @@
                 $menu.makisu('toggle');
             });
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50 && $menu.hasClass('open')) {
+            const logo = document.querySelector('.logo');
+            
+            // Integrated Scroll Logic with Lenis
+            lenis.on('scroll', (e) => {
+                const scrollY = e.scroll;
+                
+                // Logo Autohide Logic (Faster - 40px)
+                if (scrollY > 40 && !$menu.hasClass('open')) {
+                    logo.classList.add('logo-hidden');
+                } else {
+                    logo.classList.remove('logo-hidden');
+                }
+                
+                // Auto-close menu on significant scroll
+                if (scrollY > 150 && $menu.hasClass('open')) {
                     $menu.makisu('close');
                     $wrapper.removeClass('active');
                 }
-                const logo = document.querySelector('.logo');
-                if (window.scrollY > 10) { logo.classList.add('logo-hidden'); } 
-                else { logo.classList.remove('logo-hidden'); }
             });
-        });
 
-        const lenis = new Lenis({
-            duration: 1.5,
-            lerp: 0.08,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            smoothWheel: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            infinite: false,
-        })
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
+            // --- SEARCH LOGIC ---
+            const searchOverlay = $('#search-overlay');
+            const searchInputMobile = $('#search-input-mobile');
+            const searchContainerDesktop = $('#search-desktop-container');
+            const searchInputInline = $('#search-inline-input');
+
+            // Desktop Trigger (Expanding Bar)
+            $('#search-desktop-trigger').on('click', function(e) {
+                if (!searchContainerDesktop.hasClass('active')) {
+                    searchContainerDesktop.addClass('active');
+                    searchInputInline.focus();
+                } else {
+                    if (searchInputInline.val().trim() === "") {
+                        searchContainerDesktop.removeClass('active');
+                    } else {
+                        searchContainerDesktop.find('form').submit();
+                    }
+                }
+            });
+
+            // Mobile Trigger (Pop-up with Glassmorphism)
+            $('#search-mobile-trigger').on('click', function() {
+                searchOverlay.addClass('active');
+                setTimeout(() => searchInputMobile.focus(), 300);
+            });
+
+            // Mobile & Escape Handling
+            $('#search-close').on('click', function() {
+                searchOverlay.removeClass('active');
+            });
+
+            $(document).on('keydown', function(e) {
+                if (e.key === "Escape") {
+                    searchOverlay.removeClass('active');
+                    searchContainerDesktop.removeClass('active');
+                }
+            });
+
+            // Listen for window resize to handle mobile trigger if needed
+            // Actually, let's add a mobile-specific trigger in the HTML next.
+        });
     </script>
     <main>
