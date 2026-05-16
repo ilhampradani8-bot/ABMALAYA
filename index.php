@@ -138,19 +138,6 @@ include 'includes/hero_visual.php';
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Vanilla Tilt for partner logos
-    VanillaTilt.init(document.querySelectorAll(".client-logo-item"), {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2,
-        perspective: 1000,
-        scale: 1.05
-    });
-});
-</script>
 
 <style>
     .mobile-only-logo { display: none; }
@@ -640,89 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 </section>
 
-<!-- Custom Slider Logic -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const sliders = document.querySelectorAll(".slide");
-    if (sliders.length === 0) return;
-
-    let center = 0; // Start with first slide as active
-    
-    function updatePositions() {
-        sliders.forEach((slide, index) => {
-            slide.classList.remove("position-1", "position-2", "position-3", "position-4", "position-5", "position-none");
-            
-            // Calculate relative positions in a loop
-            let diff = index - center;
-            
-            // Handle negative wrap-around
-            if (diff < -2) diff += sliders.length;
-            if (diff > 3) diff -= sliders.length;
-            
-            // Handle specific cases for loop logic (ensure it stays within -2 to 3 range)
-            if (diff < -sliders.length / 2) diff += sliders.length;
-            if (diff > sliders.length / 2) diff -= sliders.length;
-
-            if (diff === -2) slide.classList.add("position-1");
-            else if (diff === -1) slide.classList.add("position-2");
-            else if (diff === 0) slide.classList.add("position-3");
-            else if (diff === 1) slide.classList.add("position-4");
-            else if (diff === 2) slide.classList.add("position-5");
-            else slide.classList.add("position-none");
-        });
-    }
-
-    function leftScroll() {
-        center = (center - 1 + sliders.length) % sliders.length;
-        updatePositions();
-    }
-
-    function rightScroll() {
-        center = (center + 1) % sliders.length;
-        updatePositions();
-    }
-
-    // Autoplay Logic
-    let autoPlayInterval = setInterval(rightScroll, 5000);
-
-    function resetAutoplay() {
-        clearInterval(autoPlayInterval);
-        autoPlayInterval = setInterval(rightScroll, 5000);
-    }
-
-    // Event Listeners
-    document.querySelector(".left-arrow").addEventListener("click", () => {
-        leftScroll();
-        resetAutoplay();
-    });
-    document.querySelector(".right-arrow").addEventListener("click", () => {
-        rightScroll();
-        resetAutoplay();
-    });
-
-    // Initial positioning
-    updatePositions();
-
-    // Touch Support
-    let touchstartX = 0;
-    let touchendX = 0;
-    const sliderContent = document.getElementById('slider-content');
-
-    sliderContent.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-    }, false);
-
-    sliderContent.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        handleGesture();
-        resetAutoplay();
-    }, false);
-
-    function handleGesture() {
-        if (touchendX < touchstartX - 50) rightScroll();
-        if (touchendX > touchstartX + 50) leftScroll();
-    }
-});
-</script>
+<!-- Home Page Logic -->
+<script src="assets/js/index.js"></script>
 
 <?php include 'includes/footer.php'; ?>

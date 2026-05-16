@@ -1,33 +1,38 @@
-# AB MALAYA - Premium Corporate Website Redesign
+# AB MALAYA - Modern Industrial & Neuromorphic UI Redesign
 
 A high-end, premium corporate website for **AB Malaya Sdn Bhd**, a leading contractor and technical service provider in the Maritime, Oil & Gas, and Energy sectors in Malaysia.
 
 ## 🚀 Overview
-This project is a high-performance PHP-based redesign of the AB MALAYA corporate profile. It emphasizes a "Modern Industrial Authority" aesthetic with high-end web standards, featuring custom 3D perspective sliders, fluid animations, and a sophisticated minimalist design inspired by modern tech brands.
+This project represents a sophisticated evolution of the AB MALAYA digital identity. It merges **Industrial Authority** with a cutting-edge **Neuromorphic & Glassmorphic UI** design language. The website features tactile interfaces, 3D perspective interactions, and a focus on visual performance that places it at the forefront of modern corporate web standards.
 
 ## 🛠 Tech Stack
 - **Core**: PHP 8.x
-- **Typography**: **Aeonik** (Primary font for a clean, professional, high-end feel).
-- **Styling**: Vanilla CSS3 (Externalized for performance: `home.css`).
-- **Interactive**: Custom Vanilla JavaScript (No heavy libraries, ensuring maximum performance).
-- **Slider**: Proprietary **Horizontal 3D Perspective Slider** with dynamic depth-of-field and focus effects.
+- **UI Design**: 
+    - **Neuromorphic Architecture**: "Raised" and "Inset" tactile elements for an extruded-plastic feel.
+    - **White Glassmorphism**: High-blur (`backdrop-filter`) floating support components.
+- **Typography**: **Aeonik & Inter** (Clean, technical fonts for maximum clarity).
+- **Styling**: Vanilla CSS3 (Modular design system in `home.css`).
+- **Interactive**: Modular Vanilla JavaScript (Zero-dependency architecture).
+- **Animation**: GSAP (GreenSock) for high-performance parallax and scroll-triggered visuals.
 
 ## 📂 Project Structure
-- `index.php`: High-impact landing page featuring the custom 3D perspective service showcase.
-- `services.php`: Advanced service catalog featuring a **Synced 3D Slider** and detailed division blocks.
-- `includes/`:
-    - `header.php / footer.php`: Core modular components with capsule-style navigation.
-    - `hero_visual.php`: Shared cinematic hero component with parallax-ready background assets.
+- `index.php`: High-impact landing page featuring a cinematic 3D focus slider.
+- `services.php`: Advanced service catalog featuring a **Synced 3D Perspective Slider**.
+- `about.php`: Immersive company profile featuring **Neumorphic 3D Parallax** and **Funky Industrial Accordions**.
+- `includes/`: Modular PHP components (Header, Footer, Hero Visuals).
 - `assets/`:
-    - `css/home.css`: Core design system, typography tokens, and layout logic.
+    - `css/home.css`: Unified Design System and component tokens.
+    - `js/index.js`: Logic for Home Page (Tilt, Sliders).
+    - `js/service.js`: Logic for Services Page (3D Slider Sync).
+    - `js/about.js`: Logic for About Page (Parallax, Accordions, GSAP).
 
 ## ✨ Key Features
-- **Horizontal 3D Perspective Slider**: A unique, high-performance slider that uses 3D rotation and scaling to highlight active services.
-- **Synced Detail Interaction**: Seamless integration between the service slider and detailed content sections for a fluid user journey.
-- **Modern Industrial Aesthetic**: Clean lines, subtle shadows, and a professional blue/navy color palette.
-- **Full English Localization**: Entire platform content translated to English for international business reach.
-- **Mobile First Optimization**: Precision-engineered responsive layouts, including full-width service cards for optimal mobile viewing.
-- **Premium Shadows & Depth**: Use of layered box-shadows and backdrop filters to create a tactile, premium feel.
+- **Proprietary 3D Perspective Slider**: A unique UI component that uses depth-of-field and 3D rotation to showcase services.
+- **Neuromorphic Vision/Mission**: Tactile cards with internal parallax imagery and reactive hover states.
+- **Funky Industrial Accordion**: A non-traditional vertical navigation system for Core Values.
+- **Cinematic Hero Visuals**: Layered PNG transparency and atmosphere effects for an immersive brand experience.
+- **English Localization**: Full platform content optimized for international corporate presence.
+- **Modular JS Architecture**: Decoupled scripts for better page load performance and maintainability.
 
 ## 🖥 Local Development
 To run this project locally, use a PHP-enabled server or the built-in PHP server:

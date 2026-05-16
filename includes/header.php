@@ -282,10 +282,33 @@
             }
 
             .list { text-transform: uppercase; margin: 0; padding: 0; width: 100%; list-style: none; transform-style: preserve-3d; }
-            .list dt, .list dd { margin: 0; background: #005ee9; color: #fff; font-family: 'Aeonik', sans-serif; text-align: center; }
-            .list dt { display: none; } /* We use burger to toggle instead of dt */
-            .list dd { font-size: 0.8rem; letter-spacing: 1px; border-top: 1px solid rgba(255, 255, 255, 0.1); height: 50px; line-height: 50px; background: #005ee9; }
-            .list dd a { display: block; color: #fff; text-decoration: none; width: 100%; height: 100%; }
+            .list dt, .list dd { margin: 0; color: #fff; font-family: 'Aeonik', sans-serif; text-align: center; transform-style: preserve-3d; }
+            .list dt { display: none; } 
+            .list dd { 
+                font-size: 0.8rem; 
+                font-weight: 700;
+                letter-spacing: 1px; 
+                height: 54px; 
+                line-height: 54px; 
+                background: linear-gradient(to bottom, #005ee9 0%, #004bbd 100%); 
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                position: relative;
+                transition: filter 0.3s ease;
+                backface-visibility: hidden;
+            }
+            .list dd a { 
+                display: block; 
+                color: #fff; 
+                text-decoration: none; 
+                width: 100%; 
+                height: 100%; 
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .list dd:hover {
+                filter: brightness(1.1);
+            }
         }
 
         /* Smooth Scroll Essential CSS */
@@ -377,14 +400,15 @@
         requestAnimationFrame(raf);
 
         /**
-         * Makisu jQuery Plugin (Integrated & Fixed)
+         * Makisu jQuery Plugin (Precision CodePen Version)
          */
         (function($) {
-            var el = document.createElement('div'),
-                re = /^(Moz|(w|W)ebkit|O|ms)(?=[A-Z])/,
-                vendor = (function() { for (var p in el.style) if(re.test(p)) return p.match(re)[0]; })() || '',
-                canRun = vendor + 'Perspective' in el.style,
-                prefix = '-' + vendor.toLowerCase() + '-';
+            var initialized = false;
+            var el = document.createElement('div');
+            var re = /^(Moz|(w|W)ebkit|O|ms)(?=[A-Z])/;
+            var vendor = (function() { for (var p in el.style) if(re.test(p)) return p.match(re)[0]; })() || '';
+            var canRun = vendor + 'Perspective' in el.style;
+            var prefix = '-' + vendor.toLowerCase() + '-';
 
             var api = {
                 toggle: function() {
@@ -393,48 +417,58 @@
                 },
                 open: function(speed, overlap, easing) {
                     var $this = $(this), $root = $this.find('.root'), $kids = $this.find('.node').not($root);
-                    speed = speed || $this.data('speed') || 0.8;
-                    overlap = overlap || $this.data('overlap') || 0.6;
-                    easing = easing || $this.data('easing') || 'ease-in-out';
-                    
-                    var time = speed * (1 - overlap); // Fixed Scope
+                    speed = typeof speed === 'undefined' ? $this.data('speed') : speed;
+                    easing = typeof easing === 'undefined' ? $this.data('easing') : easing;
+                    overlap = typeof overlap === 'undefined' ? $this.data('overlap') : overlap;
 
                     $kids.each(function(index, el) {
                         var anim = 'unfold' + (!index ? '-first' : ''),
                             last = index === $kids.length - 1,
+                            time = speed * (1 - overlap),
                             wait = index * time,
                             $item = $(el),
                             $over = $item.find('.over');
 
-                        $item.css(prefix + 'transform', 'rotateX(180deg)');
-                        $item.css(prefix + 'animation', anim + ' ' + speed + 's ' + easing + ' ' + wait + 's 1 normal forwards');
+                        $item.css(utils.prefix({
+                            'transform': 'rotateX(180deg)',
+                            'animation': anim + ' ' + speed + 's ' + easing + ' ' + wait + 's 1 normal forwards'
+                        }));
                         if (!last) wait = (index + 1) * time;
-                        $over.css(prefix + 'animation', 'unfold-over ' + (speed * 0.45) + 's ' + easing + ' ' + wait + 's 1 normal forwards');
+                        $over.css(utils.prefix({
+                            'animation': 'unfold-over ' + (speed * 0.45) + 's ' + easing + ' ' + wait + 's 1 normal forwards'
+                        }));
                     });
-                    $root.css(prefix + 'animation', 'swing-out ' + ($kids.length * time * 1.4) + 's ease-in-out 0s 1 normal forwards');
+                    $root.css(utils.prefix({
+                        'animation': 'swing-out ' + ($kids.length * speed * (1 - overlap) * 1.4) + 's ease-in-out 0s 1 normal forwards'
+                    }));
                     $this.addClass('open');
                 },
                 close: function(speed, overlap, easing) {
                     var $this = $(this), $root = $this.find('.root'), $kids = $this.find('.node').not($root);
-                    speed = (speed || $this.data('speed') || 0.8) * 0.66;
-                    overlap = overlap || $this.data('overlap') || 0.6;
-                    easing = easing || $this.data('easing') || 'ease-in-out';
-
-                    var time = speed * (1 - overlap); // Fixed Scope
+                    speed = (typeof speed === 'undefined' ? $this.data('speed') : speed) * 0.66;
+                    easing = typeof easing === 'undefined' ? $this.data('easing') : easing;
+                    overlap = typeof overlap === 'undefined' ? $this.data('overlap') : overlap;
 
                     $kids.each(function(index, el) {
                         var anim = 'fold' + (!index ? '-first' : ''),
                             last = index === 0,
+                            time = speed * (1 - overlap),
                             wait = ($kids.length - index - 1) * time,
                             $item = $(el),
                             $over = $item.find('.over');
 
-                        $item.css(prefix + 'transform', 'rotateX(0deg)');
-                        $item.css(prefix + 'animation', anim + ' ' + speed + 's ' + easing + ' ' + wait + 's 1 normal forwards');
+                        $item.css(utils.prefix({
+                            'transform': 'rotateX(0deg)',
+                            'animation': anim + ' ' + speed + 's ' + easing + ' ' + wait + 's 1 normal forwards'
+                        }));
                         if (!last) wait = (($kids.length - index - 2) * time) + (speed * 0.35);
-                        $over.css(prefix + 'animation', 'fold-over ' + (speed * 0.45) + 's ' + easing + ' ' + wait + 's 1 normal forwards');
+                        $over.css(utils.prefix({
+                            'animation': 'fold-over ' + (speed * 0.45) + 's ' + easing + ' ' + wait + 's 1 normal forwards'
+                        }));
                     });
-                    $root.css(prefix + 'animation', 'swing-in ' + ($kids.length * time * 1.0) + 's ease-in-out 0s 1 normal forwards');
+                    $root.css(utils.prefix({
+                        'animation': 'swing-in ' + ($kids.length * speed * (1 - overlap) * 1.0) + 's ease-in-out 0s 1 normal forwards'
+                    }));
                     $this.removeClass('open');
                 }
             };
@@ -444,10 +478,16 @@
                 inject: function(rule) { try { var style = document.createElement('style'); style.innerHTML = rule; document.getElementsByTagName('head')[0].appendChild(style); } catch (e) {} }
             };
 
+            var markup = {
+                node: '<span class="node"/>',
+                back: '<span class="face back"/>',
+                over: '<span class="face over"/>'
+            };
+
             $.fn.makisu = function(options) {
                 if (!canRun) return;
-                if (!$.fn.makisu.initialized) {
-                    $.fn.makisu.initialized = true;
+                if (!initialized) {
+                    initialized = true;
                     utils.inject('@' + prefix + 'keyframes unfold { 0% {' + prefix + 'transform: rotateX(180deg); } 50% {' + prefix + 'transform: rotateX(-30deg); } 100% {' + prefix + 'transform: rotateX(0deg); } }');
                     utils.inject('@' + prefix + 'keyframes unfold-first { 0% {' + prefix + 'transform: rotateX(-90deg); } 50% {' + prefix + 'transform: rotateX(60deg); } 100% {' + prefix + 'transform: rotateX(0deg); } }');
                     utils.inject('@' + prefix + 'keyframes fold { 0% {' + prefix + 'transform: rotateX(0deg); } 100% {' + prefix + 'transform: rotateX(180deg); } }');
@@ -459,27 +499,38 @@
                     utils.inject('.node { position: relative; display: block; }');
                     utils.inject('.face { pointer-events: none; position: absolute; display: block; height: 100%; width: 100%; left: 0; top: 0; }');
                 }
+
                 var args = Array.prototype.slice.call(arguments, 1);
                 return this.each(function() {
                     if (api[options]) return api[options].apply(this, args);
-                    var $t = $(this);
+                    var $t = $(this).data($.extend({}, $.fn.makisu.defaults, options));
                     if (!$t.data('initialized')) {
                         $t.data('initialized', true);
-                        var $kids = $t.children('dd'), $root = $('<span class="node root"/>'), $base = $root;
-                        $kids.each(function(i, el) {
-                            var $item = $(el), $back = $('<span class="face back"/>'), $over = $('<span class="face over"/>');
-                            $item.css({'position': 'relative', 'transform-style': 'preserve-3d', 'transform': 'translateZ(-0.1px)'});
+                        var $kids = $t.children($t.data('selector')), $root = $(markup.node).addClass('root'), $base = $root;
+                        $kids.each(function(index, el) {
+                            var $item = $(el), $back = $(markup.back), $over = $(markup.over);
+                            $item.css('position', 'relative');
+                            $item.css(utils.prefix({'transform-style': 'preserve-3d', 'transform': 'translateZ(-0.1px)'}));
                             $back.css({'background': $item.css('background'), 'transform': 'translateZ(-0.1px)'});
-                            $over.css({'background': 'rgba(0,0,0,0.15)', 'opacity': 0.0, 'transform': 'translateZ(0.1px)'});
-                            var $node = $('<span class="node"/>').append($item);
-                            $node.css({'transform-origin': '50% 0%', 'transform-style': 'preserve-3d', 'animation': 'fold' + (!i ? '-first' : '') + ' 1ms linear 0s 1 normal forwards'});
+                            $over.css(utils.prefix({'transform': 'translateZ(0.1px)'})).css({'background': $t.data('shading'), 'opacity': 0.0});
+                            var $node = $(markup.node).append($item);
+                            $node.css(utils.prefix({'transform-origin': '50% 0%', 'transform-style': 'preserve-3d', 'animation': ('fold' + (!index ? '-first' : '')) + ' 1ms linear 0s 1 normal forwards'}));
                             $item.append($over).append($back);
                             $base.append($node); $base = $node;
                         });
-                        $root.css({'transform-origin': '50% 0%', 'transform-style': 'preserve-3d'});
-                        $t.css(prefix + 'transform', 'perspective(1200px)').append($root);
+                        $root.css(utils.prefix({'transform-origin': '50% 0%', 'transform-style': 'preserve-3d'}));
+                        $t.css(utils.prefix({'transform': 'perspective(' + $t.data('perspective') + 'px)'})).append($root);
                     }
                 });
+            };
+
+            $.fn.makisu.defaults = {
+                perspective: 1200,
+                shading: 'rgba(0,0,0,0.12)',
+                selector: null,
+                overlap: 0.6,
+                speed: 0.8,
+                easing: 'ease-in-out'
             };
         })(jQuery);
 
@@ -489,9 +540,32 @@
             var $wrapper = $('.mobile-nav-wrapper');
             $menu.makisu({ selector: 'dd', overlap: 0.6, speed: 0.8 });
 
-            $('#burger-btn').on('click', function() {
-                $wrapper.toggleClass('active');
-                $menu.makisu('toggle');
+            function closeMobileMenu() {
+                if ($menu.hasClass('open')) {
+                    $menu.makisu('close');
+                    setTimeout(() => {
+                        if (!$menu.hasClass('open')) {
+                            $wrapper.removeClass('active');
+                        }
+                    }, 800);
+                }
+            }
+
+            $('#burger-btn').on('click', function(e) {
+                e.stopPropagation();
+                if ($menu.hasClass('open')) {
+                    closeMobileMenu();
+                } else {
+                    $wrapper.addClass('active');
+                    $menu.makisu('open');
+                }
+            });
+
+            // Close on click outside
+            $(document).on('click', function(e) {
+                if ($menu.hasClass('open') && !$(e.target).closest('.mobile-nav-wrapper, #burger-btn').length) {
+                    closeMobileMenu();
+                }
             });
 
             const logo = document.querySelector('.logo');
@@ -500,17 +574,16 @@
             lenis.on('scroll', (e) => {
                 const scrollY = e.scroll;
                 
-                // Logo Autohide Logic (Faster - 40px)
+                // Logo Autohide Logic
                 if (scrollY > 40 && !$menu.hasClass('open')) {
                     logo.classList.add('logo-hidden');
                 } else {
                     logo.classList.remove('logo-hidden');
                 }
                 
-                // Auto-close menu on significant scroll
+                // Auto-close menu on significant scroll with folding effect
                 if (scrollY > 150 && $menu.hasClass('open')) {
-                    $menu.makisu('close');
-                    $wrapper.removeClass('active');
+                    closeMobileMenu();
                 }
             });
 
