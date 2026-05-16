@@ -1,14 +1,11 @@
 /**
  * AB MALAYA - Contact Page Logic
- * Handles GSAP entry animations and 3D interactions
+ * Handles GSAP entry animations and Neumorphic tilt
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const isMobile = window.innerWidth <= 768;
-
     // --- 1. ENTRY ANIMATIONS (GSAP) ---
     if (typeof gsap !== 'undefined') {
-        // Hero Content
         gsap.from('.hero-content > *', {
             y: 50,
             opacity: 0,
@@ -17,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power3.out'
         });
 
-        // Contact Grid Entry
         gsap.from('.contact-form-side', {
             x: -100,
             opacity: 0,
@@ -42,35 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. 3D CARD INTERACTION ---
-    // Only enabled on mobile as per user request
-    if (isMobile && typeof VanillaTilt !== 'undefined') {
-        const popCards = document.querySelectorAll('.neu-card-3d-pop, .glass-info-card');
-        const raisedCards = document.querySelectorAll('.neu-card-raised');
-        
-        // Enhanced 3D for Form and Glass Card
-        VanillaTilt.init(popCards, {
-            max: 15,
-            speed: 300,
-            easing: "cubic-bezier(.03,.98,.52,.99)",
-            scale: 1.05,
-            glare: true,
-            "max-glare": 0.2,
-            perspective: 1000,
-            gyroscope: true,
-            gyroscopeMinAngleX: -45,
-            gyroscopeMaxAngleX: 45,
-            gyroscopeMinAngleY: -45,
-            gyroscopeMaxAngleY: 45
-        });
-
-        // Subtle Tilt for Info Cards
-        VanillaTilt.init(raisedCards, {
+    // --- 2. TILT INTERACTION ---
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll('.neu-card-raised, .glass-info-card'), {
             max: 5,
             speed: 400,
-            perspective: 1000,
+            glare: true,
+            "max-glare": 0.1,
             scale: 1.02,
-            gyroscope: true
+            perspective: 1000
         });
     }
 

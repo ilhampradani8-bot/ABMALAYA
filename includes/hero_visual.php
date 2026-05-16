@@ -340,7 +340,7 @@
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let dots = [];
-    const spacing = 45; // Increased spacing to reduce dot count
+    const spacing = 38; // Restored to original density
     let mouse = { x: -1000, y: -1000, radius: 220 };
 
     window.addEventListener('mousemove', (e) => {
@@ -359,8 +359,8 @@
     function init() {
         dots = [];
         const isMobile = window.innerWidth <= 768;
-        const dotSize = isMobile ? 1.0 : 1.8; // Slightly smaller dots
-        const currentSpacing = isMobile ? 40 : spacing; 
+        const dotSize = isMobile ? 1.8 : 2.4; // Larger dots for better visibility
+        const currentSpacing = isMobile ? 30 : spacing; 
 
         for (let x = 0; x < canvas.width; x += currentSpacing) {
             for (let y = 0; y < canvas.height; y += currentSpacing) {
@@ -369,7 +369,7 @@
                     targetX: x, targetY: y,
                     baseX: x, baseY: y,
                     size: dotSize, 
-                    color: 'rgba(0, 94, 233, 0.22)'
+                    color: 'rgba(0, 94, 233, 0.3)'
                 });
             }
         }
@@ -416,11 +416,11 @@
                 let moveY = (dy / distance) * force * 35;
                 dot.targetX = dot.baseX - moveX;
                 dot.targetY = dot.baseY - moveY;
-                dot.color = `rgba(0, 94, 233, ${0.25 + force * 0.4})`;
+                dot.color = `rgba(0, 94, 233, ${0.3 + force * 0.45})`;
             } else {
                 dot.targetX = dot.baseX;
                 dot.targetY = dot.baseY;
-                dot.color = 'rgba(0, 94, 233, 0.18)';
+                dot.color = 'rgba(0, 94, 233, 0.3)';
             }
 
             dot.x += (dot.targetX - dot.x) * easing;

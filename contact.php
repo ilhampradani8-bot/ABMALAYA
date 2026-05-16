@@ -21,7 +21,7 @@ include 'includes/hero_visual.php';
         <div class="contact-grid">
             <!-- Left: Contact Form -->
             <div class="contact-form-side">
-                <div class="neu-card-3d-pop form-wrapper">
+                <div class="neu-card-raised form-wrapper">
                     <div class="form-header">
                         <span class="tag">INQUIRY</span>
                         <h2>Send a Message</h2>
@@ -133,18 +133,6 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                 </div>
-
-                <!-- Glassmorphism Working Hours -->
-                <div class="glass-info-card">
-                    <div class="glass-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="glass-text">
-                        <h5>Working Hours</h5>
-                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
-                        <p>Sat - Sun: Technical Support Only</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -183,7 +171,7 @@ include 'includes/hero_visual.php';
 <style>
     /* Neo Brutalism Styles for Map */
     .neo-brutalist-container {
-        padding: 2rem 0;
+        padding: 0 0 2rem 0;
     }
 
     .neo-map-card {
@@ -279,91 +267,29 @@ include 'includes/hero_visual.php';
 
     .contact-main {
         background: var(--neu-bg);
-        padding: 100px 0;
+        padding: 100px 0 0px;
     }
 
     .contact-grid {
         display: grid;
         grid-template-columns: 1.4fr 1fr;
-        gap: 1.5rem;
+        gap: 4rem;
     }
 
-    /* Enhanced 3D Pop-out Effects (Targeted only to form) */
-    .neu-card-3d-pop {
+    /* Clean Neumorphic Cards */
+    .neu-card-raised {
         background: var(--neu-bg);
         border-radius: 40px;
         box-shadow: 20px 20px 60px var(--neu-shadow-dark), -20px -20px 60px var(--neu-shadow-light);
         padding: 3.5rem;
         border: 1px solid rgba(255, 255, 255, 0.3);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        transform-style: preserve-3d;
-        position: relative;
-        overflow: visible;
-        background: radial-gradient(circle at top right, rgba(0, 94, 233, 0.1) 0%, var(--neu-bg) 60%);
     }
 
-    /* Standard Neumorphic for Info Cards */
-    .neu-card-raised {
-        background: var(--neu-bg);
-        border-radius: 40px;
-        box-shadow: 10px 10px 30px var(--neu-shadow-dark), -10px -10px 30px var(--neu-shadow-light);
-        padding: 2rem !important;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: 0.3s;
+    .form-wrapper {
+        background: radial-gradient(circle at top right, rgba(0, 94, 233, 0.05) 0%, var(--neu-bg) 60%);
     }
 
-    /* Background Text Effect (Always defined, but hidden by default) */
-    .neu-card-3d-pop::before {
-        content: "AB MALAYA";
-        position: absolute;
-        top: 20px;
-        left: 30px;
-        font-size: 5rem;
-        font-weight: 900;
-        color: #000;
-        font-style: italic;
-        opacity: 0;
-        transition: 0.5s;
-        pointer-events: none;
-    }
-
-    /* Z-Depth for elements (Only in 3D card) */
-    .neu-card-3d-pop .form-header { transition: 0.5s; }
-    .neu-card-3d-pop .neu-input-inset { transition: 0.5s; }
-    .neu-card-3d-pop .neu-btn-primary { transition: 0.5s; }
-
-    /* Glass Card 3D Setup */
-    .glass-info-card {
-        margin-top: 3rem;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(20px);
-        padding: 2.5rem;
-        border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        transform-style: preserve-3d;
-        transition: 0.5s;
-    }
-
-    .glass-icon { transform: translate3d(0,0,20px); }
-    .glass-text { transform: translate3d(0,0,30px); }
-
-    @media (max-width: 768px) {
-        .neu-card-3d-pop:hover .form-header { transform: translate3d(0, 0, 70px); }
-        .neu-card-3d-pop:hover .neu-btn-primary { transform: translate3d(0, 0, 110px); }
-        
-        .neu-card-3d-pop:hover::before { opacity: 0.03; }
-
-        .glass-info-card:hover { transform: scale(1.05) translate3d(0,0,50px); }
-        .glass-info-card:hover .glass-icon { transform: translate3d(0,0,40px); }
-        .glass-info-card:hover .glass-text { transform: translate3d(0,0,60px); }
-
-        .neu-card-3d-pop {
-            transform-style: preserve-3d;
-        }
-    }
 
     .tag {
         color: var(--accent-blue);
@@ -378,7 +304,7 @@ include 'includes/hero_visual.php';
         font-size: 2.5rem;
         font-weight: 800;
         color: #1e293b;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .neu-form .form-row {
@@ -531,40 +457,6 @@ include 'includes/hero_visual.php';
         color: var(--accent-blue);
     }
 
-    .glass-info-card {
-        margin-top: 3rem;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(20px);
-        padding: 2.5rem;
-        border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-    }
-
-    .glass-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--accent-blue);
-        color: #fff;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-    }
-
-    .glass-text h5 {
-        font-weight: 800;
-        margin-bottom: 0.3rem;
-    }
-
-    .glass-text p {
-        font-size: 0.85rem;
-        color: #475569;
-        margin: 0;
-    }
 
     /* Map Section */
     .map-section {
@@ -585,17 +477,65 @@ include 'includes/hero_visual.php';
     }
 
     @media (max-width: 768px) {
+        .contact-main {
+            padding: 60px 0 20px;
+        }
+
+        .container {
+            padding: 0 6vw !important;
+        }
+
+        .contact-grid {
+            gap: 2rem;
+        }
+
+        .neu-card-3d-pop, .neu-card-raised, .glass-info-card {
+            border-radius: 30px !important; 
+            padding: 2.5rem !important;
+            box-shadow: 15px 15px 30px var(--neu-shadow-dark), -15px -15px 30px var(--neu-shadow-light) !important;
+        }
+
+        .neo-map-card {
+            border-radius: 0 !important;
+            box-shadow: 8px 8px 0px #000 !important;
+        }
+
+        .neu-card-3d-pop {
+            box-shadow: 0 20px 40px var(--neu-shadow-dark) !important;
+        }
+
         .neu-form .form-row {
             flex-direction: column;
-            gap: 0;
+            gap: 0rem;
         }
-        .neu-card-raised {
-            padding: 2rem;
+
+        .form-group {
+            margin-bottom: 1.2rem !important;
         }
+
+        .form-header h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
         .info-card {
             flex-direction: column;
             text-align: center;
-            padding: 2rem !important;
+            gap: 1.5rem;
+        }
+
+        .icon-box-3d {
+            margin: 0 auto;
+        }
+
+        .map-frame {
+            height: 350px;
+        }
+
+        .neo-map-footer {
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
         }
     }
 </style>
