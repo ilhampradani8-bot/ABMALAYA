@@ -236,7 +236,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, #ffffff 35%, rgba(255,255,255,0) 100%) !important;
+            background: linear-gradient(to bottom, #ffffff 10%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0) 100%) !important;
             z-index: 5;
             pointer-events: none;
         }
@@ -244,7 +244,7 @@
             display: block !important; 
             position: absolute !important;
             width: 100% !important; 
-            height: 60% !important; 
+            height: 80% !important; 
             top: auto !important; 
             bottom: 0 !important; 
             right: 0 !important; 
@@ -259,11 +259,13 @@
             height: 100% !important;
         }
         .img-wrap img {
-            height: 100% !important; 
-            width: auto !important;
+            height: auto !important; 
+            width: 115% !important; /* Force touch edges */
+            max-width: none !important;
             object-fit: contain !important;
             object-position: bottom right !important;
-            transform: scale(1.1) translateX(10%); 
+            transform: translateX(5%); /* Slight adjustment */
+            opacity: 0.9;
         }
         .intro-content { 
             width: 100% !important;
