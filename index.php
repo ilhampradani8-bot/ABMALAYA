@@ -596,16 +596,121 @@ include 'includes/hero_visual.php';
         </div>
     </div>
     
-    <!-- Full-Width Map Preview -->
-    <div style="width: 100%; height: 500px; position: relative; border-top: 1px solid #f1f5f9;">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.69238304915!2d101.73356!3d3.19323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc382f94e2a39b%3A0xc3411e649e35c24e!2sWisma%20Rampai!5e0!3m2!1sen!2smy!4v1715715545000!5m2!1sen!2smy" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        <a href="https://share.google/mZ37nSVlVNA19gUI3" target="_blank" style="position: absolute; bottom: 40px; right: 6vw; background: #005ee9; color: #fff; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; box-shadow: 0 15px 35px rgba(0,94,233,0.3); display: flex; align-items: center; gap: 0.8rem; z-index: 10;">
-            <i class="fas fa-directions"></i> Get Directions
-        </a>
+    <!-- Neo Brutalist Map Preview -->
+    <div style="width: 100%; padding: 0 6vw 80px 6vw;">
+        <div class="neo-map-card">
+            <div class="map-frame">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.69238304915!2d101.73356!3d3.19323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc382f94e2a39b%3A0xc3411e649e35c24e!2sWisma%20Rampai!5e0!3m2!1sen!2smy!4v1715715545000!5m2!1sen!2smy" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="neo-map-footer">
+                <div class="map-info-brutal">
+                    <i class="fas fa-location-dot"></i>
+                    <span>WISMA RAMPAI, KUALA LUMPUR</span>
+                </div>
+                <a href="https://share.google/mZ37nSVlVNA19gUI3" target="_blank" class="neo-btn-brutal-large">
+                    OPEN IN GOOGLE MAPS <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </section>
+
+<style>
+    /* Neo Brutalism Styles for Map */
+    .neo-map-card {
+        background: #fff;
+        border: 4px solid #000;
+        box-shadow: 12px 12px 0px #000;
+        position: relative;
+        transition: all 0.2s ease;
+        overflow: hidden;
+    }
+
+    .neo-map-card:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 16px 16px 0px #000;
+    }
+
+    .map-frame {
+        height: 500px;
+        width: 100%;
+        border-bottom: 4px solid #000;
+    }
+
+    .neo-map-footer {
+        padding: 1.5rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8fafc;
+    }
+
+    .map-info-brutal {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #000;
+        font-family: 'Aeonik', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .map-info-brutal i {
+        color: #005ee9;
+        font-size: 1.4rem;
+    }
+
+    .neo-btn-brutal-large {
+        background: #005ee9;
+        color: #fff;
+        padding: 1rem 2.5rem;
+        font-weight: 800;
+        text-decoration: none;
+        border: 3px solid #000;
+        box-shadow: 6px 6px 0px #000;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+        font-family: 'Aeonik', sans-serif;
+    }
+
+    .neo-btn-brutal-large:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0px #000;
+        background: #004bbd;
+    }
+
+    .neo-btn-brutal-large:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px #000;
+    }
+
+    @media (max-width: 992px) {
+        .neo-map-footer {
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        .map-frame {
+            height: 350px;
+        }
+        .neo-map-card {
+            box-shadow: 8px 8px 0px #000;
+        }
+        .neo-btn-brutal-large {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
 
 <!-- Final CTA Section with Wisma Rampai Background -->
 <section id="cta" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/img/wisma-rampai-front.png'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; padding: 120px 0;">

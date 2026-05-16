@@ -38,7 +38,7 @@
             display: flex;
             justify-content: center;
             transition: all 0.4s ease;
-            padding: 0 6vw;
+            padding: 0 3vw;
         }
 
         .header-container {
@@ -336,8 +336,9 @@
                     <a href="/" class="<?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home</a>
                     <a href="/about" class="<?php echo $currentPage == 'about' ? 'active' : ''; ?>">About</a>
                     <a href="/services" class="<?php echo $currentPage == 'services' ? 'active' : ''; ?>">Services</a>
-                    <a href="/certified" class="<?php echo $currentPage == 'certified' ? 'active' : ''; ?>">Certified</a>
-                    <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact</a>
+                    <a href="/certified.php" class="<?php echo $currentPage == 'certified' ? 'active' : ''; ?>">Certified</a>
+                    <a href="/projects.php" class="<?php echo $currentPage == 'projects' ? 'active' : ''; ?>">Projects</a>
+                    <a href="/contact.php" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact</a>
                 </div>
 
                 <!-- Desktop Inline Search -->
@@ -368,8 +369,9 @@
                     <dd><a href="/">Home</a></dd>
                     <dd><a href="/about">About</a></dd>
                     <dd><a href="/services">Services</a></dd>
-                    <dd><a href="/certified">Certified</a></dd>
-                    <dd><a href="/contact">Contact</a></dd>
+                    <dd><a href="/certified.php">Certified</a></dd>
+                    <dd><a href="/projects.php">Projects</a></dd>
+                    <dd><a href="/contact.php">Contact</a></dd>
                 </dl>
             </div>
         </div>

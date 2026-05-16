@@ -35,6 +35,9 @@
         <div class="container">
             <div class="hero-interactive-area" onclick="toggleHeroContent()">
                 <div id="hero-title-node" class="hero-node active">
+                    <?php if(isset($heroSubtitle) && $heroSubtitle !== ""): ?>
+                        <span class="hero-badge"><?php echo $heroSubtitle; ?></span>
+                    <?php endif; ?>
                     <h1><?php echo $heroTitle; ?></h1>
                     <div class="interaction-hint mobile-only"><i class="fas fa-hand-pointer"></i> Click for details</div>
                 </div>
@@ -145,6 +148,21 @@
         max-width: 45%;
         padding-top: 160px; /* Increased to avoid logo collision */
         animation: fadeInLeft 1.2s ease forwards;
+    }
+    .hero-badge {
+        display: inline-block;
+        padding: 6px 15px;
+        background: #005ee9;
+        color: #fff;
+        font-family: 'Aeonik', sans-serif;
+        font-weight: 800;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        box-shadow: 4px 4px 0px #000;
+        border: 2px solid #000;
     }
     .intro-content h1 {
         font-family: 'Aeonik', sans-serif;

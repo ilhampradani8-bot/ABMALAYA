@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Reveal Animations using Intersection Observer (matching the global pattern but enhanced)
+    // Reveal Animations using Intersection Observer
     const certCards = document.querySelectorAll('.cert-card-neu');
     const statsItems = document.querySelectorAll('.glass-stats-card > div');
     
