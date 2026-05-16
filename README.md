@@ -18,7 +18,7 @@ This project represents a sophisticated evolution of the AB MALAYA digital ident
 
 ## 📂 Project Structure
 - `index.php`: High-impact landing page featuring a cinematic 3D focus slider and **Neo-Brutalist Map**.
-- `services.php`: Advanced service catalog featuring a **Synced 3D Perspective Slider**.
+- `services.php`: Advanced service catalog featuring a **Dual-State Premium Slider** with immersive background swapping and "pop-out" 3D visuals.
 - `projects.php`: Portfolio showcase using a high-contrast **Neo-Brutalist Grid** with 3D tilt effects.
 - `about.php`: Immersive company profile featuring **Neumorphic 3D Parallax** and **Funky Industrial Accordions**.
 - `certified.php`: High-end certification showcase featuring a **Premium Blog Slider** and **Secure Modal Document Preview**.
@@ -26,13 +26,16 @@ This project represents a sophisticated evolution of the AB MALAYA digital ident
 - `assets/`:
     - `css/home.css`: Unified Design System and component tokens.
     - `js/index.js`: Logic for Home Page (Tilt, Sliders).
-    - `js/service.js`: Logic for Services Page (3D Slider Sync).
+    - `js/service.js`: Logic for Services Page (Dual-State Swiper Sync).
     - `js/projects.js`: Logic for Projects Page (Portfolio Tilt & Reveal).
     - `js/about.js`: Logic for About Page (Parallax, Accordions, GSAP).
     - `js/certified.js`: Logic for Certification Page (Scroll Reveal animations).
 
 ## ✨ Key Features
 - **Neo-Brutalist Portfolio Grid**: A bold, industrial-style gallery for projects featuring hard shadows and thick-stroke borders.
+- **Dual-State Service Slider**: A cinematic interaction system where cards transition from a "Mode 1" (3D visual pop-out on full background) to a "Mode 2" (Full immersive deep-dive with synchronized background swap and technical overlays).
+- **Pop-Out 3D Visual Architecture**: Service cards utilize oversized 3D assets that intentionally "break" the card boundaries for a modern, layered depth effect.
+- **Synced Cinematic Transitions**: Professional fade-based shutter transitions that simultaneously update section backgrounds and internal card states using native Swiper event delegation.
 - **Proprietary 3D Perspective Slider**: A unique UI component that uses depth-of-field and 3D rotation to showcase services.
 - **Premium Certification Slider**: A Muhammed Erdem-inspired blog slider using **Swiper.js** for seamless, interactive credential browsing.
 - **Secure Document Preview**: Advanced Modal system with **Click-to-Zoom** functionality, anti-right-click protection, and keyboard save/print disabling.
