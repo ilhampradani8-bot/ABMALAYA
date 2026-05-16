@@ -11,43 +11,29 @@
 <section class="intro-visual">
     <div class="intro-bg-wrap">
         <canvas id="hero-canvas"></canvas>
-        <div class="hero-art-container" id="hero-art">
-            <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
-                <!-- Background Glow (Blurred inside SVG) -->
-                <defs>
-                    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
-                    </filter>
-                    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#005ee9" stop-opacity="0.3" />
-                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-                    </linearGradient>
-                </defs>
-                
-                <!-- The Glow Beam -->
-                <circle cx="300" cy="250" r="150" fill="url(#beamGrad)" filter="url(#softGlow)" />
+    </div>
 
-                <!-- Industrial 'h' / Basket Shape (Sharp) -->
-                <g class="sharp-art">
-                    <path d="M100 150V380" stroke="#005ee9" stroke-width="4" stroke-linecap="round" />
-                    <path d="M100 240C100 200 160 180 220 180C280 180 340 200 340 240V380" stroke="#005ee9" stroke-width="4" stroke-linecap="round" />
-                    <path d="M100 380H340" stroke="#005ee9" stroke-width="2" stroke-opacity="0.3" stroke-dasharray="8 8" />
-                </g>
-                
-                <!-- Detailed Gear (Sharp) -->
-                <g class="sharp-art" transform="translate(380, 180) scale(0.8)">
-                    <circle cx="50" cy="50" r="35" stroke="#005ee9" stroke-width="3" stroke-opacity="0.6" />
-                    <circle cx="50" cy="50" r="10" stroke="#005ee9" stroke-width="2" stroke-opacity="0.6" />
-                    <!-- Gear Teeth -->
-                    <path d="M50 5V15M50 85V95M5 50H15M85 50H95M18 18L25 25M75 75L82 82M18 82L25 75M75 18L82 25" stroke="#005ee9" stroke-width="4" stroke-linecap="round" stroke-opacity="0.8" />
-                </g>
-            </svg>
+    <!-- Machinery Layer (Full Height, Right, Sequential) -->
+    <div class="hero-images-layer">
+        <div class="sequential-container">
+            <div class="img-wrap s-1">
+                <img src="assets/img/head/remove-bg-escavator.png" alt="Engineering Operations">
+            </div>
+            <div class="img-wrap s-2">
+                <img src="assets/img/head/bgcool.png" alt="Industrial Maintenance">
+            </div>
+            <div class="img-wrap s-3">
+                <img src="assets/img/head/bgcoolnew.png" alt="Technical Services">
+            </div>
+            <div class="img-wrap s-4">
+                <img src="assets/img/head/remove-bg-rust-bawah-kanan.png" alt="Engineering Component">
+            </div>
         </div>
     </div>
     
     <div class="intro-content">
         <div class="container">
-            <h1><?php echo $heroTitle; ?> <br><span style="color: #005ee9;"><?php echo $heroSubtitle; ?></span></h1>
+            <h1><?php echo $heroTitle; ?></h1>
             <p><?php echo $heroDesc; ?></p>
             <?php if(isset($showButtons) && $showButtons): ?>
             <div class="hero-btns">
@@ -66,10 +52,10 @@
         width: 100%;
         overflow: hidden;
         display: flex;
-        align-items: center; /* Centered vertically but aligned left */
+        align-items: center;
         justify-content: flex-start;
         text-align: left;
-        background: #ffffff;
+        background: #ffffff; /* Pure White Background */
         padding-left: 6vw;
     }
     .intro-bg-wrap {
@@ -78,43 +64,77 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 1;
+        z-index: 10; /* Dots always on top */
+        pointer-events: none;
     }
     #hero-canvas {
         width: 100%;
         height: 100%;
         display: block;
+        pointer-events: auto;
     }
-    .hero-art-container {
+    
+    .hero-images-layer {
         position: absolute;
-        top: 15%;
-        right: -5%;
-        width: 60%;
-        height: 70%;
-        z-index: 2;
+        top: 0;
+        right: 0;
+        width: 55%; /* Half screen + overflow for impact */
+        height: 100%;
+        z-index: 2; /* Behind dots */
         pointer-events: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        filter: blur(40px); /* Creates the "beam of light" pancaran look */
-        opacity: 0.6;
     }
-    .hero-svg {
+    .sequential-container {
+        position: relative;
         width: 100%;
         height: 100%;
     }
+    
+    .img-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: flex;
+        align-items: flex-end; /* Mentok bawah */
+        justify-content: flex-end; /* Mentok kanan */
+        transition: opacity 2.5s ease-in-out;
+    }
+    .img-wrap img {
+        height: 100%; /* Full height atas bawah */
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: right bottom; /* Ensures alignment even if aspect ratio differs */
+        filter: none;
+        pointer-events: none;
+    }
+
+    /* Sequential Animation - 20s cycle (5s each) */
+    .s-1 { animation: seqFade 20s infinite 0s; }
+    .s-2 { animation: seqFade 20s infinite 5s; }
+    .s-3 { animation: seqFade 20s infinite 10s; }
+    .s-4 { animation: seqFade 20s infinite 15s; }
+
+    @keyframes seqFade {
+        0%, 5% { opacity: 0; }
+        10%, 25% { opacity: 1; }
+        30%, 100% { opacity: 0; }
+    }
+
     .intro-content {
         position: relative;
-        z-index: 10;
-        color: #000; /* Pure Black as requested */
-        max-width: 50%; /* Exactly half screen on desktop */
+        z-index: 20;
+        color: #000;
+        max-width: 45%;
         animation: fadeInLeft 1.2s ease forwards;
     }
     .intro-content h1 {
         font-family: 'Aeonik', sans-serif;
-        font-size: 3.2rem; /* Adjusted for longer title */
+        font-size: 3.2rem;
         font-weight: 700;
-        color: #000; /* Pure Black */
+        color: #000;
         letter-spacing: -1.5px;
         margin-bottom: 1.5rem;
         line-height: 1.1;
@@ -156,22 +176,11 @@
         background: #005ee9;
         transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .hero-link i {
-        font-size: 0.8rem;
-        transition: 0.3s;
-    }
-    .hero-link:hover::after {
-        width: 100%;
-    }
-    .hero-link:hover i {
-        transform: translateX(5px);
-    }
-    .secondary-link {
-        color: #64748b;
-    }
-    .secondary-link::after {
-        background: #cbd5e1;
-    }
+    .hero-link i { font-size: 0.8rem; transition: 0.3s; }
+    .hero-link:hover::after { width: 100%; }
+    .hero-link:hover i { transform: translateX(5px); }
+    .secondary-link { color: #64748b; }
+    .secondary-link::after { background: #cbd5e1; }
 
     @keyframes fadeInLeft {
         from { opacity: 0; transform: translateX(-30px); }
@@ -180,9 +189,9 @@
 
     @media (max-width: 768px) {
         .intro-visual { 
-            padding-left: 6vw; /* Exact same as Header Logo padding */
+            padding-left: 6vw;
             padding-right: 20px;
-            padding-top: 140px; /* Positioned right under the logo */
+            padding-top: 140px;
             padding-bottom: 60px; 
             justify-content: flex-start; 
             text-align: left; 
@@ -190,9 +199,8 @@
             height: auto;
             min-height: 100vh;
         }
-        .intro-content { 
-            max-width: 100%; 
-        }
+        .hero-images-layer { display: none; }
+        .intro-content { max-width: 100%; }
         .intro-content h1 { font-size: 2.2rem; letter-spacing: -1px; }
         .intro-content p { font-size: 1rem; max-width: 100%; margin-bottom: 2rem; }
         .hero-btns { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
@@ -204,8 +212,8 @@
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let dots = [];
-    const spacing = 35; /* Grid spacing */
-    let mouse = { x: -1000, y: -1000, radius: 150 };
+    const spacing = 38; 
+    let mouse = { x: -1000, y: -1000, radius: 200 };
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.x;
@@ -225,51 +233,40 @@
         for (let x = 0; x < canvas.width; x += spacing) {
             for (let y = 0; y < canvas.height; y += spacing) {
                 dots.push({
-                    x: x,
-                    y: y,
-                    targetX: x,
-                    targetY: y,
-                    baseX: x,
-                    baseY: y,
-                    size: 1.2,
-                    color: 'rgba(0, 94, 233, 0.2)'
+                    x: x, y: y,
+                    targetX: x, targetY: y,
+                    baseX: x, baseY: y,
+                    size: 2.2, 
+                    color: 'rgba(0, 94, 233, 0.25)'
                 });
             }
         }
     }
 
-    const art = document.getElementById('hero-art');
-    const easing = 0.08; /* Smoothing factor - lower is smoother/slower */
+    const easing = 0.08;
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Parallax for Art
-        const artMoveX = (mouse.x - window.innerWidth / 2) * -0.02;
-        const artMoveY = (mouse.y - window.innerHeight / 2) * -0.02;
-        art.style.transform = `translate(${artMoveX}px, ${artMoveY}px)`;
-
         for (let i = 0; i < dots.length; i++) {
             let dot = dots[i];
             let dx = mouse.x - dot.baseX;
             let dy = mouse.y - dot.baseY;
             let distance = Math.sqrt(dx * dx + dy * dy);
             
-            // Calculate where the dot WANTs to be
             if (distance < mouse.radius) {
                 let force = (mouse.radius - distance) / mouse.radius;
-                let moveX = (dx / distance) * force * 25;
-                let moveY = (dy / distance) * force * 25;
+                let moveX = (dx / distance) * force * 35;
+                let moveY = (dy / distance) * force * 35;
                 dot.targetX = dot.baseX - moveX;
                 dot.targetY = dot.baseY - moveY;
-                dot.color = `rgba(0, 94, 233, ${0.2 + force * 0.4})`;
+                dot.color = `rgba(0, 94, 233, ${0.3 + force * 0.4})`;
             } else {
                 dot.targetX = dot.baseX;
                 dot.targetY = dot.baseY;
-                dot.color = 'rgba(0, 94, 233, 0.15)';
+                dot.color = 'rgba(0, 94, 233, 0.22)';
             }
 
-            // Smoothly move the dot TOWARDS its target
             dot.x += (dot.targetX - dot.x) * easing;
             dot.y += (dot.targetY - dot.y) * easing;
 

@@ -16,47 +16,116 @@ include 'includes/hero_visual.php';
 
 <!-- Stats / Highlights Section -->
 <!-- Client Logos Section -->
-<section id="clients" style="background: #fff; padding: 50px 0; border-bottom: 1px solid #f1f5f9;">
-    <div class="container">
-        <h5 style="text-align: center; color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 3rem;">Partner</h5>
+<section id="clients" class="client-marquee-section">
+    <div class="marquee-container">
+        <h5 class="marquee-title">Our Strategic Partners</h5>
         
-        <div class="client-grid-static" style="display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
-            <div class="client-logo-item" style="flex: 1; display: flex; justify-content: center; min-width: 150px;">
-                <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
-                    <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom" style="height: 45px; width: auto; display: block; object-fit: contain;">
-                </a>
-            </div>
-            <div class="client-logo-item" style="flex: 1; display: flex; justify-content: center; min-width: 150px;">
-                <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
-                    <img src="assets/img/partners/durachem-logo.png" alt="Durachem" style="height: 45px; width: auto; display: block; object-fit: contain;">
-                </a>
-            </div>
-            <div class="client-logo-item" style="flex: 1; display: flex; justify-content: center; min-width: 150px;">
-                <a href="https://www.belzona.com/" target="_blank" rel="noopener">
-                    <img src="assets/img/partners/belzona-logo.png" alt="Belzona" style="height: 45px; width: auto; display: block; object-fit: contain;">
-                </a>
-            </div>
-            <div class="client-logo-item" style="flex: 1; display: flex; justify-content: center; min-width: 150px;">
-                <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
-                    <img src="assets/img/partners/loctite-logo.png" alt="Loctite" style="height: 45px; width: auto; display: block; object-fit: contain;">
-                </a>
-            </div>
-            <!-- Duplicates for Mobile Marquee (Hidden on Desktop via CSS) -->
-            <div class="client-logo-item mobile-only-logo" style="flex: 1; justify-content: center; min-width: 150px;">
-                <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom" style="height: 45px; width: auto; display: block; object-fit: contain;">
-            </div>
-            <div class="client-logo-item mobile-only-logo" style="flex: 1; justify-content: center; min-width: 150px;">
-                <img src="assets/img/partners/durachem-logo.png" alt="Durachem" style="height: 45px; width: auto; display: block; object-fit: contain;">
-            </div>
-            <div class="client-logo-item mobile-only-logo" style="flex: 1; justify-content: center; min-width: 150px;">
-                <img src="assets/img/partners/belzona-logo.png" alt="Belzona" style="height: 45px; width: auto; display: block; object-fit: contain;">
-            </div>
-            <div class="client-logo-item mobile-only-logo" style="flex: 1; justify-content: center; min-width: 150px;">
-                <img src="assets/img/partners/loctite-logo.png" alt="Loctite" style="height: 45px; width: auto; display: block; object-fit: contain;">
+        <div class="marquee-content">
+            <div class="marquee-track">
+                <!-- Original Set -->
+                <div class="client-logo-item">
+                    <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
+                    </a>
+                </div>
+                <div class="client-logo-item">
+                    <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                    </a>
+                </div>
+                <div class="client-logo-item">
+                    <a href="https://www.belzona.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                    </a>
+                </div>
+                <div class="client-logo-item">
+                    <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                    </a>
+                </div>
+                <!-- Duplicate Set for Infinite Loop -->
+                <div class="client-logo-item">
+                    <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
+                    </a>
+                </div>
+                <div class="client-logo-item">
+                    <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                    </a>
+                </div>
+                <div class="client-logo-item">
+                    <a href="https://www.belzona.com/" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                    </a>
+                </div>
+                <div class="client-logo-item">
+                    <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
+                        <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .client-marquee-section {
+        background: #fff;
+        padding: 60px 0;
+        border-bottom: 1px solid #f1f5f9;
+        overflow: hidden;
+    }
+    .marquee-title {
+        text-align: center;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 0.7rem;
+        margin-bottom: 3.5rem;
+        font-family: 'Aeonik', sans-serif;
+    }
+    .marquee-content {
+        width: 100%;
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+    .marquee-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        gap: 8rem;
+        animation: marqueeScroll 30s linear infinite;
+    }
+    .client-logo-item {
+        flex-shrink: 0;
+    }
+    .client-logo-item img {
+        height: 50px;
+        width: auto;
+        filter: grayscale(1);
+        opacity: 0.6;
+        transition: 0.4s ease;
+        display: block;
+        object-fit: contain;
+    }
+    .client-logo-item img:hover {
+        filter: grayscale(0);
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    @keyframes marqueeScroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(calc(-50% - 4rem)); }
+    }
+
+    @media (max-width: 768px) {
+        .marquee-track { gap: 4rem; animation-duration: 20s; }
+        .client-logo-item img { height: 40px; }
+        .marquee-title { margin-bottom: 2.5rem; }
+    }
+</style>
 
 <style>
     .mobile-only-logo { display: none; }
