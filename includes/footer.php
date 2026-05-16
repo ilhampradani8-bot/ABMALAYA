@@ -60,18 +60,18 @@
     <!-- Unified Floating Support Capsule -->
     <div class="floating-capsule-wrap" style="position: fixed; bottom: 50px; right: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end;">
         <!-- WA Options (Appears above the capsule) -->
-        <div id="wa-options" style="display: none; flex-direction: column; gap: 10px; margin-bottom: 15px; transform: translateY(20px); opacity: 0; transition: all 0.3s ease;">
-            <a href="https://wa.me/60172240091" target="_blank" style="background: #25d366; color: #fff; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); display: flex; align-items: center; gap: 10px;">
-                <i class="fab fa-whatsapp"></i> Sales Support
+        <div id="wa-options" style="display: none; flex-direction: column; gap: 10px; margin-bottom: 15px; transform: translateY(20px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+            <a href="https://wa.me/60172240091" target="_blank" style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #0f172a; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.5); display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                <i class="fab fa-whatsapp" style="color: #25d366; font-size: 1.2rem;"></i> Sales Support
             </a>
-            <a href="https://wa.me/601113777282" target="_blank" style="background: #25d366; color: #fff; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); display: flex; align-items: center; gap: 10px;">
-                <i class="fab fa-whatsapp"></i> Tech Inquiry
+            <a href="https://wa.me/601113777282" target="_blank" style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #0f172a; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.5); display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                <i class="fab fa-whatsapp" style="color: #25d366; font-size: 1.2rem;"></i> Tech Inquiry
             </a>
         </div>
 
         <!-- The Capsule -->
-        <div style="background: var(--secondary); display: flex; align-items: center; border-radius: 50px; padding: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);">
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="width: 50px; height: 50px; border-radius: 50%; background: transparent; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(255,255,255,0.1);">
+        <div style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); display: flex; align-items: center; border-radius: 50px; padding: 5px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.5);">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="width: 50px; height: 50px; border-radius: 50%; background: transparent; border: none; color: #0f172a; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(0,0,0,0.05);">
                 <i class="fas fa-chevron-up"></i>
             </button>
             <button onclick="toggleWAMenu()" style="width: 50px; height: 50px; border-radius: 50%; background: transparent; border: none; color: #25d366; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">

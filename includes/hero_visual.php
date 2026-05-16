@@ -358,13 +358,17 @@
 
     function init() {
         dots = [];
-        for (let x = 0; x < canvas.width; x += spacing) {
-            for (let y = 0; y < canvas.height; y += spacing) {
+        const isMobile = window.innerWidth <= 768;
+        const dotSize = isMobile ? 1.2 : 2.2; // Smaller dots on mobile
+        const currentSpacing = isMobile ? 32 : spacing; // Slightly tighter spacing on mobile
+
+        for (let x = 0; x < canvas.width; x += currentSpacing) {
+            for (let y = 0; y < canvas.height; y += currentSpacing) {
                 dots.push({
                     x: x, y: y,
                     targetX: x, targetY: y,
                     baseX: x, baseY: y,
-                    size: 2.2, 
+                    size: dotSize, 
                     color: 'rgba(0, 94, 233, 0.25)'
                 });
             }
