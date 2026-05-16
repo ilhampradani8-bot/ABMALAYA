@@ -340,7 +340,7 @@
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let dots = [];
-    const spacing = 38; 
+    const spacing = 45; // Increased spacing to reduce dot count
     let mouse = { x: -1000, y: -1000, radius: 220 };
 
     window.addEventListener('mousemove', (e) => {
@@ -359,8 +359,8 @@
     function init() {
         dots = [];
         const isMobile = window.innerWidth <= 768;
-        const dotSize = isMobile ? 1.2 : 2.2; // Smaller dots on mobile
-        const currentSpacing = isMobile ? 32 : spacing; // Slightly tighter spacing on mobile
+        const dotSize = isMobile ? 1.0 : 1.8; // Slightly smaller dots
+        const currentSpacing = isMobile ? 40 : spacing; 
 
         for (let x = 0; x < canvas.width; x += currentSpacing) {
             for (let y = 0; y < canvas.height; y += currentSpacing) {
@@ -369,7 +369,7 @@
                     targetX: x, targetY: y,
                     baseX: x, baseY: y,
                     size: dotSize, 
-                    color: 'rgba(0, 94, 233, 0.25)'
+                    color: 'rgba(0, 94, 233, 0.22)'
                 });
             }
         }
@@ -381,19 +381,17 @@
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        const moveX = (mouse.x - window.innerWidth / 2);
-        const moveY = (mouse.y - window.innerHeight / 2);
         const scrollY = window.scrollY;
         
+        // Skip machinery parallax on mobile to save power if needed, but let's keep for now
         imageWraps.forEach((wrap, index) => {
-            // Scroll Parallax only (Tilt handled by VanillaTilt)
             const scrollSpeed = 0.2 + (index * 0.1);
             wrap.style.marginTop = `${scrollY * scrollSpeed}px`;
         });
 
         // Initialize Tilt for Machinery
         if (typeof VanillaTilt !== 'undefined' && !window.tiltInitialized) {
-            window.tiltInitialized = true; // Prevent double init
+            window.tiltInitialized = true;
             VanillaTilt.init(document.querySelectorAll(".img-wrap"), {
                 max: 10,
                 speed: 500,
@@ -402,14 +400,14 @@
                 "max-glare": 0.15,
                 scale: 1.04,
                 gyroscope: true,
-                "full-page-listening": true // Ensure it picks up movement even if kursor over canvas
+                "full-page-listening": true
             });
         }
 
         for (let i = 0; i < dots.length; i++) {
             let dot = dots[i];
             let dx = mouse.x - dot.baseX;
-            let dy = (mouse.y + scrollY) - dot.baseY; // Adjust for scroll in interaction
+            let dy = (mouse.y + scrollY) - dot.baseY;
             let distance = Math.sqrt(dx * dx + dy * dy);
             
             if (distance < mouse.radius) {
@@ -418,20 +416,19 @@
                 let moveY = (dy / distance) * force * 35;
                 dot.targetX = dot.baseX - moveX;
                 dot.targetY = dot.baseY - moveY;
-                dot.color = `rgba(0, 94, 233, ${0.3 + force * 0.4})`;
+                dot.color = `rgba(0, 94, 233, ${0.25 + force * 0.4})`;
             } else {
                 dot.targetX = dot.baseX;
                 dot.targetY = dot.baseY;
-                dot.color = 'rgba(0, 94, 233, 0.22)';
+                dot.color = 'rgba(0, 94, 233, 0.18)';
             }
 
             dot.x += (dot.targetX - dot.x) * easing;
             dot.y += (dot.targetY - dot.y) * easing;
 
+            // PERFORMANCE FIX: Use fillRect instead of arc for large dot arrays
             ctx.fillStyle = dot.color;
-            ctx.beginPath();
-            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillRect(dot.x - dot.size/2, dot.y - dot.size/2, dot.size, dot.size);
         }
         requestAnimationFrame(animate);
     }
