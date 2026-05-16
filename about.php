@@ -252,7 +252,7 @@ include 'includes/header.php';
     <div class="container-fluid px-lg-5">
         <div class="vm-parallax-grid">
             <!-- Vision Card -->
-            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcool.png">
+            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcool.png?v=1.6">
                 <div class="vm-parallax-card neumorphic-card">
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
@@ -264,7 +264,7 @@ include 'includes/header.php';
             </div>
 
             <!-- Mission Card -->
-            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcoolnew.png">
+            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcoolnew.png?v=1.6">
                 <div class="vm-parallax-card neumorphic-card">
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
