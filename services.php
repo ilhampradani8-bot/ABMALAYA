@@ -217,8 +217,8 @@ include 'includes/header.php';
 </style>
 
 <?php 
-$heroTitle = "Bespoke &";
-$heroSubtitle = "Premium Solutions";
+$heroTitle = "Bespoke & <br><span style='color: #005ee9;'>Premium Solutions</span>";
+$heroSubtitle = ""; 
 $heroDesc = "Explore our comprehensive industrial and maritime service portfolio. <br>Excellence delivered across every division.";
 $showButtons = false;
 include 'includes/hero_visual.php';

@@ -28,14 +28,14 @@ include 'includes/header.php';
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
             
-            <text fill="#fff" x="50%" y="300" text-anchor="middle" class="parallax-text-main">ABOUT US</text>
-            <text fill="#fff" x="50%" y="380" text-anchor="middle" class="parallax-text-sub-desc">Pioneering the industrial evolution with technical excellence and innovative solutions.</text>
-            <polyline class="arrow" fill="#fff" points="599,450 599,489 590,479 590,482 600,492 610,482 610,479 601,489 601,450" />
+            <text fill="#fff" x="50%" y="250" text-anchor="middle" class="parallax-text-main">ABOUT US</text>
+            <text fill="#fff" x="50%" y="320" text-anchor="middle" class="parallax-text-sub-desc">ABMALAYA INOVATION</text>
+            <polyline class="arrow" fill="#fff" points="599,400 599,439 590,429 590,432 600,442 610,432 610,429 601,439 601,400" />
             
             <g mask="url(#m)">
                 <rect fill="#fff" width="100%" height="100%" />      
-                <text x="50%" y="300" text-anchor="middle" fill="#005EE9" class="parallax-text-main">ABOUT US</text>
-                <text x="50%" y="380" text-anchor="middle" fill="#005EE9" class="parallax-text-sub-desc">Pioneering the industrial evolution with technical excellence and innovative solutions.</text>
+                <text x="50%" y="250" text-anchor="middle" fill="#0f172a" class="parallax-text-main">STRATING FROM</text>
+                <text x="50%" y="320" text-anchor="middle" fill="#0f172a" class="parallax-text-sub-desc">Pioneering the industrial evolution with technical excellence and innovative solutions.</text>
             </g>
             
             <rect id="arrow-btn" width="100" height="100" opacity="0" x="550" y="420" style="cursor:pointer"/>
@@ -44,24 +44,32 @@ include 'includes/header.php';
 </div>
 
 <!-- Our Story Section - Clean White Redesign -->
-<section class="our-story clean-white parallax-section" data-speed="0.05">
+<section class="our-story clean-white parallax-section" id="story-section">
     <div class="container">
         <div class="story-grid-minimal">
             <!-- Left Side: Detail Content -->
             <div class="story-detail-left">
-                <span class="tagline">About Us</span>
-                <h2 class="story-title-main">Pioneering Technical <br><span class="text-primary-blue">Excellence</span></h2>
-                <div class="story-description-content">
-                    <p>The idea to form AB MALAYA Sdn Bhd began when a group of industrial experts from various fields assembled to discuss the current market pressures evolving towards a modern revolution. For years, many national and global entities from large corporations have sought the best ways to receive optimal services while optimizing their financial health.</p>
-                    <p>AB Malaya Sdn Bhd focuses its main attention on providing first-class services to realize these agendas. Without neglecting the quality of its services, AB MALAYA is the best choice for businesses looking for high-quality services at affordable prices.</p>
-                    <p>AB Malaya Sdn Bhd is a dynamic company specializing in Marine Industrial Services, Cross-Border Logistics, and Environmental Solutions.</p>
+                <span class="tagline">Our Roots</span>
+                <h2 class="story-title-main">Pioneering Technical Excellence</h2>
+                <div class="story-text-container">
+                    <div class="story-description-content collapsed" id="story-text">
+                        <p>The idea to form AB MALAYA Sdn Bhd began when a group of industrial experts from various fields assembled to discuss the current market pressures evolving towards a modern revolution. For years, many national and global entities from large corporations have sought the best ways to receive optimal services while optimizing their financial health.</p>
+                        <div class="hidden-content" id="extra-story-content">
+                            <p>AB Malaya Sdn Bhd focuses its main attention on providing first-class services to realize these agendas. Without neglecting the quality of its services, AB MALAYA is the best choice for businesses looking for high-quality services at affordable prices.</p>
+                            <p>AB Malaya Sdn Bhd is a dynamic company specializing in Marine Industrial Services, Cross-Border Logistics, and Environmental Solutions.</p>
+                        </div>
+                    </div>
+                    <button class="more-toggle-btn" id="story-toggle" onclick="toggleStoryText()">
+                        <span class="btn-label">READ MORE</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- Right Side: Brand Visuals -->
             <div class="story-visual-right">
                 <div class="brand-showcase">
-                    <img src="/assets/img/logo-abmalaya.png" alt="AB MALAYA Logo" class="showcase-logo">
+                    <img src="/assets/img/logo-abmalaya.png" alt="AB MALAYA Logo" class="showcase-logo-faded">
                     <div class="journey-badge-minimal">
                         <span class="badge-subtitle">Our Journey Excellence</span>
                         <div class="badge-main-content">
@@ -79,30 +87,32 @@ include 'includes/header.php';
     /* Clean White Story Section Styles */
     .our-story.clean-white {
         background: #ffffff;
-        padding: 120px 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 100px 0;
         color: #0f172a;
     }
 
     .story-grid-minimal {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8rem;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 6rem;
         align-items: center;
-    }
-
-    .story-detail-left {
-        max-width: 100%;
+        width: 100%;
     }
 
     .story-title-main {
-        font-size: 3.5rem;
-        line-height: 1.1;
+        font-size: 4rem;
+        line-height: 1;
         margin-bottom: 2.5rem;
         font-weight: 800;
+        letter-spacing: -2px;
     }
 
-    .text-primary-blue {
-        color: var(--primary);
+    .story-text-container {
+        position: relative;
+        max-width: 600px;
     }
 
     .story-description-content p {
@@ -112,38 +122,75 @@ include 'includes/header.php';
         margin-bottom: 1.5rem;
     }
 
-    .story-visual-right {
+    .hidden-content {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .story-description-content.expanded .hidden-content {
+        max-height: 1000px;
+        opacity: 1;
+        margin-top: 1rem;
+    }
+
+    .more-toggle-btn {
+        background: none;
+        border: none;
+        padding: 0;
         display: flex;
-        justify-content: center;
         align-items: center;
-        position: relative;
+        gap: 1rem;
+        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: 0.3s;
     }
 
-    .brand-showcase {
-        position: relative;
-        text-align: center;
+    .more-toggle-btn:hover {
+        opacity: 0.7;
+        gap: 1.5rem;
+    }
+
+    .more-toggle-btn i {
+        font-size: 0.7rem;
+        transition: 0.5s;
+    }
+
+    .story-description-content.expanded + .more-toggle-btn i {
+        transform: rotate(45deg);
+    }
+
+    .showcase-logo-faded {
         width: 100%;
+        max-width: 300px;
+        opacity: 0.05;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        pointer-events: none;
     }
 
-    .showcase-logo {
-        width: 80%;
-        max-width: 400px;
-        margin: 0 auto;
-        opacity: 0.9;
-    }
-
-    .journey-badge-minimal {
-        margin-top: 3rem;
-        display: inline-block;
-        text-align: center;
+    .badge-number {
+        font-size: 8rem;
+        font-weight: 900;
+        line-height: 1;
+        color: #0f172a;
+        letter-spacing: -5px;
     }
 
     .badge-subtitle {
         display: block;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 0.85rem;
+        letter-spacing: 3px;
+        font-size: 0.75rem;
         color: var(--primary);
         margin-bottom: 0.5rem;
     }
@@ -191,35 +238,36 @@ include 'includes/header.php';
     }
 </style>
 
-<!-- Vision & Mission - Refined Glassmorphism -->
-<!-- Vision & Mission - Metalmorphism Aesthetic -->
-<section class="vision-mission-section metal-theme parallax-section" data-speed="0.1">
-    <div class="container">
-        <div class="vision-mission-grid-tight">
+<!-- Vision & Mission - Neumorphic 3D Parallax -->
+<section class="vision-mission-section neumorphic-theme parallax-section" id="vision-mission">
+    <div class="container-fluid px-lg-5">
+        <div class="vm-parallax-grid">
             <!-- Vision Card -->
-            <div class="vm-card-metal vision-metal">
-                <div class="metal-surface"></div>
-                <div class="metal-reflection"></div>
-                <div class="vm-content-relative">
-                    <div class="vm-icon-metal"><i class="fas fa-eye"></i></div>
-                    <h3>Our Vision</h3>
-                    <p>To be the leading innovative provider of marine, logistics, and environmental solutions in the region, focusing on quality, safety, and sustainability.</p>
+            <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?auto=format&fit=crop&q=80&w=1200">
+                <div class="vm-parallax-card neumorphic-card">
+                    <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
+                    <div class="vm-parallax-info neumorphic-info">
+                        <span class="vm-num-top neumorphic-num">01</span>
+                        <h3>Visi Kami</h3>
+                        <p>Menjadi penyedia solusi kelautan, logistik, dan lingkungan yang inovatif dan terkemuka di kawasan ini, dengan fokus pada kualitas, keselamatan, dan keberlanjutan—sekaligus menjadi sumber daya paling andal.</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Mission Card -->
-            <div class="vm-card-metal mission-metal">
-                <div class="metal-surface surface-dark"></div>
-                <div class="metal-reflection reflection-slow"></div>
-                <div class="vm-content-relative">
-                    <div class="vm-icon-metal icon-accent-chrome"><i class="fas fa-bullseye"></i></div>
-                    <h3>Our Mission</h3>
-                    <ul class="mission-list-metal">
-                        <li><i class="fas fa-shield-check"></i> Top-tier expert solutions.</li>
-                        <li><i class="fas fa-shield-check"></i> Integrity & responsibility.</li>
-                        <li><i class="fas fa-shield-check"></i> Long-term partnerships.</li>
-                        <li><i class="fas fa-shield-check"></i> Safety & quality excellence.</li>
-                    </ul>
+            <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200">
+                <div class="vm-parallax-card neumorphic-card">
+                    <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
+                    <div class="vm-parallax-info neumorphic-info">
+                        <span class="vm-num-top neumorphic-num">02</span>
+                        <h3>Misi Kami</h3>
+                        <div class="mission-compact-list">
+                            <p>1. Layanan terbaik & solusi ahli.</p>
+                            <p>2. Integritas & tanggung jawab lingkungan.</p>
+                            <p>3. Kemitraan jangka panjang.</p>
+                            <p>4. Kualitas, efektivitas, dan keamanan.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,135 +275,120 @@ include 'includes/header.php';
 </section>
 
 <style>
-    /* Metalmorphism Styles */
-    .vision-mission-section.metal-theme {
-        background: #0a0c10;
-        padding: 150px 0;
-        position: relative;
+    /* Neumorphic Industrial Styles */
+    .vision-mission-section.neumorphic-theme {
+        background: #e0e9f0; /* Soft Light Blue */
+        padding: 120px 0;
+        overflow: hidden;
     }
 
-    .vision-mission-grid-tight {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        max-width: 1100px;
+    .vm-parallax-grid {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        max-width: 1200px;
         margin: 0 auto;
     }
 
-    .vm-card-metal {
+    .vm-parallax-wrap {
+        flex: 1;
+        height: 520px;
+        perspective: 1500px;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .vm-parallax-card.neumorphic-card {
         position: relative;
-        padding: 4rem;
-        color: white;
-        min-height: 400px;
-        border-radius: 24px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: transform 0.4s ease;
-        z-index: 1;
-    }
-
-    .vm-card-metal:hover {
-        transform: translateY(-10px);
-    }
-
-    .metal-surface {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, 
-            #2c3e50 0%, 
-            #000000 25%, 
-            #2c3e50 50%, 
-            #000000 75%, 
-            #2c3e50 100%
-        );
-        background-size: 400% 400%;
-        z-index: -2;
-        opacity: 0.8;
+        background-color: #e0e9f0;
+        border-radius: 40px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 
+            20px 20px 60px #c1c8cf,
+            -20px -20px 60px #ffffff;
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transform-style: preserve-3d;
     }
 
-    .surface-dark {
-        background: linear-gradient(135deg, 
-            #1a1c20 0%, 
-            #050505 50%, 
-            #1a1c20 100%
-        );
-    }
-
-    .metal-reflection {
+    .neumorphic-bg-overlay {
         position: absolute;
-        top: -100%;
-        left: -100%;
-        width: 300%;
-        height: 300%;
-        background: linear-gradient(45deg, 
-            transparent 0%, 
-            rgba(255, 255, 255, 0.05) 45%, 
-            rgba(255, 255, 255, 0.2) 50%, 
-            rgba(255, 255, 255, 0.05) 55%, 
-            transparent 100%
-        );
-        transform: rotate(-45deg);
-        z-index: -1;
-        animation: metalShine 6s linear infinite;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.05;
+        filter: grayscale(1) contrast(1.2);
+        transition: 0.8s ease;
+        pointer-events: none;
     }
 
-    .reflection-slow {
-        animation-duration: 8s;
-        animation-delay: -2s;
-    }
-
-    @keyframes metalShine {
-        0% { transform: translateX(-30%) rotate(-45deg); }
-        100% { transform: translateX(30%) rotate(-45deg); }
-    }
-
-    .vm-icon-metal {
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        background: linear-gradient(to bottom, #ffffff, #94a3b8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-    }
-
-    .icon-accent-chrome {
-        background: linear-gradient(to bottom, #005EE9, #1191CC);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .vm-card-metal h3 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        font-weight: 900;
-        letter-spacing: -1px;
-        color: #f8fafc;
-    }
-
-    .vm-card-metal p {
-        font-size: 1.15rem;
-        line-height: 1.8;
-        color: #94a3b8;
-    }
-
-    .mission-list-metal {
-        list-style: none;
-        padding: 0;
-    }
-
-    .mission-list-metal li {
+    .neumorphic-info {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        padding: 50px;
         display: flex;
-        gap: 1rem;
-        margin-bottom: 1.2rem;
-        color: #94a3b8;
+        flex-direction: column;
+        justify-content: flex-end;
+        z-index: 2;
     }
 
-    .mission-list-metal li i {
-        color: var(--primary);
-        margin-top: 5px;
+    .neumorphic-num {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 6rem;
+        font-weight: 900;
+        color: rgba(0, 94, 233, 0.1);
+        letter-spacing: -5px;
+    }
+
+    .neumorphic-info h3 {
+        color: #2c3e50;
+        font-size: 2.8rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+        letter-spacing: -2px;
+    }
+
+    .neumorphic-info p {
+        color: #5d6d7e;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .mission-compact-list p {
+        margin-bottom: 5px;
+    }
+
+    /* Hover States */
+    .vm-parallax-wrap:hover .neumorphic-card {
+        box-shadow: 
+            10px 10px 30px #c1c8cf,
+            -10px -10px 30px #ffffff;
+        transform: scale(0.98) translateZ(10px);
+    }
+
+    .vm-parallax-wrap:hover .neumorphic-bg-overlay {
+        opacity: 0.15;
+    }
+
+    .vm-parallax-wrap:hover .neumorphic-info p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 992px) {
+        .vm-parallax-grid { flex-direction: column; padding: 0 20px; gap: 40px; }
+        .vm-parallax-wrap { height: 450px; width: 100%; }
+        .neumorphic-info p { opacity: 1; transform: translateY(0); }
     }
 
     /* Section Parallax */
@@ -364,15 +397,14 @@ include 'includes/header.php';
     }
 
     @media (max-width: 768px) {
-        .vision-mission-section.metal-theme {
+        .vision-mission-section.neumorphic-theme {
             padding: 60px 0;
         }
-        .vm-card-metal {
-            padding: 3rem 2rem;
-            min-height: auto;
+        .vm-parallax-wrap {
+            height: 350px;
         }
-        .vm-card-metal h3 {
-            font-size: 2rem;
+        .vm-parallax-info h3 {
+            font-size: 1.8rem;
         }
         .core-values {
             padding: 60px 0;
@@ -398,37 +430,318 @@ include 'includes/header.php';
 </style>
 
 <!-- Core Values Section -->
-<section class="core-values parallax-section" data-speed="0.08">
-    <div class="container">
-        <div class="section-header-centered">
-            <span class="tagline">The AB Way</span>
-            <h2>Our Core <span class="text-gradient">Values</span></h2>
-            <p>The principles that guide every decision and project we undertake.</p>
-        </div>
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
-                <h4>Integrity & Transparency</h4>
-                <p>We believe in honest communication and ethical business practices in every interaction.</p>
+<!-- Core Values - Funky Industrial Accordion -->
+<section class="funky-values-section parallax-section">
+    <div class="container-fluid px-lg-5">
+        <div class="funky-layout">
+            <!-- Left Side: Titles -->
+            <div class="funky-left">
+                <div class="funky-left-inner">
+                    <span class="tagline">The AB Way</span>
+                    <h1 class="funky-title">Principles of <span class="text-primary-blue">Authority</span></h1>
+                    <p class="funky-desc">The foundation of every decision and project we undertake to ensure excellence in every maritime solution.</p>
+                </div>
             </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-hard-hat"></i></div>
-                <h4>Safety First (HSE)</h4>
-                <p>Ensuring the health, safety, and environment protection of our workforce and clients.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-                <h4>Innovative Excellence</h4>
-                <p>Continuously evolving our technical solutions to meet modern industrial challenges.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-users"></i></div>
-                <h4>Collaborative Spirit</h4>
-                <p>Working as a unified team to deliver superior results for our global partners.</p>
+
+            <!-- Right Side: Accordion -->
+            <div class="funky-right">
+                <div class="funky-app">
+                    <div class="funky-app-inner">
+                        <!-- Tab 1: Integrity -->
+                        <input type="radio" id="tab-1" name="value-buttons" checked>
+                        <label for="tab-1">
+                            <div class="funky-tab">
+                                <h2><i class="fas fa-fingerprint"></i> INTEGRITY</h2>
+                                <div class="tab-left">
+                                    <i class="fas fa-shield-halved big-icon"></i>
+                                    <div class="tab-icon-image"><i class="fas fa-shield-halved"></i></div>
+                                </div>
+                                <div class="tab-right">
+                                    <h3>Honesty & Transparency</h3>
+                                    <h4>ETHICAL PRACTICE</h4>
+                                    <p>We believe in honest communication and ethical business practices in every interaction.</p>
+                                    <button class="funky-btn">Learn More</button>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Tab 2: Safety -->
+                        <input type="radio" id="tab-2" name="value-buttons">
+                        <label for="tab-2">
+                            <div class="funky-tab">
+                                <h2><i class="fas fa-hard-hat"></i> SAFETY</h2>
+                                <div class="tab-left">
+                                    <i class="fas fa-helmet-safety big-icon"></i>
+                                    <div class="tab-icon-image"><i class="fas fa-helmet-safety"></i></div>
+                                </div>
+                                <div class="tab-right">
+                                    <h3>Safety First (HSE)</h3>
+                                    <h4>PROTECTION FOCUS</h4>
+                                    <p>Ensuring the health, safety, and environment protection of all stakeholders.</p>
+                                    <button class="funky-btn">Learn More</button>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Tab 3: Innovation -->
+                        <input type="radio" id="tab-3" name="value-buttons">
+                        <label for="tab-3">
+                            <div class="funky-tab">
+                                <h2><i class="fas fa-microchip"></i> INNOVATION</h2>
+                                <div class="tab-left">
+                                    <i class="fas fa-lightbulb big-icon"></i>
+                                    <div class="tab-icon-image"><i class="fas fa-lightbulb"></i></div>
+                                </div>
+                                <div class="tab-right">
+                                    <h3>Technical Excellence</h3>
+                                    <h4>MODERN SOLUTIONS</h4>
+                                    <p>Continuously evolving technical solutions for modern industrial challenges.</p>
+                                    <button class="funky-btn">Learn More</button>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Tab 4: Collaboration -->
+                        <input type="radio" id="tab-4" name="value-buttons">
+                        <label for="tab-4">
+                            <div class="funky-tab">
+                                <h2><i class="fas fa-users"></i> COLLABORATION</h2>
+                                <div class="tab-left">
+                                    <i class="fas fa-handshake big-icon"></i>
+                                    <div class="tab-icon-image"><i class="fas fa-handshake"></i></div>
+                                </div>
+                                <div class="tab-right">
+                                    <h3>Unified Teamwork</h3>
+                                    <h4>GLOBAL PARTNERS</h4>
+                                    <p>Working as a unified team to deliver superior results for global partners.</p>
+                                    <button class="funky-btn">Learn More</button>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .funky-values-section {
+        background: #f8fafc;
+        padding: 100px 0;
+        min-height: 80vh;
+        overflow: hidden;
+    }
+
+    .funky-layout {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .funky-left {
+        width: 45%;
+        padding-right: 50px;
+    }
+
+    .funky-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-top: 15px;
+        letter-spacing: -2px;
+        line-height: 1.1;
+    }
+
+    .funky-desc {
+        font-size: 1.2rem;
+        color: #64748b;
+        margin-top: 25px;
+        line-height: 1.6;
+    }
+
+    .funky-right {
+        width: 60%;
+        position: relative;
+    }
+
+    .funky-app {
+        width: 100%;
+        max-width: 700px;
+        margin-left: auto;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 40px 100px -20px rgba(0,0,0,0.15);
+        background: #fff;
+        /* Intro animation */
+        animation: funky-intro .34s .4s cubic-bezier(1, 1.4, 0.41, 1.01) forwards;
+        transform: translateY(-20px) scale(0) rotateX(10deg);
+        opacity: 0;
+    }
+
+    .funky-app-inner input[type="radio"] {
+        display: none;
+    }
+
+    .funky-tab {
+        width: 100%;
+        height: 90px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.65s cubic-bezier(1, 0, 0.41, 1.01);
+        padding: 20px 40px;
+    }
+
+    .funky-tab h2 {
+        position: absolute;
+        right: 40px;
+        top: 35px;
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+        margin: 0;
+        z-index: 5;
+        letter-spacing: 1px;
+    }
+
+    .funky-tab h2 i {
+        margin-right: 12px;
+        opacity: 0.5;
+    }
+
+    /* Accordion Logic Fixes */
+    input[type="radio"]:checked + label .funky-tab {
+        height: 260px; /* Ample room for content */
+    }
+
+    input[type="radio"]:checked + label .funky-tab h2 {
+        top: 15px; /* Move header out of the way */
+        opacity: 0.1; /* Minimalist background label effect */
+    }
+
+    input[type="radio"]:checked + label .funky-tab .tab-right {
+        top: 75px;
+        opacity: 1;
+        transition: all .3s .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    input[type="radio"]:not(:checked) + label .funky-tab .tab-right {
+        top: 300px;
+        opacity: 0;
+        transition: all .3s .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    /* Colors */
+    label:nth-of-type(1) .funky-tab { background: #005EE9; } /* AB Blue */
+    label:nth-of-type(2) .funky-tab { background: #0f172a; } /* Dark Slate */
+    label:nth-of-type(3) .funky-tab { background: #1e293b; } /* Medium Slate */
+    label:nth-of-type(4) .funky-tab { background: #334155; } /* Light Slate */
+
+    label:hover .funky-tab {
+        filter: brightness(1.1);
+    }
+
+    .tab-right {
+        position: absolute;
+        width: 75%; /* Wider content area */
+        right: 40px;
+        text-align: right;
+        color: #fff;
+    }
+
+    .tab-right h3 { font-size: 1.6rem; font-weight: 800; margin: 0; color: #fff; line-height: 1.1; }
+    .tab-right h4 { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.5); margin: 6px 0; text-transform: uppercase; letter-spacing: 2px; }
+    .tab-right p { font-size: 1rem; line-height: 1.5; color: rgba(255,255,255,0.9); margin: 15px 0; max-width: 450px; margin-left: auto; }
+
+    .funky-btn {
+        background: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        padding: 6px 20px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .funky-btn:hover { background: #fff; color: #005EE9; }
+
+    .tab-left {
+        position: absolute;
+        left: 30px;
+        top: 0;
+        height: 100%;
+        width: 30%;
+    }
+
+    .big-icon {
+        position: absolute;
+        top: 20px;
+        left: 400px;
+        font-size: 180px;
+        opacity: 0.05;
+        color: #fff;
+        transition: all .3s .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    input[type="radio"]:checked + label .big-icon {
+        left: 260px;
+        opacity: 0.1;
+    }
+
+    .tab-icon-image {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 30px;
+        top: 200px;
+    }
+
+    input[type="radio"]:checked + label .tab-icon-image {
+        animation: funky-move-in .55s .05s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+        transition: all .3s .36s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    input[type="radio"]:not(:checked) + label .tab-icon-image {
+        animation: funky-move-out .75s .0s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+        transition: all .3s .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    @keyframes funky-move-in {
+        0% { top: -200px; }
+        100% { top: 60px; }
+    }
+
+    @keyframes funky-move-out {
+        0% { top: 60px; }
+        100% { top: 200px; }
+    }
+
+    @keyframes funky-intro {
+        0% { transform: translateY(-20px) scale(0) rotateX(10deg); opacity: 0; }
+        100% { transform: translateY(0) scale(1) rotateX(0deg); opacity: 1; }
+    }
+
+    @media (max-width: 992px) {
+        .funky-layout { flex-direction: column; text-align: center; }
+        .funky-left { width: 100%; padding-right: 0; margin-bottom: 50px; }
+        .funky-right { width: 100%; }
+        .funky-app { margin: 0 auto; }
+        .tab-right { text-align: center; width: 100%; right: 0; left: 0; padding: 0 30px; }
+        .tab-left { display: none; }
+        .funky-tab h2 { right: 0; width: 100%; text-align: center; }
+        input[type="radio"]:checked + label .funky-tab { height: 260px; }
+    }
+</style>
 
 <!-- High-End CTA Section -->
 
@@ -443,13 +756,13 @@ include 'includes/header.php';
     .parallax-wrapper {
         position: relative;
         width: 100%;
-        background: #111b29;
+        background: #ffffff;
         overflow: hidden;
     }
 
     .scrollDist {
         width: 100%;
-        height: 200vh; /* Control how long the parallax lasts */
+        height: 120vh; /* Reduced to snap faster to content */
     }
 
     .parallax-main {
@@ -459,7 +772,7 @@ include 'includes/header.php';
         width: 100%;
         height: 100vh;
         z-index: 1;
-        background: #111b29;
+        background: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -863,14 +1176,11 @@ include 'includes/header.php';
     }
 </style>
 
-<!-- Add AOS (Animate On Scroll) -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Initialize Parallax
     $(function() {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+        // --- HERO PARALLAX ---
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.parallax-wrapper',
@@ -890,36 +1200,32 @@ include 'includes/header.php';
           .fromTo('.mountMg', {y: -30}, {y: -250}, 0)
           .fromTo('.mountFg', {y: -50}, {y: -600}, 0)
           .to('.parallax-main', {opacity: 0, pointerEvents: 'none', scrollTrigger: {
-              trigger: '.our-story',
+              trigger: '#story-section',
               start: 'top 80%',
               end: 'top 20%',
               scrub: true
           }}, 0);
 
         const arrowBtn = document.querySelector('#arrow-btn');
+        if(arrowBtn) {
+            arrowBtn.addEventListener('mouseenter', () => {
+                gsap.to('.arrow', {y: 10, duration: 0.8, ease: 'back.inOut(3)', overwrite: 'auto'});
+            });
+            arrowBtn.addEventListener('mouseleave', () => {
+                gsap.to('.arrow', {y: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto'});
+            });
+            arrowBtn.addEventListener('click', () => {
+                gsap.to(window, {scrollTo: '#story-section', duration: 1.5, ease: 'power1.inOut'});
+            });
+        }
 
-        arrowBtn.addEventListener('mouseenter', () => {
-            gsap.to('.arrow', {y: 10, duration: 0.8, ease: 'back.inOut(3)', overwrite: 'auto'});
-        });
+        // --- SECTION PARALLAX LOGIC ---
+        gsap.set('.vm-card-metal, .value-card, .story-detail-left', { opacity: 1, y: 0 });
 
-        arrowBtn.addEventListener('mouseleave', () => {
-            gsap.to('.arrow', {y: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto'});
-        });
-
-        arrowBtn.addEventListener('click', () => {
-            gsap.to(window, {scrollTo: '.our-story', duration: 1.5, ease: 'power1.inOut'});
-        });
-
-        // --- ROBUST PARALLAX LOGIC ---
-        
-        // Ensure everything is visible immediately
-        gsap.set('.vm-card-metal, .value-card, .story-detail-left, .story-visual-right', { opacity: 1, y: 0 });
-
-        // Simple but effective parallax shifts
         gsap.to('.story-visual-right', {
             y: 100,
             scrollTrigger: {
-                trigger: '.our-story',
+                trigger: '#story-section',
                 start: "top bottom",
                 end: "bottom top",
                 scrub: true
@@ -955,6 +1261,88 @@ include 'includes/header.php';
                 scrub: true
             }
         });
+
+        // --- ADVANCED 3D PARALLAX CARDS (USER SPEC) ---
+        const parallaxWraps = document.querySelectorAll('.vm-parallax-wrap');
+        
+        parallaxWraps.forEach(wrap => {
+            const card = wrap.querySelector('.vm-parallax-card');
+            const bg = wrap.querySelector('.vm-parallax-bg');
+            const imgUrl = wrap.getAttribute('data-image');
+            
+            // Set background image
+            if(bg) bg.style.backgroundImage = `url(${imgUrl})`;
+            
+            wrap.addEventListener('mousemove', (e) => {
+                const rect = wrap.getBoundingClientRect();
+                const width = rect.width;
+                const height = rect.height;
+                
+                const mouseX = e.clientX - rect.left - width/2;
+                const mouseY = e.clientY - rect.top - height/2;
+                
+                const mousePX = mouseX / width;
+                const mousePY = mouseY / height;
+                
+                // Card Tilt (30deg)
+                const rX = mousePX * 30;
+                const rY = mousePY * -30;
+                
+                // Background Shift (-40px)
+                const tX = mousePX * -40;
+                const tY = mousePY * -40;
+                
+                gsap.to(card, {
+                    rotateY: rX,
+                    rotateX: rY,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(bg, {
+                    x: tX,
+                    y: tY,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+            });
+            
+            wrap.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+                
+                gsap.to(bg, {
+                    x: 0,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // Toggle Story Text Function
+        window.toggleStoryText = function() {
+            const content = document.getElementById('story-text');
+            const btn = document.getElementById('story-toggle');
+            const label = btn.querySelector('.btn-label');
+            
+            content.classList.toggle('expanded');
+            
+            if (content.classList.contains('expanded')) {
+                label.textContent = "SHOW LESS";
+                gsap.to(btn.querySelector('i'), {rotation: 45, duration: 0.3});
+            } else {
+                label.textContent = "READ MORE";
+                gsap.to(btn.querySelector('i'), {rotation: 0, duration: 0.3});
+                gsap.to(window, {scrollTo: {y: "#story-section", offsetY: 0}, duration: 0.8, ease: "power2.inOut"});
+            }
+            
+            setTimeout(() => { ScrollTrigger.refresh(); }, 600);
+        };
     });
 </script>
 

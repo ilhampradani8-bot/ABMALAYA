@@ -19,8 +19,15 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Header-Specific Styles -->
+    <!-- Neumorphic Header Styles -->
     <style>
+        :root {
+            --neu-bg: #e6e9ef;
+            --neu-shadow-dark: #b8bcc2;
+            --neu-shadow-light: #ffffff;
+            --neu-accent: #005ee9; /* AB Malaya Blue */
+        }
+
         header {
             position: fixed;
             top: 25px;
@@ -53,8 +60,6 @@
             flex-shrink: 0;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1001;
-            opacity: 1;
-            transform: translateY(0);
             display: flex;
             align-items: center;
         }
@@ -63,35 +68,34 @@
         .logo-hidden { 
             opacity: 0 !important; 
             visibility: hidden !important; 
-            pointer-events: none; 
             transform: translateY(-120%) !important; 
         }
 
-        /* Desktop Inline Search */
+        /* Neumorphic Search Bar */
         .search-wrapper-desktop {
             display: flex;
             align-items: center;
             background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
             padding: 4px;
             border-radius: 50px;
-            box-shadow: 4px 4px 8px #d1d4d9, -4px -4px 8px #ffffff;
+            box-shadow: 4px 4px 8px var(--neu-shadow-dark), -4px -4px 8px var(--neu-shadow-light);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            width: 42px; /* Circle state */
+            width: 42px;
             height: 42px;
             overflow: hidden;
         }
 
         .search-wrapper-desktop.active {
-            width: 250px; /* Expanded state */
+            width: 250px;
             padding-left: 15px;
+            box-shadow: inset 4px 4px 8px var(--neu-shadow-dark), inset -4px -4px 8px var(--neu-shadow-light);
         }
 
         .search-input-inline {
             width: 0;
             background: transparent;
             border: none;
-            border-bottom: 1.5px solid #005ee9;
             font-family: 'Aeonik', sans-serif;
             font-size: 0.9rem;
             color: #1e293b;
@@ -120,13 +124,74 @@
             flex-shrink: 0;
             transition: color 0.3s ease;
         }
-        .search-btn-inline:hover { color: #005ee9; }
 
-        /* Mobile Glassmorphism Overlay */
+        /* Neumorphic Navigation Capsule (Inset) */
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: #e6e9ef;
+            padding: 0.4rem 0.6rem;
+            border-radius: 50px;
+            box-shadow: inset 4px 4px 8px var(--neu-shadow-dark), inset -4px -4px 8px var(--neu-shadow-light);
+            transition: all 0.4s ease;
+        }
+
+        .nav-links a {
+            font-family: 'Aeonik', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        /* Nav Links Raised when Active or Hover */
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--neu-accent);
+            background: #e6e9ef;
+            box-shadow: 3px 3px 6px var(--neu-shadow-dark), -3px -3px 6px var(--neu-shadow-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.active {
+            font-weight: 700;
+        }
+
+        /* Neumorphic CTA Button (Raised) */
+        .cta-btn {
+            background: linear-gradient(135deg, #005ee9, #004bbd) !important;
+            color: #fff !important;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light);
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.8rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 12px var(--neu-shadow-dark), -6px -6px 12px var(--neu-shadow-light);
+        }
+
+        .cta-btn:active {
+            transform: translateY(1px);
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Mobile White Glassmorphism Overlay */
         .search-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             z-index: 2000;
@@ -139,79 +204,23 @@
 
         .search-overlay.active { display: flex; opacity: 1; }
         .search-box-glass {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(15px);
             padding: 2.5rem;
             border-radius: 30px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.1);
             width: 90%; max-width: 500px; text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             transform: scale(0.9); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .search-overlay.active .search-box-glass { transform: scale(1); }
         .search-box-glass input {
-            width: 100%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1.2rem; border-radius: 15px; font-size: 1.2rem; color: #000;
+            width: 100%; background: #fff; border: none;
+            padding: 1.2rem; border-radius: 15px; font-size: 1.2rem; color: #1e293b;
             outline: none; margin-bottom: 1.5rem; text-align: center; font-family: 'Aeonik', sans-serif;
+            box-shadow: inset 4px 4px 8px #d1d5db, inset -4px -4px 8px #ffffff;
         }
-        .search-close { position: absolute; top: 30px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #000; }
-
-        /* Neuromorphic Desktop Navigation */
-        .nav-links {
-            justify-self: end;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
-            padding: 0.5rem 2rem;
-            border-radius: 50px;
-            box-shadow: 5px 5px 10px #d1d4d9, -5px -5px 10px #ffffff;
-            border: none;
-            transition: all 0.4s ease;
-        }
-
-        .nav-links a {
-            font-family: 'Aeonik', sans-serif;
-            font-weight: 500;
-            font-size: 0.82rem;
-            color: #475569;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 6px 14px;
-            border-radius: 25px;
-            display: inline-block;
-        }
-
-        .nav-links a:hover {
-            color: #005ee9;
-            transform: translateY(-1px);
-        }
-
-        .nav-links a.active {
-            color: #005ee9;
-            background: #eef1f4;
-            box-shadow: inset 3px 3px 6px #c8cbd0, inset -3px -3px 6px #ffffff;
-        }
-
-        .cta-btn {
-            background: linear-gradient(145deg, #005ee9, #0055d2) !important;
-            color: #fff !important;
-            padding: 0.5rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 4px 4px 8px #c1c4c9, -4px -4px 8px #ffffff;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 0.8rem;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 6px 6px 12px #b8bbbf, -6px -6px 12px #ffffff;
-            filter: brightness(1.1);
-        }
+        .search-close { position: absolute; top: 30px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #1e293b; }
 
         /* Mobile Makisu Menu - Hidden by Default on Desktop */
         .mobile-nav-wrapper {
@@ -222,22 +231,23 @@
             display: none;
             cursor: pointer;
             font-size: 1.8rem;
-            color: #005ee9;
+            color: var(--neu-accent);
             z-index: 1100;
         }
 
         .search-btn-mobile {
             display: none;
             background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
-            box-shadow: 4px 4px 8px #d1d4d9, -4px -4px 8px #ffffff;
+            box-shadow: 4px 4px 8px var(--neu-shadow-dark), -4px -4px 8px var(--neu-shadow-light);
             width: 38px;
             height: 38px;
             border-radius: 50%;
             align-items: center;
             justify-content: center;
-            color: #005ee9;
+            color: var(--neu-accent);
             font-size: 1rem;
             cursor: pointer;
+            border: none;
         }
 
         /* Responsive Logic */
