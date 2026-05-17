@@ -252,7 +252,7 @@ include 'includes/header.php';
     <div class="container-fluid px-lg-5">
         <div class="vm-parallax-grid">
             <!-- Vision Card -->
-            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcool.png">
+            <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&q=80&w=1200">
                 <div class="vm-parallax-card neumorphic-card">
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
@@ -264,7 +264,7 @@ include 'includes/header.php';
             </div>
 
             <!-- Mission Card -->
-            <div class="vm-parallax-wrap" data-image="assets/img/head/bgcoolnew.png">
+            <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=1200">
                 <div class="vm-parallax-card neumorphic-card">
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
@@ -289,6 +289,10 @@ include 'includes/header.php';
         background: #e0e9f0; /* Soft Light Blue */
         padding: 120px 0;
         overflow: hidden;
+        box-shadow: 
+            inset 35px 35px 70px #9bb0c4, 
+            inset -35px -35px 70px #ffffff,
+            inset 8px 8px 25px rgba(0, 40, 80, 0.08);
     }
 
     .vm-parallax-grid {
@@ -316,7 +320,7 @@ include 'includes/header.php';
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.4);
         box-shadow: 
-            20px 20px 60px #c1c8cf,
+            20px 20px 60px #b8c4ce,
             -20px -20px 60px #ffffff;
         transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         transform-style: preserve-3d;
@@ -324,8 +328,8 @@ include 'includes/header.php';
 
     .neumorphic-bg-overlay {
         position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
+        top: -10%; left: -10%;
+        width: 120%; height: 120%;
         background-size: cover;
         background-position: center;
         opacity: 0.3; /* Increased for better visibility */
@@ -390,7 +394,7 @@ include 'includes/header.php';
     /* Hover States */
     .vm-parallax-wrap:hover .neumorphic-card {
         box-shadow: 
-            10px 10px 30px #c1c8cf,
+            10px 10px 30px #b8c4ce,
             -10px -10px 30px #ffffff;
         transform: scale(0.98) translateZ(10px);
     }
@@ -1260,13 +1264,22 @@ include 'includes/header.php';
 <script src="assets/js/about.js"></script>
 
 <style>
-    /* Performance Optimizations */
+    /* High-End GPU Hardware Acceleration & Performance Optimizations */
     .story-detail-left, 
     .story-visual-right, 
     .neumorphic-card, 
-    .funky-tab {
+    .vm-parallax-bg,
+    .vm-parallax-wrap,
+    .funky-tab,
+    .funky-app,
+    .parallax-main,
+    .vision-mission-section.neumorphic-theme {
         will-change: transform, opacity;
+        transform: translate3d(0, 0, 0); /* Force GPU Composite Layer creation */
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
     }
 
     .parallax-section {

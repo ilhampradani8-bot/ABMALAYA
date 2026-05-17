@@ -40,7 +40,7 @@ $(function() {
         });
     }
 
-    // --- SECTION PARALLAX LOGIC ---
+    // --- SECTION PARALLAX LOGIC (OPTIMIZED SMOOTH SCRUB) ---
     gsap.set('.neumorphic-card, .funky-tab, .story-detail-left', { opacity: 1, y: 0 });
 
     gsap.to('.story-visual-right', {
@@ -49,7 +49,7 @@ $(function() {
             trigger: '#story-section',
             start: "top bottom",
             end: "bottom top",
-            scrub: true
+            scrub: 1.2
         }
     });
 
@@ -60,7 +60,7 @@ $(function() {
             trigger: '.vision-mission-section',
             start: "top bottom",
             end: "bottom top",
-            scrub: true
+            scrub: 1.2
         }
     });
 
@@ -70,11 +70,11 @@ $(function() {
             trigger: '.funky-values-section',
             start: "top bottom",
             end: "bottom top",
-            scrub: true
+            scrub: 1.2
         }
     });
 
-    // --- ADVANCED 3D PARALLAX CARDS (USER SPEC) ---
+    // --- ADVANCED 3D PARALLAX CARDS (USER SPEC - OPTIMIZED WITH OVERWRITE) ---
     const parallaxWraps = document.querySelectorAll('.vm-parallax-wrap');
     
     parallaxWraps.forEach(wrap => {
@@ -108,14 +108,16 @@ $(function() {
                 rotateY: rX,
                 rotateX: rY,
                 duration: 0.6,
-                ease: "power2.out"
+                ease: "power2.out",
+                overwrite: "auto"
             });
             
             gsap.to(bg, {
                 x: tX,
                 y: tY,
                 duration: 0.6,
-                ease: "power2.out"
+                ease: "power2.out",
+                overwrite: "auto"
             });
         });
         
@@ -124,21 +126,28 @@ $(function() {
                 rotateX: 0,
                 rotateY: 0,
                 duration: 1,
-                ease: "power3.out"
+                ease: "power3.out",
+                overwrite: "auto"
             });
             
             gsap.to(bg, {
                 x: 0,
                 y: 0,
                 duration: 1,
-                ease: "power3.out"
+                ease: "power3.out",
+                overwrite: "auto"
             });
         });
     });
 
-    // --- MOBILE GYRO TILT (USER SPEC) ---
+    // --- MOBILE GYRO TILT (THROTTLED TO PREVENT LAG/STUTTER) ---
+    let lastOrientationUpdate = 0;
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', (e) => {
+            const now = Date.now();
+            if (now - lastOrientationUpdate < 30) return; // Throttle to ~33fps for maximum CPU performance
+            lastOrientationUpdate = now;
+
             // beta: front back (-180 to 180)
             // gamma: left right (-90 to 90)
             let beta = e.beta; 
@@ -159,13 +168,15 @@ $(function() {
                         rotateX: tiltX,
                         rotateY: tiltY,
                         duration: 0.6,
-                        ease: "power2.out"
+                        ease: "power2.out",
+                        overwrite: "auto"
                     });
                     gsap.to(bg, {
                         x: tiltY * -2,
                         y: tiltX * -2,
                         duration: 0.6,
-                        ease: "power2.out"
+                        ease: "power2.out",
+                        overwrite: "auto"
                     });
                 }
             });
