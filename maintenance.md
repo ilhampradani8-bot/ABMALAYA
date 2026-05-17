@@ -1,37 +1,69 @@
-# Maintenance Guide - ABMALAYA Project
+# 🛠 Maintenance & Development Guide - AB Malaya
 
-This guide provides instructions for future maintenance and updates, especially when working with simplified AI models.
-
-## 🛠 Project Architecture
-- **PHP Modularity**: Header and footer are located in `includes/`. Global styles are in `style.css`.
-- **Home Page Assets**: Specific logic for the landing page is externalized to `assets/css/home.css` and `assets/js/main.js`.
-- **Clean URLs**: Managed by `router.php`. Ensure any new `.php` files are added to the navigation links without the extension.
-
-## 🔄 Common Maintenance Tasks
-
-### 1. Updating Service Cards (Home Page)
-Location: `index.php` (around line 75-150)
-- **Adding a Slide**: Copy an existing `<div class="swiper-slide">` block.
-- **Image Aspect Ratio**: Keep images at **4:5 (Portrait)**. If using Unsplash, use `&w=800&h=1000` for consistent loading.
-- **Content**: Ensure the `<div class="desc-row">` structure is maintained for the horizontal arrow-text layout.
-
-### 2. Updating Partner Logos
-Location: `index.php` (Logo Track section) & `assets/img/partners/`
-- **Filename Convention**: Use lowercase with hyphens (e.g., `company-logo.png`).
-- **Logo Style**: Corporate colors are used by default. Grayscale was removed.
-- **Adding Logos**: Add to the `logo-track` div. Remember to **duplicate** the list for the infinite scroll effect to work smoothly.
-
-### 3. Modifying Slider Behavior
-Location: `assets/js/main.js`
-- **Speed**: Adjust `speed` (transition duration) and `delay` (autoplay wait time).
-- **Center Focus**: `centeredSlides: true` is critical. Do not remove it as it ensures the center card is the sharp one.
-
-## 💡 Session Continuation Tips (Low-Cost Models)
-When starting a new session with a smaller/cheaper AI model:
-1.  **Reference these files**: Tell the model to read `README.md`, `ui.md`, and `maintenance.md` first.
-2.  **Specific Edits**: Provide the exact file paths.
-3.  **Visual Guidelines**: Remind the model about the **4:5 ratio** and **Focus Slider** logic to prevent layout breakage.
-4.  **No Inlining**: Strictly instruct the model NOT to add inline `<style>` or `<script>` tags, but to use `home.css` and `main.js`.
+Panduan ini berisi instruksi teknis untuk pemeliharaan, pembaruan konten, dan pengelolaan arsitektur website **AB Malaya Sdn Bhd** di masa mendatang.
 
 ---
-*Maintained for AB Malaya Sdn Bhd*
+
+## 🏛 1. Arsitektur Proyek & Struktur File
+
+Website ini menggunakan **PHP Native Premium** berstruktur modular dengan kecepatan rendering server-side yang sangat tinggi (TTFB mendekati 0ms).
+
+*   **Pemuatan Global (`includes/`)**:
+    *   [header.php](file:///root/ABMALAYA/includes/header.php): Berisi meta SEO, preconnect fonts, pemanggilan stylesheet global, navigasi atas, dan menu Makisu 3D.
+    *   [footer.php](file:///root/ABMALAYA/includes/footer.php): Penutup halaman, informasi kontak, tautan cepat, dan penutup tag global.
+    *   [hero_visual.php](file:///root/ABMALAYA/includes/hero_visual.php): Komponen visual hero halaman utama lengkap dengan kanvas partikel dan paralaks mesin.
+*   **Logika Kustom Halaman (`assets/js/` & `assets/css/`)**:
+    *   `style.css`: Pusat CSS global, definisi font lokal Aeonik, variabel CSS (*custom properties*), dan kerangka layout dasar.
+    *   [navigation.js](file:///root/ABMALAYA/assets/js/navigation.js): Inisialisasi *smooth scrolling* Lenis, jembatan sinkronisasi **Lenis-GSAP Bridge**, dan logika menu Makisu 3D.
+    *   `index.js` / `about.js` / `certified.js` / `contact.js`: JavaScript modular yang hanya dimuat pada masing-masing halaman spesifik demi efisiensi performa.
+
+---
+
+## 🔗 2. Manajemen URL Bersih (Clean URLs)
+
+Situs ini menggunakan routing tanpa ekstensi `.php` yang dikelola secara dinamis oleh:
+*   [router.php](file:///root/ABMALAYA/router.php): Menangkap permintaan URL (seperti `/about`, `/services`, `/certified`, `/projects`, `/contact`) dan memetakannya secara internal ke file `.php` yang sesuai.
+*   **Aturan Pemeliharaan Tautan**:
+    *   Selalu gunakan tautan bersih di HTML/PHP (misalnya `<a href="/services">` bukan `services.php`).
+    *   Jika Anda membuat halaman baru bernama `kemitraan.php`, daftarkan rutenya di `router.php` agar dapat diakses via `/kemitraan`.
+
+---
+
+## 🔄 3. Prosedur Pembaruan Konten Utama
+
+### A. Memperbarui Slider Solusi (*Solutions*) di Beranda
+Slider beranda menggunakan **Embla Carousel UMD** yang sangat mulus dan terakselerasi GPU.
+*   **File HTML**: Bagian `<section id="service">` di [index.php](file:///root/ABMALAYA/index.php).
+*   **Menambah/Mengedit Layanan**:
+    *   Salin blok `<div class="embla__slide">` yang sudah ada di dalam `.embla__container`.
+    *   Pastikan gambar di dalam `.media img` menggunakan rasio portrait **4:5** (misal Unsplash `&w=800&h=1000`) agar rasio pemotongan seragam.
+*   **Logika Slider**: Dikelola di [assets/js/index.js](file:///root/ABMALAYA/assets/js/index.js). Pengaturan durasi geser otomatis (*autoplay*) didefinisikan lewat variabel `autoplayDelay` (bawaan: 5000ms).
+
+### B. Mengelola Dokumen Sertifikat (Certified Page)
+Halaman sertifikasi dilengkapi pengaman dokumen tingkat lanjut untuk mencegah pencurian aset visual perusahaan.
+*   **Lokasi File**: [certified.php](file:///root/ABMALAYA/certified.php) & [assets/js/certified.js](file:///root/ABMALAYA/assets/js/certified.js).
+*   **Pengaman yang Aktif**:
+    *   Anti Klik-Kanan pada gambar modal pratinjau.
+    *   Pencegahan pintasan keyboard cetak dan simpan (`Ctrl+S`, `Ctrl+P`, `Cmd+S`, `Cmd+P`).
+    *   *Watermark* transparan semi-neumorphic di atas gambar dokumen.
+*   **Menambah Sertifikat Baru**:
+    *   Tambahkan item baru di container slide `swiper-wrapper`. Gunakan struktur data-attribute `data-pdf` atau `data-image` untuk memicu modal pratinjau dinamis.
+
+---
+
+## ⚡ 4. Panduan Server & Optimasi Lokal
+
+### Menjalankan Development Server Tanpa Hambatan
+Karena browser sering memuat banyak aset secara bersamaan (CSS, JS, Font `.ttf`, Gambar WebP), jalankan server bawaan PHP lokal dalam mode **multi-threaded** agar tidak mengalami error `net::ERR_INVALID_HTTP_RESPONSE`:
+
+*   **Linux / macOS**:
+    ```bash
+    PHP_CLI_SERVER_WORKERS=4 php -S localhost:8000
+    ```
+*   **Windows (CMD)**:
+    ```cmd
+    set PHP_CLI_SERVER_WORKERS=4 && php -S localhost:8000
+    ```
+
+---
+*Dokumen Pemeliharaan Resmi - Tim Pengembang AB Malaya Sdn Bhd*
