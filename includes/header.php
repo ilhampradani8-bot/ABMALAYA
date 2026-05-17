@@ -318,12 +318,56 @@
         .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
         .lenis.lenis-stopped { overflow: hidden; }
         .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+        /* Premium Top Edge Loading Bar */
+        .top-loader-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #005ee9, #00dbde, #005ee9);
+            background-size: 200% auto;
+            z-index: 1000000;
+            transition: width 0.4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 94, 233, 0.3);
+            animation: loaderShimmer 2s linear infinite;
+        }
+
+        @keyframes loaderShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
     </style>
 
     <!-- jQuery (Required for Makisu) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+    <!-- Premium Top Loading Bar -->
+    <div class="top-loader-bar" id="topLoaderBar"></div>
+    <script>
+        (function() {
+            const bar = document.getElementById('topLoaderBar');
+            if (!bar) return;
+            bar.style.width = '25%';
+            document.addEventListener('readystatechange', () => {
+                if (document.readyState === 'interactive') {
+                    bar.style.width = '70%';
+                }
+            });
+            window.addEventListener('load', () => {
+                bar.style.width = '100%';
+                setTimeout(() => {
+                    bar.style.opacity = '0';
+                    setTimeout(() => {
+                        bar.style.display = 'none';
+                    }, 400);
+                }, 300);
+            });
+        })();
+    </script>
+
     <header>
         <div class="header-container">
             <!-- Logo (Left) -->
