@@ -74,7 +74,25 @@ This document outlines the complete technology stack used in the **AB Malaya Sdn
 
 ---
 
-## 🔒 5. Custom Visual & Security Systems
+## 🔍 5. Advanced Search & Navigation Systems
+
+### 🎤 Spotify-Style Voice Search & Live Match Engine
+*   **Role**: Powers a premium Spotify-emulated search overlay featuring client-side live content filtering (`Live Search`) and speech voice synthesis (`Voice Search`).
+*   **Benefits**:
+    *   **Voice Search Web Speech API**: Allows visitors to perform hands-free searches in Indonesian or English, accompanied by a pulsing red microphone recording animation before auto-submission.
+    *   **Real-Time Data Match**: Seamlessly filters local content dictionaries (`siteContent`) as the user types, instantly rendering interactive card matches directly under the input field without reloading.
+
+### 💎 Staggered Glassmorphic Dropdown Navigation
+*   **Role**: Displays premium glassmorphic dropdown panels (`blur(25px) saturate(190%)`) under top-level desktop menu items.
+*   **Benefits**: Features high-end interactive caret SVG icons (`arrow-svg`) that rotate straight down on hover and sub-links that glide in sequentially with staggered delays.
+
+### 📂 Auto-Expanding Hover Search (Header & Footer)
+*   **Role**: Implements a sleek, space-saving search input box in the header and footer.
+*   **Benefits**: Automatically expands over 0.8s on hover (`mouseenter`) using an elegant `cubic-bezier(0.16, 1, 0.3, 1)` curve and collapses/resets completely when the mouse leaves (`mouseleave`).
+
+---
+
+## 🔒 6. Custom Visual & Security Systems
 
 ### 🌌 Interactive GPU Canvas Particle Engine
 *   **Role**: Manages millions of interactive physics particles in the background of the home page hero section using HTML5 Canvas.

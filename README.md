@@ -118,4 +118,4 @@ To run this project locally without concurrent assets blocking or `net::ERR_INVA
     Open [http://localhost:8000](http://localhost:8000) in your web browser.
 
 ---
-*Built with ultimate precision and modern engineering for AB MALAYA by Antigravity*
+*Built with ultimate precision and modern engineering for AB MALAYA*

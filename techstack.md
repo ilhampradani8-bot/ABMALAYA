@@ -74,7 +74,25 @@ Dokumen ini menjabarkan seluruh spesifikasi tumpukan teknologi (*tech stack*) ya
 
 ---
 
-## 🔒 5. Custom Visual & Security Systems
+## 🔍 5. Advanced Search & Navigation Systems
+
+### 🎤 Spotify-Style Voice Search & Live Match Engine
+*   **Peran**: Menggerakkan overlay pencarian premium dan canggih ala Spotify yang dilengkapi fitur penangkapan suara (*Voice Search*) serta mesin pencarian langsung tanpa reload halaman (*Live Search*).
+*   **Manfaat**:
+    *   **Voice Search Web Speech API**: Memungkinkan pengguna mencari informasi dengan suara secara hands-free. Menampilkan indikator mikrofon merah berpulsasi secara interaktif sebelum auto-submit.
+    *   **Real-Time Data Match**: Menyaring kamus konten data lokal (`siteContent`) saat pengguna mengetik dan menyajikan kartu hasil langsung di bawah kolom input teks secara instan.
+
+### 💎 Staggered Glassmorphic Dropdown Navigation
+*   **Peran**: Menyajikan menu dropdown dengan latar belakang kaca buram (*glassmorphic*) pada tautan navigasi utama di header desktop.
+*   **Manfaat**: Menghasilkan kepuasan navigasi visual terbaik berkat transisi panah indikator SVG (`arrow-svg`) yang berputar halus serta peluncuran staggered sub-menu menggunakan kurva pegas Apple.
+
+### 📂 Auto-Expanding Hover Search (Header & Footer)
+*   **Peran**: Menyediakan kolom pencarian dinamis yang hemat ruang pada header dan footer.
+*   **Manfaat**: Kolom input pencarian melebar lembut otomatis ketika di-hover (`mouseenter`) selama 0,8 detik dan langsung menyusut rapi saat kursor pergi (`mouseleave`), menjaga antarmuka tetap bersih.
+
+---
+
+## 🔒 6. Custom Visual & Security Systems
 
 ### 🌌 Interactive GPU Canvas Particle Engine
 *   **Peran**: Mengelola jutaan partikel interaktif pada latar belakang hero beranda menggunakan kanvas HTML5.
