@@ -121,14 +121,25 @@
             });
 
             const scrollLine = document.getElementById('scrollLine');
-            window.onscroll = function() {
-                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrolled = (winScroll / height) * 100;
-                if (scrollLine) {
-                    scrollLine.style.height = scrolled + "%";
-                }
-            };
+            
+            // Highly optimized scroll indicator (integrated directly with Lenis or using passive listener)
+            if (typeof lenis !== 'undefined') {
+                lenis.on('scroll', (e) => {
+                    const scrolled = (e.scroll / e.limit) * 100;
+                    if (scrollLine) {
+                        scrollLine.style.height = scrolled + "%";
+                    }
+                });
+            } else {
+                window.addEventListener('scroll', () => {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (winScroll / height) * 100;
+                    if (scrollLine) {
+                        scrollLine.style.height = scrolled + "%";
+                    }
+                }, { passive: true });
+            }
 
             const menuCheckbox = document.getElementById('mobile-menu-checkbox');
             const navLinks = document.querySelectorAll('.nav-links a');

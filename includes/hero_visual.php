@@ -48,8 +48,8 @@
             </div>
             <?php if(isset($showButtons) && $showButtons): ?>
             <div class="hero-btns">
-                <a href="services.php" class="hero-link">Our Services <i class="fas fa-arrow-right"></i></a>
-                <a href="contact.php" class="hero-link secondary-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+                <a href="/services" class="hero-link">Our Services <i class="fas fa-arrow-right"></i></a>
+                <a href="/contact" class="hero-link secondary-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
             </div>
             <?php endif; ?>
         </div>
@@ -99,6 +99,7 @@
         width: 100%;
         height: 100%;
         pointer-events: none;
+        will-change: transform;
     }
     
     .img-wrap {
@@ -115,7 +116,7 @@
         pointer-events: auto; /* Enable for Tilt */
         transform-style: preserve-3d;
         perspective: 1800px;
-        will-change: transform, margin-top;
+        will-change: transform;
     }
     .img-wrap img {
         height: 100%; 
@@ -362,6 +363,7 @@
     let dots = [];
     const spacing = 38; // Restored to original density
     let mouse = { x: -1000, y: -1000, radius: 220 };
+    let lastScrollY = -1;
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.x;
@@ -395,19 +397,23 @@
         }
     }
 
-    const imageWraps = document.querySelectorAll('.img-wrap');
+    const sequentialContainer = document.querySelector('.sequential-container');
     const easing = 0.08;
+    let animationFrameId = null;
+    let isHeroVisible = true;
 
     function animate() {
+        if (!isHeroVisible) return;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         const scrollY = window.scrollY;
         
-        // Skip machinery parallax on mobile to save power if needed, but let's keep for now
-        imageWraps.forEach((wrap, index) => {
-            const scrollSpeed = 0.2 + (index * 0.1);
-            wrap.style.marginTop = `${scrollY * scrollSpeed}px`;
-        });
+        // Update machinery parallax using GPU-accelerated transform: translate3d
+        if (scrollY !== lastScrollY && sequentialContainer) {
+            sequentialContainer.style.transform = `translate3d(0, ${scrollY * 0.25}px, 0)`;
+            lastScrollY = scrollY;
+        }
 
         // Initialize Tilt for Machinery
         if (typeof VanillaTilt !== 'undefined' && !window.tiltInitialized) {
@@ -450,9 +456,30 @@
             ctx.fillStyle = dot.color;
             ctx.fillRect(dot.x - dot.size/2, dot.y - dot.size/2, dot.size, dot.size);
         }
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
     }
-    animate();
+
+    // INTERSECTION OBSERVER TO PAUSE ANIMATION WHEN OUT OF VIEW
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isHeroVisible = entry.isIntersecting;
+                if (isHeroVisible) {
+                    if (!animationFrameId) {
+                        animationFrameId = requestAnimationFrame(animate);
+                    }
+                } else {
+                    if (animationFrameId) {
+                        cancelAnimationFrame(animationFrameId);
+                        animationFrameId = null;
+                    }
+                }
+            });
+        }, { threshold: 0 });
+        observer.observe(document.querySelector('.intro-visual'));
+    } else {
+        animate();
+    }
 })();
 </script>
 

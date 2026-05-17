@@ -41,7 +41,7 @@ include 'includes/hero_visual.php';
                 <!-- CIDB Slide -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/cidb.jpg" alt="CIDB G7 License">
+                        <img src="assets/img/cidb.jpg" alt="CIDB G7 License" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">LICENSE NO: CIDB/G7/2024</span>
@@ -54,7 +54,7 @@ include 'includes/hero_visual.php';
                 <!-- SSM Slide -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/ssm.png" alt="SSM Certificate" style="object-fit: contain; padding: 30px; background: #fff;">
+                        <img src="assets/img/ssm.png" alt="SSM Certificate" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">REGISTRATION: AB MALAYA SDN BHD</span>
@@ -69,8 +69,8 @@ include 'includes/hero_visual.php';
     </div>
 </section>
 
-<!-- Why It Matters Section (Glassmorphism) -->
-<section class="excellence-philosophy" style="padding: 100px 0; background: #fff;">
+<!-- Why It Matters Section (Neumorphic Style - No Lag) -->
+<section class="excellence-philosophy" style="padding: 100px 0; background: #e0e9f0;">
     <div class="container">
         <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 300px;">
@@ -89,7 +89,7 @@ include 'includes/hero_visual.php';
                 </div>
             </div>
             <div style="flex: 1; min-width: 300px; position: relative;">
-                <div class="glass-stats-card" style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border-radius: 40px; padding: 4rem; border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
+                <div class="stats-card-neu">
                     <div style="margin-bottom: 3rem;">
                         <span style="font-size: 4rem; font-weight: 800; color: var(--primary); font-family: 'Aeonik', sans-serif;">100%</span>
                         <p style="font-weight: 700; color: #0f172a; margin-top: -10px;">Compliance Rate</p>
@@ -476,10 +476,35 @@ include 'includes/hero_visual.php';
         cursor: zoom-out;
     }
 
+    /* Neumorphic Stats Card (No Lag - GPU Accelerated) */
+    .stats-card-neu {
+        background: #e0e9f0;
+        border-radius: 40px;
+        padding: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 
+            20px 20px 60px #c1c8cf,
+            -20px -20px 60px #ffffff;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+    }
+    
+    .stats-card-neu:hover {
+        transform: translateY(-8px);
+        box-shadow: 
+            10px 10px 30px #c1c8cf,
+            -10px -10px 30px #ffffff;
+    }
+
+    .stats-card-neu > div {
+        will-change: transform, opacity;
+    }
+
     @media (max-width: 768px) {
         .modal-content { padding: 10px; width: 98%; }
         .modal-header h3 { font-size: 1rem; }
         .cert-card-neu { padding: 25px; border-radius: 30px; }
+        .stats-card-neu { padding: 2rem; border-radius: 30px; }
     }
 </style>
 
@@ -492,9 +517,6 @@ include 'includes/hero_visual.php';
         spaceBetween: 30,
         effect: 'fade',
         loop: true,
-        mousewheel: {
-            invert: false,
-        },
         pagination: {
             el: '.blog-slider__pagination',
             clickable: true,
@@ -579,6 +601,6 @@ include 'includes/hero_visual.php';
 </script>
 
 <!-- Page Specific Logic -->
-<script src="/assets/js/certified.js?v=1.1"></script>
+<script src="/assets/js/certified.js?v=1.6"></script>
 
 <?php include 'includes/footer.php'; ?>

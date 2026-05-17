@@ -453,7 +453,7 @@ include 'includes/hero_visual.php';
             <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; text-align: right;">
                 <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-family: 'Aeonik', sans-serif; margin-top: 1rem;">Who We Are</h5>
                 <div style="margin-top: auto; margin-bottom: 1rem;">
-                    <a href="about.php" class="hero-link" style="color: #000; font-size: 0.85rem;">
+                    <a href="/about" class="hero-link" style="color: #000; font-size: 0.85rem;">
                         Learn More About Us <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -482,7 +482,7 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Maritime & Subsea</div>
-                                <a href="services.php#marine" class="card-button">Know More</a>
+                                <a href="/services#marine" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -495,7 +495,7 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Industrial IT</div>
-                                <a href="services.php#cross" class="card-button">Know More</a>
+                                <a href="/services#cross" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -508,7 +508,7 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Green Energy</div>
-                                <a href="services.php#env" class="card-button">Know More</a>
+                                <a href="/services#env" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -521,7 +521,7 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Border Logistics</div>
-                                <a href="services.php#logistics" class="card-button">Know More</a>
+                                <a href="/services#logistics" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -534,7 +534,7 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Bio-Solutions</div>
-                                <a href="services.php#env" class="card-button">Know More</a>
+                                <a href="/services#env" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -547,7 +547,7 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Procurement</div>
-                                <a href="services.php#procurement" class="card-button">Know More</a>
+                                <a href="/services#procurement" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -600,7 +600,7 @@ include 'includes/hero_visual.php';
                         <p style="color: #000; font-size: 1.1rem; font-weight: 500;">sales@abmalaya.com / info@abmalaya.com</p>
                     </div>
                     <div style="margin-top: 1rem;">
-                        <a href="contact.php" class="hero-link" style="color: #000;">
+                        <a href="/contact" class="hero-link" style="color: #000;">
                             View All Contact Details <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -737,7 +737,7 @@ include 'includes/hero_visual.php';
 
             <!-- Right Side -->
             <div style="width: 45%; display: flex; justify-content: flex-end;">
-                <a href="contact.php" class="hero-link" style="color: #fff; font-size: 1.1rem; border-color: rgba(255,255,255,0.3);">
+                <a href="/contact" class="hero-link" style="color: #fff; font-size: 1.1rem; border-color: rgba(255,255,255,0.3);">
                     Contact Our Team Now <i class="fas fa-arrow-right"></i>
                 </a>
             </div>

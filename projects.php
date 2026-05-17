@@ -365,7 +365,7 @@ include 'includes/hero_visual.php';
                         <span class="blog-slider__code">LOCATION: PERAK, MALAYSIA | 2025</span>
                         <div class="blog-slider__title">Mosque Roof Renovation</div>
                         <div class="blog-slider__text">Comprehensive replacement of roofing systems and advanced concrete slab waterproofing for community facilities. A critical infrastructure project delivered with technical precision. <br><strong>Value: RM 360,000.00</strong></div>
-                        <a href="contact.php" class="blog-slider__button">INQUIRE PROJECT</a>
+                        <a href="/contact" class="blog-slider__button">INQUIRE PROJECT</a>
                     </div>
                 </div>
 
@@ -378,7 +378,7 @@ include 'includes/hero_visual.php';
                         <span class="blog-slider__code">LOCATION: PENANG, MALAYSIA | 2025</span>
                         <div class="blog-slider__title">Heavy Machinery Complex</div>
                         <div class="blog-slider__text">Design and construction of a massive industrial maintenance workshop in Batu Kawan. This project showcases our expertise in large-scale industrial infrastructure. <br><strong>Value: RM 570,000.00</strong></div>
-                        <a href="contact.php" class="blog-slider__button">INQUIRE PROJECT</a>
+                        <a href="/contact" class="blog-slider__button">INQUIRE PROJECT</a>
                     </div>
                 </div>
 
@@ -391,7 +391,7 @@ include 'includes/hero_visual.php';
                         <span class="blog-slider__code">LOCATION: SELANGOR, MALAYSIA | 2025</span>
                         <div class="blog-slider__title">12-Passenger Tram System</div>
                         <div class="blog-slider__text">Development and construction of 25 sets of advanced passenger mobility systems for the Ministry of Agriculture. A hallmark of our technical innovation. <br><strong>Value: RM 625,000.00</strong></div>
-                        <a href="contact.php" class="blog-slider__button">INQUIRE PROJECT</a>
+                        <a href="/contact" class="blog-slider__button">INQUIRE PROJECT</a>
                     </div>
                 </div>
 
@@ -400,10 +400,10 @@ include 'includes/hero_visual.php';
         </div>
     </div>
 </section>
-
+ 
 <!-- Swiper.js JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+ 
 <script>
     // Initialize Swiper with custom navigation and slower transition
     var swiper = new Swiper('.blog-slider', {
@@ -411,9 +411,6 @@ include 'includes/hero_visual.php';
         effect: 'fade',
         loop: true,
         speed: 1200,
-        mousewheel: {
-            invert: false,
-        },
         pagination: {
             el: '.blog-slider__pagination',
             clickable: true,
@@ -428,5 +425,5 @@ include 'includes/hero_visual.php';
         }
     });
 </script>
-
+ 
 <?php include 'includes/footer.php'; ?>

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. TILT INTERACTION ---
     if (typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll('.neu-card-raised, .glass-info-card'), {
+        VanillaTilt.init(document.querySelectorAll('.info-card'), {
             max: 5,
             speed: 400,
             glare: true,

@@ -11,9 +11,23 @@ const lenis = new Lenis({
     smoothWheel: true
 });
 
-function raf(time) { 
-    lenis.raf(time); 
-    requestAnimationFrame(raf); 
+// Sync Lenis with GSAP ScrollTrigger if GSAP is available to avoid dual animation loops (causes stutters/lag)
+let gsapTickerActive = false;
+function raf(time) {
+    if (!gsapTickerActive && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsapTickerActive = true;
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+        return;
+    }
+    
+    if (!gsapTickerActive) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
 }
 requestAnimationFrame(raf);
 
