@@ -9,39 +9,105 @@
                     <p style="opacity: 0.7; margin-bottom: 1.5rem;">
                         Trusted Partner in Marine Services, Cross-Border Solutions, and Environmental Excellence.
                     </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/certified">Certified</a></li>
-                        <li><a href="/contact">Tender Inquiry</a></li>
+                    <ul style="display: flex; flex-direction: column; gap: 8px; padding: 0; list-style: none;">
+                        <li>
+                            <a href="/" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/certified" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>
+                                Certified
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                Tender Inquiry
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Services</h4>
-                    <ul>
-                        <li><a href="/services#marine">Marine & Subsea</a></li>
-                        <li><a href="/services#it">Industrial IT</a></li>
-                        <li><a href="/services#consultancy">Consultancy</a></li>
-                        <li><a href="/services#energy">Green Energy</a></li>
+                    <ul style="display: flex; flex-direction: column; gap: 8px; padding: 0; list-style: none;">
+                        <li>
+                            <a href="/services#marine" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M19 12a7 7 0 0 1-14 0"/></svg>
+                                Maritime & Subsea
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services#cross" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                                Cross-Border Logistics
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services#env" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2Z"/><path d="M9.8 6.1C5 11.5 6 15 8 18"/></svg>
+                                Environmental & Waste
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services#corrosion" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                Corrosion Prevention
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services#consultancy" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                Technical Consultancy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services#energy" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                Green Energy Systems
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Contact Us</h4>
-                    <p style="opacity: 0.7; font-size: 0.9rem;">
-                        Wisma Rampai, Jalan 34/26,<br>
-                        Taman Sri Rampai,<br>
-                        53300 Kuala Lumpur.<br>
-                        Email: info@abmalaya.com
-                    </p>
+                    <ul style="display: flex; flex-direction: column; gap: 12px; padding: 0; list-style: none; margin-bottom: 1.5rem;">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem; line-height: 1.45;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Wisma Rampai, Jalan 34/26,<br>Taman Sri Rampai,<br>53300 Kuala Lumpur.</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Dynamic Expanding Glassmorphic Footer Search Bar -->
+                    <div class="search-wrapper-footer" id="search-footer-container">
+                        <form action="search.php" method="GET" style="display: flex; align-items: center; width: 100%; height: 100%;">
+                            <input type="text" name="q" class="search-input-footer" placeholder="Search website..." id="search-footer-input" required autocomplete="off">
+                            <button type="button" class="search-btn-footer" id="search-footer-trigger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -195,6 +261,38 @@
                     if (menuCheckbox) menuCheckbox.checked = false;
                 });
             });
+
+            // Footer Expanding Search Bar Toggle Trigger
+            const searchContainerFooter = $('#search-footer-container');
+            const searchInputFooter = $('#search-footer-input');
+            
+            $('#search-footer-trigger').on('click', function(e) {
+                if (!searchContainerFooter.hasClass('active')) {
+                    searchContainerFooter.addClass('active');
+                    searchInputFooter.focus();
+                } else {
+                    if (searchInputFooter.val().trim() !== "") {
+                        searchContainerFooter.find('form').submit();
+                    }
+                }
+            });
+            
+            // Auto-expand on hover (mouseenter)
+            searchContainerFooter.on('mouseenter', function() {
+                if (!$(this).hasClass('active')) {
+                    $(this).addClass('active');
+                    searchInputFooter.focus();
+                }
+            });
+
+            // Auto-collapse on hover-out (mouseleave) - autohides completely!
+            searchContainerFooter.on('mouseleave', function() {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    searchInputFooter.val(''); // Reset input on leave
+                    searchInputFooter.blur();
+                }
+            });
         });
     </script>
     <style>
@@ -207,34 +305,102 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .social-links a {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            opacity: 0.7;
-        }
-        .social-links a:hover {
-            opacity: 1;
-            color: var(--accent);
+
+        /* Dynamic Expanding Glassmorphic Search Bar in Footer */
+        .search-wrapper-footer {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            width: 42px;
+            height: 42px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            cursor: pointer;
         }
 
-    <style>
-        .fade-in-init {
+        .search-wrapper-footer.active {
+            width: 240px;
+            padding-left: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #005ee9;
+            box-shadow: 0 4px 15px rgba(0, 94, 233, 0.2);
+        }
+
+        .search-input-footer {
+            width: 0;
+            background: transparent;
+            border: none;
+            font-family: 'Aeonik', sans-serif;
+            font-size: 0.85rem;
+            color: #ffffff;
+            outline: none;
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .fade-in-visible {
+
+        .search-wrapper-footer.active .search-input-footer {
+            width: 160px;
             opacity: 1;
-            transform: translateY(0);
+            margin-right: 10px;
         }
-        .social-links a {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            opacity: 0.7;
+
+        .search-btn-footer {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 50%;
+            padding: 0;
         }
-        .social-links a:hover {
-            opacity: 1;
-            color: var(--accent);
+
+        .search-wrapper-footer.active .search-btn-footer {
+            background: #005ee9;
+            box-shadow: 0 4px 12px rgba(0, 94, 233, 0.3);
+        }
+
+        /* Footer Quick Link Buttons - Clean Text Links with SVG */
+        .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.7) !important;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 4px 0;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+        
+        .footer-btn svg {
+            color: rgba(255, 255, 255, 0.4);
+            transition: color 0.3s ease, transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .footer-btn:hover {
+            color: #005ee9 !important;
+            transform: translateX(6px);
+        }
+
+        .footer-btn:hover svg {
+            color: #005ee9;
+            transform: scale(1.15);
         }
 
         /* Liquid Metal Capsule & Support Elements (Animated Metal Shimmer, Static Hover) */

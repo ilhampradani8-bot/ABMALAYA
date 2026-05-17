@@ -80,7 +80,7 @@
             padding: 4px;
             border-radius: 50px;
             box-shadow: 4px 4px 8px var(--neu-shadow-dark), -4px -4px 8px var(--neu-shadow-light);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             width: 42px;
             height: 42px;
@@ -101,7 +101,7 @@
             font-size: 0.9rem;
             color: #1e293b;
             outline: none;
-            transition: width 0.4s ease, opacity 0.3s ease;
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
         }
 
@@ -138,7 +138,64 @@
             transition: all 0.4s ease;
         }
 
-        .nav-links a {
+        /* High-End Glassmorphic Dropdown Navigation */
+        .nav-item-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-item-wrapper > a {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        /* Direct SVG down arrow '>' (Hidden State) */
+        .arrow-svg {
+            width: 10px;
+            height: 10px;
+            stroke: currentColor;
+            stroke-width: 3px;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0;
+            width: 0;
+            max-width: 0;
+            transform: scale(0.5) rotate(-90deg); /* Hidden and rotated sideways */
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        margin-left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-left: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Hover SVG arrow Active State (Rotates to point downwards instantly) */
+        .nav-item-wrapper:hover > a .arrow-svg {
+            opacity: 0.85;
+            width: 10px;
+            max-width: 10px;
+            transform: scale(1) rotate(0deg); /* Rotates pointing straight down */
+            margin-left: 6px;
+        }
+
+        /* Dynamic padding adjustments on hover to balance caret inclusion */
+        .nav-item-wrapper:hover > a.nav-link-item {
+            padding-right: 12px !important;
+            padding-left: 12px !important;
+        }
+        
+        .nav-item-wrapper:hover > a.cta-btn {
+            padding-right: 1.4rem !important;
+            padding-left: 1.4rem !important;
+        }
+
+        .nav-link-item {
             font-family: 'Aeonik', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
@@ -146,23 +203,172 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 8px 16px;
             border-radius: 30px;
             display: inline-block;
             border: 1px solid transparent;
         }
 
-        /* Nav Links Raised when Active or Hover */
-        .nav-links a:hover, .nav-links a.active {
+        /* Hover and active states for top-level menu buttons */
+        .nav-link-item:hover, .nav-link-item.active {
             color: var(--neu-accent);
             background: #e6e9ef;
             box-shadow: 3px 3px 6px var(--neu-shadow-dark), -3px -3px 6px var(--neu-shadow-light);
             transform: translateY(-1px);
         }
 
-        .nav-links a.active {
+        .nav-link-item.active {
             font-weight: 700;
+        }
+
+        /* Glassmorphic Dropdown Container (Classic Bubble Scale/Fade) */
+        .dropdown-panel {
+            position: absolute;
+            top: 130%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px) scale(0.95);
+            background: rgba(230, 233, 239, 0.85); /* Matches neumorphic backdrop color with blur */
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 
+                        inset 1px 1px 1px rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: 0ms; /* Collapse instantly on mouseleave */
+            z-index: 1005;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* Smooth triangular arrow pointer for the dropdown */
+        .dropdown-panel::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent rgba(230, 233, 239, 0.85) transparent;
+            pointer-events: none;
+        }
+
+        /* Hover trigger logic with delay for choreographing chevron first! */
+        .nav-item-wrapper:hover .dropdown-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0) scale(1);
+            transition-delay: 180ms; /* Delay dropdown to let caret SVG appear first! */
+        }
+
+        /* Right-aligned dropdown helper with delay */
+        .dropdown-panel.dropdown-right {
+            left: auto;
+            right: 0;
+            transform: translateY(15px) scale(0.95);
+        }
+        .dropdown-panel.dropdown-right::before {
+            left: auto;
+            right: 25px;
+            transform: none;
+        }
+        .nav-item-wrapper:hover .dropdown-panel.dropdown-right {
+            transform: translateY(0) scale(1);
+            transition-delay: 180ms;
+        }
+
+        /* Individual Dropdown Item (Initial State - Shifted Left) */
+        .dropdown-panel a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #475569 !important; /* Neutral Slate */
+            text-decoration: none !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            white-space: nowrap;
+            border: 1px solid transparent !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            
+            /* Left-to-right sequential entrance hidden state */
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background 0.3s ease, 
+                        color 0.3s ease, 
+                        border-color 0.3s ease !important;
+            transition-delay: 0ms !important; /* Collapse instantly with no delay on mouseleave */
+        }
+
+        /* Hover Reveal State - Slide back to natural position */
+        .nav-item-wrapper:hover .dropdown-panel a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Sequential delays for staggered entrance */
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(1) { transition-delay: 220ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(2) { transition-delay: 260ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(3) { transition-delay: 300ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(4) { transition-delay: 340ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(5) { transition-delay: 380ms !important; }
+
+        /* Hover action on dropdown items - shifting horizontally */
+        .dropdown-panel a:hover {
+            background: rgba(0, 94, 233, 0.08) !important;
+            color: #005ee9 !important;
+            transform: translateX(4px) !important; /* Shift horizontally on hover */
+            border-color: rgba(0, 94, 233, 0.15) !important;
+        }
+
+        /* Intermediate desktop screen responsiveness */
+        @media (min-width: 993px) and (max-width: 1200px) {
+            .nav-links {
+                gap: 2px !important;
+                padding: 0.3rem 0.4rem !important;
+            }
+            .nav-link-item {
+                padding: 6px 12px !important;
+                font-size: 0.7rem !important;
+            }
+            .cta-btn {
+                padding: 0.5rem 1.4rem !important;
+                font-size: 0.75rem !important;
+            }
+            .dropdown-panel {
+                min-width: 190px !important;
+            }
+            .dropdown-panel a {
+                font-size: 0.75rem !important;
+                padding: 8px 12px !important;
+            }
+        }
+
+        /* Icons inside the dropdown list items */
+        .dropdown-panel a i {
+            color: rgba(0, 94, 233, 0.6) !important;
+            font-size: 0.85rem !important;
+            transition: all 0.3s ease !important;
+            width: 16px;
+            text-align: center;
+        }
+
+        .dropdown-panel a:hover i {
+            color: #005ee9 !important;
+            transform: scale(1.15) !important;
         }
 
         /* Neumorphic CTA Button (Raised) */
@@ -176,6 +382,8 @@
             transition: all 0.3s ease;
             border: none;
             font-size: 0.8rem;
+            display: inline-block;
+            text-decoration: none;
         }
 
         .cta-btn:hover {
@@ -451,7 +659,7 @@
             padding: 10px 10px 10px 0;
             
             /* Calculated dynamic maximum height to fit the card bottom edge exactly, leaving zero wasted space */
-            max-height: calc(100vh - 290px); 
+            max-height: calc(100vh - 180px); 
             overflow-y: auto; 
             -webkit-overflow-scrolling: touch;
         }
@@ -723,12 +931,51 @@
             <!-- Desktop Navigation & Search (Right) -->
             <div class="nav-wrapper-desktop">
                 <div class="nav-links">
-                    <a href="/" class="<?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home</a>
-                    <a href="/about" class="<?php echo $currentPage == 'about' ? 'active' : ''; ?>">About</a>
-                    <a href="/services" class="<?php echo $currentPage == 'services' ? 'active' : ''; ?>">Services</a>
-                    <a href="/certified" class="<?php echo $currentPage == 'certified' ? 'active' : ''; ?>">Certified</a>
-                    <a href="/projects" class="<?php echo $currentPage == 'projects' ? 'active' : ''; ?>">Projects</a>
-                    <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact</a>
+                    <div class="nav-item-wrapper">
+                        <a href="/" class="nav-link-item <?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <div class="dropdown-panel">
+                            <a href="/#about"><i class="fas fa-user-friends"></i> Who We Are</a>
+                            <a href="/#service"><i class="fas fa-concierge-bell"></i> Our Services</a>
+                            <a href="/#clients"><i class="fas fa-handshake"></i> Partners</a>
+                            <a href="/#location"><i class="fas fa-map-marker-alt"></i> Headquarters</a>
+                            <a href="/#cta"><i class="fas fa-rocket"></i> Start Project</a>
+                        </div>
+                    </div>
+                    <div class="nav-item-wrapper">
+                        <a href="/about" class="nav-link-item <?php echo $currentPage == 'about' ? 'active' : ''; ?>">About <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <div class="dropdown-panel">
+                            <a href="/about#story-section"><i class="fas fa-book-open"></i> Our Story</a>
+                            <a href="/about#vision-mission"><i class="fas fa-bullseye"></i> Vision & Mission</a>
+                        </div>
+                    </div>
+                    <div class="nav-item-wrapper">
+                        <a href="/services" class="nav-link-item <?php echo $currentPage == 'services' ? 'active' : ''; ?>">Services <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <div class="dropdown-panel">
+                            <a href="/services#marine"><i class="fas fa-ship"></i> Marine & Subsea</a>
+                            <a href="/services#cross"><i class="fas fa-network-wired"></i> Industrial IT</a>
+                            <a href="/services#env"><i class="fas fa-leaf"></i> Environmental</a>
+                        </div>
+                    </div>
+                    <div class="nav-item-wrapper">
+                        <a href="/certified" class="nav-link-item <?php echo $currentPage == 'certified' ? 'active' : ''; ?>">Certified <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <div class="dropdown-panel">
+                            <a href="/certified#showcase"><i class="fas fa-certificate"></i> Certificates</a>
+                            <a href="/certified#philosophy"><i class="fas fa-award"></i> Excellence Philosophy</a>
+                        </div>
+                    </div>
+                    <div class="nav-item-wrapper">
+                        <a href="/projects" class="nav-link-item <?php echo $currentPage == 'projects' ? 'active' : ''; ?>">Projects <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <div class="dropdown-panel dropdown-right">
+                            <a href="/projects#portfolio"><i class="fas fa-project-diagram"></i> Portfolio Showcase</a>
+                        </div>
+                    </div>
+                    <div class="nav-item-wrapper">
+                        <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <div class="dropdown-panel dropdown-right">
+                            <a href="/contact#contact-form"><i class="fas fa-envelope"></i> Get In Touch</a>
+                            <a href="/contact#map"><i class="fas fa-map-marked-alt"></i> Location Map</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Desktop Inline Search -->
@@ -806,6 +1053,6 @@
     </div>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="/assets/js/navigation.js?v=4.6"></script>
+    <script src="/assets/js/navigation.js?v=4.7"></script>
 
     <main>

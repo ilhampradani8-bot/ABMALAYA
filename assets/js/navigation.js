@@ -317,6 +317,24 @@ $(function() {
         }
     });
 
+    // Auto-expand search on hover (mouseenter)
+    searchContainerDesktop.on('mouseenter', function() {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+            searchInputInline.focus();
+        }
+    });
+
+    // Auto-collapse search on mouse leave (mouseleave) - autohides completely!
+    searchContainerDesktop.on('mouseleave', function() {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            searchInputInline.val(''); // Reset input on leave
+            searchInputInline.blur();
+            liveSearchResults.hide(); // Hide live results card
+        }
+    });
+
     // Helper function to render result rows directly below input field
     function renderSearchResults(query) {
         liveSearchResults.empty();

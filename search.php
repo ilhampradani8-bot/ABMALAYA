@@ -114,6 +114,18 @@ include 'includes/hero_visual.php';
             </div>
             
             <style>
+                /* Close the distance between hero and search results */
+                .intro-visual {
+                    height: 60vh !important;
+                    min-height: 450px !important;
+                }
+                .hero-images-layer {
+                    height: 60vh !important;
+                }
+                .intro-content {
+                    padding-top: 100px !important;
+                }
+
                 .search-result-card {
                     text-decoration: none; 
                     display: block; 
@@ -156,27 +168,38 @@ include 'includes/hero_visual.php';
 
                 /* Compact mobile styling matching the pop-up search results list */
                 @media (max-width: 768px) {
+                    .intro-visual {
+                        height: 50vh !important;
+                        min-height: 380px !important;
+                        padding-top: 70px !important;
+                    }
+                    .hero-interactive-area {
+                        min-height: 90px !important;
+                        margin-bottom: 1rem !important;
+                    }
                     .search-results-section {
-                        padding: 20px 0 60px !important;
+                        padding: 10px 0 50px !important;
                     }
                     .search-result-card {
-                        padding: 1rem 0;
+                        padding: 10px 0 !important;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
                     }
                     .search-result-card h3 {
-                        font-size: 1.15rem !important;
-                        margin-bottom: 0.25rem;
+                        font-size: 0.95rem !important;
+                        margin-bottom: 2px !important;
+                        font-weight: 600 !important;
                     }
                     .search-result-card p {
-                        font-size: 0.85rem !important;
-                        line-height: 1.5;
+                        font-size: 0.78rem !important;
+                        line-height: 1.4 !important;
                     }
                     .arrow-circle {
-                        width: 36px;
-                        height: 36px;
-                        margin-left: 1rem;
+                        width: 30px !important;
+                        height: 30px !important;
+                        margin-left: 0.5rem !important;
                     }
                     .arrow-circle i {
-                        font-size: 0.85rem;
+                        font-size: 0.75rem !important;
                     }
                 }
             </style>
