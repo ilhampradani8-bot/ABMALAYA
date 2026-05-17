@@ -51,14 +51,14 @@ This document outlines the complete technology stack used in the **AB Malaya Sdn
 ## 🎠 3. Advanced Carousel Systems
 
 ### 📐 Embla Carousel UMD
-*   **Role**: Controls the responsive, touch-friendly *Solutions* carousel on the home page and the edge-to-edge *Projects* slider on the portfolio page.
+*   **Role**: Controls the responsive, touch-friendly *Solutions* carousel on the home page (*Beranda*).
 *   **Benefits**:
     *   **Physics-Driven Snapping**: Delivers an organic, extremely responsive drag-and-swipe feel on touch screens.
     *   **Zero Jitter**: Uses optimized CSS matrix transforms, ensuring card snapping animations are completely smooth without any stutter.
 
 ### 🎡 Swiper.js
-*   **Role**: Powers the interactive blog-style slider in the certifications section of the *Certified* page.
-*   **Benefits**: Supports robust slide-by-slide transitions with intuitive mobile touch controls and precise horizontal snapping.
+*   **Role**: Powers the interactive blog-style slider in the certifications section of the *Certified* page and the cinematic projects slider on the *Projects* page.
+*   **Benefits**: Supports robust slide-by-slide transitions with intuitive mobile touch controls and precise horizontal snapping. On the projects page, it features custom-tailored desktop centering and a lightweight dynamic mobile hint ("SLIDE >") for clutter-free navigation.
 
 ---
 

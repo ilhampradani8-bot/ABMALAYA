@@ -51,14 +51,14 @@ Dokumen ini menjabarkan seluruh spesifikasi tumpukan teknologi (*tech stack*) ya
 ## 🎠 3. Advanced Carousel Systems
 
 ### 📐 Embla Carousel UMD
-*   **Peran**: Menggerakkan slider *Solutions* di halaman utama dan slider portofolio edge-to-edge di halaman proyek.
+*   **Peran**: Menggerakkan slider *Solutions* di halaman utama (*Beranda*).
 *   **Manfaat**: 
-    *   **Physics-Driven Physics**: Sangat peka terhadap sentuhan jari (*drag/swipe* responsif).
+    *   **Physics-Driven Snapping**: Sangat peka terhadap sentuhan jari (*drag/swipe* responsif).
     *   **Zero Jitter**: Menghilangkan getaran snapping saat kartu berpindah posisi karena menggunakan penghitungan transformasi matriks CSS teroptimasi.
 
 ### 🎡 Swiper.js
-*   **Peran**: Menggerakkan slider sertifikasi interaktif berbentuk blog pada halaman sertifikat (*Certified*).
-*   **Manfaat**: Memungkinkan navigasi *slide-by-slide* yang kokoh dengan efek sentuh mobile yang intuitif dan transisi horizontal yang presisi.
+*   **Peran**: Menggerakkan slider sertifikasi interaktif berbentuk blog pada halaman sertifikat (*Certified*) dan slider portofolio proyek sinematik pada halaman proyek (*Projects*).
+*   **Manfaat**: Memungkinkan navigasi *slide-by-slide* yang kokoh dengan efek sentuh mobile yang intuitif dan transisi horizontal yang presisi. Di halaman proyek, disesuaikan dengan petunjuk visual mobile ("SLIDE >") dan layout modular responsif.
 
 ---
 
