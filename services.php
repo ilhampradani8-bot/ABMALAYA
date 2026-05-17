@@ -252,7 +252,7 @@ html, body {
 }
 
 .swiper-nav-wrapper.prev-wrapper {
-    display: none !important;
+    left: -100px;
 }
 
 .swiper-nav-wrapper.next-wrapper {
@@ -317,10 +317,18 @@ html, body {
 }
 
 @media (max-width: 1200px) {
-    .swiper-nav-wrapper {
-        display: none !important; /* Hide on smaller screens to keep layout super neat */
+    .swiper-nav-wrapper.prev-wrapper {
+        left: -30px; /* Shift closer to avoid going off-screen on laptops */
+    }
+    .swiper-nav-wrapper.next-wrapper {
+        right: -30px; /* Shift closer to avoid going off-screen on laptops */
+    }
+    .swiper-nav-wrapper span {
+        display: none; /* Hide label text on medium viewports to save space */
     }
 }
+
+/* Navigation arrows enabled and custom styled for mobile viewports inside the main media query below */
 
 /* Hide custom navigation arrows when detailed mode is active */
 .services-content-grid.detail-active .swiper-nav-wrapper {
@@ -439,7 +447,7 @@ html, body {
 .card-front-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+    background: rgba(15, 23, 42, 0.68) !important; /* Uniform premium dark overlay */
     z-index: 1;
     pointer-events: none;
     transition: opacity 0.6s ease;
@@ -462,23 +470,25 @@ html, body {
     height: 320px !important;
     flex-shrink: 0;
     border-radius: 25px;
-    transform: translateX(-30px); /* Beautiful overlap offset shifted to the right */
+    transform: translateX(15px); /* Shifted inside the card to the right */
     overflow: visible !important; /* Allow 3D visual to pop out */
     position: relative;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+    z-index: 15; /* Ensure it stays in front of background overlays */
+    background: transparent !important; /* Fully transparent, no background filling */
+    border: none !important; /* Completely removed square border outline */
+    box-shadow: none !important; /* No square box shadow */
 }
 
 .floating-3d {
     position: absolute;
-    left: -20%;
+    left: 5%; /* Shifted right to be fully inside the card boundary */
     top: -20%;
     height: 140%; 
     width: auto;
     object-fit: contain;
     z-index: 20;
     pointer-events: none;
+    filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.95)) !important; /* Single tiny-blur crisp light-blue outline border with ZERO lag */
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.2, 1), opacity 1.2s ease;
 }
 
@@ -494,8 +504,8 @@ html, body {
 
 .card-front-info {
     flex: 1;
-    padding: 0 20px 0 0;
-    margin-left: -30px;
+    padding: 0 40px 0 0; /* Generous padding on the right */
+    margin-left: 50px; /* Shifted to the right for clear separation */
     text-align: left;
     position: relative;
     z-index: 25;
@@ -505,7 +515,7 @@ html, body {
 }
 
 .card-front-info h3 {
-    font-size: 1.8rem;
+    font-size: 2.3rem; /* Enlarged title for high readability and premium look */
     color: #fff;
     font-family: 'Aeonik', sans-serif;
     font-weight: 800;
@@ -516,9 +526,9 @@ html, body {
 }
 
 .card-front-info p {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
+    font-size: 1.15rem; /* Enlarged description for maximum visual impact */
+    color: rgba(255,255,255,0.75); /* Highly legible color */
+    line-height: 1.6;
     margin-bottom: 1.2rem;
     transition: transform 1s cubic-bezier(0.25, 1, 0.2, 1) 0.2s, opacity 1s ease 0.2s;
     will-change: transform, opacity;
@@ -829,66 +839,292 @@ html, body {
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
+    /* 1. Viewport-Relative Mathematical Mobile Scale Overhaul - GUARANTEES ZERO VERTICAL CUT-OFF ON ALL SCREENS */
+    .services-content-grid {
+        position: relative !important;
+        height: 100vh !important; /* Strict lock to phone viewport height ratio */
+        min-height: 100vh !important;
+        overflow: hidden !important; /* Eliminates dynamic layout page scrolling, keeping it premium full-screen */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 2vh 0 !important; /* Scaled vertical padding */
+    }
+
+    .services-content-grid .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        height: 100% !important;
+    }
+
+    /* 1b. Force background layers to adapt perfectly to the dynamic container size instead of fixed constraints */
+    .service-bg-transition-wrap,
+    .services-blur-overlay,
+    .bg-flash {
+        position: absolute !important;
+        height: 100% !important;
+        width: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 0 !important;
+    }
+    
+    .service-bg-slide {
+        background-position: center top !important; /* Keep main background visual centered at the top for excellent mobile scaling */
+        background-size: cover !important;
+    }
+    
+    .services-blur-overlay {
+        z-index: 3 !important;
+    }
+    
+    .bg-flash {
+        z-index: 4 !important;
+    }
+
+    .service-header-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.5vh !important;
+        margin-bottom: 0px !important;
+        width: 100% !important;
+        padding: 0 !important;
+        height: 14vh !important; /* Compacted height ratio safely accommodates wrapped category menu */
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .section-title-left {
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .section-title-left h2 {
+        font-size: 1.5rem !important; /* Comfortably compact title */
+        margin: 0 0 0.5vh 0 !important;
+    }
+
+    /* PREMIUM 2-ROW CAPSULE MENU - WRAPS BEAUTIFULLY, ELIMINATES SIDE CLIPPING, AND NEVER CUTS OFF */
+    .service-nav-list {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Dynamic wrapped 2-row layout */
+        justify-content: center !important; /* Centered capsule items */
+        overflow: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 16px !important;
+        margin: 0 auto !important;
+        gap: 0.4rem 0.5rem !important; /* Compact gap between rows and columns */
+    }
+
+    .service-nav-list::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .service-link-item {
+        flex: 0 1 auto !important; /* Allow capsule auto sizing */
+        padding: 5px 12px !important; /* Comfortable capsule touch targets */
+        background: rgba(255, 255, 255, 0.05) !important; /* Translucent glass capsule */
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 20px !important; /* Rounded pill style */
+        font-size: 0.72rem !important;
+        letter-spacing: 0.5px !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.2, 1) !important;
+        line-height: 1 !important;
+    }
+
+    .service-link-item.active {
+        color: #fff !important;
+        background: #3b82f6 !important; /* Glowing active blue pill style */
+        border-color: #3b82f6 !important;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;
+    }
+
+    .service-link-item::after {
+        display: none !important; /* Fully disabled desktop underline indicator on mobile viewports */
+    }
+
     .service-swiper {
-        margin: 110px auto 20px !important;
-        padding: 25px !important;
-        max-width: 95% !important;
-        width: 95% !important;
-        border-radius: 15px !important;
+        margin: 11vh auto 9vh !important; /* Pushed Swiper down to 11vh top margin to create wide breathing space below category menu */
+        padding: 0 !important;
+        max-width: calc(100% - 32px) !important;
+        width: calc(100% - 32px) !important;
+        border-radius: 24px !important;
+        height: 50vh !important; /* PERFECT VERTICAL ORIENTATION (TALL TACTILE PORTRAIT CARD) */
         min-height: auto !important;
+        overflow: visible !important;
+        transition: height 0.4s cubic-bezier(0.25, 1, 0.2, 1) !important; /* Smooth morphing transition when extending card height */
+    }
+
+    #service-section-wrap.detail-active .service-swiper {
+        height: 56vh !important; /* DYNAMICALLY EXTEND SWIPER HEIGHT IN DETAIL MODE SO THE TITLE FITS PERFECTLY! */
+    }
+
+    #service-section-wrap .service-swiper .swiper-wrapper {
+        display: flex !important;
+        flex-direction: row !important; /* STRICTLY KEEP HORIZONTAL ROW FOR STANDARD SWIPER TRANSITIONS */
+        height: 100% !important;
+        width: 100% !important;
     }
     #service-section-wrap .service-swiper .swiper-slide {
+        display: flex !important;
         flex-direction: column !important;
-        height: auto !important;
+        height: 100% !important; /* Inherit Swiper's fixed container height */
         width: 100% !important;
     }
-    .card-front, .card-detail {
+    .static-service-card {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important; /* Let cards take the full height of the swiper */
+    }
+    .static-service-card:not(.is-detailed) .card-detail {
+        display: none !important; /* Completely hide detail card when front is active to prevent layout shifting */
+    }
+    .static-service-card.is-detailed .card-detail {
+        display: flex !important; /* Ensure display is flex when active */
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .card-front {
         flex-direction: column !important;
         position: relative !important;
-        height: auto !important;
+        height: 100% !important; /* Take full height of the card container */
         width: 100% !important;
+        justify-content: flex-end !important; /* Push text to the bottom of the card beautifully */
         align-items: center !important;
+        border-radius: 24px !important; /* Elegant matching rounded corners */
+    }
+    .card-detail {
+        flex-direction: column !important;
+        position: relative !important;
+        height: 100% !important;
+        width: 100% !important;
+        justify-content: center !important; /* VERTICALLY CENTER CONTENT FOR DETAIL CARD TO PREVENT ANY TITLE OVERFLOW */
+        align-items: center !important;
+        border-radius: 24px !important;
+        padding-top: 1.5vh !important;
+        padding-bottom: 1.5vh !important;
+    }
+    .card-front-overlay {
+        border-radius: 24px !important; /* Matching rounded overlay corners */
     }
     .card-front-content {
         flex-direction: column !important;
-        height: auto !important;
+        height: 100% !important; /* Full height of card container */
         width: 100% !important;
+        display: flex !important;
+        justify-content: flex-end !important; /* Push visual to the top and text to the bottom */
         align-items: center !important;
     }
     .card-front-visual, .card-detail-visual {
         width: 85% !important;
-        height: 220px !important;
-        transform: translateY(-50%) !important;
+        height: 23vh !important; /* LARGER 3D GRAPHIC PRESERVED FOR HIGHEST IMMERSIVE IMPACT */
+        transform: translateY(-8%) !important; /* MUCH LOWERED TRANSLATION ELIMINATES COLLISION WITH CATEGORY MENUS COMPLETELY */
         margin: 0 auto !important;
     }
-    .card-front-info, .card-detail-content {
-        margin-top: -80px !important;
+    .card-front-info {
+        margin-top: 0px !important;
         margin-left: 0 !important;
-        padding: 0 15px 25px !important;
+        padding: 0 20px 3vh !important; /* Perfectly balanced bottom padding safe buffer */
         text-align: center !important;
         width: 100% !important;
         align-items: center !important;
+    }
+    .card-detail-content {
+        padding: 0 20px !important;
+        text-align: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Center lists and button inside content container */
+        align-items: center !important;
+    }
+    .card-front-info h3 {
+        font-size: 1.4rem !important; /* Beautifully scaled title on mobile viewports */
+        margin-bottom: 0.4rem !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+    }
+    .card-front-info p {
+        font-size: 0.85rem !important; /* Highly readable description on mobile viewports */
+        line-height: 1.35 !important;
+        margin-bottom: 0.8vh !important;
+        color: rgba(255, 255, 255, 0.8) !important;
     }
     .floating-3d {
         position: absolute !important;
         left: 50% !important;
         top: 50% !important;
-        transform: translate(-50%, -50%) scale(1) !important;
-        height: 120% !important;
+        transform: translate(-50%, -50%) scale(1.1) !important; /* LARGER POP-OUT 3D EFFECT (GAMBAR 3D DIBESARKAN LAGI) */
+        height: 130% !important; /* Massive 3D feel */
         width: auto !important;
     }
     .detail-list-content {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        gap: 0.5rem !important; /* Tighter gap to prevent overflow */
         text-align: left !important;
+        width: 100% !important;
+        margin: 1.5vh 0 !important;
+    }
+    .detail-list-content li {
+        font-size: 0.8rem !important; /* Extremely readable and compact */
+        line-height: 1.35 !important;
+        color: #334155 !important; /* HIGH CONTRAST SLATE GRAY FOR MAX READABILITY ON LIGHT CARD BACK */
+    }
+    .detail-list-content li strong {
+        color: #0f172a !important; /* Industrial black slate for bold labels */
     }
     .card-detail-content h3 {
-        font-size: 1.8rem !important;
+        font-size: 1.35rem !important; /* Scaled detailed title to guarantee complete enclosure */
         text-align: center !important;
+        margin-bottom: 0.5vh !important;
+        color: #0f172a !important; /* Dark industrial slate heading */
     }
     .card-detail-content h3::after {
-        margin: 0.8rem auto 0 !important;
+        margin: 0.4rem auto 0 !important; /* Slimmer line spacing */
+    }
+
+    /* Symmetrical Navigation Buttons Center-Aligned Below the Swiper Margin Buffer */
+    .swiper-nav-wrapper {
+        display: flex !important; /* Enabled on mobile */
+        position: absolute !important;
+        top: auto !important;
+        bottom: -7.5vh !important; /* PUSHED FURTHER DOWN FOR LARGE BREATHING DISTANCE FROM CARD (KASIH JARAK DENGAN CARD) */
+        transform: none !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        z-index: 150 !important; /* Higher z-index to avoid overlaps */
+    }
+
+    .swiper-nav-wrapper.prev-wrapper {
+        left: calc(50% - 65px) !important; /* Symmetrically positioned to the left of center */
+        right: auto !important;
+    }
+
+    .swiper-nav-wrapper.next-wrapper {
+        right: calc(50% - 65px) !important; /* Symmetrically positioned to the right of center */
+        left: auto !important;
+    }
+
+    .swiper-nav-wrapper span {
+        display: none !important; /* Hide labels entirely on mobile for a clean dual-button look */
+    }
+
+    .swiper-nav-wrapper button {
+        width: 44px !important;
+        height: 44px !important;
+        background: rgba(255, 255, 255, 0.08) !important; /* Brighter translucent buttons on mobile */
+        border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     }
 }
 </style>
@@ -1055,9 +1291,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 4: Construction -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -1070,7 +1306,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Construction Details</h3>
@@ -1085,11 +1321,11 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                 </div>
-
+ 
                 <!-- Card 5: Civil Engineering -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -1102,7 +1338,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1508450859948-4e04f9ad5657?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Civil Details</h3>
@@ -1359,14 +1595,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 350);
     };
 
-    // Initialize Swiper with crossfade transition for supreme smoothness
+    // Detect mobile viewports to calibrate touch sliding vs cinematic desktop crossfade
+    const isMobileDevice = window.innerWidth <= 991;
+
+    // Initialize Swiper with crossfade transition for supreme smoothness on desktop, and tactile slide on mobile
     const serviceSwiper = new Swiper('.service-swiper', {
-        effect: 'fade',
+        effect: isMobileDevice ? 'slide' : 'fade',
         fadeEffect: {
             crossFade: true
         },
         loop: false,
-        speed: 1000,
+        speed: isMobileDevice ? 400 : 1000, /* Ultra fast tactile finger snap speed on mobile */
         allowTouchMove: true,
         on: {
             init: function () {

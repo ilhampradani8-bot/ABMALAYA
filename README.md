@@ -31,18 +31,26 @@ This project represents a sophisticated evolution of the AB MALAYA digital ident
     - `js/about.js`: Logic for About Page (Parallax, Accordions, GSAP).
     - `js/certified.js`: Logic for Certification Page (Scroll Reveal animations).
 
-## ✨ Key Features
-- **Neo-Brutalist Portfolio Grid**: A bold, industrial-style gallery for projects featuring hard shadows and thick-stroke borders.
-- **Dual-State Service Slider**: A cinematic interaction system where cards transition from a "Mode 1" (3D visual pop-out on full background) to a "Mode 2" (Full immersive deep-dive with synchronized background swap and technical overlays).
-- **Pop-Out 3D Visual Architecture**: Service cards utilize oversized 3D assets that intentionally "break" the card boundaries for a modern, layered depth effect.
-- **Synced Cinematic Transitions**: Professional fade-based shutter transitions that simultaneously update section backgrounds and internal card states using native Swiper event delegation.
-- **Proprietary 3D Perspective Slider**: A unique UI component that uses depth-of-field and 3D rotation to showcase services.
-- **Premium Certification Slider**: A Muhammed Erdem-inspired blog slider using **Swiper.js** for seamless, interactive credential browsing.
+## ✨ Key Features (Latest Updates in `services.php`)
+- **Dual-State Cinematic Service Slider**: A masterclass interaction system transitioning seamlessly between:
+  - **Mode 1 (Front Card)**: A premium dark card wrapped in a thin, elegant, semi-transparent white border (`rgba(255,255,255,0.22)`) displaying the service's signature 3D visual.
+  - **Mode 2 (Detail Card)**: A high-contrast premium solid white/light-slate gradient panel (`#ffffff` to `#f1f5f9`) featuring ultra-legible Slate-900 black typography and clean dark button accents.
+- **Compact & Sleek Card Architecture**: Cards have been thinned down to a highly focused **`300px` height**, causing the massive **`320px` 3D visuals** to dramatically and beautifully pop out of the top and bottom boundaries.
+- **Dedicated 3D Assets for Every Service**: Each of the 8 services is linked to its own bespoke 3D visual asset (`assets/img/service3d/`):
+  - *Marine Technical* 🛳️ -> `marine.png`
+  - *Logistics* 🚛 -> `logistics.png`
+  - *Environmental* 🍃 -> `pohon3d.png`
+  - *Construction* 🏗️ -> `cinstruction.png`
+  - *Civil Engineering* 🧱 -> `civil.png`
+  - *Renovations* 🔨 -> `renov.png`
+  - *Mechanical* ⚙️ -> `mekanikal.png`
+  - *Landscape* 🌳 -> `lanscape.png`
+- **Dynamic Background-Image Swapping**: Mode 2 transitions the fullscreen section background to a **different, detailed service image** from Unsplash, and instantly restores it back to Mode 1's original front image on returning.
+- **Asymmetrical Navigation**: Simplified navigation presenting only **one right-hand next arrow** detailing the exact name of the next service destination, creating a clean, modern aesthetic.
+- **Muhammad Erdem-Inspired Certification Slider**: A custom blog slider on `certified.php` using **Swiper.js** for high-end credential browsing.
 - **Secure Document Preview**: Advanced Modal system with **Click-to-Zoom** functionality, anti-right-click protection, and keyboard save/print disabling.
 - **Neuromorphic Vision/Mission**: Tactile cards with internal parallax imagery and reactive hover states.
 - **Funky Industrial Accordion**: A non-traditional vertical navigation system for Core Values.
-- **Cinematic Hero Visuals**: Layered PNG transparency and atmosphere effects for an immersive brand experience.
-- **Modular JS Architecture**: Decoupled scripts for better page load performance and maintainability.
 
 ## 🖥 Local Development
 To run this project locally, use a PHP-enabled server or the built-in PHP server:
