@@ -24,7 +24,7 @@ include 'includes/hero_visual.php';
 </svg>
 
 <!-- Certification Slider Section -->
-<section class="certification-showcase" style="min-height: 100vh; display: flex; align-items: center; background: #e6e9ef; overflow: hidden; padding: 60px 0;">
+<section class="certification-showcase" id="showcase" style="min-height: 100vh; display: flex; align-items: center; background: #e6e9ef; overflow: hidden; padding: 60px 0;">
     <div class="container" style="display: flex; flex-direction: column; justify-content: center; width: 100%;">
         <div class="section-header" style="text-align: center; margin-bottom: 30px;">
             <h2 class="award-title" style="font-family: 'Aeonik', sans-serif; font-weight: 800; font-size: 2.8rem; color: #0f172a; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -70,7 +70,7 @@ include 'includes/hero_visual.php';
 </section>
 
 <!-- Why It Matters Section (Neumorphic Style - No Lag) -->
-<section class="excellence-philosophy" style="padding: 100px 0; background: #e0e9f0;">
+<section class="excellence-philosophy" id="philosophy" style="padding: 100px 0; background: #e0e9f0;">
     <div class="container">
         <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 300px;">

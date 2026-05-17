@@ -1195,7 +1195,7 @@ include 'includes/hero_visual.php';
             <div class="swiper-wrapper">
                 
                 <!-- Card 1: Marine -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" id="marine" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1227,7 +1227,7 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 2: Logistics -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" id="cross" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1259,7 +1259,7 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 3: Environmental -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" id="env" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1634,6 +1634,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Handle URL Hash on Page Load or Hash Change
+    function handleServiceHash() {
+        const hash = window.location.hash;
+        if (hash) {
+            if (hash === '#marine') {
+                serviceSwiper.slideTo(0);
+            } else if (hash === '#cross') {
+                serviceSwiper.slideTo(1);
+            } else if (hash === '#env') {
+                serviceSwiper.slideTo(2);
+            }
+        }
+    }
+
+    // Check on page load and hash change
+    window.addEventListener('load', handleServiceHash);
+    window.addEventListener('hashchange', handleServiceHash);
 
     // Custom Navigation Click Handlers
     const prevNavBtn = document.querySelector('.swiper-custom-prev');

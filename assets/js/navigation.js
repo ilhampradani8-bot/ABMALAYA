@@ -234,6 +234,74 @@ $(function() {
     const searchInputMobile = $('#search-input-mobile');
     const searchContainerDesktop = $('#search-desktop-container');
     const searchInputInline = $('#search-inline-input');
+    const liveSearchResults = $('#live-search-results');
+
+    // Data Source identical to search.php for client-side instant matches
+    const siteContent = [
+        {
+            title: 'Maritime & Subsea Services',
+            desc: 'Comprehensive engineering solutions for the marine industry, ship consumables, and logistics.',
+            link: '/services#marine',
+            icon: 'fa-ship',
+            tags: 'marine, subsea, ship, rust, coating, boiler, vecom, crew'
+        },
+        {
+            title: 'Cross-Border Solutions',
+            desc: 'Seamless logistics between Singapore, Malaysia, and Thailand with professional handling.',
+            link: '/services#cross',
+            icon: 'fa-shipping-fast',
+            tags: 'logistics, transport, cross-border, singapore, thailand, cargo, storage'
+        },
+        {
+            title: 'Environmental Solutions',
+            desc: 'Corrosion prevention, waste management, and industrial spill containment.',
+            link: '/services#env',
+            icon: 'fa-leaf',
+            tags: 'environment, green, energy, corrosion, waste, spill, wastewater'
+        },
+        {
+            title: 'About AB Malaya',
+            desc: 'Our journey, vision, and mission in the maritime and industrial sectors.',
+            link: '/about',
+            icon: 'fa-info-circle',
+            tags: 'about, vision, mission, journey, history, team'
+        },
+        {
+            title: 'Certified & Excellence',
+            desc: 'Our commitment to global standards, ISO certifications, and industrial excellence.',
+            link: '/certified',
+            icon: 'fa-certificate',
+            tags: 'certified, certification, iso, quality, safety, petronas, license'
+        },
+        {
+            title: 'Contact Us',
+            desc: 'Get in touch with our experts in Kuala Lumpur for technical consultations.',
+            link: '/contact',
+            icon: 'fa-paper-plane',
+            tags: 'contact, address, phone, email, support, help, location'
+        },
+        {
+            title: 'Projects & Portfolio',
+            desc: 'Explore our successful track record of marine engineering, cross-border transport, and industrial projects.',
+            link: '/projects',
+            icon: 'fa-folder-open',
+            tags: 'projects, portfolio, track record, work, engineering, logistics, shipping, clients'
+        },
+        {
+            title: 'Kebijakan Privasi',
+            desc: 'Privacy policy and data protection for AB MALAYA Sdn Bhd.',
+            link: '/privacy',
+            icon: 'fa-shield-alt',
+            tags: 'privacy, data, legal, policy'
+        },
+        {
+            title: 'Terms & Conditions',
+            desc: 'Read the legal terms of service and usage regulations of the AB Malaya platform.',
+            link: '/terms',
+            icon: 'fa-file-contract',
+            tags: 'terms, conditions, legal, contract, service, agreement'
+        }
+    ];
 
     // Desktop Trigger (Expanding Bar)
     $('#search-desktop-trigger').on('click', function(e) {
@@ -249,15 +317,142 @@ $(function() {
         }
     });
 
-    // Mobile Trigger (Pop-up with Glassmorphism)
+    // Helper function to render result rows directly below input field
+    function renderSearchResults(query) {
+        liveSearchResults.empty();
+        const trimmed = query.trim().toLowerCase();
+
+        // If nothing is typed, hide results so they don't block the suggestions below the input!
+        if (trimmed === "") {
+            liveSearchResults.hide();
+            return;
+        }
+
+        // Filter contents
+        const matches = siteContent.filter(item => {
+            return item.title.toLowerCase().includes(trimmed) || 
+                   item.desc.toLowerCase().includes(trimmed) || 
+                   item.tags.toLowerCase().includes(trimmed);
+        });
+
+        if (matches.length === 0) {
+            liveSearchResults.append(`
+                <div class="search-results-empty">
+                    <i class="fas fa-search"></i>
+                    No matches found for "${query}"<br>
+                    <span style="font-size: 0.8rem; color: #7f7f7f; margin-top: 4px; display: block;">Try searching for "marine", "logistics", or "contact"</span>
+                </div>
+            `);
+            liveSearchResults.show();
+            return;
+        }
+
+        matches.forEach(item => {
+            liveSearchResults.append(`
+                <a href="${item.link}" class="search-results-item">
+                    <div class="search-results-icon"><i class="fas ${item.icon}"></i></div>
+                    <div class="search-results-info">
+                        <div class="search-results-heading">${item.title}</div>
+                        <div class="search-results-desc">${item.desc}</div>
+                    </div>
+                    <div class="search-results-chevron"><i class="fas fa-chevron-right"></i></div>
+                </a>
+            `);
+        });
+        
+        liveSearchResults.show();
+    }
+
+    // Mobile Trigger (Codepen full-screen slide-down)
     $('#search-mobile-trigger').on('click', function() {
         searchOverlay.addClass('active');
+        renderSearchResults(""); // Hide initially on empty
         setTimeout(() => searchInputMobile.focus(), 300);
     });
 
-    // Mobile & Escape Handling
+    // Real-time search key listener
+    searchInputMobile.on('input propertychange', function() {
+        renderSearchResults($(this).val());
+    });
+
+    // Tactile Search Button click listener
+    $('#search-submit-mobile').on('click', function() {
+        renderSearchResults(searchInputMobile.val());
+    });
+
+    // Voice Search Web Speech API Integration
+    const showVoiceSearchBtn = $('#show-voice-search');
+    
+    showVoiceSearchBtn.on('click', function(e) {
+        e.preventDefault();
+        
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+            alert("Voice Search is not supported in this browser. Please try Google Chrome or Safari!");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'id-ID'; // Optimize for Indonesian/English spoken search
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        // Visual feedback when listening
+        const originalHTML = showVoiceSearchBtn.html();
+        
+        recognition.onstart = function() {
+            showVoiceSearchBtn.html('<i class="fas fa-microphone" style="color: #ef4444; animation: voicePulse 1s infinite;"></i> Listening... speak now');
+            showVoiceSearchBtn.css('pointer-events', 'none');
+        };
+
+        recognition.onspeechend = function() {
+            recognition.stop();
+        };
+
+        recognition.onerror = function(event) {
+            console.error("Speech recognition error:", event.error);
+            showVoiceSearchBtn.html(originalHTML);
+            showVoiceSearchBtn.css('pointer-events', 'auto');
+        };
+
+        recognition.onend = function() {
+            showVoiceSearchBtn.html(originalHTML);
+            showVoiceSearchBtn.css('pointer-events', 'auto');
+        };
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            searchInputMobile.val(transcript);
+            searchInputMobile.trigger('input'); // Trigger live-search preview
+            
+            // Redirect after 1.2s so they can see the transcribed speech before page load
+            setTimeout(() => {
+                searchInputMobile.closest('form').submit(); // Submit to search.php
+            }, 1200);
+        };
+
+        recognition.start();
+    });
+
+    // Close Mobile Search Handler
     $('#search-close').on('click', function() {
         searchOverlay.removeClass('active');
+    });
+
+    // Close mobile search when clicking outside the menu container
+    searchOverlay.on('click', function(e) {
+        if ($(e.target).is(searchOverlay)) {
+            searchOverlay.removeClass('active');
+        }
+    });
+
+    // Direct suggestion navigation on clicking the side-left menu items
+    $(document).on('click', '.side-menu-sugg', function() {
+        const link = $(this).attr('data-link');
+        if (link) {
+            window.location.href = link;
+            searchOverlay.removeClass('active');
+        }
     });
 
     $(document).on('keydown', function(e) {

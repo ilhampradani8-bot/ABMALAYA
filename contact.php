@@ -16,7 +16,7 @@ $showButtons = false;
 include 'includes/hero_visual.php';
 ?>
 
-<section class="contact-main">
+<section class="contact-main" id="contact-form">
     <div class="container">
         <div class="contact-grid">
             <!-- Left: Contact Form -->
@@ -139,7 +139,7 @@ include 'includes/hero_visual.php';
 </section>
 
 <!-- Full-Width Map Section -->
-<section class="map-section">
+<section class="map-section" id="map">
     <div class="container">
         <div class="neo-brutalist-container">
             <div class="neo-map-card">

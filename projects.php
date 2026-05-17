@@ -334,7 +334,7 @@ include 'includes/hero_visual.php';
     }
 </style>
 
-<section class="projects-slider-section">
+<section class="projects-slider-section" id="portfolio">
     <div class="container-fluid" style="padding: 0; width: 100%; display: flex; flex-direction: column; align-items: center;">
         <!-- Judul & Tombol Sejajar -->
         <div class="section-title-wrapper" style="width: 100%; padding: 0 4vw; max-width: 950px; margin-bottom: 60px;">

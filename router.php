@@ -24,6 +24,11 @@ if ($uri !== '' && file_exists($uri) && !is_dir($uri)) {
     $file = __DIR__ . '/' . $uri;
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     
+    if ($ext === 'php') {
+        include $file;
+        exit;
+    }
+    
     $mimes = [
         'css'   => 'text/css',
         'js'    => 'application/javascript',

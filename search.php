@@ -44,10 +44,22 @@ $siteContent = [
         'tags' => 'contact, address, phone, email, support, help, location'
     ],
     [
+        'title' => 'Projects & Portfolio',
+        'desc' => 'Explore our successful track record of marine engineering, cross-border transport, and industrial projects.',
+        'link' => '/projects',
+        'tags' => 'projects, portfolio, track record, work, engineering, logistics, shipping, clients'
+    ],
+    [
         'title' => 'Kebijakan Privasi',
         'desc' => 'Privacy policy and data protection for AB MALAYA Sdn Bhd.',
         'link' => '/privacy',
         'tags' => 'privacy, data, legal, policy'
+    ],
+    [
+        'title' => 'Terms & Conditions',
+        'desc' => 'Read the legal terms of service and usage regulations of the AB Malaya platform.',
+        'link' => '/terms',
+        'tags' => 'terms, conditions, legal, contract, service, agreement'
     ]
 ];
 
@@ -63,16 +75,18 @@ if (!empty($query)) {
 }
 ?>
 
-<section class="hero-search" style="height: 35vh; background: #f8fafc; display: flex; align-items: center; border-bottom: 1px solid #e2e8f0; padding-top: 80px;">
-    <div class="container">
-        <div class="hero-content">
-            <h1 style="font-family: 'Aeonik', sans-serif; font-weight: 800; font-size: 3rem; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -1px;">Search Results</h1>
-            <p style="font-family: 'Aeonik', sans-serif; color: #64748b; font-size: 1.1rem;"><?php echo count($results); ?> results found for <span style="color: #005ee9; font-weight: 700;">"<?php echo $query; ?>"</span></p>
-        </div>
-    </div>
-</section>
+<?php 
+$heroTitle = "<span style='color: #005ee9;'>Search Results</span>";
+$heroSubtitle = "Discovery";
+$heroDesc = count($results) . " results found for <span style='color: #005ee9; font-weight: 700;'>\"" . htmlspecialchars($query) . "\"</span>";
+$showButtons = false;
+?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<?php
+include 'includes/hero_visual.php';
+?>
 
-<section style="padding: 100px 0; background: #ffffff; min-height: 50vh;">
+<section class="search-results-section" style="padding: 40px 0 100px; background: #ffffff; min-height: 50vh;">
     <div class="container">
         <?php if (empty($results)): ?>
             <div style="text-align: center; padding: 4rem;">
@@ -103,17 +117,24 @@ if (!empty($query)) {
                 .search-result-card {
                     text-decoration: none; 
                     display: block; 
-                    background: #fff; 
-                    padding: 2rem; 
-                    border-radius: 24px; 
-                    border: 1px solid #f1f5f9; 
+                    background: transparent; 
+                    padding: 1.5rem 0; 
+                    border: none;
+                    border-bottom: 1px solid rgba(15, 23, 42, 0.08); 
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+                    box-shadow: none;
+                }
+                .search-result-card:last-of-type {
+                    border-bottom: none;
+                }
+                .search-result-card h3 {
+                    transition: color 0.3s ease;
                 }
                 .search-result-card:hover {
-                    transform: translateX(10px);
-                    border-color: #005ee9;
-                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+                    transform: translateX(8px);
+                }
+                .search-result-card:hover h3 {
+                    color: #005ee9 !important;
                 }
                 .arrow-circle {
                     width: 45px;
@@ -131,6 +152,32 @@ if (!empty($query)) {
                 .search-result-card:hover .arrow-circle {
                     background: #005ee9;
                     color: #fff;
+                }
+
+                /* Compact mobile styling matching the pop-up search results list */
+                @media (max-width: 768px) {
+                    .search-results-section {
+                        padding: 20px 0 60px !important;
+                    }
+                    .search-result-card {
+                        padding: 1rem 0;
+                    }
+                    .search-result-card h3 {
+                        font-size: 1.15rem !important;
+                        margin-bottom: 0.25rem;
+                    }
+                    .search-result-card p {
+                        font-size: 0.85rem !important;
+                        line-height: 1.5;
+                    }
+                    .arrow-circle {
+                        width: 36px;
+                        height: 36px;
+                        margin-left: 1rem;
+                    }
+                    .arrow-circle i {
+                        font-size: 0.85rem;
+                    }
                 }
             </style>
         <?php endif; ?>
