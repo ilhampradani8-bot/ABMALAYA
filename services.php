@@ -1195,7 +1195,7 @@ include 'includes/hero_visual.php';
             <div class="swiper-wrapper">
                 
                 <!-- Card 1: Marine -->
-                <div class="swiper-slide" id="marine" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" data-hash="marine" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1215,10 +1215,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Marine Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Ship Consumables:</strong> Technical and operational stores.</li>
-                                    <li><strong>Crew Logistics:</strong> Seamless personnel transit & clearing.</li>
-                                    <li><strong>Engineering:</strong> Repairs for hull, deck, and engine systems.</li>
-                                    <li><strong>Boiler Services:</strong> Advanced water treatment & descaling.</li>
+                                    <li><strong>Ship Consumables:</strong> High-quality technical & operational stores.</li>
+                                    <li><strong>Crew Logistics:</strong> Seamless personnel transit & transit logistics.</li>
+                                    <li><strong>Engineering:</strong> Comprehensive maritime engineering & maintenance.</li>
+                                    <li><strong>Boiler Solutions:</strong> Vecom Marine chemicals & boiler maintenance.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1227,7 +1227,7 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 2: Logistics -->
-                <div class="swiper-slide" id="cross" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" data-hash="cross" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1247,10 +1247,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Logistics Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Cross-Border:</strong> SGP-MY-TH land transport brokerage.</li>
-                                    <li><strong>Secure Handling:</strong> High-value asset protection & tracking.</li>
-                                    <li><strong>Compliance:</strong> End-to-end regulatory documentation.</li>
-                                    <li><strong>Fleet Support:</strong> 24/7 dedicated industrial deliveries.</li>
+                                    <li><strong>Logistics & Transit:</strong> Smooth logistics between SG, MY, and TH.</li>
+                                    <li><strong>Cargo Handling:</strong> Safe and efficient cross-border cargo storage.</li>
+                                    <li><strong>Documentation:</strong> Seamless regulatory trade & customs compliance.</li>
+                                    <li><strong>24/7 Operations:</strong> Dedicated support & versatile fleet anywhere, anytime.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1259,7 +1259,7 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 3: Environmental -->
-                <div class="swiper-slide" id="env" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide" data-hash="env" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1279,10 +1279,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Environmental Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Corrosion Control:</strong> Techniques & specialist coatings.</li>
-                                    <li><strong>Waste Management:</strong> Industrial wastewater containment.</li>
-                                    <li><strong>Spill Response:</strong> Rapid deployment for containment.</li>
-                                    <li><strong>Consultancy:</strong> Expert prevention & compliance training.</li>
+                                    <li><strong>Corrosion Prevention:</strong> Protect assets with industry-leading anti-corrosion.</li>
+                                    <li><strong>Maintenance & Repairs:</strong> Specialist restoration to extend equipment lifetime.</li>
+                                    <li><strong>Training & Consultation:</strong> Expert training on corrosion prevention practices.</li>
+                                    <li><strong>Wastewater & Spills:</strong> Safe containment, treatment & disposal of waste.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1311,10 +1311,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Construction Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Industrial:</strong> Turnkey factories & energy plants.</li>
-                                    <li><strong>Civil Works:</strong> Earthworks & road infrastructure.</li>
-                                    <li><strong>Steel Works:</strong> Custom fabrication and erection.</li>
-                                    <li><strong>Management:</strong> ISO-certified quality & safety control.</li>
+                                    <li><strong>Residential Buildings:</strong> Modern, safe housing & residential construction.</li>
+                                    <li><strong>Commercial Buildings:</strong> Premium retail facilities & shopping complexes.</li>
+                                    <li><strong>Office Buildings:</strong> Scalable high-end corporate office spaces.</li>
+                                    <li><strong>Industrial Buildings:</strong> State-of-the-art factories & warehouse development.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1343,10 +1343,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Civil Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Infrastructure:</strong> Road, bridge, & harbor projects.</li>
-                                    <li><strong>Earthworks:</strong> Site preparation & grading precision.</li>
-                                    <li><strong>Water Systems:</strong> Industrial drainage design & setup.</li>
-                                    <li><strong>Surveys:</strong> Advanced land & hydrographic surveying.</li>
+                                    <li><strong>Earthworks:</strong> Professional land grading & site preparation.</li>
+                                    <li><strong>Road & Drainage:</strong> High-capacity road networks & drainage construction.</li>
+                                    <li><strong>Concrete Works:</strong> Reinforced structural concrete & foundation setup.</li>
+                                    <li><strong>Infrastructure:</strong> Advanced infrastructure & public utilities development.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1375,10 +1375,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Renovation Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Structural Repair:</strong> Restoration to modern standards.</li>
-                                    <li><strong>Refurbishment:</strong> Corporate and commercial upgrades.</li>
-                                    <li><strong>Assessments:</strong> Structural health checks & reinforcement.</li>
-                                    <li><strong>Finishing:</strong> High-performance material application.</li>
+                                    <li><strong>Building Renovations:</strong> Expert layout remodeling and general extensions.</li>
+                                    <li><strong>Interior Upgrading:</strong> Premium aesthetic & architectural interior upgrades.</li>
+                                    <li><strong>Structural Repair:</strong> Advanced reinforcement & structural damage restoration.</li>
+                                    <li><strong>Facility Refurbishment:</strong> Revitalizing and modernizing industrial facilities.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1407,10 +1407,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Mechanical Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Steel Works:</strong> Custom industrial fabrication.</li>
-                                    <li><strong>Maintenance:</strong> Routine and emergency repairs.</li>
-                                    <li><strong>Equipment:</strong> Specialist turbine & gear repairs.</li>
-                                    <li><strong>Piping:</strong> High-pressure system design & setup.</li>
+                                    <li><strong>Structural Steel:</strong> High-capacity steel fabrication & erection.</li>
+                                    <li><strong>Industrial Maintenance:</strong> Routine inspections & plant system maintenance.</li>
+                                    <li><strong>Equipment Installation:</strong> Precision industrial machinery placement & setup.</li>
+                                    <li><strong>Engineering Support:</strong> Highly certified technical support services.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1439,10 +1439,10 @@ include 'includes/hero_visual.php';
                             <div class="card-detail-content">
                                 <h3>Landscape Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Hardscape:</strong> Patios & structural outdoor areas.</li>
-                                    <li><strong>Softscape:</strong> Ecological management & preservation.</li>
-                                    <li><strong>Amenities:</strong> Corporate green space development.</li>
-                                    <li><strong>Sustainability:</strong> Water-efficient irrigation systems.</li>
+                                    <li><strong>Landscape Development:</strong> Creative eco-friendly green space planning.</li>
+                                    <li><strong>Hardscape Construction:</strong> Custom patios, stone paths, & outdoor layouts.</li>
+                                    <li><strong>Drainage Works:</strong> Clean surface runoff & external drainage setup.</li>
+                                    <li><strong>Outdoor Facilities:</strong> Recreational outdoor development & garden maintenance.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1635,16 +1635,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle URL Hash on Page Load or Hash Change
+    // Handle URL Hash on Page Load or Hash Change without browser scroll jumping
     function handleServiceHash() {
         const hash = window.location.hash;
         if (hash) {
+            let targetIndex = -1;
             if (hash === '#marine') {
-                serviceSwiper.slideTo(0);
+                targetIndex = 0;
             } else if (hash === '#cross') {
-                serviceSwiper.slideTo(1);
+                targetIndex = 1;
             } else if (hash === '#env') {
-                serviceSwiper.slideTo(2);
+                targetIndex = 2;
+            }
+            
+            if (targetIndex !== -1) {
+                // Instantly slide to target index
+                serviceSwiper.slideTo(targetIndex, 0);
+                
+                // Enforce 100% stable screen coordinates reset to top left
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 10);
             }
         }
     }
