@@ -188,9 +188,9 @@ $(function() {
 
     const logo = document.querySelector('.logo');
     
-    // Integrated Scroll Logic with Lenis
-    lenis.on('scroll', (e) => {
-        const scrollY = e.scroll;
+    // Unified Scroll Handler for Logo Autohide and Menu Auto-close
+    function handleScrollAction() {
+        const scrollY = window.scrollY;
         
         // Logo Autohide Logic
         if (scrollY > 40 && !$menu.hasClass('open')) {
@@ -203,7 +203,17 @@ $(function() {
         if (scrollY > 150 && $menu.hasClass('open')) {
             closeMobileMenu();
         }
+    }
+
+    // Register on Lenis (for pages with smooth scrolling active)
+    lenis.on('scroll', () => {
+        handleScrollAction();
     });
+
+    // Native window scroll fallback (for pages where Lenis is disabled/destroyed like services.php)
+    window.addEventListener('scroll', () => {
+        handleScrollAction();
+    }, { passive: true });
 
     // --- SEARCH LOGIC ---
     const searchOverlay = $('#search-overlay');
