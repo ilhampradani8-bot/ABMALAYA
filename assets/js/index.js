@@ -16,89 +16,136 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. CUSTOM 3D SERVICE SLIDER ---
-    const sliders = document.querySelectorAll(".slide");
-    const leftArrow = document.querySelector(".left-arrow");
-    const rightArrow = document.querySelector(".right-arrow");
-    const sliderContent = document.getElementById('slider-content');
+    // --- 2. EMBLA SERVICE CAROUSEL ---
+    const emblaNode = document.querySelector("#embla-services");
+    if (emblaNode && typeof EmblaCarousel !== "undefined") {
+        const viewportNode = emblaNode.querySelector(".embla__viewport");
+        const prevBtn = emblaNode.querySelector(".embla__btn--prev");
+        const nextBtn = emblaNode.querySelector(".embla__btn--next");
+        const dotsWrap = emblaNode.querySelector(".embla__dots");
 
-    if (sliders.length > 0) {
-        let center = 0; // Start with first slide as active
-        
-        function updatePositions() {
-            sliders.forEach((slide, index) => {
-                slide.classList.remove("position-1", "position-2", "position-3", "position-4", "position-5", "position-none");
-                
-                // Calculate relative positions in a loop
-                let diff = index - center;
-                
-                // Handle wrap-around
-                if (diff < -sliders.length / 2) diff += sliders.length;
-                if (diff > sliders.length / 2) diff -= sliders.length;
+        const embla = EmblaCarousel(viewportNode, {
+            loop: true,
+            align: "center",
+            skipSnaps: false,
+            containScroll: "trimSnaps",
+            dragFree: false
+        });
 
-                if (diff === -2) slide.classList.add("position-1");
-                else if (diff === -1) slide.classList.add("position-2");
-                else if (diff === 0) slide.classList.add("position-3");
-                else if (diff === 1) slide.classList.add("position-4");
-                else if (diff === 2) slide.classList.add("position-5");
-                else slide.classList.add("position-none");
-            });
-        }
-
-        function leftScroll() {
-            center = (center - 1 + sliders.length) % sliders.length;
-            updatePositions();
-        }
-
-        function rightScroll() {
-            center = (center + 1) % sliders.length;
-            updatePositions();
-        }
-
-        // Autoplay Logic
-        let autoPlayInterval = setInterval(rightScroll, 5000);
-
-        function resetAutoplay() {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = setInterval(rightScroll, 5000);
-        }
-
-        // Event Listeners for Arrows
-        if (leftArrow) {
-            leftArrow.addEventListener("click", () => {
-                leftScroll();
-                resetAutoplay();
-            });
-        }
-        if (rightArrow) {
-            rightArrow.addEventListener("click", () => {
-                rightScroll();
-                resetAutoplay();
-            });
-        }
-
-        // Touch Support
-        if (sliderContent) {
-            let touchstartX = 0;
-            let touchendX = 0;
-
-            sliderContent.addEventListener('touchstart', e => {
-                touchstartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            sliderContent.addEventListener('touchend', e => {
-                touchendX = e.changedTouches[0].screenX;
-                handleGesture();
-                resetAutoplay();
-            }, { passive: true });
-
-            function handleGesture() {
-                if (touchendX < touchstartX - 50) rightScroll();
-                if (touchendX > touchstartX + 50) leftScroll();
+        // Set 'is-selected' class to the active card
+        function setSelectedSlideClass() {
+            const slides = emblaNode.querySelectorAll(".embla__slide");
+            slides.forEach(slide => slide.classList.remove("is-selected"));
+            
+            const idx = embla.selectedScrollSnap();
+            const slideNodes = embla.slideNodes();
+            if (slideNodes && slideNodes[idx]) {
+                slideNodes[idx].classList.add("is-selected");
             }
         }
 
-        // Initial positioning
-        updatePositions();
+        // Build dots navigation dynamically
+        function buildDots() {
+            if (!dotsWrap) return;
+            dotsWrap.innerHTML = "";
+
+            const count = embla.scrollSnapList().length;
+            for (let i = 0; i < count; i++) {
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "embla__dot";
+                dot.setAttribute("role", "tab");
+                dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+                dot.setAttribute("aria-selected", "false");
+                dot.addEventListener("click", () => {
+                    embla.scrollTo(i);
+                    resetAutoplay();
+                });
+                dotsWrap.appendChild(dot);
+            }
+        }
+
+        // Set active state for dots
+        function setDotState() {
+            if (!dotsWrap) return;
+            const dots = dotsWrap.querySelectorAll(".embla__dot");
+            const idx = embla.selectedScrollSnap();
+
+            dots.forEach((dot, i) => {
+                dot.setAttribute("aria-selected", i === idx ? "true" : "false");
+            });
+        }
+
+        // Navigation button event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener("click", () => {
+                embla.scrollPrev();
+                resetAutoplay();
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener("click", () => {
+                embla.scrollNext();
+                resetAutoplay();
+            });
+        }
+
+        // Autoplay Logic
+        let autoplayId = null;
+        const autoplayDelay = 5000;
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayId = setInterval(() => {
+                if (embla) embla.scrollNext();
+            }, autoplayDelay);
+        }
+
+        function stopAutoplay() {
+            if (autoplayId) {
+                clearInterval(autoplayId);
+                autoplayId = null;
+            }
+        }
+
+        function resetAutoplay() {
+            startAutoplay();
+        }
+
+        function onSelect() {
+            setSelectedSlideClass();
+            setDotState();
+        }
+
+        // Initialize Carousel Event Listeners
+        embla.on("select", onSelect);
+        embla.on("pointerDown", stopAutoplay);
+        embla.on("pointerUp", startAutoplay);
+
+        embla.on("reInit", () => {
+            buildDots();
+            onSelect();
+        });
+
+        // First paint / init
+        buildDots();
+        onSelect();
+        startAutoplay();
+
+        // Delay reinit to guarantee correct slide measurement on first load
+        window.setTimeout(() => {
+            embla.reInit();
+        }, 50);
+
+        // Smart Resize handler with debounce
+        window.addEventListener("resize", (() => {
+            let timer = null;
+            return () => {
+                window.clearTimeout(timer);
+                timer = window.setTimeout(() => {
+                    embla.reInit();
+                }, 100);
+            };
+        })());
     }
 });

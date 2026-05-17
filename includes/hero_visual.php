@@ -17,16 +17,16 @@
     <div class="hero-images-layer">
         <div class="sequential-container">
             <div class="img-wrap s-1" data-tilt>
-                <img src="assets/img/head/remove-bg-escavator.png?v=2.0" alt="Engineering Operations">
+                <img src="assets/img/head/remove-bg-escavator.png" alt="Engineering Operations">
             </div>
             <div class="img-wrap s-2" data-tilt>
-                <img src="assets/img/head/bgcool.png?v=2.0" alt="Industrial Maintenance">
+                <img src="assets/img/head/bgcool.png" alt="Industrial Maintenance">
             </div>
             <div class="img-wrap s-3" data-tilt>
-                <img src="assets/img/head/bgcoolnew.png?v=2.0" alt="Technical Services">
+                <img src="assets/img/head/bgcoolnew.png" alt="Technical Services">
             </div>
             <div class="img-wrap s-4" data-tilt>
-                <img src="assets/img/head/remove-bg-rust-bawah-kanan.png?v=2.0" alt="Engineering Component">
+                <img src="assets/img/head/remove-bg-rust-bawah-kanan.png" alt="Engineering Component">
             </div>
         </div>
     </div>

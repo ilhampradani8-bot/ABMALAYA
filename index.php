@@ -208,221 +208,229 @@ include 'includes/hero_visual.php';
         }
     }
 
-    /* Custom 3D Slider CSS - Global */
+    /* Embla Carousel Slider CSS */
     .custom-slider-wrapper {
+        width: 100vw;
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .embla {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .embla__viewport {
+        overflow: hidden;
+        width: 100%;
+        padding: 40px 0; /* Clear space for raised cards and shadows */
+    }
+
+    .embla__container {
+        display: flex;
+        will-change: transform;
+    }
+
+    .embla__slide {
+        flex: 0 0 85%; /* Mobile: 1 centered card + partial side cards */
+        min-width: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0;
+        padding: 0 20px;
+        transform-style: preserve-3d;
     }
 
-    .slider-container {
-        height: 40rem;
-        width: 100vw;
+    @media (min-width: 768px) {
+        .embla__slide {
+            flex: 0 0 48%; /* Tablet: 2 cards visible */
+        }
+    }
+
+    @media (min-width: 992px) {
+        .embla__slide {
+            flex: 0 0 33.333%; /* Desktop: 3 cards visible */
+        }
+    }
+
+    /* Visual Card container (scales inside slide container to prevent snap jitter) */
+    .slide-card {
+        width: 100%;
+        max-width: 22rem;
+        height: 30rem;
+        background: #000;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        transform: scale(0.9);
+        opacity: 0.35;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-style: preserve-3d;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+    }
+
+    /* Selected state */
+    .embla__slide.is-selected .slide-card {
+        transform: scale(1.04);
+        opacity: 1;
+        box-shadow: 0 30px 60px rgba(0, 94, 233, 0.25);
+    }
+
+    /* Card inner elements styling */
+    .media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .embla__slide.is-selected .slide-card:hover .media img {
+        transform: scale(1.05);
+    }
+
+    .card-sections {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 3rem 2rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+        z-index: 2;
+    }
+
+    .card-caption {
+        color: #fff;
+        font-family: 'Aeonik', sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .card-button {
+        display: inline-block;
+        padding: 0.7rem 1.4rem;
+        background: #005ee9;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(15px);
+        will-change: transform, opacity;
+    }
+
+    .embla__slide.is-selected .card-button {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-button:hover {
+        background: #fff;
+        color: #005ee9;
+    }
+
+    /* Controls */
+    .slider-nav-bottom {
         display: flex;
-            flex-direction: column; /* Arrows below */
-            justify-content: center;
-            align-items: center;
-            user-select: none;
-            position: relative;
-        }
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        z-index: 10;
+        position: relative;
+    }
 
-        .slider-nav-bottom {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            z-index: 10;
-        }
+    .left-arrow, .right-arrow {
+        width: 52px;
+        height: 52px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
 
-        .left-arrow, .right-arrow {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            background: #fff;
-        }
+    .left-arrow:hover, .right-arrow:hover {
+        background: #005ee9;
+        border-color: #005ee9;
+        color: #fff;
+        transform: scale(1.05);
+    }
 
-        .left-arrow:hover, .right-arrow:hover {
-            background: #005ee9;
-            border-color: #005ee9;
-        }
+    .left-arrow i, .right-arrow i {
+        font-size: 1.1rem;
+    }
 
-        .left-arrow:hover i, .right-arrow:hover i {
-            color: #fff;
-        }
+    .left-arrow:hover i, .right-arrow:hover i {
+        color: #fff;
+    }
 
-        .left-arrow i, .right-arrow i {
-            font-size: 1.2rem;
-            color: #000;
-        }
+    /* Dots */
+    .embla__dots {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-        .slider-content {
-            height: 30rem;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: visible !important; /* Crucial for peeks */
-            position: relative;
-            perspective: 1000px;
-        }
+    .embla__dot {
+        appearance: none;
+        border: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-        .slider-content-background {
-            display: none; /* Removed to show side cards clearly */
-        }
+    .embla__dot[aria-selected="true"] {
+        background: #005ee9;
+        transform: scale(1.5);
+    }
 
-        .slider-content .slide {
-            position: absolute;
-            left: 50%;
-            height: 28rem;
-            width: 20rem;
-            background: #000;
-            border-radius: 20px;
-            z-index: 0;
-            transform: translate(-50%, 0) rotateY(0deg) scale(0.8);
-            transform-style: preserve-3d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease, filter 1.2s ease, box-shadow 1.2s ease;
-            will-change: transform, opacity; /* GPU acceleration for smoothness */
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    /* Mobile Responsive Card Sizing */
+    @media (max-width: 768px) {
+        .embla__slide {
+            flex: 0 0 65%; /* 3 card preview: 1 full center + 2 peeking sides */
+            padding: 0 10px; /* Reduced gap to bring card peeks closer */
         }
-
-        /* Position Classes - Desktop */
-        .slide.position-1 {
-            left: 5% !important;
-            z-index: 1 !important;
-            transform: translate(-50%, 0) rotateY(-20deg) scale(0.6) !important;
-            opacity: 0.1 !important;
-            filter: blur(12px);
+        .slide-card {
+            max-width: 100%;
+            height: 23rem; /* Compact height for a perfect zoomed-in preview */
         }
-        .slide.position-2 {
-            left: 25% !important;
-            z-index: 2 !important;
-            transform: translate(-50%, 0) rotateY(-10deg) scale(0.8) !important;
-            opacity: 0.6 !important;
-            filter: blur(4px);
-        }
-        .slide.position-3 {
-            left: 50% !important;
-            z-index: 4 !important;
-            transform: translate(-50%, 0) rotateY(0deg) scale(1) !important;
-            opacity: 1 !important;
-            filter: blur(0px);
-            box-shadow: 0 30px 60px rgba(0,94,233,0.3) !important;
-        }
-        .slide.position-4 {
-            left: 75% !important;
-            z-index: 2 !important;
-            transform: translate(-50%, 0) rotateY(10deg) scale(0.8) !important;
-            opacity: 0.6 !important;
-            filter: blur(4px);
-        }
-        .slide.position-5 {
-            left: 95% !important;
-            z-index: 1 !important;
-            transform: translate(-50%, 0) rotateY(20deg) scale(0.6) !important;
-            opacity: 0.1 !important;
-            filter: blur(12px);
-        }
-        .slide.position-none {
-            opacity: 0 !important;
-            transform: translate(-50%, 20px) scale(0.5) !important;
-            z-index: 0 !important;
-            pointer-events: none;
-        }
-
-        /* Mobile Fixes - 3 Card Preview */
-        @media screen and (max-width: 768px) {
-            .slider-container { height: auto; padding: 2rem 0; }
-            .slider-content { height: 24rem; width: 100vw; overflow: visible !important; }
-            .slide { width: 14rem; height: 20rem; }
-            
-            .slide.position-2 { 
-                left: 5% !important; 
-                opacity: 0.4 !important; 
-                transform: translate(-50%, 0) scale(0.75) !important;
-                filter: blur(2px);
-                z-index: 1 !important;
-            }
-            .slide.position-4 { 
-                left: 95% !important; 
-                opacity: 0.4 !important; 
-                transform: translate(-50%, 0) scale(0.75) !important;
-                filter: blur(2px);
-                z-index: 1 !important;
-            }
-            .slide.position-3 { 
-                left: 50% !important; 
-                transform: translate(-50%, 0) scale(1) !important;
-                z-index: 10 !important;
-                opacity: 1 !important;
-                filter: blur(0);
-            }
-            .slide.position-1, .slide.position-5 { display: none; }
-            
-            .slider-nav-bottom { margin-top: 4rem; }
-        }
-
-        /* Card Elements */
-        .media {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-        .media img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .slide.position-3:hover .media img { transform: scale(1.05); }
-
-        .card-sections {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%;
-            padding: 2.5rem 1.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-            z-index: 2;
-        }
-
         .card-caption {
-            color: #fff;
-            font-family: 'Aeonik', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
         }
-
-        .card-button {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background: #005ee9;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(10px);
+        .card-sections {
+            padding: 2rem 1.25rem;
         }
-
-        .slide.position-3 .card-button {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card-button:hover {
-            background: #fff;
-            color: #005ee9;
+        .embla__viewport {
+            padding: 20px 0;
         }
     }
 </style>
@@ -463,93 +471,98 @@ include 'includes/hero_visual.php';
     </div>
         
     <div class="custom-slider-wrapper">
-        <div class="slider-container">
-            <div class="slider-content" id="slider-content">
-                <!-- Slide 1: Maritime -->
-                <div class="slide">
-                    <div class="media">
-                        <img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800&h=1000" alt="Maritime">
+        <div class="embla" id="embla-services">
+            <div class="embla__viewport">
+                <div class="embla__container">
+                    <!-- Slide 1: Maritime -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800&h=1000" alt="Maritime">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-caption">Maritime & Subsea</div>
+                                <a href="services.php#marine" class="card-button">Know More</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-sections">
-                        <div class="lower-section">
-                            <div class="card-caption">Maritime & Subsea</div>
-                            <a href="services.php#marine" class="card-button">Know More</a>
+
+                    <!-- Slide 2: Industrial IT -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="IT">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-caption">Industrial IT</div>
+                                <a href="services.php#cross" class="card-button">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Green Energy -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Energy">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-caption">Green Energy</div>
+                                <a href="services.php#env" class="card-button">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Border Logistics -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistics">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-caption">Border Logistics</div>
+                                <a href="services.php#logistics" class="card-button">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Bio-Solutions -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&h=1000" alt="Bio">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-caption">Bio-Solutions</div>
+                                <a href="services.php#env" class="card-button">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: Procurement -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Procurement">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-caption">Procurement</div>
+                                <a href="services.php#procurement" class="card-button">Know More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Slide 2: Industrial IT -->
-                <div class="slide">
-                    <div class="media">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="IT">
-                    </div>
-                    <div class="card-sections">
-                        <div class="lower-section">
-                            <div class="card-caption">Industrial IT</div>
-                            <a href="services.php#cross" class="card-button">Know More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3: Green Energy -->
-                <div class="slide">
-                    <div class="media">
-                        <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Energy">
-                    </div>
-                    <div class="card-sections">
-                        <div class="lower-section">
-                            <div class="card-caption">Green Energy</div>
-                            <a href="services.php#env" class="card-button">Know More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 4: Border Logistics -->
-                <div class="slide">
-                    <div class="media">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistics">
-                    </div>
-                    <div class="card-sections">
-                        <div class="lower-section">
-                            <div class="card-caption">Border Logistics</div>
-                            <a href="services.php#logistics" class="card-button">Know More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 5: Bio-Solutions -->
-                <div class="slide">
-                    <div class="media">
-                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&h=1000" alt="Bio">
-                    </div>
-                    <div class="card-sections">
-                        <div class="lower-section">
-                            <div class="card-caption">Bio-Solutions</div>
-                            <a href="services.php#env" class="card-button">Know More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 6: Procurement -->
-                <div class="slide">
-                    <div class="media">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Procurement">
-                    </div>
-                    <div class="card-sections">
-                        <div class="lower-section">
-                            <div class="card-caption">Procurement</div>
-                            <a href="services.php#procurement" class="card-button">Know More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slider-content-background"></div>
             </div>
             
-            <!-- New Arrow Container Below -->
+            <!-- Controls (Arrows & Dots) -->
             <div class="slider-nav-bottom">
-                <div class="left-arrow"><i class="fas fa-arrow-left"></i></div>
-                <div class="right-arrow"><i class="fas fa-arrow-right"></i></div>
+                <button class="embla__btn embla__btn--prev left-arrow" aria-label="Previous slide">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="embla__dots"></div>
+                <button class="embla__btn embla__btn--next right-arrow" aria-label="Next slide">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -732,6 +745,8 @@ include 'includes/hero_visual.php';
     </div>
 </section>
 
+<!-- Embla Carousel CDN -->
+<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 <!-- Home Page Logic -->
 <script src="assets/js/index.js"></script>
 
