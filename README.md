@@ -1,82 +1,121 @@
-# AB MALAYA - Modern Industrial & Neuromorphic UI Redesign
+# 🚀 AB MALAYA - Modern Industrial & Neuromorphic UI Redesign
 
 A high-end, premium corporate website for **AB Malaya Sdn Bhd**, a leading contractor and technical service provider in the Maritime, Oil & Gas, and Energy sectors in Malaysia.
 
-## 🚀 Overview
-This project represents a sophisticated evolution of the AB MALAYA digital identity. It merges **Industrial Authority** with a cutting-edge **Neuromorphic & Neo-Brutalist UI** design language. The website features tactile interfaces, 3D perspective interactions, and a focus on visual performance that places it at the forefront of modern corporate web standards.
+---
 
-## 🛠 Tech Stack
-- **Core**: PHP 8.x
-- **UI Design**: 
-    - **Neuromorphic Architecture**: "Raised" and "Inset" tactile elements for an extruded-plastic feel.
-    - **Neo-Brutalism Industrial**: Bold black borders, solid hard shadows, and high-contrast layouts.
-    - **White Glassmorphism**: High-blur (`backdrop-filter`) floating support components.
-- **Typography**: **Aeonik & Inter** (Clean, technical fonts for maximum clarity).
-- **Styling**: Vanilla CSS3 (Modular design system in `home.css`).
-- **Interactive**: Modular Vanilla JavaScript (Zero-dependency architecture).
-- **Animation**: GSAP (GreenSock) for high-performance parallax and scroll-triggered visuals.
-
-## 📂 Project Structure
-- `index.php`: High-impact landing page featuring a cinematic 3D focus slider and **Neo-Brutalist Map**.
-- `services.php`: Advanced service catalog featuring a **Dual-State Premium Slider** with immersive background swapping and "pop-out" 3D visuals.
-- `projects.php`: Portfolio showcase using a high-contrast **Neo-Brutalist Grid** with 3D tilt effects.
-- `about.php`: Immersive company profile featuring **Neumorphic 3D Parallax** and **Funky Industrial Accordions**.
-- `certified.php`: High-end certification showcase featuring a **Premium Blog Slider** and **Secure Modal Document Preview**.
-- `includes/`: Modular PHP components (Header, Footer, Hero Visuals).
-- `assets/`:
-    - `css/home.css`: Unified Design System and component tokens.
-    - `js/index.js`: Logic for Home Page (Tilt, Sliders).
-    - `js/service.js`: Logic for Services Page (Dual-State Swiper Sync).
-    - `js/projects.js`: Logic for Projects Page (Portfolio Tilt & Reveal).
-    - `js/about.js`: Logic for About Page (Parallax, Accordions, GSAP).
-    - `js/certified.js`: Logic for Certification Page (Scroll Reveal animations).
-
-## ✨ Key Features (Latest Updates in `services.php`)
-
-### 🌌 Dual-State Cinematic Service Slider
-A masterclass interaction system transitioning seamlessly between:
-- **Mode 1 (Front Card)**: A premium dark card wrapped in a thin, elegant, semi-transparent white border (`rgba(255,255,255,0.22)`) displaying the service's signature 3D visual.
-- **Mode 2 (Detail Card)**: A high-contrast premium solid white/light-slate gradient panel (`#ffffff` to `#f1f5f9`) featuring ultra-legible Slate-900 black typography and clean dark button accents.
-
-### 📱 Viewport-Relative Mathematical Mobile Overhaul (Latest Update!)
-We implemented a strict mobile viewport lock system that eliminates dynamic page scrolling and ensures an incredibly premium, zero cut-off fullscreen mobile app experience:
-- **Dynamic Height-Morphing Animation (`50vh` to `56vh`)**: The swiper card is set to a highly tactile portrait ratio (`50vh`). When entering Mode 2 (Detail), the card **smoothly morphs and stretches to `56vh`** via a custom ease transition (`transition: height 0.4s cubic-bezier(0.25, 1, 0.2, 1)`) to comfortably contain all text details, and dynamically shrinks back when clicking "BACK".
-- **Absolute Vertical Centering (`justify-content: center`)**: The detailed card content is aligned strictly to the vertical center of the expanded container to guarantee that the detailed title and list features stay symmetrically placed and 100% inside the card boundaries.
-- **Pristine Collision-Free Gap Overhaul**: Adjusted top Swiper margins dynamically to `11vh` and translated visual assets mathematically to `translateY(-8%)`, maintaining a wide, clean **`120px` to `150px` visual breathing distance** from category buttons and completely eliminating vertical asset overlaps.
-- **Premium 2-Row Wrapped Capsule Menu**: Replaced horizontal scrolls with a dynamic wrapped pill design featuring customized capsule touch targets (`5px 12px` padding) and compact gaps (`0.4rem 0.5rem`), fitting all categories on two beautifully organized rows across all mobile displays.
-- **High-Contrast Typography Overhaul**: Regular detail list text is set to slate-gray (`#334155`) and bold headers/titles to industrial black (`#0f172a`), solving light-on-light readability issues and making the back card exceptionally easy to read on mobile.
-- **High-Availability Unsplash CDN replacements**: Swapped background and detail URLs for Card 4 (*Construction*) and Card 5 (*Civil*) with high-availability, CORS-immune Unsplash CDN images, guaranteeing instant asset load.
-
-### 🎨 Dedicated 3D Assets for Every Service
-Each of the 8 services is linked to its own bespoke 3D visual asset (`assets/img/service3d/`):
-- *Marine Technical* 🛳️ -> `marine.png`
-- *Logistics* 🚛 -> `logistics.png`
-- *Environmental* 🍃 -> `pohon3d.png`
-- *Construction* 🏗️ -> `cinstruction.png`
-- *Civil Engineering* 🧱 -> `civil.png`
-- *Renovations* 🔨 -> `renov.png`
-- *Mechanical* ⚙️ -> `mekanikal.png`
-- *Landscape* 🌳 -> `lanscape.png`
-
-### 🔄 Dynamic Background-Image Swapping
-Mode 2 transitions the fullscreen section background to a **different, detailed service image** from Unsplash, and instantly restores it back to Mode 1's original front image on returning.
-
-### 🏹 Asymmetrical Navigation
-Simplified navigation presenting only **one right-hand next arrow** detailing the exact name of the next service destination, creating a clean, modern aesthetic.
-
-### 📝 Other Page Features
-- **Muhammad Erdem-Inspired Certification Slider**: A custom blog slider on `certified.php` using **Swiper.js** for high-end credential browsing.
-- **Secure Document Preview**: Advanced Modal system with **Click-to-Zoom** functionality, anti-right-click protection, and keyboard save/print disabling.
-- **Neuromorphic Vision/Mission**: Tactile cards with internal parallax imagery and reactive hover states.
-- **Funky Industrial Accordion**: A non-traditional vertical navigation system for Core Values.
-
-## 🖥 Local Development
-To run this project locally, use a PHP-enabled server or the built-in PHP server:
-```bash
-# Using PHP built-in server
-php -S localhost:8000
-```
-Access the site at `http://localhost:8000`.
+## 🏛 1. Overview
+This project represents a sophisticated evolution of the AB MALAYA digital identity. It merges **Industrial Authority** with a cutting-edge **Neuromorphic, Glassmorphic & Neo-Brutalist UI** design language. The website features tactile interfaces, 3D perspective interactions, and a focus on visual performance that places it at the forefront of modern corporate web standards.
 
 ---
-*Built with precision for AB MALAYA by Antigravity*
+
+## 🛠 2. Tech Stack & Architecture
+
+For a detailed breakdown of the roles, performance benefits, and features of each technology, refer to [techstack.md](file:///root/ABMALAYA/techstack.md) (Bahasa Indonesia) or [eng-techstack.md](file:///root/ABMALAYA/eng-techstack.md) (English).
+
+*   **Core Platform**: PHP 8.3 Native (Modular template inheritance, zero framework overhead, instant TTFB).
+*   **UI Paradigm**:
+    *   *Neuromorphic Accentuation*: Extruded-plastic tactile buttons and container borders.
+    *   *Neo-Brutalisim*: Solid hard shadows, thick borders, and high-contrast structural grids.
+    *   *Glassmorphism & Claymorphism*: Premium high-blur components and clay-shaded elements.
+*   **Typography**: **Aeonik** (Bold headings) & **Inter** (Clean body copy).
+*   **Animations**: **GSAP 3.12.2** + **ScrollTrigger** (GPU hardware-accelerated parallax) synced with **Lenis Smooth Scroll** via a single-render-loop bridge.
+*   **Carousels**: **Embla Carousel UMD** (Physics-driven, hardware-accelerated slider for beranda) and **Swiper.js** (Certified & Projects pages).
+
+---
+
+## 📂 3. Project Structure
+
+*   `index.php`: High-impact landing page featuring the GPU-accelerated **Particle Canvas**, sequential machinery parallax, **Embla Solutions Slider**, and a **Neo-Brutalist Google Map Widget**.
+*   `services.php`: Advanced service catalog featuring a **Dual-State Swiper Carousel** with visual perspective shifts and responsive dynamic heights.
+*   `projects.php`: High-end, immersive project showcase driven by **Swiper.js**, featuring perfectly centered desktop layouts and dynamic mobile-optimized 95%-width slider cards with responsive inquiry triggers.
+*   `about.php`: Immersive company profile featuring a 3D Neumorphic Parallax Vision & Mission section and custom **Funky Industrial CSS Accordions**.
+*   `certified.php`: High-end certification showcase featuring an interactive Swiper.js-based slider, a custom GPU-accelerated Neumorphic statistics panel, and **Secure Modal Document Preview**.
+*   `contact.php`: Tactile, responsive industrial contact portal combining beautiful **soft-shadow Neumorphic inquiry forms** with a robust, hard-edged **Neo-Brutalist Google Map panel** and specialized external deep links.
+*   `router.php`: Dynamic clean-URL routing engine that eliminates `.php` extensions and serves all static assets (images, fonts, scripts, styles) natively to completely bypass PHP built-in server bugs.
+*   `maintenance.md`: Technical guide for future updates, content changes, and server configurations.
+*   `includes/`:
+    *   `header.php`: Floating glassmorphic header, top loading bar, SVG navigation indicators, and mobile 3D Makisu folder menu.
+    *   `footer.php`: Re-engineered dark footer featuring comprehensive services listing, WA liquid-metal capsule, and claymorphic **Cookie Consent Card**.
+*   `assets/`:
+    *   `css/style.css`: Core design system, font faces, global variables, and layout overrides.
+    *   `js/navigation.js`: Global menu, Lenis initialization, search animations, and Lenis-GSAP Bridge.
+    *   `js/index.js` / `about.js` / `certified.js` / `projects.js` / `contact.js`: Highly targeted, modular scripts loaded sequentially per page.
+
+---
+
+## ✨ 4. Key Premium Features
+
+### 🎤 Spotify-Style Search Overlay with Voice Search & Live Match Engine
+Upgraded the mobile search to a breathtaking, Codepen-Spotify-emulated interactive card system with a dynamic, slowly fading Unsplash backdrop watermark. Integrates a local client-side search dictionary (`siteContent`) that matches keywords real-time as you type, rendering styled results instantly below the input. Includes **Web Speech API Voice Search** supporting Indonesian/English, displaying voice feedback with a pulsing red microphone before auto-submitting the query after a 1.2s buffer.
+
+### 📂 Auto-Expanding Hover Search (Header & Footer)
+Both the header and footer now host a dynamic, expanding glassmorphic search bar. Simply hovering (`mouseenter`) expands the input beautifully over 0.8s via a premium `cubic-bezier(0.16, 1, 0.3, 1)` curve and shifts focus to it. Moving the cursor away (`mouseleave`) smoothly collapses it back into a compact, circular capsule, auto-clearing the text and hiding any open previews.
+
+### 💎 Staggered Glassmorphic Dropdown Navigation
+Re-engineered the header menu links into premium dropdown panels with high-blur glass backgrounds (`blur(25px) saturate(190%)`). Top-level links feature customized inline caret SVG indicators (`arrow-svg`) that rotate from a horizontal hidden state to pointing straight down on hover. Sub-links animate sequentially with staggered transition delays (`nth-child(1)`) to `(5)`) using an Apple-inspired slide-down elastic reveal curve.
+
+### 🎨 Tactile SVG Footer Redesign
+Transformed the footer quick links and service categories into button-style lists featuring inline Lucide SVG outline icons. The icons dynamically scale, glow, and shift the link label to the right by `6px` on hover with a smooth transition. The business contact info has been modernized with transparent locator and mail envelopes for a clean, unified corporate look.
+
+### 📞 Clean Neumorphic & Neo-Brutalist Contact Architecture
+Integrates a balanced dual-aesthetic layout for a premium tactile feel. The inquiry panel employs soft-shadowed raised card containers (`.neu-card-raised`) with interactive inset fields, while the office location details feature smooth, mouse-driven 3D parallax tilt effects (`VanillaTilt`). The locations layout terminates in a solid, hard-shadowed Neo-Brutalist map container featuring sharp borders, an integrated Google Map iframe, and a dedicated "View in Browser" external link.
+
+### 🌀 Lenis-GSAP Single-Render-Loop Bridge
+Binds Lenis smooth scrolling directly to the global `gsap.ticker` to eliminate rendering lag, dual animation cycles, and layout jittering on parallax scroll-events (used in *About* and *Contact* pages).
+
+### 🌌 GPU-Accelerated Particle Canvas with IntersectionObserver
+Manages interactive backdrop physics particles in the hero banner. Utilizes `translate3d` to transfer drawing calculations to the graphics card, and automatically pauses the animation frame rate via `IntersectionObserver` when the user scrolls away to save device battery and CPU power.
+
+### 🎠 Physics-Driven Embla Carousel with Mobile Peeking
+Replaces old laggy carousels with hardware-accelerated slide animations. Configured with a viewport peeking ratio on mobile devices to showcase a zoomed-in center card with the side cards peeking in by `17.5%` each.
+
+### 🛡️ Document Anti-Theft Protection Modal
+Secures valuable ISO and licensing credentials. The system disables right-click context menus, blocks printing/saving shortcut triggers (`Ctrl+S`, `Ctrl+P`, `Cmd+S`, `Cmd+P`), and injects a transparent claymorphic protective watermark layer over previewed assets.
+
+### 🍪 Claymorphism Cookie Consent & Liquid Metal Support
+Features an elegant claymorphic cookie acceptance card with custom inset shading, linked to a floating Support Capsule made of animated liquid-metal gradient backgrounds that transition smoothly without breaking page flows.
+
+### ⛰️ Recessed Neumorphic 3D Parallax & Gyroscopic Sensor-Tilt
+Modernized the Vision & Mission experience in `about.php` by carving a deep, multi-layered inset "valley" container (`box-shadow: inset 35px 35px 70px #9bb0c4`) under a sharp ambient-occlusion edge. The 3D cards float as raised outward neumorphic panels, tilting on mouse movement. On mobile, it utilizes throttled (`~33fps`) gyroscopic `deviceorientation` listeners to dynamically tilt the cards and background images (with a 20% bleed area to prevent edge clipping) based on physical phone movement, rendering smoothly without layout reflows.
+
+### 💎 GPU-Accelerated Tactile Neumorphic Panels & Specific Transitions
+Implemented high-performance tactile Neumorphic statistics panels in `certified.php` and `about.php`. Leverages native hardware acceleration (`will-change: transform, opacity`) and replaces general CSS `all` transitions with highly targeted property transitions (`transform, box-shadow`). This delegates drawing computations entirely to the GPU, guaranteeing a stutter-free, silky-smooth 60 FPS scrolling experience.
+
+### 🔗 Clean-URL Architecture & Unified Route Integration
+Re-engineered the website navigation system to utilize fully SEO-friendly, clean URLs without `.php` extensions. Endpoints like `/about`, `/services`, `/certified`, `/projects`, and `/contact` are processed natively, generating professional address bars similar to modern application routers.
+
+### 🎬 High-End Cinematic Swiper.js Projects Showcase (projects.php)
+Employs a custom-tailored **Swiper.js** architecture optimized separately for desktop and mobile displays:
+*   **Desktop Mode**: Features a perfectly centered **950px** wide card layout with high-end, responsive overlapping images (`translateX(-100px)`) and smooth text fade-in transitions.
+*   **HP / Mobile Mode**: Automatically scales down to a dense, near-fullwidth (**95% width**) card layout with clean **15px** border-radius and soft shadow. Standard arrow buttons are hidden to prevent UI clutter, replaced by an elegant, pulsing **"SLIDE >"** mobile visual hint to guide the swipe behavior seamlessly.
+*   **Tightened Bottom Clearances**: Bottom padding is optimized to **20px/40px** on mobile/desktop, allowing the slider to flow compactly into the footer without large awkward white space.
+
+---
+
+## 🖥 5. Local Development & Performance Optimization
+
+To run this project locally without concurrent assets blocking or `net::ERR_INVALID_HTTP_RESPONSE` errors on static files:
+
+1.  **Automated Static Asset Proxying**:
+    The included `router.php` automatically intercepts all requests for static assets (images, fonts, scripts, and stylesheets), serving them directly with appropriate `Content-Type`, `Content-Length`, and caching headers. This completely bypasses the well-known static file serving bug (`net::ERR_INVALID_HTTP_RESPONSE`) found in PHP's built-in web server.
+
+2.  **Start Multi-Threaded PHP server**:
+    *   **Linux / macOS**:
+        ```bash
+        PHP_CLI_SERVER_WORKERS=4 php -S localhost:8000 router.php
+        ```
+    *   **Windows (CMD)**:
+        ```cmd
+        set PHP_CLI_SERVER_WORKERS=4 && php -S localhost:8000 router.php
+        ```
+    *   **Windows (PowerShell)**:
+        ```powershell
+        $env:PHP_CLI_SERVER_WORKERS=4; php -S localhost:8000 router.php
+        ```
+
+3.  **Access Local Site**:
+    Open [http://localhost:8000](http://localhost:8000) in your web browser.
+
+---
+*Built with ultimate precision and modern engineering for AB MALAYA by Antigravity*
