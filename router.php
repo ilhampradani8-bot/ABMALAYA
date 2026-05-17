@@ -7,14 +7,25 @@
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = ltrim($uri, '/');
 
+// Helper function to inject production-grade HTTP security headers
+function sendSecurityHeaders() {
+    header("X-Frame-Options: SAMEORIGIN");
+    header("X-Content-Type-Options: nosniff");
+    header("X-XSS-Protection: 1; mode=block");
+    header("Referrer-Policy: strict-origin-when-cross-origin");
+    header("Permissions-Policy: camera=(), microphone=(self), geolocation=()");
+}
+
 // If URI is empty or 'home', load index.php
 if ($uri === '' || $uri === 'home' || $uri === 'index') {
+    sendSecurityHeaders();
     include 'index.php';
     exit;
 }
 
 // Check if a corresponding .php file exists
 if (file_exists($uri . '.php')) {
+    sendSecurityHeaders();
     include $uri . '.php';
     exit;
 }
@@ -25,6 +36,7 @@ if ($uri !== '' && file_exists($uri) && !is_dir($uri)) {
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     
     if ($ext === 'php') {
+        sendSecurityHeaders();
         include $file;
         exit;
     }
