@@ -47,8 +47,6 @@ html, body {
 .services-content-grid {
     padding: 40px 0;
     background-color: #0f172a;
-    background-size: cover;
-    background-position: center;
     position: relative;
     z-index: 10;
     min-height: 100vh;
@@ -56,8 +54,63 @@ html, body {
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
     overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    position: relative;
+}
+
+.service-bg-transition-wrap {
+    position: absolute;
+    inset: -10px; /* Expand slightly to avoid white borders from blur */
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    filter: blur(3px); /* Soft glassmorphism blur applied statically once on parent wrapper! */
+    will-change: filter;
+}
+
+.service-bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1.2); /* Zoomed in */
+    transition: transform 2.5s cubic-bezier(0.15, 1, 0.3, 1), opacity 2.5s cubic-bezier(0.15, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+/* Active background slide */
+.service-bg-slide.active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.2);
+    z-index: 2;
+}
+
+/* Old background slide going up */
+.service-bg-slide.exit-up {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0) scale(1.2);
+    z-index: 1;
+}
+
+/* Old background slide going down (on back) */
+.service-bg-slide.exit-down {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0) scale(1.2);
+    z-index: 1;
+}
+
+/* New background slide coming down from top */
+.service-bg-slide.enter-down {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0) scale(1.2); /* Starts above */
+    z-index: 3;
+}
+
+/* New background slide coming up from bottom (on back) */
+.service-bg-slide.enter-up {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0) scale(1.2); /* Starts below */
+    z-index: 3;
 }
 
 .services-content-grid::before {
@@ -65,15 +118,26 @@ html, body {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.7) 30%, rgba(15, 23, 42, 0.4) 100%);
-    backdrop-filter: blur(0px);
-    transition: all 0.8s ease;
     z-index: 1;
     pointer-events: none;
 }
 
-.services-content-grid.detail-active::before {
-    background: rgba(255, 255, 255, 0.55); /* Lighter overlay to see image better */
+/* High-performance static blur layer - transitioning opacity instead of backdrop-filter */
+.services-blur-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 2.5s cubic-bezier(0.15, 1, 0.3, 1);
+    z-index: 2;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+.services-content-grid.detail-active .services-blur-overlay {
+    opacity: 1;
 }
 
 .services-content-grid .container {
@@ -183,7 +247,7 @@ html, body {
 #service-section-wrap .service-swiper .swiper-slide {
     width: 80% !important; 
     height: 35vw !important; 
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
     filter: blur(8px) grayscale(100%);
     opacity: 0; /* Hide side cards as requested */
     transform: scale(0.9);
@@ -206,20 +270,16 @@ html, body {
     height: 100%;
     position: relative;
     background: #000;
-    overflow: hidden; /* Contain the flash */
+    overflow: visible !important; /* Always allow 3D visual to pop out unclipped */
     border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease, box-shadow 0.6s ease;
     box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
 .static-service-card.is-detailed {
-    box-shadow: 0 40px 100px rgba(0,0,0,0.1); /* Very light for white theme */
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-/* Allow 3D visual to pop out ONLY when NOT detailed and NOT transitioning */
-.static-service-card:not(.is-detailed):not(.trigger-flash):not(.trigger-black-flash):not(.is-leaving):not(.entering-front) {
-    overflow: visible;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* Mode 1: Front State */
@@ -232,46 +292,53 @@ html, body {
     align-items: center;
     overflow: visible !important; 
     z-index: 5;
-    transition: all 0.5s ease; /* Smooth fade/move */
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+    will-change: transform, opacity;
 }
 
 /* State when user clicks Read More - Staggered Exit Animations */
 .static-service-card.is-leaving .card-front-overlay {
     opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-/* Staggered Exit Timing */
+/* Staggered Exit Timing - Optimized for GPU */
 .static-service-card.is-leaving .floating-3d {
-    transform: translate(150px, -150px) scale(0.3);
+    transform: translate3d(0, -120px, 0) scale(0.75); /* Softly straight up and slightly smaller */
     opacity: 0;
-    transition: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.2, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.2, 1);
+    will-change: transform, opacity;
 }
 
 .static-service-card.is-leaving .card-front-info h3 {
-    transform: translateX(100px);
+    transform: translate3d(100px, 0, 0);
     opacity: 0;
-    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0.1s; /* Slight delay */
+    transition: transform 0.7s cubic-bezier(0.7, 0, 0.3, 1) 0.1s, opacity 0.7s ease 0.1s;
+    will-change: transform, opacity;
 }
 
 .static-service-card.is-leaving .card-front-info p {
-    transform: translateY(-80px);
+    transform: translate3d(0, -80px, 0);
     opacity: 0;
-    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0.2s; /* Slight delay */
+    transition: transform 0.7s cubic-bezier(0.7, 0, 0.3, 1) 0.2s, opacity 0.7s ease 0.2s;
+    will-change: transform, opacity;
 }
 
 .static-service-card.is-leaving .read-more-link {
-    transform: translateY(-50px);
+    transform: translate3d(0, -50px, 0);
     opacity: 0;
-    transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0.3s; /* More delay */
+    transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0.3s, opacity 0.6s ease 0.3s;
+    will-change: transform, opacity;
 }
 
 .card-front-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.4) 100%);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.7) 100%);
     z-index: 1;
     pointer-events: none;
     transition: opacity 0.6s ease;
+    overflow: hidden !important; /* Contain the white flash sweep */
 }
 
 .card-front-content {
@@ -304,11 +371,17 @@ html, body {
     filter: drop-shadow(0 30px 60px rgba(0,0,0,0.8));
     z-index: 20;
     pointer-events: none;
-    transition: all 0.5s ease;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.2, 1), opacity 1.2s ease;
+}
+
+.swiper-slide:not(.swiper-slide-active) .floating-3d {
+    transform: scale(0.9) rotate(-10deg) translate3d(-60px, 0, 0);
+    opacity: 0;
 }
 
 .swiper-slide-active .floating-3d {
-    transform: scale(1.05) rotate(-3deg);
+    transform: scale(1.05) rotate(-3deg) translate3d(0, 0, 0);
+    opacity: 1;
 }
 
 .card-front-info {
@@ -317,7 +390,6 @@ html, body {
     text-align: left;
     position: relative;
     z-index: 25;
-    transition: all 0.5s ease;
 }
 
 .card-front-info h3 {
@@ -326,6 +398,8 @@ html, body {
     font-family: 'Aeonik', sans-serif;
     font-weight: 700;
     margin-bottom: 0.8rem;
+    transition: transform 1s cubic-bezier(0.25, 1, 0.2, 1) 0.1s, opacity 1s ease 0.1s;
+    will-change: transform, opacity;
 }
 
 .card-front-info p {
@@ -333,6 +407,8 @@ html, body {
     color: rgba(255,255,255,0.8);
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    transition: transform 1s cubic-bezier(0.25, 1, 0.2, 1) 0.2s, opacity 1s ease 0.2s;
+    will-change: transform, opacity;
 }
 
 .read-more-link {
@@ -347,8 +423,31 @@ html, body {
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: transform 1s cubic-bezier(0.25, 1, 0.2, 1) 0.3s, opacity 1s ease 0.3s, gap 0.3s ease, color 0.3s ease;
     pointer-events: auto !important;
+    will-change: transform, opacity;
+}
+
+.swiper-slide:not(.swiper-slide-active) .card-front-info h3 {
+    transform: translate3d(40px, 0, 0);
+    opacity: 0;
+}
+
+.swiper-slide:not(.swiper-slide-active) .card-front-info p {
+    transform: translate3d(40px, 0, 0);
+    opacity: 0;
+}
+
+.swiper-slide:not(.swiper-slide-active) .read-more-link {
+    transform: translate3d(40px, 0, 0);
+    opacity: 0;
+}
+
+.swiper-slide-active .card-front-info h3,
+.swiper-slide-active .card-front-info p,
+.swiper-slide-active .read-more-link {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
 }
 
 .read-more-link i {
@@ -360,79 +459,115 @@ html, body {
     transform: translateX(5px);
 }
 
-/* Mode 2: Detail State (White Theme) */
+/* Mode 2: Detail State (Transparent Floating Panel) */
 .card-detail {
     position: absolute;
     inset: 0;
-    background: #f8fafc; /* Premium Light Gray */
-    transform: translateY(100%);
+    background: transparent !important;
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 15;
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: opacity;
+    pointer-events: none;
 }
 
 .card-detail-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(241, 245, 249, 0.6) 100%);
+    background: transparent !important;
     z-index: 1;
+    overflow: hidden !important; 
 }
 
 .card-detail-content {
     position: relative;
     z-index: 20;
-    width: 80%; 
-    padding: 3rem;
-    text-align: center;
-    color: #0f172a; /* Dark text for light mode */
+    width: 90%; 
+    max-width: 650px;
+    padding: 2rem;
+    text-align: left;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card-detail-content h3 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #005ee9; /* AB Malaya Blue */
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: #fff !important;
     font-family: 'Aeonik', sans-serif;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+.card-detail-content h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #3b82f6; /* Premium blue underline */
+    margin-top: 0.8rem;
+    border-radius: 2px;
 }
 
 /* System Logic Classes */
 .static-service-card.is-detailed .card-front {
-    transform: translateY(-100%);
     opacity: 0;
+    pointer-events: none;
 }
 
 .static-service-card.is-detailed .card-detail {
-    transform: translateY(0);
     opacity: 1;
+    pointer-events: auto;
 }
 
-/* Cinematic Sweep */
+/* Force 3D visual to be completely hidden in Mode 2 (Detail Mode) without flashing */
+.static-service-card.is-detailed .floating-3d {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translate3d(0, -120px, 0) scale(0.75) !important;
+    transition: none !important;
+}
+
 /* Cinematic Flash Systems */
-.static-service-card::after {
+.card-front-overlay::after,
+.card-detail-overlay::after {
     content: '';
     position: absolute;
     inset: 0;
-    transform: translateX(-110%);
-    z-index: 1000;
+    transform: translate3d(-110%, 0, 0);
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
-    transition: none; /* Instant reset */
+    transition: none;
+    will-change: transform;
 }
 
-/* White Flash - To Detail */
-.static-service-card.trigger-flash::after {
+/* White Flash - To Detail (Stays inside card-front-overlay) */
+.card-front-overlay::after {
+    z-index: 10;
+}
+
+/* Black Flash - From Detail (Stays inside card-detail-overlay) */
+.card-detail-overlay::after {
+    z-index: 10;
+}
+
+/* White Flash Trigger */
+.static-service-card.trigger-flash .card-front-overlay::after {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
     visibility: visible;
     opacity: 1;
     animation: flash-sweep 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-/* Black Flash - From Detail */
-.static-service-card.trigger-black-flash::after {
+/* Black Flash Trigger */
+.static-service-card.trigger-black-flash .card-detail-overlay::after {
     background: linear-gradient(90deg, transparent, rgba(0,0,0,0.95), transparent);
     visibility: visible;
     opacity: 1;
@@ -440,41 +575,97 @@ html, body {
 }
 
 @keyframes flash-sweep {
-    0% { transform: translateX(-110%); }
-    100% { transform: translateX(110%); }
+    0% { transform: translate3d(-110%, 0, 0); }
+    100% { transform: translate3d(110%, 0, 0); }
 }
 
-/* Entrance Animation for Mode 1 */
+/* Entrance Animation for Mode 1 - Stays on top of black flash */
 .static-service-card.entering-front .card-front {
-    animation: slideUpFront 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: slideUpFront 1.4s cubic-bezier(0.25, 1, 0.2, 1) forwards;
+    z-index: 2000 !important;
 }
 
 @keyframes slideUpFront {
-    0% { transform: translateY(100px); opacity: 0; filter: blur(10px); }
-    100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* 3D Visual slides left-to-right, starting dim and blurred */
+.static-service-card.entering-front .floating-3d {
+    animation: slideIn3d 1.5s cubic-bezier(0.25, 1, 0.2, 1) forwards;
+}
+
+@keyframes slideIn3d {
+    0% {
+        transform: translate3d(-100px, 0, 0) scale(0.9) rotate(-10deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1.05) rotate(-3deg);
+        opacity: 1;
+    }
+}
+
+/* Staggered text entrances for maximum premium feel */
+.static-service-card.entering-front .card-front-info h3 {
+    animation: fadeInText 1.2s cubic-bezier(0.25, 1, 0.2, 1) 0.2s forwards;
+    opacity: 0;
+}
+
+.static-service-card.entering-front .card-front-info p {
+    animation: fadeInText 1.2s cubic-bezier(0.25, 1, 0.2, 1) 0.3s forwards;
+    opacity: 0;
+}
+
+.static-service-card.entering-front .read-more-link {
+    animation: fadeInText 1.2s cubic-bezier(0.25, 1, 0.2, 1) 0.4s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInText {
+    0% {
+        transform: translate3d(0, 20px, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
 }
 
 .detail-list-content {
     list-style: none;
     padding: 0;
-    margin: 1.5rem auto;
-    max-width: 500px;
+    margin: 1.5rem 0 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
 }
 
 .detail-list-content li {
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-    padding: 10px 20px;
-    background: rgba(15, 23, 42, 0.05); /* Very light dark tint */
-    border-radius: 10px;
-    border-left: 3px solid #005ee9;
-    color: #1e293b; /* Dark slate text */
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    padding-left: 1.5rem;
+    position: relative;
     transform: translateY(20px);
     opacity: 0;
 }
 
+.detail-list-content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #3b82f6; /* Blue pointer bullet */
+    font-weight: bold;
+}
+
 .detail-list-content li strong {
-    color: #005ee9;
+    color: #fff;
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
 }
 
 .is-detailed .detail-list-content li {
@@ -492,22 +683,38 @@ html, body {
 }
 
 .detail-back-btn {
-    background: #005ee9; /* AB Malaya Blue */
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #fff;
-    border: none;
-    padding: 12px 25px;
-    font-size: 0.75rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    width: fit-content;
-    transition: 0.3s;
-    margin: 1.5rem auto 0;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.2, 1);
+    margin: 0;
 }
 
-.detail-back-btn:hover { background: #000; }
+.detail-back-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .detail-list-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .card-detail-content h3 {
+        font-size: 1.8rem;
+    }
+}
 
 @media (max-width: 1024px) {
     #service-section-wrap .service-swiper .swiper-slide {
@@ -575,6 +782,13 @@ include 'includes/hero_visual.php';
 </script>
 
 <section class="services-content-grid" id="service-section-wrap">
+    <!-- Directional GPU-accelerated background layers -->
+    <div class="service-bg-transition-wrap">
+        <div class="service-bg-slide active" id="service-bg-1"></div>
+        <div class="service-bg-slide" id="service-bg-2"></div>
+    </div>
+    
+    <div class="services-blur-overlay"></div>
     <div class="bg-flash" id="bg-shutter"></div>
     
     <div class="container">
@@ -600,9 +814,9 @@ include 'includes/hero_visual.php';
             <div class="swiper-wrapper">
                 
                 <!-- Card 1: Marine -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -615,7 +829,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Marine Details</h3>
@@ -632,9 +846,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 2: Logistics -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -647,7 +861,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Logistics Details</h3>
@@ -664,9 +878,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 3: Environmental -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -679,7 +893,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Environmental Details</h3>
@@ -696,9 +910,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 4: Construction -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1541913057-945f74bc70bd?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1541913057-945f74bc70bd?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -711,7 +925,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Construction Details</h3>
@@ -728,9 +942,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 5: Civil Engineering -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1517089591964-9997858a9f7c?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1517089591964-9997858a9f7c?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -743,7 +957,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1508450859948-4e04f9ad5657?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1508450859948-4e04f9ad5657?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Civil Details</h3>
@@ -760,9 +974,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 6: Renovations -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -775,7 +989,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Renovation Details</h3>
@@ -792,9 +1006,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 7: Mechanical -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -807,7 +1021,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Mechanical Details</h3>
@@ -824,9 +1038,9 @@ include 'includes/hero_visual.php';
                 </div>
 
                 <!-- Card 8: Landscape -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1558905648-278456b3e648?q=80&w=1600">
+                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1558905648-278456b3e648?q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
@@ -839,7 +1053,7 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1558905648-278456b3e648?q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
                                 <h3>Landscape Details</h3>
@@ -876,6 +1090,55 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!sectionWrap) return;
 
+    // High-performance background transition with directional slide
+    let currentBgIndex = 1;
+    const transitionBG = (newBgUrl, direction = 'down') => {
+        if (!newBgUrl) return;
+        
+        const nextBgIndex = currentBgIndex === 1 ? 2 : 1;
+        const currentBgEl = document.getElementById(`service-bg-${currentBgIndex}`);
+        const nextBgEl = document.getElementById(`service-bg-${nextBgIndex}`);
+        
+        if (!currentBgEl || !nextBgEl) return;
+        
+        // Normalize newBgUrl to background-image CSS format
+        const bgStyleValue = newBgUrl.startsWith('url') ? newBgUrl : `url('${newBgUrl}')`;
+        
+        // Set background image
+        nextBgEl.style.backgroundImage = bgStyleValue;
+        
+        // Clean up classes
+        nextBgEl.className = 'service-bg-slide';
+        currentBgEl.className = 'service-bg-slide active';
+        
+        // Force reflow
+        void nextBgEl.offsetWidth;
+        
+        if (direction === 'down') {
+            // Downward transition: old slide exits up, new slide enters from top moving down
+            nextBgEl.classList.add('enter-down');
+            void nextBgEl.offsetWidth; // Force reflow
+            
+            nextBgEl.classList.remove('enter-down');
+            nextBgEl.classList.add('active');
+            
+            currentBgEl.classList.remove('active');
+            currentBgEl.classList.add('exit-up');
+        } else if (direction === 'back') {
+            // Back transition: old slide exits down, new slide enters from bottom moving up
+            nextBgEl.classList.add('enter-up');
+            void nextBgEl.offsetWidth; // Force reflow
+            
+            nextBgEl.classList.remove('enter-up');
+            nextBgEl.classList.add('active');
+            
+            currentBgEl.classList.remove('active');
+            currentBgEl.classList.add('exit-down');
+        }
+        
+        currentBgIndex = nextBgIndex;
+    };
+
     const updateBG = (swiper) => {
         if (!swiper || !swiper.slides || swiper.slides.length === 0) return;
         const activeSlide = swiper.slides[swiper.activeIndex];
@@ -884,12 +1147,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const bgUrl = activeSlide.getAttribute('data-bg');
         const realIndex = swiper.realIndex;
         
-        // Trigger Flash
+        // Trigger Flash - Disabled for ultra-smooth uninterrupted slide changes
+        /*
         if (shutter) {
             shutter.classList.remove('active');
             void shutter.offsetWidth; // Force reflow
             shutter.classList.add('active');
         }
+        */
 
         // Update Menu Active State
         menuItems.forEach((btn, idx) => {
@@ -898,7 +1163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Sync BG change
         setTimeout(() => {
-            if(bgUrl) sectionWrap.style.backgroundImage = `url('${bgUrl}')`;
+            if(bgUrl) transitionBG(bgUrl, 'down');
         }, 350);
     };
 
@@ -907,10 +1172,19 @@ document.addEventListener('DOMContentLoaded', function() {
         slidesPerView: 'auto',
         centeredSlides: true,
         loop: true,
-        speed: 800,
+        speed: 1200,
         on: {
             init: function () {
                 console.log('Swiper Ready');
+                const activeSlide = this.slides[this.activeIndex];
+                if (activeSlide) {
+                    const bgUrl = activeSlide.getAttribute('data-bg');
+                    const initialBg = document.getElementById('service-bg-1');
+                    if (initialBg && bgUrl) {
+                        initialBg.style.backgroundImage = `url('${bgUrl}')`;
+                        initialBg.classList.add('active');
+                    }
+                }
                 setTimeout(() => updateBG(this), 100);
             },
             slideChangeTransitionStart: function () {
@@ -949,7 +1223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (sectionWrap && detailCard) {
                         const detailBg = detailCard.style.backgroundImage;
                         if (detailBg) {
-                            sectionWrap.style.backgroundImage = detailBg;
+                            transitionBG(detailBg, 'down');
                         }
                         sectionWrap.classList.add('detail-active');
                     }
@@ -979,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (sectionWrap) {
                     sectionWrap.classList.remove('detail-active');
                     if (originalBg) {
-                        sectionWrap.style.backgroundImage = `url('${originalBg}')`;
+                        transitionBG(originalBg, 'back');
                     }
                 }
             }, 400);
@@ -989,7 +1263,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => card.classList.remove('entering-front'), 800);
             }, 800);
         }
-    }); 
+    });
+ 
 
     // Menu Click Handler
     menuItems.forEach(btn => {
