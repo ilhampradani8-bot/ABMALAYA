@@ -13,6 +13,8 @@ include 'includes/header.php';
     <div class="scrollDist"></div>
     <div class="parallax-main">
         <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" class="parallax-svg" preserveAspectRatio="xMidYMid slice">
+
+
             <mask id="m">
                 <g class="cloud1">
                     <rect fill="#fff" width="100%" height="801" y="799" />
@@ -20,11 +22,11 @@ include 'includes/header.php';
                 </g>
             </mask>
             
-            <image class="sky" xlink:href="https://assets.codepen.io/721952/sky.jpg"  width="1200" height="590" />
-            <image class="mountBg" xlink:href="https://assets.codepen.io/721952/mountBg.png" width="1200" height="800"/>    
-            <image class="mountMg" xlink:href="https://assets.codepen.io/721952/mountMg.png" width="1200" height="800"/>    
-            <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800"/>    
-            <image class="mountFg" xlink:href="https://assets.codepen.io/721952/mountFg.png" width="1200" height="800"/>
+            <image class="sky" xlink:href="/assets/img/about3D/sky.png" x="-300" y="-600" width="1800" height="2200" preserveAspectRatio="none" />
+            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.png" x="-40" y="-40" width="1280" height="880" />    
+            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.png" x="-40" y="-40" width="1280" height="880" />    
+            <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" />    
+            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.png" x="-40" y="0" width="1280" height="880" />
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
             
@@ -34,8 +36,12 @@ include 'includes/header.php';
             
             <g mask="url(#m)">
                 <rect fill="#fff" width="100%" height="100%" />      
-                <text x="50%" y="250" text-anchor="middle" fill="#0f172a" class="parallax-text-main">STRATING FROM</text>
-                <text x="50%" y="320" text-anchor="middle" fill="#0f172a" class="parallax-text-sub-desc">Pioneering the industrial evolution with technical excellence and innovative solutions.</text>
+                <text x="50%" y="250" text-anchor="middle" fill="#0f172a" class="parallax-text-main">STARTING FROM</text>
+                <text x="50%" y="320" text-anchor="middle" fill="#0f172a" class="parallax-text-sub-desc">
+                    <tspan x="50%" dy="0">Pioneering the industrial evolution</tspan>
+                    <tspan x="50%" dy="25">with technical excellence & innovative solutions.</tspan>
+                </text>
+                <polyline class="arrow-reveal" fill="#0f172a" points="599,400 599,439 590,429 590,432 600,442 610,432 610,429 601,439 601,400" />
             </g>
             
             <rect id="arrow-btn" width="100" height="100" opacity="0" x="550" y="420" style="cursor:pointer"/>
@@ -900,6 +906,11 @@ include 'includes/header.php';
     }
 
     /* Dramatic Parallax Hero */
+    .sky, .mountBg, .mountMg, .mountFg {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+
     .parallax-wrapper {
         position: relative;
         width: 100%;
@@ -909,25 +920,29 @@ include 'includes/header.php';
 
     .scrollDist {
         width: 100%;
-        height: 120vh; /* Reduced to snap faster to content */
+        height: 180vh; /* Expanded scroll distance to support stationary curtain overlap */
     }
 
     .parallax-main {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important; /* Dynamic viewport height to prevent mobile gaps */
         z-index: 1;
         background: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .parallax-svg {
-        width: 100%;
-        height: 100%;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: visible !important; /* Prevent browser from clipping sky bleed areas */
     }
 
     .parallax-text-main {
@@ -1312,14 +1327,21 @@ include 'includes/header.php';
         .cta-glass-card { padding: 3rem; text-align: center; justify-content: center; }
         .cta-actions { justify-content: center; }
         .cta-visual { display: none; }
-        .parallax-text-main { font-size: 40px; }
-        .parallax-text-sub { font-size: 12px; letter-spacing: 8px; }
+        .parallax-text-main { font-size: 52px; font-weight: 900; }
+        .parallax-text-sub-desc { font-size: 15px; letter-spacing: 5px; font-weight: 700; }
     }
 
     @media (max-width: 768px) {
         section { padding: 80px 0; }
         .vm-card h3 { font-size: 2rem; }
         .section-header-centered h2 { font-size: 2.2rem; }
+        .parallax-text-main { font-size: 42px; font-weight: 900; }
+        .parallax-text-sub-desc { font-size: 13px; letter-spacing: 3px; font-weight: 700; }
+    }
+
+    @media (max-width: 480px) {
+        .parallax-text-main { font-size: 34px; letter-spacing: 2px; font-weight: 900; }
+        .parallax-text-sub-desc { font-size: 11px; letter-spacing: 2px; font-weight: 700; }
     }
 </style>
 

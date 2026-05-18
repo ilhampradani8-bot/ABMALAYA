@@ -1,39 +1,88 @@
 $(function() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    // --- HERO PARALLAX ---
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.parallax-wrapper',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1,
-            pin: true,
-            pinSpacing: false
-        }
-    });
+    // --- RESPONSIVE HERO PARALLAX ---
+    let mm = gsap.matchMedia();
 
-    tl.fromTo('.sky', {y: 0}, {y: -200}, 0)
-      .fromTo('.cloud1', {y: 100}, {y: -800}, 0)
-      .fromTo('.cloud2', {y: -150}, {y: -500}, 0)
-      .fromTo('.cloud3', {y: -50}, {y: -650}, 0)
-      .fromTo('.mountBg', {y: -10}, {y: -100}, 0)
-      .fromTo('.mountMg', {y: -30}, {y: -250}, 0)
-      .fromTo('.mountFg', {y: -50}, {y: -600}, 0)
-      .to('.parallax-main', {opacity: 0, pointerEvents: 'none', scrollTrigger: {
-          trigger: '#story-section',
-          start: 'top 80%',
-          end: 'top 20%',
-          scrub: true
-      }}, 0);
+    mm.add({
+        isDesktop: "(min-width: 769px)",
+        isMobile: "(max-width: 768px)"
+    }, (context) => {
+        let { isDesktop, isMobile } = context.conditions;
+
+        // Tailored coordinates for mobile vs desktop to prevent cropping and gaps
+        let skyStart = 0, skyEnd = -200;
+        let cloud1Start = 220, cloud1End = -700;
+        let cloud2Start = -20, cloud2End = -380;
+        let cloud3Start = 80, cloud3End = -520;
+        let mountBgStart = -10, mountBgEnd = -100;
+        let mountMgStart = -30, mountMgEnd = -250;
+        let mountFgStart = 60, mountFgEnd = -500;
+
+        // Dynamic scale variables to fit entire city skyline on mobile viewports
+        let skyScale = 1, mountBgScale = 1, mountMgScale = 1, mountFgScale = 1;
+
+        // Setup custom triggers for fade-out to give the mask reveal ample time to finish fully
+        let fadeStart = 'top 80%', fadeEnd = 'top 20%';
+
+        if (isMobile) {
+            // Mobile optimized values (keep city fully visible & prevent sky top/bottom gaps)
+            skyStart = 0; skyEnd = -150; // Native SVG handles bleed perfectly
+
+            cloud1Start = 200; cloud1End = -620; // Starts higher & moves faster to complete the mask reveal earlier!
+            cloud2Start = 100; cloud2End = -240;
+            cloud3Start = 220; cloud3End = -340;
+
+            mountBgStart = -140; mountBgEnd = -220; // Lifted upwards to sit proudly above clouds
+            mountBgScale = 0.58; // Scaled down to show all city elements horizontally
+
+            mountMgStart = -170; mountMgEnd = -290; // Lifted higher
+            mountMgScale = 0.58;
+
+            mountFgStart = -200; mountFgEnd = -380; // Lifted highest
+            mountFgScale = 0.58;
+
+            fadeStart = 'top 55%'; // Slower/later fade out on mobile to let mask animation play completely
+            fadeEnd = 'top 15%';
+        }
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.parallax-wrapper',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 0.5,
+                pin: false, // Disables GSAP pinning to let native CSS position: fixed keep the hero stationary
+                pinSpacing: false
+            }
+        });
+
+        // Distribute timings across a 10-second virtual timeline (matching 180vh scrollable height):
+        // 0s - 4.0s: Cloud mask slides up, fully revealing the metallic text early (before Section 2 enters)
+        // 0s - 5.0s: All 3D parallax shifts (sky, buildings, clouds) complete
+        // 5.0s - 10.0s: Hero remains completely stationary, and Section 2 slides up to naturally overlap it!
+        tl.fromTo('.sky', {y: skyStart}, {y: skyEnd, ease: 'none', duration: 5}, 0)
+          .fromTo('.cloud1', {y: cloud1Start}, {y: cloud1End, ease: 'none', duration: 4}, 0)
+          .fromTo('.cloud2', {y: cloud2Start}, {y: cloud2End, ease: 'none', duration: 5}, 0)
+          .fromTo('.cloud3', {y: cloud3Start}, {y: cloud3End, ease: 'none', duration: 5}, 0)
+          .fromTo('.mountBg', {y: mountBgStart, scale: mountBgScale, transformOrigin: '50% 100%'}, {y: mountBgEnd, scale: mountBgScale, transformOrigin: '50% 100%', ease: 'none', duration: 5}, 0)
+          .fromTo('.mountMg', {y: mountMgStart, scale: mountMgScale, transformOrigin: '50% 100%'}, {y: mountMgEnd, scale: mountMgScale, transformOrigin: '50% 100%', ease: 'none', duration: 5}, 0)
+          .fromTo('.mountFg', {y: mountFgStart, scale: mountFgScale, transformOrigin: '50% 100%'}, {y: mountFgEnd, scale: mountFgScale, transformOrigin: '50% 100%', ease: 'none', duration: 5}, 0);
+
+        return () => {
+            tl.kill();
+        };
+    });
 
     const arrowBtn = document.querySelector('#arrow-btn');
     if(arrowBtn) {
         arrowBtn.addEventListener('mouseenter', () => {
             gsap.to('.arrow', {y: 10, duration: 0.8, ease: 'back.inOut(3)', overwrite: 'auto'});
+            gsap.to('.arrow-reveal', {y: 10, duration: 0.8, ease: 'back.inOut(3)', overwrite: 'auto'});
         });
         arrowBtn.addEventListener('mouseleave', () => {
             gsap.to('.arrow', {y: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto'});
+            gsap.to('.arrow-reveal', {y: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto'});
         });
         arrowBtn.addEventListener('click', () => {
             gsap.to(window, {scrollTo: '#story-section', duration: 1.5, ease: 'power1.inOut'});
@@ -41,10 +90,33 @@ $(function() {
     }
 
     // --- SECTION PARALLAX LOGIC (OPTIMIZED SMOOTH SCRUB) ---
-    gsap.set('.neumorphic-card, .funky-tab, .story-detail-left', { opacity: 1, y: 0 });
+    gsap.set('.neumorphic-card, .funky-tab', { opacity: 1, y: 0 });
+
+    // Staggered smooth entrance animation for the Our Story elements (fade-in in turn)
+    const storyElements = [
+        '.story-detail-left .tagline',
+        '.story-detail-left .story-title-main',
+        '.story-detail-left .story-text-container',
+        '.story-visual-right .journey-badge-minimal'
+    ];
+
+    gsap.set(storyElements, { opacity: 0, y: 40 });
+
+    gsap.to(storyElements, {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        stagger: 0.2, // Slide up and fade in turns!
+        scrollTrigger: {
+            trigger: '#story-section',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+        }
+    });
 
     gsap.to('.story-visual-right', {
-        y: 50,
+        y: 30,
         scrollTrigger: {
             trigger: '#story-section',
             start: "top bottom",
