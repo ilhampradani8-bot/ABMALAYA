@@ -1,4 +1,9 @@
 <?php 
+// Force browser to bypass cache for about.php to immediately reflect local 3D assets and layout improvements
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 $pageTitle = "About Us";
 $currentPage = "about";
 include 'includes/header.php'; 
@@ -736,7 +741,7 @@ include 'includes/header.php';
 
     /* Accordion Logic Fixes */
     input[type="radio"]:checked + label .funky-tab {
-        height: 260px; /* Ample room for content */
+        height: 200px; /* Tight, compact height without button empty space */
     }
 
     input[type="radio"]:checked + label .funky-tab h2 {
@@ -745,7 +750,7 @@ include 'includes/header.php';
     }
 
     input[type="radio"]:checked + label .funky-tab .tab-right {
-        top: 75px;
+        top: 60px; /* Shifted up slightly to perfectly balance and vertical-align contents */
         opacity: 1;
         transition: all .3s .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     }
@@ -769,15 +774,15 @@ include 'includes/header.php';
 
     .tab-right {
         position: absolute;
-        width: 75%; /* Wider content area */
-        right: 40px;
+        width: 68%; /* Safe narrower width to avoid overlapping left icons */
+        right: 55px; /* Elegant margin gap to prevent touching the right border line */
         text-align: right;
         color: #fff;
     }
 
     .tab-right h3 { font-size: 1.6rem; font-weight: 800; margin: 0; color: #fff; line-height: 1.1; }
     .tab-right h4 { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.5); margin: 6px 0; text-transform: uppercase; letter-spacing: 2px; }
-    .tab-right p { font-size: 1rem; line-height: 1.5; color: rgba(255,255,255,0.9); margin: 15px 0; max-width: 450px; margin-left: auto; }
+    .tab-right p { font-size: 1rem; line-height: 1.5; color: rgba(255,255,255,0.9); margin: 10px 0 0 0; max-width: 450px; margin-left: auto; }
 
     .funky-btn {
         background: transparent;
@@ -870,15 +875,15 @@ include 'includes/header.php';
         .big-icon { font-size: 120px; left: -20px; top: 10px; }
         .tab-icon-image { width: 50px; height: 50px; left: 15px; border-radius: 12px; font-size: 20px; }
         
-        .tab-right { text-align: left; width: calc(100% - 80px); left: 80px; right: auto; padding: 0; }
+        .tab-right { text-align: left; width: calc(100% - 100px); left: 80px; right: auto; padding-right: 15px; }
         .tab-right h3 { font-size: 1.1rem; }
         .tab-right h4 { font-size: 0.75rem; }
-        .tab-right p { font-size: 0.85rem; margin: 8px 0; max-width: 100%; }
+        .tab-right p { font-size: 0.85rem; margin: 6px 0 0 0; max-width: 100%; }
         .funky-btn { padding: 4px 12px; font-size: 0.75rem; }
 
-        input[type="radio"]:checked + label .funky-tab { height: 280px; }
+        input[type="radio"]:checked + label .funky-tab { height: 210px; } /* Clean compact mobile height */
         input[type="radio"]:checked + label .funky-tab h2 { top: 10px; }
-        input[type="radio"]:checked + label .funky-tab .tab-right { top: 55px; }
+        input[type="radio"]:checked + label .funky-tab .tab-right { top: 45px; }
         
         /* Ensure animations work on mobile */
         input[type="radio"]:checked + label .tab-icon-image {
@@ -1362,7 +1367,7 @@ include 'includes/header.php';
 </style>
 
 <!-- About Page Logic -->
-<script src="assets/js/about.js"></script>
+<script src="assets/js/about.js?v=<?php echo filemtime('assets/js/about.js'); ?>"></script>
 
 <style>
     /* High-End GPU Hardware Acceleration & Performance Optimizations */
