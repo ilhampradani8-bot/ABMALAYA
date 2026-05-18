@@ -718,7 +718,7 @@ include 'includes/hero_visual.php';
 </style>
 
 <!-- Final CTA Section with Wisma Rampai Background -->
-<section id="cta" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/img/wisma-rampai-front.webp'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; padding: 120px 0;">
+<section id="cta" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/img/wisma-rampai-front.png'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; padding: 120px 0;">
     <div style="width: 100%; padding: 0 6vw;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <!-- Left Side -->

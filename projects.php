@@ -359,7 +359,7 @@ include 'includes/hero_visual.php';
                 <!-- Project 1 -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/projects/masjid-renove-atap.webp" alt="Mosque Renovation">
+                        <img src="assets/img/projects/masjid-renove-atap.png" alt="Mosque Renovation">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">LOCATION: PERAK, MALAYSIA | 2025</span>
@@ -372,7 +372,7 @@ include 'includes/hero_visual.php';
                 <!-- Project 2 -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/projects/bengkel-alatberat.webp" alt="Heavy Machinery Workshop">
+                        <img src="assets/img/projects/bengkel-alatberat.png" alt="Heavy Machinery Workshop">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">LOCATION: PENANG, MALAYSIA | 2025</span>
@@ -385,7 +385,7 @@ include 'includes/hero_visual.php';
                 <!-- Project 3 -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/projects/kemenpertanian.webp" alt="Tram System">
+                        <img src="assets/img/projects/kemenpertanian.png" alt="Tram System">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">LOCATION: SELANGOR, MALAYSIA | 2025</span>
