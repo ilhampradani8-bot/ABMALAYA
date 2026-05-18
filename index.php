@@ -109,6 +109,11 @@ include 'includes/hero_visual.php';
     .embla__container {
         display: flex;
         will-change: transform;
+        touch-action: pan-y; /* Crucial for horizontal swipe gesture to work smoothly on mobile */
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
 
     .embla__slide {
@@ -174,6 +179,9 @@ include 'includes/hero_visual.php';
         height: 100%;
         object-fit: cover;
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-user-drag: none; /* Prevent browser from intercepting touch swipe as file drag */
+        user-drag: none;
+        pointer-events: none; /* Pass touch events directly to parent slider container */
     }
 
     .embla__slide.is-selected .slide-card:hover .media img {
