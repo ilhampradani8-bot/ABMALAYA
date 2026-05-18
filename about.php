@@ -22,7 +22,7 @@ include 'includes/header.php';
                 </g>
             </mask>
             
-            <image class="sky" xlink:href="/assets/img/about3D/sky.png" x="-300" y="-600" width="1800" height="2200" preserveAspectRatio="none" />
+            <image class="sky" xlink:href="https://assets.codepen.io/721952/sky.jpg" x="-300" y="-600" width="1800" height="2200" preserveAspectRatio="none" />
             <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.png" x="-40" y="-40" width="1280" height="880" />    
             <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.png" x="-40" y="-40" width="1280" height="880" />    
             <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" />    
