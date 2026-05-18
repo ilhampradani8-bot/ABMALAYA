@@ -67,8 +67,14 @@ Binds Lenis smooth scrolling directly to the global `gsap.ticker` to eliminate r
 ### 🌌 GPU-Accelerated Particle Canvas with IntersectionObserver
 Manages interactive backdrop physics particles in the hero banner. Utilizes `translate3d` to transfer drawing calculations to the graphics card, and automatically pauses the animation frame rate via `IntersectionObserver` when the user scrolls away to save device battery and CPU power.
 
-### 🎠 Physics-Driven Embla Carousel with Mobile Peeking
-Replaces old laggy carousels with hardware-accelerated slide animations. Configured with a viewport peeking ratio on mobile devices to showcase a zoomed-in center card with the side cards peeking in by `17.5%` each.
+### 🎠 Physics-Driven Embla Carousel & Mobile Touch Optimizations
+Replaces old laggy carousels with hardware-accelerated slide animations. Configured with a viewport peeking ratio on mobile devices to showcase a zoomed-in center card with the side cards peeking in by `17.5%` each. Further optimized for physical touch-devices by adding `touch-action: pan-y` on the scroll container to prevent scroll locks, and disabling browser-native drag/pointer actions (`-webkit-user-drag: none`, `pointer-events: none`) on inner images to ensure silky-smooth, lag-free horizontal swipes without browser hijacking.
+
+### 🎲 Dynamic Randomized Machinery Slider & Fisher-Yates Shuffling
+Re-engineered the index page's hero machinery visual layer to sequence through **9 highly diverse `.webp`-optimized images** representing all active divisions (Marine, Logistics, Environmental, Civil Construction, Industrial, Mechanical, Infrastructure, and Corrosion Care). Shuffles the sequence dynamically on every single page load using the client-side **Fisher-Yates Shuffle Algorithm**, guaranteeing a unique, non-monotonous entry campaign for every new and returning user session.
+
+### 🛡️ Anti-FOUC (Flash of Unstyled Content) Load-Time Stabilization
+Eliminated the common mobile rendering issue where multiple background/carousel images appear stacked, unstyled, or messy during initial page load on slower connections. Implemented lightweight, critical style blocks at the very top of `includes/hero_visual.php` to immediately hide unstyled image wraps (`opacity: 0; position: absolute;`) during DOM parsing. Once the DOM is ready and JavaScript completes shuffling, the image layer fades in elegantly via a smooth `0.8s` CSS-JS transition bridge, guaranteeing absolute layout stability from the very first millisecond.
 
 ### 🛡️ Document Anti-Theft Protection Modal
 Secures valuable ISO and licensing credentials. The system disables right-click context menus, blocks printing/saving shortcut triggers (`Ctrl+S`, `Ctrl+P`, `Cmd+S`, `Cmd+P`), and injects a transparent claymorphic protective watermark layer over previewed assets.
