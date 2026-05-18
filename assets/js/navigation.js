@@ -166,38 +166,61 @@ requestAnimationFrame(raf);
     };
 })(jQuery);
 
-// Initialize Navigation Logic
+// Initialize Navigation Logic (Custom CSS 3D Folding & Accordion Submenus)
 $(function() {
-    var $menu = $('.mks-menu');
     var $wrapper = $('.mobile-nav-wrapper');
-    $menu.makisu({ selector: 'dd', overlap: 0.6, speed: 0.8 });
+    var $burger = $('#burger-btn');
 
     function closeMobileMenu() {
-        if ($menu.hasClass('open')) {
-            $menu.makisu('close');
-            setTimeout(() => {
-                if (!$menu.hasClass('open')) {
-                    $wrapper.removeClass('active');
-                }
-            }, 800);
+        if ($wrapper.hasClass('active')) {
+            $wrapper.removeClass('active');
+            $wrapper.addClass('closing');
+            $burger.removeClass('active');
+            
+            // Collapse any expanded submenus immediately so they fold up clean
+            $('.has-mobile-sub').removeClass('expanded');
+            
+            // Remove closing class after the reverse-folding keyframes finish (850ms)
+            setTimeout(function() {
+                $wrapper.removeClass('closing');
+            }, 850);
         }
     }
 
-    $('#burger-btn').on('click', function(e) {
+    $burger.on('click', function(e) {
         e.stopPropagation();
-        if ($menu.hasClass('open')) {
+        if ($wrapper.hasClass('active')) {
             closeMobileMenu();
         } else {
             $wrapper.addClass('active');
-            $menu.makisu('open');
+            $burger.addClass('active');
         }
+    });
+
+    // Toggle Mobile Sub-menus (Accordion style)
+    $('.mobile-sub-toggle').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var $parent = $(this).parent('.has-mobile-sub');
+        
+        // Collapse other sub-menus if open
+        $parent.siblings('.has-mobile-sub').removeClass('expanded');
+        
+        // Toggle current sub-menu
+        $parent.toggleClass('expanded');
     });
 
     // Close on click outside
     $(document).on('click', function(e) {
-        if ($menu.hasClass('open') && !$(e.target).closest('.mobile-nav-wrapper, #burger-btn').length) {
+        if ($wrapper.hasClass('active') && !$(e.target).closest('.mobile-nav-wrapper, #burger-btn').length) {
             closeMobileMenu();
         }
+    });
+
+    // Close mobile menu when clicking leaf links
+    $('.mobile-nav-wrapper a:not(.mobile-sub-toggle)').on('click', function() {
+        closeMobileMenu();
     });
 
     const logo = document.querySelector('.logo');
@@ -207,14 +230,14 @@ $(function() {
         const scrollY = window.scrollY;
         
         // Logo Autohide Logic
-        if (scrollY > 40 && !$menu.hasClass('open')) {
+        if (scrollY > 40 && !$wrapper.hasClass('active')) {
             if (logo) logo.classList.add('logo-hidden');
         } else {
             if (logo) logo.classList.remove('logo-hidden');
         }
         
         // Auto-close menu on significant scroll
-        if (scrollY > 150 && $menu.hasClass('open')) {
+        if (scrollY > 150 && $wrapper.hasClass('active')) {
             closeMobileMenu();
         }
     }

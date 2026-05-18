@@ -69,7 +69,6 @@ $(function() {
           .fromTo('.mountBg', {y: mountBgStart, scale: mountBgScale, transformOrigin: '50% 100%'}, {y: mountBgEnd, scale: mountBgScale, transformOrigin: '50% 100%', ease: 'none', duration: 5}, 0)
           .fromTo('.mountMg', {y: mountMgStart, scale: mountMgScale, transformOrigin: '50% 100%'}, {y: mountMgEnd, scale: mountMgScale, transformOrigin: '50% 100%', ease: 'none', duration: 5}, 0)
           .fromTo('.mountFg', {y: mountFgStart, scale: mountFgScale, transformOrigin: '50% 100%'}, {y: mountFgEnd, scale: mountFgScale, transformOrigin: '50% 100%', ease: 'none', duration: 5}, 0);
-
         return () => {
             tl.kill();
         };

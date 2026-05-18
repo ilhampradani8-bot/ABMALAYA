@@ -360,14 +360,14 @@ include 'includes/hero_visual.php';
         <div class="embla" id="embla-services">
             <div class="embla__viewport">
                 <div class="embla__container">
-                    <!-- Slide 1: Maritime -->
+                    <!-- Slide 1: Marine Division -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <div class="media">
-                                <img src="assets/img/kapal-tanker.jpg" alt="Maritime">
+                                <img src="assets/img/kapal-tanker.jpg" alt="Marine Division">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Maritime & Subsea</div>
+                                <div class="card-caption">Marine Division</div>
                                 <a href="/services#marine" class="card-button">Know More</a>
                             </div>
                         </div>
@@ -377,37 +377,36 @@ include 'includes/hero_visual.php';
                     <div class="embla__slide">
                         <div class="slide-card">
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="IT">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="Industrial IT">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Industrial IT</div>
-                                <a href="/services#cross" class="card-button">Know More</a>
+                                <div class="card-caption" style="margin-bottom: 0;">Industrial IT</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Slide 3: Green Energy -->
+                    <!-- Slide 3: Environmental -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Energy">
+                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Environmental">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Green Energy</div>
+                                <div class="card-caption">Environmental</div>
                                 <a href="/services#env" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Slide 4: Border Logistics -->
+                    <!-- Slide 4: Logistic Division -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistics">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistic Division">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Border Logistics</div>
-                                <a href="/services#logistics" class="card-button">Know More</a>
+                                <div class="card-caption">Logistic Division</div>
+                                <a href="/services#cross" class="card-button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -416,11 +415,10 @@ include 'includes/hero_visual.php';
                     <div class="embla__slide">
                         <div class="slide-card">
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&h=1000" alt="Bio">
+                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&h=1000" alt="Bio-Solutions">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Bio-Solutions</div>
-                                <a href="/services#env" class="card-button">Know More</a>
+                                <div class="card-caption" style="margin-bottom: 0;">Bio-Solutions</div>
                             </div>
                         </div>
                     </div>
@@ -432,8 +430,7 @@ include 'includes/hero_visual.php';
                                 <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Procurement">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Procurement</div>
-                                <a href="/services#procurement" class="card-button">Know More</a>
+                                <div class="card-caption" style="margin-bottom: 0;">Procurement</div>
                             </div>
                         </div>
                     </div>

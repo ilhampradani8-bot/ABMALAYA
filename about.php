@@ -570,7 +570,6 @@ include 'includes/header.php';
                                     <h3>Honesty & Transparency</h3>
                                     <h4>ETHICAL PRACTICE</h4>
                                     <p>We believe in honest communication and ethical business practices in every interaction.</p>
-                                    <button class="funky-btn">Learn More</button>
                                 </div>
                             </div>
                         </label>
@@ -588,7 +587,6 @@ include 'includes/header.php';
                                     <h3>Safety First (HSE)</h3>
                                     <h4>PROTECTION FOCUS</h4>
                                     <p>Ensuring the health, safety, and environment protection of all stakeholders.</p>
-                                    <button class="funky-btn">Learn More</button>
                                 </div>
                             </div>
                         </label>
@@ -606,7 +604,6 @@ include 'includes/header.php';
                                     <h3>Technical Excellence</h3>
                                     <h4>MODERN SOLUTIONS</h4>
                                     <p>Continuously evolving technical solutions for modern industrial challenges.</p>
-                                    <button class="funky-btn">Learn More</button>
                                 </div>
                             </div>
                         </label>
@@ -624,7 +621,6 @@ include 'includes/header.php';
                                     <h3>Unified Teamwork</h3>
                                     <h4>GLOBAL PARTNERS</h4>
                                     <p>Working as a unified team to deliver superior results for global partners.</p>
-                                    <button class="funky-btn">Learn More</button>
                                 </div>
                             </div>
                         </label>
@@ -642,7 +638,6 @@ include 'includes/header.php';
                                     <h3>Quality Assurance</h3>
                                     <h4>EXCELLENCE ASSURED</h4>
                                     <p>We enforce rigorous testing and premium control protocols to guarantee ultimate technical precision and safety in every execution.</p>
-                                    <button class="funky-btn">Learn More</button>
                                 </div>
                             </div>
                         </label>
@@ -916,11 +911,25 @@ include 'includes/header.php';
         width: 100%;
         background: #ffffff;
         overflow: hidden;
+        opacity: 0;
+        animation: hero-fade-in 0.8s 0.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes hero-fade-in {
+        to { opacity: 1; }
+    }
+
+    /* Eliminate FOUC for Staggered Entrance Elements */
+    .story-detail-left .tagline,
+    .story-detail-left .story-title-main,
+    .story-detail-left .story-text-container,
+    .story-visual-right .journey-badge-minimal {
+        opacity: 0;
     }
 
     .scrollDist {
         width: 100%;
-        height: 180vh; /* Expanded scroll distance to support stationary curtain overlap */
+        height: 250vh; /* Expanded scroll distance on desktop to ensure next section sits far below and appears slower */
     }
 
     .parallax-main {
@@ -1343,6 +1352,7 @@ include 'includes/header.php';
         .section-header-centered h2 { font-size: 2.2rem; }
         .parallax-text-main { font-size: 42px; font-weight: 900; }
         .parallax-text-sub-desc { font-size: 10.5px; letter-spacing: 2px; font-weight: 700; }
+        .scrollDist { height: 180vh !important; } /* Maintain tight mobile scroll bounds */
     }
 
     @media (max-width: 480px) {

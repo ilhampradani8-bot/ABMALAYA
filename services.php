@@ -1149,7 +1149,7 @@ html, body {
 <section class="services-content-grid" id="service-section-wrap">
     <!-- Directional GPU-accelerated background layers -->
     <div class="service-bg-transition-wrap">
-        <div class="service-bg-slide active" id="service-bg-1"></div>
+        <div class="service-bg-slide active" id="service-bg-1" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200')"></div>
         <div class="service-bg-slide" id="service-bg-2"></div>
     </div>
     
@@ -1191,7 +1191,7 @@ html, body {
             <div class="swiper-wrapper">
                 
                 <!-- Card 1: Marine -->
-                <div class="swiper-slide" data-hash="marine" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
+                <div class="swiper-slide swiper-slide-active" data-hash="marine" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>

@@ -19,6 +19,23 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Critical Shield to Prevent FOUC, CLS, and Image Stacking -->
+    <style>
+        /* 1. Prevent Hero Image Parallax Stacking and FOUC */
+        .hero-images-layer { opacity: 0; position: absolute; top: 0; right: 0; width: 55%; height: 100%; overflow: hidden; pointer-events: none; }
+        .img-wrap { opacity: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+        /* 2. Prevent Embla Carousel Layout Shifting and Slide Stacking */
+        .embla__viewport { overflow: hidden; width: 100%; }
+        .embla__container { display: flex; flex-direction: row; flex-wrap: nowrap; overflow: hidden; }
+        .embla__slide { flex: 0 0 100%; max-width: 100%; min-width: 0; }
+
+        /* 3. Prevent Swiper Carousel Slide Stacking before CSS/JS Init */
+        .swiper { overflow: hidden; position: relative; }
+        .swiper-wrapper { display: flex; flex-direction: row; flex-wrap: nowrap; }
+        .swiper-slide { flex-shrink: 0; }
+    </style>
 
     <!-- Neumorphic Header Styles -->
     <style>
@@ -787,9 +804,44 @@
         .menu-toggle {
             display: none;
             cursor: pointer;
-            font-size: 1.8rem;
-            color: var(--neu-accent);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%); /* Titanium metal shine */
+            border: 2px solid #050709;
+            box-shadow: 3px 3px 0px #050709; /* Neobrutalism shadow */
             z-index: 1100;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-sizing: border-box;
+        }
+        .menu-toggle:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #050709;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 18px;
+            height: 2.5px;
+            background-color: #050709;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center;
+        }
+        /* Burger Morph to X */
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
         }
 
         .search-btn-mobile {
@@ -813,7 +865,7 @@
             .header-container { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
             .logo img { height: 45px; }
             .nav-links { display: none; } 
-            .menu-toggle { display: block; }
+            .menu-toggle { display: flex; }
             .nav-wrapper-desktop { gap: 0.8rem; }
             
             .search-wrapper-desktop { display: none; }
@@ -822,15 +874,14 @@
             .mobile-nav-wrapper {
                 display: block;
                 position: absolute;
-                top: 70px;
+                top: 75px;
                 right: 20px;
-                perspective: 1200px;
                 z-index: 1000;
-                width: 200px;
-                pointer-events: none; /* Only children interact when open */
+                width: 230px;
+                pointer-events: none;
                 opacity: 0;
                 visibility: hidden;
-                transition: 0.3s;
+                transition: opacity 0.3s, visibility 0.3s;
             }
             .mobile-nav-wrapper.active {
                 pointer-events: all;
@@ -838,33 +889,101 @@
                 visibility: visible;
             }
 
-            .list { text-transform: uppercase; margin: 0; padding: 0; width: 100%; list-style: none; transform-style: preserve-3d; }
-            .list dt, .list dd { margin: 0; color: #fff; font-family: 'Aeonik', sans-serif; text-align: center; transform-style: preserve-3d; }
-            .list dt { display: none; } 
-            .list dd { 
-                font-size: 0.8rem; 
-                font-weight: 700;
-                letter-spacing: 1px; 
-                height: 54px; 
-                line-height: 54px; 
-                background: linear-gradient(to bottom, #005ee9 0%, #004bbd 100%); 
-                border-top: 1px solid rgba(255, 255, 255, 0.2);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                position: relative;
-                transition: filter 0.3s ease;
-                backface-visibility: hidden;
+            .list { 
+                margin: 0; 
+                padding: 0; 
+                width: 100%; 
+                list-style: none; 
             }
-            .list dd a { 
-                display: block; 
+            
+            /* Modern Neobrutalism Card style with strong bold black border and flat shadow */
+            .mks-card { 
+                margin-bottom: 14px;
+                background: linear-gradient(135deg, #005ee9 0%, #004bbd 100%); 
+                border: 2px solid #050709;
+                box-shadow: 5px 5px 0px #050709; /* Neobrutalism flat solid shadow */
+                border-radius: 8px;
+                overflow: hidden;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, filter 0.2s;
+            }
+            
+            .mks-card:hover {
+                filter: brightness(1.05);
+            }
+            
+            /* Staggered Entry One-by-One */
+            .mobile-nav-wrapper.active .mks-card {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .mobile-nav-wrapper.active .mks-card:nth-child(1) { transition-delay: 50ms; }
+            .mobile-nav-wrapper.active .mks-card:nth-child(2) { transition-delay: 100ms; }
+            .mobile-nav-wrapper.active .mks-card:nth-child(3) { transition-delay: 150ms; }
+            .mobile-nav-wrapper.active .mks-card:nth-child(4) { transition-delay: 200ms; }
+            .mobile-nav-wrapper.active .mks-card:nth-child(5) { transition-delay: 250ms; }
+            .mobile-nav-wrapper.active .mks-card:nth-child(6) { transition-delay: 300ms; }
+
+            .mks-card a.mobile-sub-toggle,
+            .mks-card > a:not(.mobile-sub-toggle) { 
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 18px;
                 color: #fff; 
                 text-decoration: none; 
                 width: 100%; 
-                height: 100%; 
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                height: 52px; 
+                font-family: 'Aeonik', sans-serif;
+                font-size: 0.82rem; 
+                font-weight: 700;
+                letter-spacing: 1px; 
+                text-transform: uppercase;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                box-sizing: border-box;
             }
-            .list dd:hover {
-                filter: brightness(1.1);
+            
+            /* Mobile Sub-menu accordion styling with Neobrutalist separation */
+            .mobile-sub-menu {
+                max-height: 0;
+                overflow: hidden;
+                background: rgba(0, 0, 0, 0.15);
+                border-top: 0px solid #050709;
+                transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-top 0.3s;
+                display: flex;
+                flex-direction: column;
+            }
+            .has-mobile-sub.expanded .mobile-sub-menu {
+                max-height: 280px;
+                border-top: 2px solid #050709;
+            }
+            
+            .mobile-sub-menu a {
+                display: block;
+                padding: 0 18px !important;
+                height: 42px !important;
+                line-height: 42px !important;
+                font-size: 0.72rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                color: rgba(255, 255, 255, 0.88) !important;
+                text-decoration: none !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                text-shadow: none !important;
+                transition: background 0.2s, color 0.2s;
+                text-align: left;
+                text-transform: uppercase;
+            }
+            .mobile-sub-menu a:last-child {
+                border-bottom: none !important;
+            }
+            .mobile-sub-menu a:hover {
+                background: rgba(255, 255, 255, 0.08) !important;
+                color: #fff !important;
+            }
+            .has-mobile-sub.expanded .mobile-sub-toggle i {
+                transform: rotate(180deg);
             }
         }
 
@@ -999,21 +1118,61 @@
 
                 <!-- Mobile Burger -->
                 <div class="menu-toggle" id="burger-btn">
-                    <i class="fas fa-bars"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
 
-            <!-- Mobile Makisu Menu -->
+            <!-- Mobile Neobrutalism Menu -->
             <div class="mobile-nav-wrapper">
-                <dl class="list mks-menu">
-                    <dt>MENU</dt>
-                    <dd><a href="/">Home</a></dd>
-                    <dd><a href="/about">About</a></dd>
-                    <dd><a href="/services">Solutions</a></dd>
-                    <dd><a href="/certified">Certified</a></dd>
-                    <dd><a href="/projects">Projects</a></dd>
-                    <dd><a href="/contact">Contact</a></dd>
-                </dl>
+                <div class="list mks-menu">
+                    
+                    <!-- Item 1: Home (has submenu) -->
+                    <div class="mks-card has-mobile-sub">
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">Home <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <div class="mobile-sub-menu">
+                            <a href="/">Home Page</a>
+                            <a href="/#about">Introduction</a>
+                            <a href="/#service">Solutions</a>
+                            <a href="/#clients">Partners</a>
+                            <a href="/#location">Offices</a>
+                            <a href="/#cta">Reach Us</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2: About (has submenu) -->
+                    <div class="mks-card has-mobile-sub">
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">About <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <div class="mobile-sub-menu">
+                            <a href="/about">About Page</a>
+                            <a href="/about#story-section">Our Story</a>
+                            <a href="/about#vision-mission">Vision & Mission</a>
+                            <a href="/about#principles-section">Our Principle</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3: Solutions (has submenu) -->
+                    <div class="mks-card has-mobile-sub">
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">Solutions <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <div class="mobile-sub-menu">
+                            <a href="/services">Solutions Page</a>
+                            <a href="/services#marine">Marine Division</a>
+                            <a href="/services#logistics">Logistic Division</a>
+                            <a href="/services#environmental">Environmental</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mks-card">
+                        <a href="/certified">Certified</a>
+                    </div>
+                    <div class="mks-card">
+                        <a href="/projects">Projects</a>
+                    </div>
+                    <div class="mks-card">
+                        <a href="/contact">Contact</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -1057,6 +1216,6 @@
     </div>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="/assets/js/navigation.js?v=5.0"></script>
+    <script src="/assets/js/navigation.js?v=5.4"></script>
 
     <main>
