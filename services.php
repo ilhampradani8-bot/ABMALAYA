@@ -48,7 +48,7 @@ html, body {
 
 /* Dynamic Background Service Section */
 .services-content-grid {
-    padding: 40px 0;
+    padding: 120px 0 40px;
     background-color: #0f172a;
     position: relative;
     z-index: 10;
@@ -1129,13 +1129,7 @@ html, body {
 }
 </style>
 
-<?php 
-$heroTitle = "Bespoke & <br><span style='color: #005ee9;'>Premium Solutions</span>";
-$heroSubtitle = ""; 
-$heroDesc = "Explore our comprehensive industrial and maritime service portfolio. <br>Excellence delivered across every division.";
-$showButtons = false;
-include 'includes/hero_visual.php';
-?>
+
 
 <script>
     // Absolute Scroll Restoration Fix - No Lenis

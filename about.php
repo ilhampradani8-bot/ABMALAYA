@@ -29,7 +29,7 @@ include 'includes/header.php';
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
             
             <text fill="#fff" x="50%" y="250" text-anchor="middle" class="parallax-text-main">ABOUT US</text>
-            <text fill="#fff" x="50%" y="320" text-anchor="middle" class="parallax-text-sub-desc">ABMALAYA INOVATION</text>
+            <text fill="#fff" x="50%" y="320" text-anchor="middle" class="parallax-text-sub-desc">ABMALAYA INNOVATION</text>
             <polyline class="arrow" fill="#fff" points="599,400 599,439 590,429 590,432 600,442 610,432 610,429 601,439 601,400" />
             
             <g mask="url(#m)">
@@ -250,6 +250,15 @@ include 'includes/header.php';
 <!-- Vision & Mission - Neumorphic 3D Parallax -->
 <section class="vision-mission-section neumorphic-theme parallax-section" id="vision-mission">
     <div class="container-fluid px-lg-5">
+        <!-- Mobile Tilt Indicator -->
+        <div class="mobile-tilt-hint">
+            <svg class="tilt-phone-icon" viewBox="0 0 24 24" width="24" height="24">
+                <rect x="5" y="2" width="14" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>Tilt your device to explore 3D depth</span>
+        </div>
+        
         <div class="vm-parallax-grid">
             <!-- Vision Card -->
             <div class="vm-parallax-wrap" data-image="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&q=80&w=1200">
@@ -257,8 +266,8 @@ include 'includes/header.php';
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
                         <span class="vm-num-top neumorphic-num">01</span>
-                        <h3>Visi Kami</h3>
-                        <p>Menjadi penyedia solusi kelautan, logistik, dan lingkungan yang inovatif dan terkemuka di kawasan ini, dengan fokus pada kualitas, keselamatan, dan keberlanjutan—sekaligus menjadi sumber daya paling andal.</p>
+                        <h3>Our Vision</h3>
+                        <p>To be a leading and innovative provider of marine, logistics, and environmental solutions in the region, focusing on quality, safety, and sustainability—while remaining the most reliable partner.</p>
                     </div>
                 </div>
             </div>
@@ -269,12 +278,12 @@ include 'includes/header.php';
                     <div class="vm-parallax-bg neumorphic-bg-overlay"></div>
                     <div class="vm-parallax-info neumorphic-info">
                         <span class="vm-num-top neumorphic-num">02</span>
-                        <h3>Misi Kami</h3>
+                        <h3>Our Mission</h3>
                         <div class="mission-compact-list">
-                            <p>1. Layanan terbaik & solusi ahli.</p>
-                            <p>2. Integritas & tanggung jawab lingkungan.</p>
-                            <p>3. Kemitraan jangka panjang.</p>
-                            <p>4. Kualitas, efektivitas, dan keamanan.</p>
+                            <p>1. First-class services & expert solutions.</p>
+                            <p>2. Integrity & environmental responsibility.</p>
+                            <p>3. Long-term corporate partnerships.</p>
+                            <p>4. High quality, efficiency, and absolute safety.</p>
                         </div>
                     </div>
                 </div>
@@ -293,6 +302,41 @@ include 'includes/header.php';
             inset 35px 35px 70px #9bb0c4, 
             inset -35px -35px 70px #ffffff,
             inset 8px 8px 25px rgba(0, 40, 80, 0.08);
+    }
+
+    .mobile-tilt-hint {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 0 auto 40px auto;
+        padding: 10px 18px;
+        background: #e0e9f0;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 
+            inset 4px 4px 10px #b8c4ce, 
+            inset -4px -4px 10px #ffffff;
+        color: #005ee9;
+        font-family: 'Aeonik', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        max-width: calc(100% - 32px); /* Ensures a strict safety margin on mobile borders */
+        box-sizing: border-box;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    @media (max-width: 992px) {
+        .mobile-tilt-hint {
+            display: flex;
+        }
+    }
+
+    .tilt-phone-icon {
+        color: #005ee9;
+        transform-origin: center center;
     }
 
     .vm-parallax-grid {

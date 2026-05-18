@@ -450,9 +450,9 @@ include 'includes/hero_visual.php';
             </div>
 
             <!-- Right Half: Exactly 50% -->
-            <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; text-align: right;">
-                <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-family: 'Aeonik', sans-serif; margin-top: 1rem;">Who We Are</h5>
-                <div style="margin-top: auto; margin-bottom: 1rem;">
+            <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; text-align: right; gap: 1.2rem;">
+                <h3 style="color: #94a3b8; text-transform: uppercase; font-size: 1.8rem; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-top: 1rem; letter-spacing: -0.5px; line-height: 1.2;">Who We Are</h3>
+                <div>
                     <a href="/about" class="hero-link" style="color: #000; font-size: 0.85rem;">
                         Learn More About Us <i class="fas fa-arrow-right"></i>
                     </a>
@@ -614,7 +614,7 @@ include 'includes/hero_visual.php';
         <div class="neo-map-card">
             <div class="map-frame">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.69238304915!2d101.73356!3d3.19323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc382f94e2a39b%3A0xc3411e649e35c24e!2sWisma%20Rampai!5e0!3m2!1sen!2smy!4v1715715545000!5m2!1sen!2smy" 
+                    src="https://maps.google.com/maps?q=Wisma%20Rampai,%20Jalan%2034/26,%20Taman%20Sri%20Rampai,%2053300%20Kuala%20Lumpur&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="neo-map-footer">

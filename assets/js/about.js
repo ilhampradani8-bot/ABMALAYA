@@ -157,6 +157,14 @@ $(function() {
             let tiltX = Math.max(-30, Math.min(30, beta - 45)) / 2; // Offset for natural holding angle
             let tiltY = Math.max(-30, Math.min(30, gamma)) / 2;
 
+            // Dynamically rotate the SVG hint icon in real-time
+            gsap.to('.tilt-phone-icon', {
+                rotation: tiltY * 1.5,
+                duration: 0.4,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+
             parallaxWraps.forEach(wrap => {
                 const card = wrap.querySelector('.vm-parallax-card');
                 const bg = wrap.querySelector('.vm-parallax-bg');
