@@ -239,14 +239,14 @@ $(function() {
     // Data Source identical to search.php for client-side instant matches
     const siteContent = [
         {
-            title: 'Maritime & Subsea Services',
+            title: 'Marine Division',
             desc: 'Comprehensive engineering solutions for the marine industry, ship consumables, and logistics.',
             link: '/services#marine',
             icon: 'fa-ship',
             tags: 'marine, subsea, ship, rust, coating, boiler, vecom, crew'
         },
         {
-            title: 'Cross-Border Solutions',
+            title: 'Logistic Division',
             desc: 'Seamless logistics between Singapore, Malaysia, and Thailand with professional handling.',
             link: '/services#cross',
             icon: 'fa-shipping-fast',

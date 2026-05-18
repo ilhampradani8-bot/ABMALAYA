@@ -14,129 +14,7 @@ $showButtons = true;
 include 'includes/hero_visual.php';
 ?>
 
-<!-- Stats / Highlights Section -->
-<!-- Client Logos Section -->
-<section id="clients" class="client-marquee-section">
-    <div class="marquee-container">
-        <h5 class="marquee-title">Our Strategic Partners</h5>
-        
-        <div class="marquee-content">
-            <div class="marquee-track">
-                <!-- Original Set -->
-                <div class="client-logo-item">
-                    <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
-                    </a>
-                </div>
-                <div class="client-logo-item">
-                    <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
-                    </a>
-                </div>
-                <div class="client-logo-item">
-                    <a href="https://www.belzona.com/" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
-                    </a>
-                </div>
-                <div class="client-logo-item">
-                    <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
-                    </a>
-                </div>
-                <!-- Duplicate Set for Infinite Loop -->
-                <div class="client-logo-item">
-                    <a href="https://vecom-marine.com/" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
-                    </a>
-                </div>
-                <div class="client-logo-item">
-                    <a href="https://www.durachem.com.my/" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
-                    </a>
-                </div>
-                <div class="client-logo-item">
-                    <a href="https://www.belzona.com/" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
-                    </a>
-                </div>
-                <div class="client-logo-item">
-                    <a href="https://www.henkel-adhesives.com/my/en/about/our-brands/loctite.html" target="_blank" rel="noopener">
-                        <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    .client-marquee-section {
-        background: #fff;
-        padding: 100px 0;
-        border-bottom: 1px solid #f1f5f9;
-        overflow: hidden;
-    }
-    .marquee-title {
-        text-align: center;
-        color: #94a3b8;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 0.7rem;
-        margin-bottom: 4.5rem;
-        font-family: 'Aeonik', sans-serif;
-    }
-    .marquee-content {
-        width: 100%;
-        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85% , transparent);
-    }
-    .marquee-track {
-        display: flex;
-        align-items: center;
-        width: max-content;
-        gap: 8rem;
-        animation: marqueeScroll 40s linear infinite;
-        transform-style: preserve-3d;
-    }
-    .client-logo-item {
-        flex-shrink: 0;
-        cursor: pointer;
-        padding: 20px;
-        border-radius: 20px;
-        background: transparent;
-        transition: background 0.4s ease;
-        transform-style: preserve-3d;
-    }
-    .client-logo-item:hover {
-        background: #f8fafc;
-    }
-    .client-logo-item img {
-        height: 55px;
-        width: auto;
-        filter: none;
-        opacity: 0.9;
-        transition: 0.4s ease;
-        display: block;
-        object-fit: contain;
-        transform: translateZ(20px); /* 3D Depth */
-    }
-    .client-logo-item:hover img {
-        opacity: 1;
-    }
-
-    @keyframes marqueeScroll {
-        from { transform: translateX(0); }
-        to { transform: translateX(calc(-50% - 4rem)); }
-    }
-
-    @media (max-width: 768px) {
-        .marquee-track { gap: 4rem; animation-duration: 25s; }
-        .client-logo-item img { height: 45px; }
-        .marquee-title { margin-bottom: 2rem; }
-        .client-marquee-section { padding: 40px 0; }
-    }
-</style>
-
+<!-- Stats / Highlights Section (Moved Partners to match Navigation Flow) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <style>
@@ -568,7 +446,113 @@ include 'includes/hero_visual.php';
     </div>
 </section>
 
-<!-- Map & Location Section -->
+<!-- Client Logos Section (Partners) -->
+<section id="clients" class="client-marquee-section">
+    <div class="marquee-container">
+        <h5 class="marquee-title">Our Strategic Partners</h5>
+        
+        <div class="marquee-content">
+            <div class="marquee-track">
+                <!-- Original Set -->
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                </div>
+                <!-- Duplicate Set for Infinite Loop -->
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .client-marquee-section {
+        background: #fff;
+        padding: 100px 0;
+        border-bottom: 1px solid #f1f5f9;
+        overflow: hidden;
+    }
+    .marquee-title {
+        text-align: center;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 0.7rem;
+        margin-bottom: 4.5rem;
+        font-family: 'Aeonik', sans-serif;
+    }
+    .marquee-content {
+        width: 100%;
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85% , transparent);
+    }
+    .marquee-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        gap: 8rem;
+        animation: marqueeScroll 18s linear infinite;
+        transform-style: preserve-3d;
+    }
+    .client-logo-item {
+        flex-shrink: 0;
+        cursor: default;
+        padding: 20px;
+        border-radius: 20px;
+        background: transparent;
+        transition: background 0.4s ease;
+        transform-style: preserve-3d;
+    }
+    .client-logo-item:hover {
+        background: #f8fafc;
+    }
+    .client-logo-item img {
+        height: 55px;
+        width: auto;
+        filter: none;
+        opacity: 0.9;
+        transition: 0.4s ease;
+        display: block;
+        object-fit: contain;
+        transform: translateZ(20px); /* 3D Depth */
+    }
+    .client-logo-item:hover img {
+        opacity: 1;
+    }
+
+    @keyframes marqueeScroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(calc(-50% - 4rem)); }
+    }
+
+    @media (max-width: 768px) {
+        .marquee-track { gap: 4rem; animation-duration: 25s; }
+        .client-logo-item img { height: 45px; }
+        .marquee-title { margin-bottom: 2rem; }
+        .client-marquee-section { padding: 40px 0; }
+    }
+</style>
+
+<!-- Map & Location Section (Offices) -->
 <section id="location" style="background: #fff; padding: 40px 0 0 0;">
     <div style="width: 100%; padding: 0 6vw;">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 5rem;">

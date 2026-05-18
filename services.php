@@ -1161,11 +1161,11 @@ html, body {
         <!-- Redesigned Left Header -->
         <div class="service-header-row">
             <div class="section-title-left">
-                <h2>Our Service</h2>
+                <h2>Our Solutions</h2>
             </div>
             <div class="service-nav-list" id="service-menu">
-                <button class="service-link-item active" data-index="0">Marine</button>
-                <button class="service-link-item" data-index="1">Logistics</button>
+                <button class="service-link-item active" data-index="0">Marine Division</button>
+                <button class="service-link-item" data-index="1">Logistic Division</button>
                 <button class="service-link-item" data-index="2">Environmental</button>
                 <button class="service-link-item" data-index="3">Construction</button>
                 <button class="service-link-item" data-index="4">Civil</button>
@@ -1183,7 +1183,7 @@ html, body {
             </div>
             <div class="swiper-nav-wrapper next-wrapper">
                 <button class="swiper-custom-next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
-                <span class="swiper-custom-next-text">Logistics</span>
+                <span class="swiper-custom-next-text">Logistic Division</span>
             </div>
 
             <div class="swiper-wrapper">
@@ -1198,7 +1198,7 @@ html, body {
                                     <img src="assets/img/service3d/marine.png" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
-                                    <h3>Marine Technical</h3>
+                                    <h3>Marine Division</h3>
                                     <p>Professional maritime engineering & technical supply solutions.</p>
                                     <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
@@ -1207,12 +1207,12 @@ html, body {
                         <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
-                                <h3>Marine Details</h3>
+                                <h3>Marine Industrial</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Ship Consumables:</strong> High-quality technical & operational stores.</li>
-                                    <li><strong>Crew Logistics:</strong> Seamless personnel transit & transit logistics.</li>
-                                    <li><strong>Engineering:</strong> Comprehensive maritime engineering & maintenance.</li>
-                                    <li><strong>Boiler Solutions:</strong> Vecom Marine chemicals & boiler maintenance.</li>
+                                    <li><strong>Ship Consumables:</strong> Premium vessel provisions, spare parts, and operational supplies.</li>
+                                    <li><strong>Crew Logistics:</strong> Seamless personnel transit, port clearance, and marine support.</li>
+                                    <li><strong>Engineering & Maintenance:</strong> Comprehensive marine construction, steel works, and technical maintenance.</li>
+                                    <li><strong>Boiler Solutions:</strong> High-performance Vecom Marine water treatment and chemical solutions.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1230,7 +1230,7 @@ html, body {
                                     <img src="assets/img/service3d/logistics.png" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
-                                    <h3>Logistics</h3>
+                                    <h3>Logistic Division</h3>
                                     <p>Efficient cross-border supply chain and fleet management.</p>
                                     <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
@@ -1239,12 +1239,12 @@ html, body {
                         <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
-                                <h3>Logistics Details</h3>
+                                <h3>Logistic Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Logistics & Transit:</strong> Smooth logistics between SG, MY, and TH.</li>
-                                    <li><strong>Cargo Handling:</strong> Safe and efficient cross-border cargo storage.</li>
-                                    <li><strong>Documentation:</strong> Seamless regulatory trade & customs compliance.</li>
-                                    <li><strong>24/7 Operations:</strong> Dedicated support & versatile fleet anywhere, anytime.</li>
+                                    <li><strong>Logistics & Transit:</strong> Seamless land and sea cargo transport planning between Singapore, Malaysia, and Thailand.</li>
+                                    <li><strong>Cargo Handling:</strong> Safe, highly secure cross-border cargo handling and containerized warehouse storage solutions.</li>
+                                    <li><strong>Documentation:</strong> Complete trade custom clearance, cross-border regulatory compliance, and cargo documentation.</li>
+                                    <li><strong>24/7 Operations:</strong> Fully dedicated standby support teams and versatile multi-axle freight fleet operations.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1273,10 +1273,10 @@ html, body {
                             <div class="card-detail-content">
                                 <h3>Environmental Details</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Corrosion Prevention:</strong> Protect assets with industry-leading anti-corrosion.</li>
-                                    <li><strong>Maintenance & Repairs:</strong> Specialist restoration to extend equipment lifetime.</li>
-                                    <li><strong>Training & Consultation:</strong> Expert training on corrosion prevention practices.</li>
-                                    <li><strong>Wastewater & Spills:</strong> Safe containment, treatment & disposal of waste.</li>
+                                    <li><strong>Corrosion Control:</strong> Industrial-scale rust mitigation, protective sandblasting, and ultra-durable paint coating solutions.</li>
+                                    <li><strong>Maintenance & Repairs:</strong> Specialized engineering restoration and mechanical refurbishment to maximize asset lifespans.</li>
+                                    <li><strong>Training & Consultation:</strong> Certified technical consultation and professional onsite training on anti-corrosion safety.</li>
+                                    <li><strong>Wastewater & Spills:</strong> Complete hazardous chemical spill containment, biological water treatment, and safe eco-disposal.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1574,7 +1574,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Update custom navigation destination labels
-        const serviceTitles = ["Marine", "Logistics", "Environmental", "Construction", "Civil", "Renovations", "Mechanical", "Landscape"];
+        const serviceTitles = ["Marine Division", "Logistic Division", "Environmental", "Construction", "Civil", "Renovations", "Mechanical", "Landscape"];
         const prevIndex = (realIndex - 1 + 8) % 8;
         const nextIndex = (realIndex + 1) % 8;
 
@@ -1636,10 +1636,20 @@ document.addEventListener('DOMContentLoaded', function() {
             let targetIndex = -1;
             if (hash === '#marine') {
                 targetIndex = 0;
-            } else if (hash === '#cross') {
+            } else if (hash === '#cross' || hash === '#logistics') {
                 targetIndex = 1;
-            } else if (hash === '#env') {
+            } else if (hash === '#env' || hash === '#environmental') {
                 targetIndex = 2;
+            } else if (hash === '#construction') {
+                targetIndex = 3;
+            } else if (hash === '#civil') {
+                targetIndex = 4;
+            } else if (hash === '#renovations') {
+                targetIndex = 5;
+            } else if (hash === '#mechanical') {
+                targetIndex = 6;
+            } else if (hash === '#landscape') {
+                targetIndex = 7;
             }
             
             if (targetIndex !== -1) {

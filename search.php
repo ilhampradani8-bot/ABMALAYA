@@ -8,13 +8,13 @@ $query = isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '';
 // Data source: Website Sections
 $siteContent = [
     [
-        'title' => 'Maritime & Subsea Services',
+        'title' => 'Marine Division',
         'desc' => 'Comprehensive engineering solutions for the marine industry, ship consumables, and logistics.',
         'link' => '/services#marine',
         'tags' => 'marine, subsea, ship, rust, coating, boiler, vecom, crew'
     ],
     [
-        'title' => 'Cross-Border Solutions',
+        'title' => 'Logistic Division',
         'desc' => 'Seamless logistics between Singapore, Malaysia, and Thailand with professional handling.',
         'link' => '/services#cross',
         'tags' => 'logistics, transport, cross-border, singapore, thailand, cargo, storage'

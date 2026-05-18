@@ -325,6 +325,9 @@
         .nav-item-wrapper:hover .dropdown-panel a:nth-child(3) { transition-delay: 300ms !important; }
         .nav-item-wrapper:hover .dropdown-panel a:nth-child(4) { transition-delay: 340ms !important; }
         .nav-item-wrapper:hover .dropdown-panel a:nth-child(5) { transition-delay: 380ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(6) { transition-delay: 420ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(7) { transition-delay: 460ms !important; }
+        .nav-item-wrapper:hover .dropdown-panel a:nth-child(8) { transition-delay: 500ms !important; }
 
         /* Hover action on dropdown items - shifting horizontally */
         .dropdown-panel a:hover {
@@ -934,11 +937,11 @@
                     <div class="nav-item-wrapper">
                         <a href="/" class="nav-link-item <?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/#about"><i class="fas fa-user-friends"></i> Who We Are</a>
-                            <a href="/#service"><i class="fas fa-concierge-bell"></i> Our Services</a>
+                            <a href="/#about"><i class="fas fa-user-friends"></i> Introduction</a>
+                            <a href="/#service"><i class="fas fa-concierge-bell"></i> Solutions</a>
                             <a href="/#clients"><i class="fas fa-handshake"></i> Partners</a>
-                            <a href="/#location"><i class="fas fa-map-marker-alt"></i> Headquarters</a>
-                            <a href="/#cta"><i class="fas fa-rocket"></i> Start Project</a>
+                            <a href="/#location"><i class="fas fa-map-marker-alt"></i> Offices</a>
+                            <a href="/#cta"><i class="fas fa-rocket"></i> Reach Us</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
@@ -946,14 +949,20 @@
                         <div class="dropdown-panel">
                             <a href="/about#story-section"><i class="fas fa-book-open"></i> Our Story</a>
                             <a href="/about#vision-mission"><i class="fas fa-bullseye"></i> Vision & Mission</a>
+                            <a href="/about#principles-section"><i class="fas fa-scale-balanced"></i> Our Principle</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
-                        <a href="/services" class="nav-link-item <?php echo $currentPage == 'services' ? 'active' : ''; ?>">Services <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <a href="/services" class="nav-link-item <?php echo $currentPage == 'services' ? 'active' : ''; ?>">Solutions <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/services#marine"><i class="fas fa-ship"></i> Marine & Subsea</a>
-                            <a href="/services#cross"><i class="fas fa-network-wired"></i> Industrial IT</a>
-                            <a href="/services#env"><i class="fas fa-leaf"></i> Environmental</a>
+                            <a href="/services#marine"><i class="fas fa-ship"></i> Marine Division</a>
+                            <a href="/services#logistics"><i class="fas fa-truck"></i> Logistic Division</a>
+                            <a href="/services#environmental"><i class="fas fa-leaf"></i> Environmental</a>
+                            <a href="/services#construction"><i class="fas fa-building"></i> Construction</a>
+                            <a href="/services#civil"><i class="fas fa-hard-hat"></i> Civil Engineering</a>
+                            <a href="/services#renovations"><i class="fas fa-tools"></i> Renovations</a>
+                            <a href="/services#mechanical"><i class="fas fa-cogs"></i> Mechanical</a>
+                            <a href="/services#landscape"><i class="fas fa-tree"></i> Landscape</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
@@ -1005,7 +1014,7 @@
                     <dt>MENU</dt>
                     <dd><a href="/">Home</a></dd>
                     <dd><a href="/about">About</a></dd>
-                    <dd><a href="/services">Services</a></dd>
+                    <dd><a href="/services">Solutions</a></dd>
                     <dd><a href="/certified">Certified</a></dd>
                     <dd><a href="/projects">Projects</a></dd>
                     <dd><a href="/contact">Contact</a></dd>

@@ -49,7 +49,7 @@ include 'includes/header.php';
         <div class="story-grid-minimal">
             <!-- Left Side: Detail Content -->
             <div class="story-detail-left">
-                <span class="tagline">Our Roots</span>
+                <span class="tagline">Our Story</span>
                 <h2 class="story-title-main">Pioneering Technical Excellence</h2>
                 <div class="story-text-container">
                     <div class="story-description-content collapsed" id="story-text">
@@ -535,13 +535,13 @@ include 'includes/header.php';
 
 <!-- Core Values Section -->
 <!-- Core Values - Funky Industrial Accordion -->
-<section class="funky-values-section parallax-section">
+<section class="funky-values-section parallax-section" id="principles-section">
     <div class="container-fluid px-lg-5">
         <div class="funky-layout">
             <!-- Left Side: Titles -->
             <div class="funky-left">
                 <div class="funky-left-inner">
-                    <span class="tagline">The AB Way</span>
+                    <span class="tagline">Our Principle</span>
                     <h1 class="funky-title">Principles of <span class="text-primary-blue">Authority</span></h1>
                     <p class="funky-desc">The foundation of every decision and project we undertake to ensure excellence in every maritime solution.</p>
                 </div>
@@ -618,6 +618,24 @@ include 'includes/header.php';
                                     <h3>Unified Teamwork</h3>
                                     <h4>GLOBAL PARTNERS</h4>
                                     <p>Working as a unified team to deliver superior results for global partners.</p>
+                                    <button class="funky-btn">Learn More</button>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Tab 5: Quality Assurance -->
+                        <input type="radio" id="tab-5" name="value-buttons">
+                        <label for="tab-5">
+                            <div class="funky-tab">
+                                <h2><i class="fas fa-certificate"></i> QUALITY</h2>
+                                <div class="tab-left">
+                                    <i class="fas fa-award big-icon"></i>
+                                    <div class="tab-icon-image"><i class="fas fa-award"></i></div>
+                                </div>
+                                <div class="tab-right">
+                                    <h3>Quality Assurance</h3>
+                                    <h4>EXCELLENCE ASSURED</h4>
+                                    <p>We enforce rigorous testing and premium control protocols to guarantee ultimate technical precision and safety in every execution.</p>
                                     <button class="funky-btn">Learn More</button>
                                 </div>
                             </div>
@@ -742,6 +760,7 @@ include 'includes/header.php';
     label:nth-of-type(2) .funky-tab { background: #0f172a; } /* Dark Slate */
     label:nth-of-type(3) .funky-tab { background: #1e293b; } /* Medium Slate */
     label:nth-of-type(4) .funky-tab { background: #334155; } /* Light Slate */
+    label:nth-of-type(5) .funky-tab { background: #475569; } /* Slate Grey */
 
     label:hover .funky-tab {
         filter: brightness(1.1);
