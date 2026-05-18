@@ -1,5 +1,6 @@
 rosemarine.zip
 *.txt
+!robots.txt
 ui.md
 .DS_Store
 .antigravityignore

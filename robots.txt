@@ -1,0 +1,16 @@
+# =========================================================================
+# ROBOTS.TXT FOR AB MALAYA SDN BHD
+# Optimized for Googlebot, Bingbot, and corporate search indexers.
+# =========================================================================
+
+User-agent: *
+Allow: /
+
+# Disallow non-public internal templates and utility assets
+Disallow: /includes/
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /router.php
+
+# Declare official XML sitemap location
+Sitemap: https://abmalaya.com/sitemap.xml
