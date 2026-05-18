@@ -881,9 +881,9 @@ include 'includes/header.php';
         .tab-right p { font-size: 0.85rem; margin: 6px 0 0 0; max-width: 100%; }
         .funky-btn { padding: 4px 12px; font-size: 0.75rem; }
 
-        input[type="radio"]:checked + label .funky-tab { height: 210px; } /* Clean compact mobile height */
-        input[type="radio"]:checked + label .funky-tab h2 { top: 10px; }
-        input[type="radio"]:checked + label .funky-tab .tab-right { top: 45px; }
+        input[type="radio"]:checked + label .funky-tab { height: 245px; } /* Safe mobile height preventing overflow bleed on narrow viewports */
+        input[type="radio"]:checked + label .funky-tab h2 { top: 12px; } /* Breathable position for category watermark */
+        input[type="radio"]:checked + label .funky-tab .tab-right { top: 60px; } /* Aligned perfectly with the active icon (top: 60px) to prevent title clashes */
         
         /* Ensure animations work on mobile */
         input[type="radio"]:checked + label .tab-icon-image {
