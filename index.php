@@ -329,7 +329,7 @@ include 'includes/hero_visual.php';
 
             <!-- Right Half: Exactly 50% -->
             <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; text-align: right; gap: 1.2rem;">
-                <h3 style="color: #94a3b8; text-transform: uppercase; font-size: 1.8rem; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-top: 1rem; letter-spacing: -0.5px; line-height: 1.2;">Who We Are</h3>
+                <h3 style="color: #94a3b8; text-transform: uppercase; font-size: 1.8rem; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-top: 1rem; letter-spacing: -0.5px; line-height: 1.2;">Introduction</h3>
                 <div>
                     <a href="/about" class="hero-link" style="color: #000; font-size: 0.85rem;">
                         Learn More About Us <i class="fas fa-arrow-right"></i>
@@ -558,8 +558,8 @@ include 'includes/hero_visual.php';
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 5rem;">
             <!-- Left Side: Address & Map Info -->
             <div style="width: 50%; padding-right: 4rem;">
-                <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Connect</h5>
-                <h2 style="font-size: 3.2rem; color: #000; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Connect with <br>AB Malaya</h2>
+                <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Offices</h5>
+                <h2 style="font-size: 3.2rem; color: #000; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Our Offices & <br>Headquarters</h2>
                 
                 <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 3rem;">
                     <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
@@ -715,6 +715,7 @@ include 'includes/hero_visual.php';
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <!-- Left Side -->
             <div style="width: 55%; text-align: left;">
+                <h5 style="color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Reach Us</h5>
                 <h2 class="cta-title" style="font-size: 3.5rem; margin-bottom: 2rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Ready to Start <br>Your Project?</h2>
                 <p style="max-width: 500px; opacity: 0.9; font-size: 1.2rem; line-height: 1.7; font-family: 'Aeonik', sans-serif;">Our experts are ready to provide the best maritime and industrial solutions for your business.</p>
             </div>
