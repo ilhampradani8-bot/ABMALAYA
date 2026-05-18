@@ -1,4 +1,9 @@
 <?php 
+// Force browser to bypass cache for index.php to immediately reflect local 3D assets and carousel improvements
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 $pageTitle = "Home";
 $currentPage = "home";
 include 'includes/header.php'; 
@@ -188,14 +193,64 @@ include 'includes/hero_visual.php';
         transform: scale(1.05);
     }
 
+    /* Floating 3D Hologram Badge in Top-Left Corner (Borderless & Direct) */
+    .badge-3d {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        width: 72px;
+        height: 72px;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .badge-3d img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide-card:hover .badge-3d {
+        transform: translateY(-4px) scale(1.08);
+    }
+
+    .slide-card:hover .badge-3d img {
+        transform: scale(1.12) rotate(6deg);
+    }
+
     .card-sections {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 3rem 2rem;
-        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+        padding: 3rem 2rem 2.2rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
         z-index: 2;
+    }
+
+    /* Asymmetric Row Layout (SVG button left, text right) */
+    .card-footer-layout {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+    }
+
+    .card-footer-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-footer-right {
+        text-align: right;
+        flex-grow: 1;
+        padding-left: 1.5rem;
     }
 
     .card-caption {
@@ -203,35 +258,60 @@ include 'includes/hero_visual.php';
         font-family: 'Aeonik', sans-serif;
         font-weight: 700;
         font-size: 1.5rem;
-        margin-bottom: 1.2rem;
+        margin-bottom: 2px !important;
         letter-spacing: -0.5px;
+        text-align: right;
     }
 
-    .card-button {
-        display: inline-block;
-        padding: 0.7rem 1.4rem;
-        background: #005ee9;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
+    .card-desc {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.82rem;
+        font-family: 'Aeonik', sans-serif;
+        line-height: 1.3;
+        font-weight: 400;
+        text-align: right;
+    }
+
+    /* Minimalist SVG Arrow Button */
+    .card-arrow-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: rgba(0, 94, 233, 0.08);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(0, 94, 233, 0.25);
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         opacity: 0;
-        transform: translateY(15px);
+        transform: scale(0.8) translateX(-10px);
         will-change: transform, opacity;
     }
 
-    .embla__slide.is-selected .card-button {
-        opacity: 1;
-        transform: translateY(0);
+    .card-arrow-btn svg {
+        stroke: #005ee9;
+        stroke-width: 2.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.3s ease, stroke 0.3s ease;
     }
 
-    .card-button:hover {
-        background: #fff;
-        color: #005ee9;
+    /* Only show and animate arrow button for selected slide */
+    .embla__slide.is-selected .card-arrow-btn {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+    }
+
+    .card-arrow-btn:hover {
+        background: #005ee9;
+        border-color: #005ee9;
+    }
+
+    .card-arrow-btn:hover svg {
+        stroke: #fff;
+        transform: translateX(2px) scale(1.05);
     }
 
     /* Controls */
@@ -363,12 +443,30 @@ include 'includes/hero_visual.php';
                     <!-- Slide 1: Marine Division -->
                     <div class="embla__slide">
                         <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/marine.png" alt="Marine Icon">
+                            </div>
                             <div class="media">
                                 <img src="assets/img/kapal-tanker.jpg" alt="Marine Division">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Marine Division</div>
-                                <a href="/services#marine" class="card-button">Know More</a>
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Arrow Button -->
+                                    <div class="card-footer-left">
+                                        <a href="services#marine" class="card-arrow-btn" aria-label="Know More">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Marine Division</div>
+                                        <div class="card-desc">Offshore & Subsea Services</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -376,11 +474,23 @@ include 'includes/hero_visual.php';
                     <!-- Slide 2: Industrial IT -->
                     <div class="embla__slide">
                         <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/mekanikal.png" alt="Industrial IT Icon">
+                            </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="Industrial IT">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption" style="margin-bottom: 0;">Industrial IT</div>
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Empty (No button) -->
+                                    <div class="card-footer-left"></div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Industrial IT</div>
+                                        <div class="card-desc">Automation & Controls</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -388,12 +498,30 @@ include 'includes/hero_visual.php';
                     <!-- Slide 3: Environmental -->
                     <div class="embla__slide">
                         <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/pohon3d.png" alt="Environmental Icon">
+                            </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Environmental">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Environmental</div>
-                                <a href="/services#env" class="card-button">Know More</a>
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Arrow Button -->
+                                    <div class="card-footer-left">
+                                        <a href="services#env" class="card-arrow-btn" aria-label="Know More">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Environmental</div>
+                                        <div class="card-desc">Eco & Resource Management</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -401,12 +529,30 @@ include 'includes/hero_visual.php';
                     <!-- Slide 4: Logistic Division -->
                     <div class="embla__slide">
                         <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/logistics.png" alt="Logistic Division Icon">
+                            </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistic Division">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption">Logistic Division</div>
-                                <a href="/services#cross" class="card-button">Know More</a>
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Arrow Button -->
+                                    <div class="card-footer-left">
+                                        <a href="services#cross" class="card-arrow-btn" aria-label="Know More">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Logistic Division</div>
+                                        <div class="card-desc">Cross-Border Solutions</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -414,11 +560,23 @@ include 'includes/hero_visual.php';
                     <!-- Slide 5: Bio-Solutions -->
                     <div class="embla__slide">
                         <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/lanscape.png" alt="Bio-Solutions Icon">
+                            </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&h=1000" alt="Bio-Solutions">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption" style="margin-bottom: 0;">Bio-Solutions</div>
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Empty (No button) -->
+                                    <div class="card-footer-left"></div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Bio-Solutions</div>
+                                        <div class="card-desc">Organic Agrotech Solutions</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -426,11 +584,23 @@ include 'includes/hero_visual.php';
                     <!-- Slide 6: Procurement -->
                     <div class="embla__slide">
                         <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/civil.png" alt="Procurement Icon">
+                            </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Procurement">
                             </div>
                             <div class="card-sections">
-                                <div class="card-caption" style="margin-bottom: 0;">Procurement</div>
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Empty (No button) -->
+                                    <div class="card-footer-left"></div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Procurement</div>
+                                        <div class="card-desc">Global Sourcing & Supply</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -735,9 +905,9 @@ include 'includes/hero_visual.php';
     </div>
 </section>
 
-<!-- Embla Carousel CDN -->
-<script src="https://cdn.jsdelivr.net/npm/embla-carousel@8.0.0/embla-carousel.umd.js"></script>
+<!-- Local Embla Carousel -->
+<script src="assets/js/embla-carousel.umd.js"></script>
 <!-- Home Page Logic -->
-<script src="assets/js/index.js?v=5.0"></script>
+<script src="assets/js/index.js?v=5.4"></script>
 
 <?php include 'includes/footer.php'; ?>

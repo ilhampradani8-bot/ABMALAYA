@@ -28,8 +28,7 @@
 
         /* 2. Prevent Embla Carousel Layout Shifting and Slide Stacking */
         .embla__viewport { overflow: hidden; width: 100%; }
-        .embla__container { display: flex; flex-direction: row; flex-wrap: nowrap; overflow: hidden; }
-        .embla__slide { flex: 0 0 100%; max-width: 100%; min-width: 0; }
+        .embla__container { display: flex; flex-direction: row; flex-wrap: nowrap; }
 
         /* 3. Prevent Swiper Carousel Slide Stacking before CSS/JS Init */
         .swiper { overflow: hidden; position: relative; }
