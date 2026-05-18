@@ -17,31 +17,31 @@
     <div class="hero-images-layer">
         <div class="sequential-container" id="hero-machinery-container">
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/cargo.png" alt="Maritime and Cargo Operations">
+                <img src="assets/img/head/cargo.webp" alt="Maritime and Cargo Operations">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/logistik.png" alt="Logistics and Freight Fleet">
+                <img src="assets/img/head/logistik.webp" alt="Logistics and Freight Fleet">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/greeen-eart.png" alt="Environmental and Safety Solutions">
+                <img src="assets/img/head/greeen-eart.webp" alt="Environmental and Safety Solutions">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/greeen.png" alt="Eco Solutions and Greening">
+                <img src="assets/img/head/greeen.webp" alt="Eco Solutions and Greening">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/remove-bg-escavator.png" alt="Civil Construction & Machinery">
+                <img src="assets/img/head/remove-bg-escavator.webp" alt="Civil Construction & Machinery">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/bgcool.png" alt="Industrial Engineering Services">
+                <img src="assets/img/head/bgcool.webp" alt="Industrial Engineering Services">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/bgcoolnew.png" alt="Mechanical and Technical Precision">
+                <img src="assets/img/head/bgcoolnew.webp" alt="Mechanical and Technical Precision">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/remove-bg-escavator1.png" alt="Civil Engineering and Infrastructure">
+                <img src="assets/img/head/remove-bg-escavator1.webp" alt="Civil Engineering and Infrastructure">
             </div>
             <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/remove-bg-rust-bawah-kanan.png" alt="Corrosion Control & Asset Care">
+                <img src="assets/img/head/remove-bg-rust-bawah-kanan.webp" alt="Corrosion Control & Asset Care">
             </div>
         </div>
     </div>
