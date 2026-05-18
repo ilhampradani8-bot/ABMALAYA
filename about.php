@@ -969,6 +969,12 @@ include 'includes/header.php';
         margin-top: 0;
     }
 
+    footer {
+        position: relative !important;
+        z-index: 100 !important; /* Forces the footer to render on top of the fixed background elements */
+        background: #0b132b !important; /* Solid color matches style.css footer color */
+    }
+
     /* Story Section */
     .story-grid {
         display: grid;
