@@ -34,7 +34,7 @@ include 'includes/hero_visual.php';
             justify-content: flex-start !important;
             gap: 3rem !important;
             flex-wrap: nowrap !important;
-            animation: marqueeMobile 15s linear infinite;
+            animation: marqueeMobile 5s linear infinite;
             width: max-content;
         }
         #clients { overflow: hidden; }
@@ -685,7 +685,7 @@ include 'includes/hero_visual.php';
         align-items: center;
         width: max-content;
         gap: 8rem;
-        animation: marqueeScroll 18s linear infinite;
+        animation: marqueeScroll 6s linear infinite;
         transform-style: preserve-3d;
     }
     .client-logo-item {
@@ -720,7 +720,7 @@ include 'includes/hero_visual.php';
     }
 
     @media (max-width: 768px) {
-        .marquee-track { gap: 4rem; animation-duration: 25s; }
+        .marquee-track { gap: 4rem; animation-duration: 9s; }
         .client-logo-item img { height: 45px; }
         .marquee-title { margin-bottom: 2rem; }
         .client-marquee-section { padding: 40px 0; }
