@@ -35,7 +35,7 @@ For a detailed breakdown of the roles, performance benefits, and features of eac
 *   `router.php`: Dynamic clean-URL routing engine that eliminates `.php` extensions and serves all static assets (images, fonts, scripts, styles) natively to completely bypass PHP built-in server bugs.
 *   `maintenance.md`: Technical guide for future updates, content changes, and server configurations.
 *   `includes/`:
-    *   `header.php`: Floating glassmorphic header, top loading bar, SVG navigation indicators, and mobile 3D Makisu folder menu.
+    *   `header.php`: Floating glassmorphic header, top loading bar, SVG navigation indicators, and premium **Neobrutalist Mobile Card Accordion Menu** with multi-level nested accordion submenus.
     *   `footer.php`: Re-engineered dark footer featuring comprehensive services listing, WA liquid-metal capsule, and claymorphic **Cookie Consent Card**.
 *   `assets/`:
     *   `css/style.css`: Core design system, font faces, global variables, and layout overrides.
