@@ -1197,7 +1197,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/marine.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/marine.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Marine Division</h3>
@@ -1229,7 +1229,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/logistics.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/logistics.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Logistic Division</h3>
@@ -1261,7 +1261,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/pohon3d.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/pohon3d.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Environmental</h3>
@@ -1294,7 +1294,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/cinstruction.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/cinstruction.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Construction</h3>
@@ -1326,7 +1326,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/civil.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/civil.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Civil Engineering</h3>
@@ -1358,7 +1358,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/renov.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/renov.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Renovations</h3>
@@ -1390,7 +1390,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/mekanikal.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/mekanikal.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Mechanical</h3>
@@ -1422,7 +1422,7 @@ html, body {
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/lanscape.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/lanscape.webp" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
                                     <h3>Landscape</h3>
