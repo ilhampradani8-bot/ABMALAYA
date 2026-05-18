@@ -13,20 +13,35 @@
         <canvas id="hero-canvas"></canvas>
     </div>
 
-    <!-- Machinery Layer (Full Height, Right, Sequential) -->
+    <!-- Machinery Layer (Full Height, Right, Dynamic Randomized Carousel representing all divisions) -->
     <div class="hero-images-layer">
-        <div class="sequential-container">
-            <div class="img-wrap s-1" data-tilt>
-                <img src="assets/img/head/remove-bg-escavator.png" alt="Engineering Operations">
+        <div class="sequential-container" id="hero-machinery-container">
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/cargo.png" alt="Maritime and Cargo Operations">
             </div>
-            <div class="img-wrap s-2" data-tilt>
-                <img src="assets/img/head/bgcool.png" alt="Industrial Maintenance">
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/logistik.png" alt="Logistics and Freight Fleet">
             </div>
-            <div class="img-wrap s-3" data-tilt>
-                <img src="assets/img/head/bgcoolnew.png" alt="Technical Services">
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/greeen-eart.png" alt="Environmental and Safety Solutions">
             </div>
-            <div class="img-wrap s-4" data-tilt>
-                <img src="assets/img/head/remove-bg-rust-bawah-kanan.png" alt="Engineering Component">
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/greeen.png" alt="Eco Solutions and Greening">
+            </div>
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/remove-bg-escavator.png" alt="Civil Construction & Machinery">
+            </div>
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/bgcool.png" alt="Industrial Engineering Services">
+            </div>
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/bgcoolnew.png" alt="Mechanical and Technical Precision">
+            </div>
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/remove-bg-escavator1.png" alt="Civil Engineering and Infrastructure">
+            </div>
+            <div class="img-wrap" data-tilt>
+                <img src="assets/img/head/remove-bg-rust-bawah-kanan.png" alt="Corrosion Control & Asset Care">
             </div>
         </div>
     </div>
@@ -112,11 +127,15 @@
         display: flex;
         align-items: flex-end; 
         justify-content: flex-end; 
-        transition: opacity 2.5s ease-in-out;
-        pointer-events: auto; /* Enable for Tilt */
+        transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none; /* Disable for Tilt when inactive */
         transform-style: preserve-3d;
         perspective: 1800px;
-        will-change: transform;
+        will-change: transform, opacity;
+    }
+    .img-wrap.active {
+        opacity: 1;
+        pointer-events: auto; /* Enable for Tilt when active */
     }
     .img-wrap img {
         height: 100%; 
@@ -128,18 +147,6 @@
         pointer-events: none;
         transform: translateZ(80px); /* Deeper depth */
         will-change: transform;
-    }
-
-    /* Sequential Animation - 20s cycle (5s each) */
-    .s-1 { animation: seqFade 20s infinite 0s; }
-    .s-2 { animation: seqFade 20s infinite 5s; }
-    .s-3 { animation: seqFade 20s infinite 10s; }
-    .s-4 { animation: seqFade 20s infinite 15s; }
-
-    @keyframes seqFade {
-        0%, 5% { opacity: 0; }
-        10%, 25% { opacity: 1; }
-        30%, 100% { opacity: 0; }
     }
 
     .intro-content {
@@ -482,4 +489,47 @@
     }
 })();
 </script>
+
+<!-- Dynamic Random Shuffling & Rotation Slider Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById("hero-machinery-container");
+    if (!container) return;
+    
+    const wraps = Array.from(container.getElementsByClassName("img-wrap"));
+    if (wraps.length === 0) return;
+    
+    // Fisher-Yates Shuffle to randomize images completely on each page load
+    for (let i = wraps.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = wraps[i];
+        wraps[i] = wraps[j];
+        wraps[j] = temp;
+    }
+    
+    // Clear container and append wraps back in randomized order
+    container.innerHTML = "";
+    wraps.forEach(wrap => container.appendChild(wrap));
+    
+    let currentIndex = 0;
+    
+    function showNextImage() {
+        // Fade out current active image
+        wraps[currentIndex].classList.remove("active");
+        
+        // Move to next index
+        currentIndex = (currentIndex + 1) % wraps.length;
+        
+        // Fade in next randomized image
+        wraps[currentIndex].classList.add("active");
+    }
+    
+    // Initially activate the first randomized image
+    wraps[0].classList.add("active");
+    
+    // Cycle every 5 seconds (5000ms)
+    setInterval(showNextImage, 5000);
+});
+</script>
+
 

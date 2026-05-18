@@ -958,11 +958,6 @@
                             <a href="/services#marine"><i class="fas fa-ship"></i> Marine Division</a>
                             <a href="/services#logistics"><i class="fas fa-truck"></i> Logistic Division</a>
                             <a href="/services#environmental"><i class="fas fa-leaf"></i> Environmental</a>
-                            <a href="/services#construction"><i class="fas fa-building"></i> Construction</a>
-                            <a href="/services#civil"><i class="fas fa-hard-hat"></i> Civil Engineering</a>
-                            <a href="/services#renovations"><i class="fas fa-tools"></i> Renovations</a>
-                            <a href="/services#mechanical"><i class="fas fa-cogs"></i> Mechanical</a>
-                            <a href="/services#landscape"><i class="fas fa-tree"></i> Landscape</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">

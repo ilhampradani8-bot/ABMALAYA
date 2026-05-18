@@ -1167,11 +1167,13 @@ html, body {
                 <button class="service-link-item active" data-index="0">Marine Division</button>
                 <button class="service-link-item" data-index="1">Logistic Division</button>
                 <button class="service-link-item" data-index="2">Environmental</button>
+                <?php if (false): ?>
                 <button class="service-link-item" data-index="3">Construction</button>
                 <button class="service-link-item" data-index="4">Civil</button>
                 <button class="service-link-item" data-index="5">Renovations</button>
                 <button class="service-link-item" data-index="6">Mechanical</button>
                 <button class="service-link-item" data-index="7">Landscape</button>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -1284,6 +1286,7 @@ html, body {
                     </div>
                 </div>
 
+                <?php if (false): ?>
                 <!-- Card 4: Construction -->
                 <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
@@ -1443,6 +1446,7 @@ html, body {
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
 
             </div>
         </div>
@@ -1574,9 +1578,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Update custom navigation destination labels
-        const serviceTitles = ["Marine Division", "Logistic Division", "Environmental", "Construction", "Civil", "Renovations", "Mechanical", "Landscape"];
-        const prevIndex = (realIndex - 1 + 8) % 8;
-        const nextIndex = (realIndex + 1) % 8;
+        const serviceTitles = [];
+        document.querySelectorAll('.service-link-item').forEach(btn => {
+            serviceTitles.push(btn.textContent.trim());
+        });
+        const totalSlides = serviceTitles.length;
+        const prevIndex = (realIndex - 1 + totalSlides) % totalSlides;
+        const nextIndex = (realIndex + 1) % totalSlides;
 
         const prevTextEl = document.querySelector('.swiper-custom-prev-text');
         const nextTextEl = document.querySelector('.swiper-custom-next-text');
@@ -1760,7 +1768,7 @@ document.addEventListener('DOMContentLoaded', function() {
     menuItems.forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
-            if (!isNaN(index) && index >= 0 && index < 8) {
+            if (!isNaN(index) && index >= 0 && index < menuItems.length) {
                 serviceSwiper.slideTo(index);
             }
         });
