@@ -8,6 +8,11 @@
  * $showButtons - Boolean to show CTA buttons
  */
 ?>
+<style>
+    /* Critical load-time styles to hide unstyled/stacking images instantly */
+    .hero-images-layer { opacity: 0; position: absolute; }
+    .img-wrap { opacity: 0; position: absolute; }
+</style>
 <section class="intro-visual">
     <div class="intro-bg-wrap">
         <canvas id="hero-canvas"></canvas>
@@ -108,6 +113,8 @@
         height: 100%;
         z-index: 2;
         pointer-events: none;
+        opacity: 0; /* Hidden by default to prevent load-time overlapping FOUC */
+        transition: opacity 0.8s ease-in-out; /* Smooth fade-in when JS is active */
     }
     .sequential-container {
         position: relative;
@@ -526,6 +533,14 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Initially activate the first randomized image
     wraps[0].classList.add("active");
+    
+    // Fade in the machinery layer container once JS is ready
+    const layer = container.closest(".hero-images-layer");
+    if (layer) {
+        requestAnimationFrame(() => {
+            layer.style.opacity = "1";
+        });
+    }
     
     // Cycle every 5 seconds (5000ms)
     setInterval(showNextImage, 5000);
