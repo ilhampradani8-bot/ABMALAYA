@@ -303,35 +303,33 @@ $(function() {
         }
     ];
 
-    // Desktop Trigger (Expanding Bar)
+    // Desktop Trigger (Expanding Bar - Click Manual Toggle)
     $('#search-desktop-trigger').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         if (!searchContainerDesktop.hasClass('active')) {
             searchContainerDesktop.addClass('active');
             searchInputInline.focus();
         } else {
             if (searchInputInline.val().trim() === "") {
                 searchContainerDesktop.removeClass('active');
+                searchInputInline.blur();
+                liveSearchResults.hide();
             } else {
                 searchContainerDesktop.find('form').submit();
             }
         }
     });
 
-    // Auto-expand search on hover (mouseenter)
-    searchContainerDesktop.on('mouseenter', function() {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-            searchInputInline.focus();
-        }
-    });
-
-    // Auto-collapse search on mouse leave (mouseleave) - autohides completely!
-    searchContainerDesktop.on('mouseleave', function() {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-            searchInputInline.val(''); // Reset input on leave
-            searchInputInline.blur();
-            liveSearchResults.hide(); // Hide live results card
+    // Close header search on clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('#search-desktop-container').length) {
+            if (searchContainerDesktop.hasClass('active')) {
+                searchContainerDesktop.removeClass('active');
+                searchInputInline.val('');
+                searchInputInline.blur();
+                liveSearchResults.hide();
+            }
         }
     });
 

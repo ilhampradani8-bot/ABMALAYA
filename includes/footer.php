@@ -244,35 +244,34 @@
                 });
             });
 
-            // Footer Expanding Search Bar Toggle Trigger
+            // Footer Expanding Search Bar Toggle Trigger (Click Manual Toggle)
             const searchContainerFooter = $('#search-footer-container');
             const searchInputFooter = $('#search-footer-input');
             
             $('#search-footer-trigger').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
                 if (!searchContainerFooter.hasClass('active')) {
                     searchContainerFooter.addClass('active');
                     searchInputFooter.focus();
                 } else {
-                    if (searchInputFooter.val().trim() !== "") {
+                    if (searchInputFooter.val().trim() === "") {
+                        searchContainerFooter.removeClass('active');
+                        searchInputFooter.blur();
+                    } else {
                         searchContainerFooter.find('form').submit();
                     }
                 }
             });
             
-            // Auto-expand on hover (mouseenter)
-            searchContainerFooter.on('mouseenter', function() {
-                if (!$(this).hasClass('active')) {
-                    $(this).addClass('active');
-                    searchInputFooter.focus();
-                }
-            });
-
-            // Auto-collapse on hover-out (mouseleave) - autohides completely!
-            searchContainerFooter.on('mouseleave', function() {
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                    searchInputFooter.val(''); // Reset input on leave
-                    searchInputFooter.blur();
+            // Close footer search on clicking outside
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('#search-footer-container').length) {
+                    if (searchContainerFooter.hasClass('active')) {
+                        searchContainerFooter.removeClass('active');
+                        searchInputFooter.val('');
+                        searchInputFooter.blur();
+                    }
                 }
             });
         });

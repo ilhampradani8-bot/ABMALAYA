@@ -1057,6 +1057,6 @@
     </div>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="/assets/js/navigation.js?v=4.7"></script>
+    <script src="/assets/js/navigation.js?v=5.0"></script>
 
     <main>
