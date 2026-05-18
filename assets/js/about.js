@@ -1,5 +1,6 @@
 $(function() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    gsap.config({ force3D: true }); // Global GPU Hardware Acceleration booster
 
     // --- RESPONSIVE HERO PARALLAX ---
     let mm = gsap.matchMedia();
@@ -12,9 +13,9 @@ $(function() {
 
         // Tailored coordinates for mobile vs desktop to prevent cropping and gaps
         let skyStart = 0, skyEnd = -200;
-        let cloud1Start = 220, cloud1End = -700;
-        let cloud2Start = -20, cloud2End = -380;
-        let cloud3Start = 80, cloud3End = -520;
+        let cloud1Start = 160, cloud1End = -760; // Lifted up by 60px
+        let cloud2Start = -80, cloud2End = -440; // Lifted up by 60px
+        let cloud3Start = 20, cloud3End = -580;  // Lifted up by 60px
         let mountBgStart = -10, mountBgEnd = -100;
         let mountMgStart = -30, mountMgEnd = -250;
         let mountFgStart = 60, mountFgEnd = -500;
@@ -29,9 +30,9 @@ $(function() {
             // Mobile optimized values (keep city fully visible & prevent sky top/bottom gaps)
             skyStart = 0; skyEnd = -150; // Native SVG handles bleed perfectly
 
-            cloud1Start = 200; cloud1End = -620; // Starts higher & moves faster to complete the mask reveal earlier!
-            cloud2Start = 100; cloud2End = -240;
-            cloud3Start = 220; cloud3End = -340;
+            cloud1Start = 140; cloud1End = -680; // Lifted up by 60px
+            cloud2Start = 40; cloud2End = -300;   // Lifted up by 60px
+            cloud3Start = 160; cloud3End = -400;  // Lifted up by 60px
 
             mountBgStart = -140; mountBgEnd = -220; // Lifted upwards to sit proudly above clouds
             mountBgScale = 0.58; // Scaled down to show all city elements horizontally

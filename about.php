@@ -24,7 +24,7 @@ include 'includes/header.php';
             
             <image class="sky" xlink:href="https://assets.codepen.io/721952/sky.jpg" x="-300" y="-600" width="1800" height="2200" preserveAspectRatio="none" />
             <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.png" x="-40" y="-40" width="1280" height="880" />    
-            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.png" x="-40" y="-40" width="1280" height="880" />    
+            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.png" x="-40" y="-40" width="1280" height="880" preserveAspectRatio="xMidYMid slice" />    
             <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" />    
             <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.png" x="-40" y="0" width="1280" height="880" />
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
@@ -1342,12 +1342,12 @@ include 'includes/header.php';
         .vm-card h3 { font-size: 2rem; }
         .section-header-centered h2 { font-size: 2.2rem; }
         .parallax-text-main { font-size: 42px; font-weight: 900; }
-        .parallax-text-sub-desc { font-size: 13px; letter-spacing: 3px; font-weight: 700; }
+        .parallax-text-sub-desc { font-size: 10.5px; letter-spacing: 2px; font-weight: 700; }
     }
 
     @media (max-width: 480px) {
         .parallax-text-main { font-size: 34px; letter-spacing: 2px; font-weight: 900; }
-        .parallax-text-sub-desc { font-size: 11px; letter-spacing: 2px; font-weight: 700; }
+        .parallax-text-sub-desc { font-size: 8.5px; letter-spacing: 1.2px; font-weight: 700; }
     }
 </style>
 

@@ -31,15 +31,9 @@ if (file_exists($uri . '.php')) {
 }
 
 // Intercept all static file requests to bypass the buggy built-in PHP server's static serving bug (ERR_INVALID_HTTP_RESPONSE)
-if ($uri !== '' && file_exists($uri) && !is_dir($uri)) {
+if ($uri !== '' && !is_dir($uri)) {
     $file = __DIR__ . '/' . $uri;
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-    
-    if ($ext === 'php') {
-        sendSecurityHeaders();
-        include $file;
-        exit;
-    }
     
     $mimes = [
         'css'   => 'text/css',
@@ -59,13 +53,37 @@ if ($uri !== '' && file_exists($uri) && !is_dir($uri)) {
         'mp4'   => 'video/mp4'
     ];
     
-    $mime = isset($mimes[$ext]) ? $mimes[$ext] : 'application/octet-stream';
-    
-    header("Content-Type: " . $mime);
-    header("Content-Length: " . filesize($file));
-    header("Cache-Control: public, max-age=3600");
-    readfile($file);
-    exit;
+    if (isset($mimes[$ext]) || $ext === 'php') {
+        // Dynamic image extension mapping to automatically handle png/webp/jpeg interchangeability
+        $imageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
+        if (!file_exists($file) && in_array($ext, $imageExtensions)) {
+            $pathInfo = pathinfo($file);
+            $basePath = $pathInfo['dirname'] . '/' . $pathInfo['filename'];
+            foreach ($imageExtensions as $newExt) {
+                $candidate = $basePath . '.' . $newExt;
+                if (file_exists($candidate)) {
+                    $file = $candidate;
+                    $ext = $newExt;
+                    break;
+                }
+            }
+        }
+        
+        if (file_exists($file)) {
+            if ($ext === 'php') {
+                sendSecurityHeaders();
+                include $file;
+                exit;
+            }
+            
+            $mime = isset($mimes[$ext]) ? $mimes[$ext] : 'application/octet-stream';
+            header("Content-Type: " . $mime);
+            header("Content-Length: " . filesize($file));
+            header("Cache-Control: public, max-age=3600");
+            readfile($file);
+            exit;
+        }
+    }
 }
 
 // Fallback to 404

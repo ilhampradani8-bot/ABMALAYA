@@ -364,7 +364,7 @@ include 'includes/hero_visual.php';
                     <div class="embla__slide">
                         <div class="slide-card">
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=800&h=1000" alt="Maritime">
+                                <img src="assets/img/kapal-tanker.jpg" alt="Maritime">
                             </div>
                             <div class="card-sections">
                                 <div class="card-caption">Maritime & Subsea</div>

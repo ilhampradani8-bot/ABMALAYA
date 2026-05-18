@@ -7,6 +7,38 @@
  * $heroDesc - The descriptive paragraph
  * $showButtons - Boolean to show CTA buttons
  */
+
+// Dynamically scan assets/img/head/ directory to support both webp and png automatically
+$imgFolder = 'assets/img/head/';
+$images = [];
+if (is_dir($imgFolder)) {
+    $files = scandir($imgFolder);
+    foreach ($files as $file) {
+        $filePath = $imgFolder . $file;
+        if (is_file($filePath)) {
+            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            if (in_array($ext, ['webp', 'png', 'jpg', 'jpeg', 'gif', 'svg'])) {
+                $images[] = $filePath;
+            }
+        }
+    }
+}
+
+if (empty($images)) {
+    $images = [
+        'assets/img/head/greeen.webp',
+        'assets/img/head/greeen1.webp',
+        'assets/img/head/logistik.webp',
+        'assets/img/head/logistik1.webp',
+        'assets/img/head/logistik2.png',
+        'assets/img/head/logistik3.jpeg',
+        'assets/img/head/marine.webp',
+        'assets/img/head/marine1.webp',
+        'assets/img/head/marine2.webp',
+        'assets/img/head/marine3.webp',
+        'assets/img/head/marine4.webp'
+    ];
+}
 ?>
 <style>
     /* Critical load-time styles to hide unstyled/stacking images instantly */
@@ -21,33 +53,15 @@
     <!-- Machinery Layer (Full Height, Right, Dynamic Randomized Carousel representing all divisions) -->
     <div class="hero-images-layer">
         <div class="sequential-container" id="hero-machinery-container">
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/cargo.webp" alt="Maritime and Cargo Operations">
+            <?php foreach ($images as $img): 
+                $fileName = pathinfo($img, PATHINFO_FILENAME);
+                // Convert file name to clean human readable alt text
+                $altText = ucwords(str_replace(['-', '_'], ' ', $fileName));
+            ?>
+            <div class="img-wrap">
+                <img src="<?php echo htmlspecialchars($img); ?>" alt="<?php echo htmlspecialchars($altText); ?>">
             </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/logistik.webp" alt="Logistics and Freight Fleet">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/greeen-eart.webp" alt="Environmental and Safety Solutions">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/greeen.webp" alt="Eco Solutions and Greening">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/remove-bg-escavator.webp" alt="Civil Construction & Machinery">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/bgcool.webp" alt="Industrial Engineering Services">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/bgcoolnew.webp" alt="Mechanical and Technical Precision">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/remove-bg-escavator1.webp" alt="Civil Engineering and Infrastructure">
-            </div>
-            <div class="img-wrap" data-tilt>
-                <img src="assets/img/head/remove-bg-rust-bawah-kanan.webp" alt="Corrosion Control & Asset Care">
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
     
@@ -134,15 +148,13 @@
         display: flex;
         align-items: flex-end; 
         justify-content: flex-end; 
-        transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: none; /* Disable for Tilt when inactive */
-        transform-style: preserve-3d;
-        perspective: 1800px;
-        will-change: transform, opacity;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        will-change: opacity;
     }
     .img-wrap.active {
         opacity: 1;
-        pointer-events: auto; /* Enable for Tilt when active */
+        pointer-events: auto;
     }
     .img-wrap img {
         height: 100%; 
@@ -152,8 +164,7 @@
         object-position: right bottom; 
         filter: none;
         pointer-events: none;
-        transform: translateZ(80px); /* Deeper depth */
-        will-change: transform;
+        will-change: opacity;
     }
 
     .intro-content {
@@ -423,26 +434,7 @@
         
         const scrollY = window.scrollY;
         
-        // Update machinery parallax using GPU-accelerated transform: translate3d
-        if (scrollY !== lastScrollY && sequentialContainer) {
-            sequentialContainer.style.transform = `translate3d(0, ${scrollY * 0.25}px, 0)`;
-            lastScrollY = scrollY;
-        }
 
-        // Initialize Tilt for Machinery
-        if (typeof VanillaTilt !== 'undefined' && !window.tiltInitialized) {
-            window.tiltInitialized = true;
-            VanillaTilt.init(document.querySelectorAll(".img-wrap"), {
-                max: 10,
-                speed: 500,
-                perspective: 1800,
-                glare: true,
-                "max-glare": 0.15,
-                scale: 1.04,
-                gyroscope: true,
-                "full-page-listening": true
-            });
-        }
 
         for (let i = 0; i < dots.length; i++) {
             let dot = dots[i];
@@ -497,38 +489,118 @@
 })();
 </script>
 
-<!-- Dynamic Random Shuffling & Rotation Slider Script -->
+<!-- Dynamic Random Shuffling & Non-Consecutive Rotation Slider Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById("hero-machinery-container");
     if (!container) return;
     
-    const wraps = Array.from(container.getElementsByClassName("img-wrap"));
-    if (wraps.length === 0) return;
+    const rawWraps = Array.from(container.getElementsByClassName("img-wrap"));
+    if (rawWraps.length === 0) return;
     
-    // Fisher-Yates Shuffle to randomize images completely on each page load
-    for (let i = wraps.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = wraps[i];
-        wraps[i] = wraps[j];
-        wraps[j] = temp;
+    // Category mapping helper based on image file names/prefixes
+    function getCategory(item) {
+        const img = item.querySelector("img");
+        if (!img) return "";
+        const src = img.getAttribute("src") || "";
+        const filename = src.split('/').pop().split('.')[0].toLowerCase();
+        
+        // Dynamic prefix split by digits, dash or underscore (e.g. marine1 -> marine, greeen-eart -> greeen)
+        const parts = filename.split(/[-_\d]/);
+        const prefix = parts[0] || "";
+        
+        // Normalize common category aliases
+        if (prefix === 'green' || prefix === 'greeen') return 'greeen';
+        if (prefix === 'cargo' || prefix === 'c' || prefix === 'marine') return 'marine';
+        if (prefix === 'logistic' || prefix === 'logistik') return 'logistik';
+        if (prefix === 'construction' || prefix.includes('escavator') || prefix === 'bgcool' || prefix.includes('rust')) return 'construction';
+        return prefix;
     }
     
-    // Clear container and append wraps back in randomized order
+    // Backtracking / Greedy shuffle algorithm to ensure NO consecutive categories show up
+    function generateNonConsecutiveSequence(items) {
+        // 1. Initial random shuffle first
+        const shuffled = [...items];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = shuffled[i];
+            shuffled[i] = shuffled[j];
+            shuffled[j] = temp;
+        }
+        
+        const result = [];
+        const pool = [...shuffled];
+        
+        // Backtracking builder to satisfy strict adjacent & loop-wrap category constraints
+        function build() {
+            if (result.length === items.length) {
+                // Prevent category loop wrap: last item category !== first item category
+                if (getCategory(result[result.length - 1]) !== getCategory(result[0])) {
+                    return true;
+                }
+                return false;
+            }
+            
+            const lastCategory = result.length > 0 ? getCategory(result[result.length - 1]) : null;
+            
+            for (let i = 0; i < pool.length; i++) {
+                const candidate = pool[i];
+                const candidateCategory = getCategory(candidate);
+                
+                if (candidateCategory !== lastCategory) {
+                    result.push(candidate);
+                    pool.splice(i, 1);
+                    
+                    if (build()) return true;
+                    
+                    // Backtrack
+                    pool.splice(i, 0, candidate);
+                    result.pop();
+                }
+            }
+            return false;
+        }
+        
+        if (build()) return result;
+        
+        // Fallback greedy approach if backtracking constraints are mathematically impossible
+        const fallbackResult = [];
+        const remaining = [...shuffled];
+        let prevCategory = null;
+        
+        while (remaining.length > 0) {
+            let index = remaining.findIndex(item => getCategory(item) !== prevCategory);
+            if (index === -1) index = 0; // Take first if forced
+            
+            const item = remaining[index];
+            prevCategory = getCategory(item);
+            fallbackResult.push(item);
+            remaining.splice(index, 1);
+        }
+        return fallbackResult;
+    }
+    
+    // Generate the optimized non-consecutive randomized sequence
+    const wraps = generateNonConsecutiveSequence(rawWraps);
+    
+    // Clear container and append wraps back in optimized non-consecutive order
     container.innerHTML = "";
     wraps.forEach(wrap => container.appendChild(wrap));
     
     let currentIndex = 0;
     
     function showNextImage() {
-        // Fade out current active image
+        // 1. Fade out current active image completely
         wraps[currentIndex].classList.remove("active");
         
-        // Move to next index
-        currentIndex = (currentIndex + 1) % wraps.length;
-        
-        // Fade in next randomized image
-        wraps[currentIndex].classList.add("active");
+        // 2. Wait for the 600ms fade-out transition to fully finish
+        setTimeout(() => {
+            // 3. Move to next index
+            currentIndex = (currentIndex + 1) % wraps.length;
+            
+            // 4. Fade in next randomized image
+            wraps[currentIndex].classList.add("active");
+        }, 600); // 600ms matches the CSS opacity transition duration exactly!
     }
     
     // Initially activate the first randomized image
