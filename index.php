@@ -739,8 +739,8 @@ include 'includes/hero_visual.php';
 </section>
 
 <!-- Embla Carousel CDN -->
-<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/embla-carousel@8.0.0/embla-carousel.umd.js"></script>
 <!-- Home Page Logic -->
-<script src="assets/js/index.js"></script>
+<script src="assets/js/index.js?v=5.0"></script>
 
 <?php include 'includes/footer.php'; ?>
