@@ -795,6 +795,171 @@
             display: block;
         }
 
+        /* Neobrutalism Voice Search Modal Overlay */
+        .voice-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 7, 9, 0.96); /* Frosted premium dark backdrop */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000; /* Fully covers everything */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .voice-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .voice-modal-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); /* Slate titanium slate background */
+            border: 3px solid #050709;
+            box-shadow: 8px 8px 0px #050709; /* Premium solid Neobrutalism shadow */
+            border-radius: 16px;
+            padding: 40px 24px;
+            width: 90%;
+            max-width: 320px;
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .voice-modal-overlay.active .voice-modal-card {
+            transform: scale(1);
+        }
+
+        .voice-modal-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #ef4444; /* Neon coral red */
+            color: #ffffff;
+            border: 2px solid #050709;
+            box-shadow: 3px 3px 0px #050709;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .voice-modal-close:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #050709;
+        }
+
+        .voice-mic-container {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #005ee9, #004bbd);
+            border: 2px solid #050709;
+            box-shadow: 4px 4px 0px #050709;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            z-index: 2;
+        }
+
+        .voice-mic-container i.mic-icon {
+            font-size: 2.2rem;
+            color: #ffffff;
+            z-index: 5;
+            transition: transform 0.2s ease;
+        }
+
+        /* Soundwave Ripple Pulses */
+        .voice-pulse-circle,
+        .voice-pulse-circle-outer {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #38bdf8;
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .voice-modal-overlay.active.listening .voice-pulse-circle {
+            animation: voiceRipplePulse 1.6s infinite cubic-bezier(0.1, 0, 0.2, 1);
+        }
+
+        .voice-modal-overlay.active.listening .voice-pulse-circle-outer {
+            animation: voiceRipplePulse 1.6s infinite cubic-bezier(0.1, 0, 0.2, 1);
+            animation-delay: 0.8s;
+        }
+
+        @keyframes voiceRipplePulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+                border-color: #38bdf8;
+            }
+            50% {
+                border-color: #ef4444; /* Pulse color shifts as they speak */
+            }
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+
+        .voice-status-text {
+            font-family: 'Aeonik', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin: 0 0 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .voice-sub-text {
+            font-family: 'Aeonik', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #94a3b8;
+            margin: 0 0 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .voice-transcript-preview {
+            font-family: 'Aeonik', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #38bdf8; /* Vibrant cyan neon transcript text */
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            word-break: break-word;
+        }
+
         /* Mobile Makisu Menu - Hidden by Default on Desktop */
         .mobile-nav-wrapper {
             display: none;
@@ -1213,8 +1378,25 @@
             </div>
         </div>
     </div>
+    
+    <!-- Neobrutalism Voice Search Modal Overlay -->
+    <div class="voice-modal-overlay" id="voice-modal">
+        <div class="voice-modal-card">
+            <div class="voice-modal-close" id="voice-modal-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="voice-mic-container">
+                <div class="voice-pulse-circle"></div>
+                <div class="voice-pulse-circle-outer"></div>
+                <i class="fas fa-microphone mic-icon"></i>
+            </div>
+            <h3 class="voice-status-text" id="voice-status">Accessing Mic...</h3>
+            <p class="voice-sub-text" id="voice-sub-status">Please allow microphone access</p>
+            <div class="voice-transcript-preview" id="voice-transcript-preview">Waiting for your voice...</div>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="/assets/js/navigation.js?v=5.4"></script>
+    <script src="/assets/js/navigation.js?v=5.8"></script>
 
     <main>

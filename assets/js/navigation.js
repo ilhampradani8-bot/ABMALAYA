@@ -419,58 +419,200 @@ $(function() {
         renderSearchResults(searchInputMobile.val());
     });
 
-    // Voice Search Web Speech API Integration
+    // Voice Search Web Speech API Integration with Neobrutalism Modal Feedback
     const showVoiceSearchBtn = $('#show-voice-search');
+    const voiceModal = $('#voice-modal');
+    const voiceStatusText = $('#voice-status');
+    const voiceSubStatusText = $('#voice-sub-status');
+    const voiceTranscriptPreview = $('#voice-transcript-preview');
+    const voiceModalClose = $('#voice-modal-close');
     
-    showVoiceSearchBtn.on('click', function(e) {
-        e.preventDefault();
-        
+    let recognitionInstance = null;
+
+    function startSpeechRecognition() {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (!SpeechRecognition) {
             alert("Voice Search is not supported in this browser. Please try Google Chrome or Safari!");
             return;
         }
 
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'id-ID'; // Optimize for Indonesian/English spoken search
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
+        // Clean up previous recognition instance if running
+        if (recognitionInstance) {
+            try {
+                recognitionInstance.abort();
+            } catch(e) {}
+        }
 
-        // Visual feedback when listening
-        const originalHTML = showVoiceSearchBtn.html();
-        
-        recognition.onstart = function() {
-            showVoiceSearchBtn.html('<i class="fas fa-microphone" style="color: #ef4444; animation: voicePulse 1s infinite;"></i> Listening... speak now');
-            showVoiceSearchBtn.css('pointer-events', 'none');
+        // Open Neobrutalism Voice Modal
+        voiceModal.removeClass('listening').addClass('active');
+        voiceTranscriptPreview.text("Waiting for speech...");
+
+        // Secure Context Check: Modern browsers strictly require localhost or HTTPS for microphone
+        if (!window.isSecureContext) {
+            voiceStatusText.text("Insecure HTTP!");
+            voiceSubStatusText.text("Browser blocks mic on non-HTTPS IP addresses");
+            voiceTranscriptPreview.html(`
+                <div style="font-size: 0.85rem; color: #ef4444; text-align: center; line-height: 1.45; font-weight: 500;">
+                    <i class="fas fa-exclamation-triangle" style="margin-bottom: 8px; font-size: 1.3rem;"></i><br>
+                    Modern browsers strictly restrict Microphone access to <b>localhost</b> or <b>HTTPS</b>.
+                    <br><span style="color: #94a3b8; font-size: 0.75rem; margin-top: 6px; display: block; font-weight: 400;">If testing on mobile over local IP (like 192.168.x.x), please use Chrome port-forwarding or HTTPS to bypass this block.</span>
+                </div>
+            `);
+            return;
+        }
+
+        // Fresh creation to avoid browser state lockups on mobile
+        recognitionInstance = new SpeechRecognition();
+        recognitionInstance.lang = navigator.language || 'id-ID'; // Use device's default lang to avoid offline pack failure
+        recognitionInstance.continuous = false;
+        recognitionInstance.interimResults = true; // Stream transcript results in real-time
+        recognitionInstance.maxAlternatives = 1;
+
+        // Reset text
+        voiceStatusText.text("Accessing Mic...");
+        voiceSubStatusText.text("Please grant microphone access permission");
+        voiceTranscriptPreview.text("Waiting for speech...");
+        voiceModal.removeClass('listening').addClass('active');
+
+        recognitionInstance.onstart = function() {
+            voiceStatusText.text("Listening...");
+            voiceSubStatusText.text("Speak clearly into your microphone now");
+            voiceModal.addClass('listening'); // Starts Ripple Wave Sound animation
         };
 
-        recognition.onspeechend = function() {
-            recognition.stop();
+        recognitionInstance.onsoundstart = function() {
+            voiceStatusText.text("Listening...");
+            voiceSubStatusText.text("Capturing voice audio...");
         };
 
-        recognition.onerror = function(event) {
+        recognitionInstance.onspeechend = function() {
+            voiceStatusText.text("Processing...");
+            voiceSubStatusText.text("Converting voice to search text...");
+            voiceModal.removeClass('listening');
+        };
+
+        recognitionInstance.onerror = function(event) {
             console.error("Speech recognition error:", event.error);
-            showVoiceSearchBtn.html(originalHTML);
-            showVoiceSearchBtn.css('pointer-events', 'auto');
-        };
-
-        recognition.onend = function() {
-            showVoiceSearchBtn.html(originalHTML);
-            showVoiceSearchBtn.css('pointer-events', 'auto');
-        };
-
-        recognition.onresult = function(event) {
-            const transcript = event.results[0][0].transcript;
-            searchInputMobile.val(transcript);
-            searchInputMobile.trigger('input'); // Trigger live-search preview
             
-            // Redirect after 1.2s so they can see the transcribed speech before page load
-            setTimeout(() => {
-                searchInputMobile.closest('form').submit(); // Submit to search.php
-            }, 1200);
+            // Silent abort if user closed it manually
+            if (event.error === 'aborted') {
+                return;
+            }
+
+            voiceStatusText.text("Error!");
+            voiceModal.removeClass('listening');
+            
+            // Helpful humanized error descriptions with visual Retry button
+            if (event.error === 'no-speech') {
+                voiceSubStatusText.text("No speech detected.");
+                voiceTranscriptPreview.html(`
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <span>We couldn't hear anything.</span>
+                        <button id="voice-retry-btn" class="voice-retry-btn" style="background: #005ee9; color: #fff; border: 2px solid #050709; box-shadow: 2px 2px 0px #050709; padding: 6px 12px; font-size: 0.85rem; font-weight: 700; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 5px;">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                `);
+            } else if (event.error === 'not-allowed') {
+                voiceSubStatusText.text("Microphone blocked.");
+                voiceTranscriptPreview.text("Please allow microphone permissions in your browser settings!");
+            } else if (event.error === 'audio-capture') {
+                voiceSubStatusText.text("No microphone found.");
+                voiceTranscriptPreview.text("Ensure your microphone is plugged in & working!");
+            } else {
+                voiceSubStatusText.text("An error occurred.");
+                voiceTranscriptPreview.text(`Code: ${event.error}. Please try again.`);
+            }
         };
 
-        recognition.start();
+        recognitionInstance.onend = function() {
+            // Auto close modal ONLY if an error occurred (excluding no-speech retry state)
+            if (voiceStatusText.text() === "Error!" && !$('#voice-retry-btn').length) {
+                setTimeout(() => {
+                    if (voiceStatusText.text() === "Error!") {
+                        closeVoiceModal();
+                    }
+                }, 4000);
+            }
+        };
+
+        recognitionInstance.onresult = function(event) {
+            console.log("Speech recognition result received!");
+            let transcript = "";
+            let isFinalResult = false;
+            
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                transcript += event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    isFinalResult = true;
+                }
+            }
+            
+            console.log("Transcript:", transcript);
+            
+            if (transcript.trim()) {
+                // Show raw speech text appearing in real-time (Interim subtitles!)
+                voiceTranscriptPreview.text(`"${transcript}"`);
+            }
+            
+            if (isFinalResult) {
+                // Update modal feedback text
+                voiceStatusText.text("Success!");
+                voiceSubStatusText.text("Redirecting to search results for:");
+                
+                // Write into mobile search input & trigger live matches
+                searchInputMobile.val(transcript);
+                searchInputMobile.trigger('input'); 
+                
+                // Submit form after 1.2 seconds so user sees their final subtitle transcript
+                setTimeout(() => {
+                    const form = searchInputMobile.closest('form');
+                    if (form.length > 0) {
+                        form[0].submit(); // Submit cleanly to search.php
+                    }
+                }, 1200);
+            }
+        };
+
+        try {
+            recognitionInstance.start();
+        } catch(e) {
+            console.error("Failed to start speech recognition:", e);
+        }
+    }
+
+    showVoiceSearchBtn.on('click', function(e) {
+        e.preventDefault();
+        startSpeechRecognition();
+    });
+
+    // Handle Retry button tap
+    $(document).on('click', '#voice-retry-btn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        startSpeechRecognition();
+    });
+
+    // Close voice modal handler
+    function closeVoiceModal() {
+        if (recognitionInstance) {
+            try {
+                recognitionInstance.abort(); // Cancel recording session safely
+            } catch(e) {}
+        }
+        voiceModal.removeClass('active listening');
+    }
+
+    voiceModalClose.on('click', function(e) {
+        e.stopPropagation();
+        closeVoiceModal();
+    });
+
+    // Close on clicking the backdrop outside card
+    voiceModal.on('click', function(e) {
+        if ($(e.target).is('#voice-modal')) {
+            closeVoiceModal();
+        }
     });
 
     // Close Mobile Search Handler
