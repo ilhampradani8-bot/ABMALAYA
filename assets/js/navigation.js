@@ -419,13 +419,12 @@ $(function() {
         renderSearchResults(searchInputMobile.val());
     });
 
-    // Voice Search Web Speech API Integration with Neobrutalism Modal Feedback
+    // Voice Search Web Speech API Integration with Embedded Neobrutalism Panel Feedback
     const showVoiceSearchBtn = $('#show-voice-search');
-    const voiceModal = $('#voice-modal');
+    const voiceEmbeddedPanel = $('#voice-embedded-panel');
     const voiceStatusText = $('#voice-status');
     const voiceSubStatusText = $('#voice-sub-status');
     const voiceTranscriptPreview = $('#voice-transcript-preview');
-    const voiceModalClose = $('#voice-modal-close');
     
     let recognitionInstance = null;
 
@@ -443,9 +442,10 @@ $(function() {
             } catch(e) {}
         }
 
-        // Open Neobrutalism Voice Modal
-        voiceModal.removeClass('listening').addClass('active');
+        // Hide live results and slide down the embedded voice panel
+        liveSearchResults.hide();
         voiceTranscriptPreview.text("Waiting for speech...");
+        voiceEmbeddedPanel.removeClass('listening').slideDown(250);
 
         // Secure Context Check: Modern browsers strictly require localhost or HTTPS for microphone
         if (!window.isSecureContext) {
@@ -471,13 +471,11 @@ $(function() {
         // Reset text
         voiceStatusText.text("Accessing Mic...");
         voiceSubStatusText.text("Please grant microphone access permission");
-        voiceTranscriptPreview.text("Waiting for speech...");
-        voiceModal.removeClass('listening').addClass('active');
 
         recognitionInstance.onstart = function() {
             voiceStatusText.text("Listening...");
             voiceSubStatusText.text("Speak clearly into your microphone now");
-            voiceModal.addClass('listening'); // Starts Ripple Wave Sound animation
+            voiceEmbeddedPanel.addClass('listening'); // Starts Ripple Wave Sound animation
         };
 
         recognitionInstance.onsoundstart = function() {
@@ -488,7 +486,16 @@ $(function() {
         recognitionInstance.onspeechend = function() {
             voiceStatusText.text("Processing...");
             voiceSubStatusText.text("Converting voice to search text...");
-            voiceModal.removeClass('listening');
+            voiceEmbeddedPanel.removeClass('listening');
+
+            // Snippy instant-processing fallback: If we already captured interim transcript,
+            // immediately finalize search 600ms after user stops speaking to avoid the sluggish 4-second browser idle timeout!
+            setTimeout(() => {
+                const currentText = voiceTranscriptPreview.text().replace(/^"|"$/g, '').trim();
+                if (currentText && currentText !== "Waiting for speech..." && voiceStatusText.text() === "Processing...") {
+                    finalizeVoiceSearch(currentText);
+                }
+            }, 600);
         };
 
         recognitionInstance.onerror = function(event) {
@@ -500,7 +507,7 @@ $(function() {
             }
 
             voiceStatusText.text("Error!");
-            voiceModal.removeClass('listening');
+            voiceEmbeddedPanel.removeClass('listening');
             
             // Helpful humanized error descriptions with visual Retry button
             if (event.error === 'no-speech') {
@@ -508,7 +515,7 @@ $(function() {
                 voiceTranscriptPreview.html(`
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
                         <span>We couldn't hear anything.</span>
-                        <button id="voice-retry-btn" class="voice-retry-btn" style="background: #005ee9; color: #fff; border: 2px solid #050709; box-shadow: 2px 2px 0px #050709; padding: 6px 12px; font-size: 0.85rem; font-weight: 700; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 5px;">
+                        <button id="voice-retry-btn" class="voice-retry-btn" style="background: #5cd269; color: #fff; border: none; box-shadow: 0 2px 8px rgba(92, 210, 105, 0.25); padding: 6px 16px; font-size: 0.8rem; font-weight: 600; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 8px; transition: all 0.2s ease;">
                             <i class="fas fa-redo"></i> Try Again
                         </button>
                     </div>
@@ -526,11 +533,11 @@ $(function() {
         };
 
         recognitionInstance.onend = function() {
-            // Auto close modal ONLY if an error occurred (excluding no-speech retry state)
+            // Auto close panel ONLY if an error occurred (excluding no-speech retry state)
             if (voiceStatusText.text() === "Error!" && !$('#voice-retry-btn').length) {
                 setTimeout(() => {
                     if (voiceStatusText.text() === "Error!") {
-                        closeVoiceModal();
+                        closeVoiceSearch();
                     }
                 }, 4000);
             }
@@ -538,52 +545,77 @@ $(function() {
 
         recognitionInstance.onresult = function(event) {
             console.log("Speech recognition result received!");
-            let transcript = "";
-            let isFinalResult = false;
+            let interimTranscript = "";
+            let finalTranscript = "";
             
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
-                transcript += event.results[i][0].transcript;
-                if (event.results[i].isFinal) {
-                    isFinalResult = true;
+            // Standard loop to completely prevent duplicate transcripts on mobile
+            for (let i = 0; i < event.results.length; ++i) {
+                const result = event.results[i];
+                if (result.isFinal) {
+                    finalTranscript += result[0].transcript;
+                } else {
+                    interimTranscript += result[0].transcript;
                 }
             }
             
+            const transcript = finalTranscript || interimTranscript;
             console.log("Transcript:", transcript);
             
             if (transcript.trim()) {
-                // Show raw speech text appearing in real-time (Interim subtitles!)
                 voiceTranscriptPreview.text(`"${transcript}"`);
             }
             
-            if (isFinalResult) {
-                // Update modal feedback text
-                voiceStatusText.text("Success!");
-                voiceSubStatusText.text("Redirecting to search results for:");
-                
-                // Write into mobile search input & trigger live matches
-                searchInputMobile.val(transcript);
-                searchInputMobile.trigger('input'); 
-                
-                // Submit form after 1.2 seconds so user sees their final subtitle transcript
-                setTimeout(() => {
-                    const form = searchInputMobile.closest('form');
-                    if (form.length > 0) {
-                        form[0].submit(); // Submit cleanly to search.php
-                    }
-                }, 1200);
+            if (finalTranscript.trim()) {
+                finalizeVoiceSearch(finalTranscript);
             }
         };
 
-        try {
-            recognitionInstance.start();
-        } catch(e) {
-            console.error("Failed to start speech recognition:", e);
-        }
+        // 250ms tactical delay to let the physical click sound of the mouse/trackpad fully dissipate before mic starts
+        setTimeout(() => {
+            if (recognitionInstance && voiceEmbeddedPanel.is(':visible') && voiceStatusText.text() === "Accessing Mic...") {
+                try {
+                    recognitionInstance.start();
+                } catch(e) {
+                    console.error("Failed to start speech recognition:", e);
+                }
+            }
+        }, 250);
     }
 
+    function finalizeVoiceSearch(query) {
+        // Safety guard: prevent duplicate runs
+        if (voiceStatusText.text() === "Success!") return;
+        
+        voiceStatusText.text("Success!");
+        voiceSubStatusText.text("Redirecting to search results for:");
+        voiceTranscriptPreview.text(`"${query}"`);
+        
+        // Write into mobile search input & trigger live matches
+        searchInputMobile.val(query);
+        searchInputMobile.trigger('input'); 
+        
+        // Safely abort recording context
+        if (recognitionInstance) {
+            try { recognitionInstance.abort(); } catch(e) {}
+        }
+        
+        // Submit form after 1.2 seconds so user sees their final subtitle transcript
+        setTimeout(() => {
+            const form = searchInputMobile.closest('form');
+            if (form.length > 0) {
+                form[0].submit(); // Submit cleanly to search.php
+            }
+        }, 1200);
+    }
+
+    // Toggle Voice Search state on link click
     showVoiceSearchBtn.on('click', function(e) {
         e.preventDefault();
-        startSpeechRecognition();
+        if (voiceEmbeddedPanel.is(':visible')) {
+            closeVoiceSearch();
+        } else {
+            startSpeechRecognition();
+        }
     });
 
     // Handle Retry button tap
@@ -593,31 +625,27 @@ $(function() {
         startSpeechRecognition();
     });
 
-    // Close voice modal handler
-    function closeVoiceModal() {
+    // Unified voice search cancel handler
+    function closeVoiceSearch() {
         if (recognitionInstance) {
             try {
-                recognitionInstance.abort(); // Cancel recording session safely
+                recognitionInstance.abort(); // Cancel safely
             } catch(e) {}
         }
-        voiceModal.removeClass('active listening');
+        voiceEmbeddedPanel.slideUp(200, function() {
+            voiceEmbeddedPanel.removeClass('listening');
+        });
     }
-
-    voiceModalClose.on('click', function(e) {
-        e.stopPropagation();
-        closeVoiceModal();
-    });
-
-    // Close on clicking the backdrop outside card
-    voiceModal.on('click', function(e) {
-        if ($(e.target).is('#voice-modal')) {
-            closeVoiceModal();
-        }
-    });
 
     // Close Mobile Search Handler
     $('#search-close').on('click', function() {
         searchOverlay.removeClass('active');
+        closeVoiceSearch();
+    });
+
+    // Safely close and abort on page unload/reload
+    window.addEventListener('beforeunload', function() {
+        closeVoiceSearch();
     });
 
     // Close mobile search when clicking outside the menu container
