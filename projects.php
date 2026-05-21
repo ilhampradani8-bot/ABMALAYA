@@ -91,11 +91,11 @@ include 'includes/hero_visual.php';
         .blog-slider { 
             min-height: 400px; 
             height: auto; 
-            margin: 110px auto 20px; /* More compact top/bottom margin */
-            padding: 25px; 
+            margin: 140px auto 30px; /* Ample margin-top for translateY overlap */
+            padding: 25px 20px 45px; /* Extra bottom padding for dots */
             max-width: 95%;
             width: 95%;
-            border-radius: 15px; /* Slight radius for 'thin margin' look */
+            border-radius: 15px; 
             box-shadow: 0px 10px 40px rgba(34, 35, 58, 0.1);
             border: none;
         }
@@ -151,10 +151,11 @@ include 'includes/hero_visual.php';
 
     @media screen and (max-width: 768px) {
         .blog-slider__img { 
-            width: 85%; /* Slightly more centered */
-            height: 220px; 
+            width: 90%; 
+            height: 200px; /* Slightly shorter for cleaner mobile aspect ratio */
             transform: translateY(-50%); 
-            margin-left: 7.5%;
+            margin-left: 5%;
+            margin-right: 5%;
         }
     }
 
@@ -165,11 +166,10 @@ include 'includes/hero_visual.php';
 
     @media screen and (max-width: 768px) {
         .blog-slider__content { 
-            margin-top: -60px; /* Adjusted to prevent overlap */
+            margin-top: -80px; /* Perfect top offset relative to 200px image */
             text-align: center; 
-            padding: 0 15px; 
+            padding: 0 10px 15px 10px; 
             margin-left: 0; 
-            padding-bottom: 25px; 
         }
     }
 
@@ -234,6 +234,16 @@ include 'includes/hero_visual.php';
         box-shadow: 0px 15px 40px rgba(0, 94, 233, 0.4);
     }
 
+    @media screen and (max-width: 768px) {
+        .blog-slider__button {
+            padding: 12px 30px;
+            font-size: 0.8rem;
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+    }
+
     .blog-slider__pagination {
         position: absolute;
         z-index: 21;
@@ -249,7 +259,8 @@ include 'includes/hero_visual.php';
         .blog-slider__pagination { 
             transform: translateX(-50%); 
             left: 50%!important; 
-            top: 180px; /* Better vertical clearance */
+            top: auto!important;
+            bottom: 15px!important; /* Anchored perfectly at the bottom container margin */
             width: 100%!important; 
             display: flex; 
             justify-content: center; 

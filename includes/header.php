@@ -915,12 +915,11 @@
         .menu-toggle {
             display: none;
             cursor: pointer;
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            background: #e6e9ef;
-            border: 2px solid #050709;
-            box-shadow: 4px 4px 0px #050709; /* Neobrutalism flat solid shadow */
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #f0f2f5, #e1e4e9);
+            box-shadow: 4px 4px 8px var(--neu-shadow-dark), -4px -4px 8px var(--neu-shadow-light);
             z-index: 1100;
             position: relative;
             align-items: center;
@@ -929,30 +928,31 @@
             gap: 4px;
             transition: transform 0.15s, box-shadow 0.15s;
             box-sizing: border-box;
+            border: none;
         }
         .menu-toggle:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px #050709;
+            transform: scale(0.95);
+            box-shadow: inset 2px 2px 4px var(--neu-shadow-dark), inset -2px -2px 4px var(--neu-shadow-light);
         }
         .menu-toggle span {
             display: block;
-            width: 18px;
-            height: 2.5px;
-            background-color: #050709;
+            width: 16px;
+            height: 2px;
+            background-color: var(--text);
             border-radius: 2px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-origin: center;
         }
         /* Burger Morph to X */
         .menu-toggle.active span:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
+            transform: translateY(6px) rotate(45deg);
         }
         .menu-toggle.active span:nth-child(2) {
             opacity: 0;
             transform: scale(0);
         }
         .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg);
+            transform: translateY(-6px) rotate(-45deg);
         }
 
         .search-btn-mobile {
@@ -1007,21 +1007,25 @@
                 list-style: none; 
             }
             
-            /* Modern Neobrutalism Card style with strong bold black border and flat shadow */
+            /* Premium Tactile Neumorphic mobile cards */
             .mks-card { 
                 margin-bottom: 14px;
-                background: linear-gradient(135deg, #005ee9 0%, #004bbd 100%); 
-                border: 2px solid #050709;
-                box-shadow: 5px 5px 0px #050709; /* Neobrutalism flat solid shadow */
-                border-radius: 8px;
+                background: #e6e9ef !important; 
+                border: none !important;
+                box-shadow: 4px 4px 8px var(--neu-shadow-dark), -4px -4px 8px var(--neu-shadow-light) !important;
+                border-radius: 12px;
                 overflow: hidden;
                 opacity: 0;
                 transform: translateY(-20px);
-                transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, filter 0.2s;
+                transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, background 0.2s;
             }
             
             .mks-card:hover {
-                filter: brightness(1.05);
+                background: #ebedf2 !important;
+            }
+
+            .mks-card.expanded {
+                box-shadow: inset 2.5px 2.5px 6px var(--neu-shadow-dark), inset -2.5px -2.5px 6px var(--neu-shadow-light) !important;
             }
             
             /* Staggered Entry One-by-One */
@@ -1042,59 +1046,63 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 0 18px;
-                color: #fff; 
+                color: var(--text) !important; 
                 text-decoration: none; 
                 width: 100%; 
                 height: 52px; 
                 font-family: 'Aeonik', sans-serif;
-                font-size: 0.82rem; 
+                font-size: 0.85rem; 
                 font-weight: 700;
-                letter-spacing: 1px; 
+                letter-spacing: 0.5px; 
                 text-transform: uppercase;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                text-shadow: none !important;
                 box-sizing: border-box;
             }
             
-            /* Mobile Sub-menu accordion styling with Neobrutalist separation */
+            /* Mobile Sub-menu accordion styling with soft Neumorphic inset separation */
             .mobile-sub-menu {
                 max-height: 0;
                 overflow: hidden;
-                background: rgba(0, 0, 0, 0.15);
-                border-top: 0px solid #050709;
+                background: rgba(0, 0, 0, 0.02) !important;
+                border-top: 0px solid transparent;
                 transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-top 0.3s;
                 display: flex;
                 flex-direction: column;
+                box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03) !important;
             }
             .has-mobile-sub.expanded .mobile-sub-menu {
-                max-height: 280px;
-                border-top: 2px solid #050709;
+                max-height: 500px; /* Increased to support all 6 elements and text wrapping without clipping */
+                border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
             }
             
             .mobile-sub-menu a {
-                display: block;
-                padding: 0 18px !important;
-                height: 42px !important;
-                line-height: 42px !important;
+                display: flex !important;
+                align-items: center;
+                padding: 12px 18px !important; /* Flexible padding instead of fixed height for safe mobile wrapping */
+                min-height: 42px !important;
+                line-height: 1.4 !important; /* Normal line-height for clean wrap formatting without overlap */
                 font-size: 0.72rem !important;
                 font-weight: 600 !important;
                 letter-spacing: 1.5px !important;
-                color: rgba(255, 255, 255, 0.88) !important;
+                color: var(--text-light) !important;
                 text-decoration: none !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
                 text-shadow: none !important;
                 transition: background 0.2s, color 0.2s;
                 text-align: left;
                 text-transform: uppercase;
+                box-sizing: border-box;
             }
             .mobile-sub-menu a:last-child {
                 border-bottom: none !important;
             }
             .mobile-sub-menu a:hover {
-                background: rgba(255, 255, 255, 0.08) !important;
-                color: #fff !important;
+                background: rgba(0, 94, 233, 0.05) !important;
+                color: #005ee9 !important;
             }
             .has-mobile-sub.expanded .mobile-sub-toggle i {
                 transform: rotate(180deg);
+                color: #005ee9 !important;
             }
         }
 

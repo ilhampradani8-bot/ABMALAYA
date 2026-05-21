@@ -54,13 +54,13 @@ include 'includes/hero_visual.php';
                 <!-- MOF Slide -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/ssm.png" alt="MOF License" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
+                        <img src="assets/img/mof.png" alt="MOF License" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
                         <div class="blog-slider__title">MOF License</div>
                         <div class="blog-slider__text">Official procurement registration with the Ministry of Finance Malaysia, qualifying AB MALAYA for government tenders and corporate financial solutions.</div>
-                        <button class="blog-slider__button" onclick="openPreview('assets/img/certified/ssm-certificate.png', 'MOF Registration Certificate')">VIEW CERTIFICATE</button>
+                        <button class="blog-slider__button" onclick="openPreview('assets/img/mof.png', 'MOF Registration Certificate')">VIEW CERTIFICATE</button>
                     </div>
                 </div>
 
@@ -77,7 +77,16 @@ include 'includes/hero_visual.php';
                     </div>
                 </div>
             </div>
-            <div class="blog-slider__pagination"></div>
+            <!-- Up/Down Pagination & Navigation wrapper on the right -->
+            <div class="blog-slider__right-controls">
+                <div class="blog-slider__nav-btn blog-slider__prev-btn" title="Previous Slide">
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                <div class="blog-slider__pagination"></div>
+                <div class="blog-slider__nav-btn blog-slider__next-btn" title="Next Slide">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -473,15 +482,52 @@ include 'includes/hero_visual.php';
         box-shadow: 0px 15px 40px rgba(0, 94, 233, 0.4);
     }
 
-    .blog-slider__pagination {
+    /* Certification Slider Right Controls (Vertical Layout) */
+    .blog-slider__right-controls {
         position: absolute;
-        z-index: 21;
-        right: 20px;
-        width: 11px!important;
-        text-align: center;
-        left: auto!important;
+        z-index: 22;
+        right: 15px;
         top: 50%;
         transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .blog-slider__pagination {
+        position: relative;
+        z-index: 21;
+        width: 11px!important;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .blog-slider__nav-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 94, 233, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #005ee9;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(0, 94, 233, 0.05);
+        z-index: 23;
+    }
+
+    .blog-slider__nav-btn:hover {
+        background: #005ee9;
+        color: #fff;
+        box-shadow: 0 8px 16px rgba(0, 94, 233, 0.25);
+        transform: scale(1.15);
     }
 
     @media screen and (max-width: 768px) {
@@ -491,7 +537,39 @@ include 'includes/hero_visual.php';
         .blog-slider__title { font-size: 1.3rem; }
         .blog-slider__text { font-size: 0.85rem; margin-bottom: 20px; }
         .blog-slider__button { width: 100%; padding: 12px 20px; font-size: 0.8rem; }
-        .blog-slider__pagination { transform: translateX(-50%); left: 50%!important; top: 160px; width: 100%!important; display: flex; justify-content: center; align-items: center; }
+        
+        .blog-slider__right-controls {
+            flex-direction: row !important;
+            right: auto !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            top: 160px !important;
+            gap: 12px;
+            width: auto !important;
+            justify-content: center;
+        }
+
+        .blog-slider__pagination {
+            flex-direction: row !important;
+            transform: none !important;
+            left: auto !important;
+            top: auto !important;
+            width: auto !important;
+        }
+
+        .blog-slider__nav-btn {
+            width: 28px;
+            height: 28px;
+            font-size: 0.7rem;
+        }
+
+        /* On mobile, up/down becomes left/right! */
+        .blog-slider__prev-btn i {
+            transform: rotate(-90deg);
+        }
+        .blog-slider__next-btn i {
+            transform: rotate(-90deg);
+        }
     }
 
     .blog-slider__pagination .swiper-pagination-bullet {
@@ -984,6 +1062,10 @@ include 'includes/hero_visual.php';
         pagination: {
             el: '.blog-slider__pagination',
             clickable: true,
+        },
+        navigation: {
+            nextEl: '.blog-slider__next-btn',
+            prevEl: '.blog-slider__prev-btn',
         },
         autoplay: {
             delay: 5000,
