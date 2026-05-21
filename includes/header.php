@@ -917,10 +917,10 @@
             cursor: pointer;
             width: 44px;
             height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%); /* Titanium metal shine */
+            border-radius: 8px;
+            background: #e6e9ef;
             border: 2px solid #050709;
-            box-shadow: 3px 3px 0px #050709; /* Neobrutalism shadow */
+            box-shadow: 4px 4px 0px #050709; /* Neobrutalism flat solid shadow */
             z-index: 1100;
             position: relative;
             align-items: center;
@@ -1035,7 +1035,7 @@
             .mobile-nav-wrapper.active .mks-card:nth-child(4) { transition-delay: 200ms; }
             .mobile-nav-wrapper.active .mks-card:nth-child(5) { transition-delay: 250ms; }
             .mobile-nav-wrapper.active .mks-card:nth-child(6) { transition-delay: 300ms; }
-
+ 
             .mks-card a.mobile-sub-toggle,
             .mks-card > a:not(.mobile-sub-toggle) { 
                 display: flex;
@@ -1175,26 +1175,30 @@
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
-                        <a href="/about" class="nav-link-item <?php echo $currentPage == 'about' ? 'active' : ''; ?>">About <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <a href="/about" class="nav-link-item <?php echo $currentPage == 'about' ? 'active' : ''; ?>">About Us <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
                             <a href="/about#story-section"><i class="fas fa-book-open"></i> Our Story</a>
                             <a href="/about#vision-mission"><i class="fas fa-bullseye"></i> Vision & Mission</a>
-                            <a href="/about#principles-section"><i class="fas fa-scale-balanced"></i> Our Principle</a>
+                            <a href="/about#principles-section"><i class="fas fa-scale-balanced"></i> Our Principles</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
                         <a href="/services" class="nav-link-item <?php echo $currentPage == 'services' ? 'active' : ''; ?>">Solutions <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/services#marine"><i class="fas fa-ship"></i> Marine Division</a>
-                            <a href="/services#logistics"><i class="fas fa-truck"></i> Logistic Division</a>
-                            <a href="/services#environmental"><i class="fas fa-leaf"></i> Environmental</a>
+                            <a href="/services#core"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
+                            <a href="/services#marine"><i class="fas fa-ship"></i> Marine Services</a>
+                            <a href="/services#logistics"><i class="fas fa-truck"></i> Logistics Services</a>
+                            <a href="/services#corrosion"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
+                            <a href="/services#digital"><i class="fas fa-laptop-code"></i> Digital & IT Solutions</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
-                        <a href="/certified" class="nav-link-item <?php echo $currentPage == 'certified' ? 'active' : ''; ?>">Certified <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <a href="/why-us" class="nav-link-item <?php echo $currentPage == 'why-us' ? 'active' : ''; ?>">Why Us <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/certified#showcase"><i class="fas fa-certificate"></i> Certificates</a>
-                            <a href="/certified#philosophy"><i class="fas fa-award"></i> Excellence Philosophy</a>
+                            <a href="/why-us#certified"><i class="fas fa-certificate"></i> Certified & Licensed</a>
+                            <a href="/why-us#compliance"><i class="fas fa-shield-halved"></i> Compliance & Safety</a>
+                            <a href="/why-us#sustainability"><i class="fas fa-leaf"></i> Sustainability</a>
+                            <a href="/why-us#advantages"><i class="fas fa-award"></i> Core Advantages</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
@@ -1252,14 +1256,14 @@
                         </div>
                     </div>
                     
-                    <!-- Item 2: About (has submenu) -->
+                    <!-- Item 2: About Us (has submenu) -->
                     <div class="mks-card has-mobile-sub">
-                        <a href="javascript:void(0)" class="mobile-sub-toggle">About <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">About Us <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
                         <div class="mobile-sub-menu">
-                            <a href="/about">About Page</a>
+                            <a href="/about">About Us Page</a>
                             <a href="/about#story-section">Our Story</a>
                             <a href="/about#vision-mission">Vision & Mission</a>
-                            <a href="/about#principles-section">Our Principle</a>
+                            <a href="/about#principles-section">Our Principles</a>
                         </div>
                     </div>
                     
@@ -1268,20 +1272,43 @@
                         <a href="javascript:void(0)" class="mobile-sub-toggle">Solutions <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
                         <div class="mobile-sub-menu">
                             <a href="/services">Solutions Page</a>
-                            <a href="/services#marine">Marine Division</a>
-                            <a href="/services#logistics">Logistic Division</a>
-                            <a href="/services#environmental">Environmental</a>
+                            <a href="/services#core">Contractor & Engineering</a>
+                            <a href="/services#marine">Marine Services</a>
+                            <a href="/services#logistics">Logistics Services</a>
+                            <a href="/services#corrosion">Corrosion Management</a>
+                            <a href="/services#digital">Digital & IT Solutions</a>
                         </div>
                     </div>
                     
-                    <div class="mks-card">
-                        <a href="/certified">Certified</a>
+                    <!-- Item 4: Why Us (has submenu) -->
+                    <div class="mks-card has-mobile-sub">
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">Why Us <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <div class="mobile-sub-menu">
+                            <a href="/why-us">Why Us Page</a>
+                            <a href="/why-us#certified">Certified & Licensed</a>
+                            <a href="/why-us#compliance">Compliance & Safety</a>
+                            <a href="/why-us#sustainability">Sustainability</a>
+                            <a href="/why-us#advantages">Core Advantages</a>
+                        </div>
                     </div>
-                    <div class="mks-card">
-                        <a href="/projects">Projects</a>
+                    
+                    <!-- Item 5: Projects (has submenu) -->
+                    <div class="mks-card has-mobile-sub">
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">Projects <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <div class="mobile-sub-menu">
+                            <a href="/projects">Projects Page</a>
+                            <a href="/projects#portfolio">Portfolio Showcase</a>
+                        </div>
                     </div>
-                    <div class="mks-card">
-                        <a href="/contact">Contact</a>
+                    
+                    <!-- Item 6: Contact (has submenu) -->
+                    <div class="mks-card has-mobile-sub">
+                        <a href="javascript:void(0)" class="mobile-sub-toggle">Contact <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
+                        <div class="mobile-sub-menu">
+                            <a href="/contact">Contact Page</a>
+                            <a href="/contact#contact-form">Get In Touch</a>
+                            <a href="/contact#map">Location Map</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1341,6 +1368,6 @@
     </div>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="/assets/js/navigation.js?v=6.2"></script>
+    <script src="/assets/js/navigation.js?v=6.4"></script>
 
     <main>

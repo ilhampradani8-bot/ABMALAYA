@@ -350,6 +350,12 @@ html, body {
     overflow: visible !important;
     position: relative;
     z-index: 10;
+    transition: height 0.6s cubic-bezier(0.25, 1, 0.2, 1);
+}
+
+/* When detailed mode is active, increase the container height dynamically on desktop to fit the text beautifully! */
+#service-section-wrap.detail-active .service-swiper {
+    height: 560px !important;
 }
 
 #service-section-wrap .service-swiper .swiper-slide {
@@ -809,6 +815,7 @@ html, body {
 .is-detailed .detail-list-content li:nth-child(2) { animation-delay: 0.1s; }
 .is-detailed .detail-list-content li:nth-child(3) { animation-delay: 0.15s; }
 .is-detailed .detail-list-content li:nth-child(4) { animation-delay: 0.2s; }
+.is-detailed .detail-list-content li:nth-child(5) { animation-delay: 0.25s; }
 
 @keyframes slideUpContent {
     0% { transform: translateY(20px); opacity: 0; }
@@ -1008,11 +1015,15 @@ html, body {
         position: relative !important;
         height: 100% !important;
         width: 100% !important;
-        justify-content: center !important; /* VERTICALLY CENTER CONTENT FOR DETAIL CARD TO PREVENT ANY TITLE OVERFLOW */
-        align-items: center !important;
+        justify-content: flex-start !important; /* Push to start to allow smooth scrolling if content overflows */
+        align-items: flex-start !important; /* Align content nicely to the left */
         border-radius: 24px !important;
-        padding-top: 1.5vh !important;
-        padding-bottom: 1.5vh !important;
+        padding: 30px 24px !important;
+        overflow-y: auto !important; /* Extremely high responsiveness — scrollable card content on small phones */
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+    .card-detail::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
     }
     .card-front-overlay {
         border-radius: 24px !important; /* Matching rounded overlay corners */
@@ -1164,16 +1175,11 @@ html, body {
                 <h2>Our Solutions</h2>
             </div>
             <div class="service-nav-list" id="service-menu">
-                <button class="service-link-item active" data-index="0">Marine Division</button>
-                <button class="service-link-item" data-index="1">Logistic Division</button>
-                <button class="service-link-item" data-index="2">Environmental</button>
-                <?php if (false): ?>
-                <button class="service-link-item" data-index="3">Construction</button>
-                <button class="service-link-item" data-index="4">Civil</button>
-                <button class="service-link-item" data-index="5">Renovations</button>
-                <button class="service-link-item" data-index="6">Mechanical</button>
-                <button class="service-link-item" data-index="7">Landscape</button>
-                <?php endif; ?>
+                <button class="service-link-item active" data-index="0">Contractor & Engineering</button>
+                <button class="service-link-item" data-index="1">Marine Services</button>
+                <button class="service-link-item" data-index="2">Logistics Services</button>
+                <button class="service-link-item" data-index="3">Corrosion Management</button>
+                <button class="service-link-item" data-index="4">Digital & IT Solutions</button>
             </div>
         </div>
 
@@ -1181,40 +1187,41 @@ html, body {
             <!-- Custom Premium Cinematic Navigation Arrows & Next Destination Labels -->
             <div class="swiper-nav-wrapper prev-wrapper">
                 <button class="swiper-custom-prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
-                <span class="swiper-custom-prev-text">Landscape</span>
+                <span class="swiper-custom-prev-text">Digital & IT Solutions</span>
             </div>
             <div class="swiper-nav-wrapper next-wrapper">
                 <button class="swiper-custom-next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
-                <span class="swiper-custom-next-text">Logistic Division</span>
+                <span class="swiper-custom-next-text">Marine Services</span>
             </div>
 
             <div class="swiper-wrapper">
                 
-                <!-- Card 1: Marine -->
-                <div class="swiper-slide swiper-slide-active" data-hash="marine" data-bg="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=1200">
+                <!-- Card 0: Contractor & Engineering -->
+                <div class="swiper-slide swiper-slide-active" data-hash="core" data-bg="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" data-detail-bg="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/marine.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/civil.png" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
-                                    <h3>Marine Division</h3>
-                                    <p>Professional maritime engineering & technical supply solutions.</p>
+                                    <h3>Contractor & Engineering</h3>
+                                    <p>Comprehensive civil, structural, electrical, and mechanical engineering solutions.</p>
                                     <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
-                                <h3>Marine Industrial</h3>
+                                <h3>Contractor & Engineering</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Ship Consumables:</strong> Premium vessel provisions, spare parts, and operational supplies.</li>
-                                    <li><strong>Crew Logistics:</strong> Seamless personnel transit, port clearance, and marine support.</li>
-                                    <li><strong>Engineering & Maintenance:</strong> Comprehensive marine construction, steel works, and technical maintenance.</li>
-                                    <li><strong>Boiler Solutions:</strong> High-performance Vecom Marine water treatment and chemical solutions.</li>
+                                    <li><strong>Building Construction:</strong> Comprehensive construction covering commercial, industrial, and infrastructure projects.</li>
+                                    <li><strong>Civil Engineering:</strong> Earthworks, road construction, pavement works, site clearing, and infrastructure.</li>
+                                    <li><strong>Mechanical Engineering:</strong> HVAC installations, industrial piping, fabrication, and preventive maintenance.</li>
+                                    <li><strong>Electrical Engineering:</strong> Power distribution systems, industrial wiring, troubleshooting, and setups.</li>
+                                    <li><strong>Marine Engineering:</strong> Serving marine/offshore sectors with mechanical, electrical, and structural repairs.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1222,8 +1229,40 @@ html, body {
                     </div>
                 </div>
 
-                <!-- Card 2: Logistics -->
-                <div class="swiper-slide" data-hash="cross" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
+                <!-- Card 1: Marine Services -->
+                <div class="swiper-slide" data-hash="marine" data-bg="assets/img/kapal-tanker.jpg" data-detail-bg="https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?auto=format&fit=crop&q=80&w=1200">
+                    <div class="static-service-card">
+                        <div class="card-front" style="background-image: url('assets/img/kapal-tanker.jpg')">
+                            <div class="card-front-overlay"></div>
+                            <div class="card-front-content">
+                                <div class="card-front-visual">
+                                    <img src="assets/img/service3d/marine.png" class="floating-3d" alt="3D Visual">
+                                </div>
+                                <div class="card-front-info">
+                                    <h3>Marine Services</h3>
+                                    <p>Vessel consumables, crew logistics, and specialized marine water treatments.</p>
+                                    <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?auto=format&fit=crop&q=80&w=800')">
+                            <div class="card-detail-overlay"></div>
+                            <div class="card-detail-content">
+                                <h3>Marine Services</h3>
+                                <ul class="detail-list-content">
+                                    <li><strong>Vessel Consumables:</strong> Heavy machinery parts, rigging gear, tools, and general vessel provisions.</li>
+                                    <li><strong>Crew Logistics:</strong> Fast port transition management, coordination, and emergency crew standby support.</li>
+                                    <li><strong>Marine Chemicals:</strong> Boiler & cooling water treatment, testing kits, and trusted chemical solutions.</li>
+                                    <li><strong>Technical Support:</strong> Servicing, machinery troubleshooting, maintenance, and structural repairs.</li>
+                                </ul>
+                                <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Logistics Services -->
+                <div class="swiper-slide" data-hash="logistics" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" data-detail-bg="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
@@ -1232,8 +1271,8 @@ html, body {
                                     <img src="assets/img/service3d/logistics.png" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
-                                    <h3>Logistic Division</h3>
-                                    <p>Efficient cross-border supply chain and fleet management.</p>
+                                    <h3>Logistics Services</h3>
+                                    <p>Optimized cross-border fleet transportation and port custom compliance.</p>
                                     <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -1241,12 +1280,12 @@ html, body {
                         <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
-                                <h3>Logistic Details</h3>
+                                <h3>Logistics Services</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Logistics & Transit:</strong> Seamless land and sea cargo transport planning between Singapore, Malaysia, and Thailand.</li>
-                                    <li><strong>Cargo Handling:</strong> Safe, highly secure cross-border cargo handling and containerized warehouse storage solutions.</li>
-                                    <li><strong>Documentation:</strong> Complete trade custom clearance, cross-border regulatory compliance, and cargo documentation.</li>
-                                    <li><strong>24/7 Operations:</strong> Fully dedicated standby support teams and versatile multi-axle freight fleet operations.</li>
+                                    <li><strong>Cross-Border Transport:</strong> Reliable truck logistics between Malaysia, Singapore, and Thailand.</li>
+                                    <li><strong>Cargo Handling & Storage:</strong> Loading/unloading management, inventory check, and warehouse storage.</li>
+                                    <li><strong>Customs & Compliance:</strong> Custom clearance, permit coordination, and full document processing.</li>
+                                    <li><strong>24/7 Support:</strong> Continuous active logistics planning, fleet tracking, and operations support.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1254,18 +1293,18 @@ html, body {
                     </div>
                 </div>
 
-                <!-- Card 3: Environmental -->
-                <div class="swiper-slide" data-hash="env" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200">
+                <!-- Card 3: Corrosion Management -->
+                <div class="swiper-slide" data-hash="corrosion" data-bg="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200" data-detail-bg="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
                         <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
-                                    <img src="assets/img/service3d/pohon3d.png" class="floating-3d" alt="3D Visual">
+                                    <img src="assets/img/service3d/renov.png" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
-                                    <h3>Environmental</h3>
-                                    <p>Specialist corrosion control and industrial waste management.</p>
+                                    <h3>Corrosion Management</h3>
+                                    <p>Advanced surface sandblasting, protective painting, and coatings.</p>
                                     <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -1273,12 +1312,12 @@ html, body {
                         <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
-                                <h3>Environmental Details</h3>
+                                <h3>Corrosion Management</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Corrosion Control:</strong> Industrial-scale rust mitigation, protective sandblasting, and ultra-durable paint coating solutions.</li>
-                                    <li><strong>Maintenance & Repairs:</strong> Specialized engineering restoration and mechanical refurbishment to maximize asset lifespans.</li>
-                                    <li><strong>Training & Consultation:</strong> Certified technical consultation and professional onsite training on anti-corrosion safety.</li>
-                                    <li><strong>Wastewater & Spills:</strong> Complete hazardous chemical spill containment, biological water treatment, and safe eco-disposal.</li>
+                                    <li><strong>Industrial Coating:</strong> Custom application for marine structures, O&G, and aviation assets.</li>
+                                    <li><strong>Surface Preparation:</strong> Precision sandblasting, inspection services, and surface treatments.</li>
+                                    <li><strong>Preventive Systems:</strong> Lifetime restoration programs and anti-corrosion maintenance.</li>
+                                    <li><strong>Technical Advisories:</strong> Consultation, training programs, and collaboration with Malaysian research labs.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
@@ -1286,168 +1325,37 @@ html, body {
                     </div>
                 </div>
 
-                <?php if (false): ?>
-                <!-- Card 4: Construction -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200">
+                <!-- Card 4: Digital & IT Solutions -->
+                <div class="swiper-slide" data-hash="digital" data-bg="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" data-detail-bg="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200">
                     <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-front-overlay"></div>
-                            <div class="card-front-content">
-                                <div class="card-front-visual">
-                                    <img src="assets/img/service3d/cinstruction.png" class="floating-3d" alt="3D Visual">
-                                </div>
-                                <div class="card-front-info">
-                                    <h3>Construction</h3>
-                                    <p>High-capacity industrial and commercial facility development.</p>
-                                    <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-detail-overlay"></div>
-                            <div class="card-detail-content">
-                                <h3>Construction Details</h3>
-                                <ul class="detail-list-content">
-                                    <li><strong>Residential Buildings:</strong> Modern, safe housing & residential construction.</li>
-                                    <li><strong>Commercial Buildings:</strong> Premium retail facilities & shopping complexes.</li>
-                                    <li><strong>Office Buildings:</strong> Scalable high-end corporate office spaces.</li>
-                                    <li><strong>Industrial Buildings:</strong> State-of-the-art factories & warehouse development.</li>
-                                </ul>
-                                <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
- 
-                <!-- Card 5: Civil Engineering -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200">
-                    <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-front-overlay"></div>
-                            <div class="card-front-content">
-                                <div class="card-front-visual">
-                                    <img src="assets/img/service3d/civil.png" class="floating-3d" alt="3D Visual">
-                                </div>
-                                <div class="card-front-info">
-                                    <h3>Civil Engineering</h3>
-                                    <p>Precision infrastructure and technical land assessments.</p>
-                                    <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-detail-overlay"></div>
-                            <div class="card-detail-content">
-                                <h3>Civil Details</h3>
-                                <ul class="detail-list-content">
-                                    <li><strong>Earthworks:</strong> Professional land grading & site preparation.</li>
-                                    <li><strong>Road & Drainage:</strong> High-capacity road networks & drainage construction.</li>
-                                    <li><strong>Concrete Works:</strong> Reinforced structural concrete & foundation setup.</li>
-                                    <li><strong>Infrastructure:</strong> Advanced infrastructure & public utilities development.</li>
-                                </ul>
-                                <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6: Renovations -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200">
-                    <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-front-overlay"></div>
-                            <div class="card-front-content">
-                                <div class="card-front-visual">
-                                    <img src="assets/img/service3d/renov.png" class="floating-3d" alt="3D Visual">
-                                </div>
-                                <div class="card-front-info">
-                                    <h3>Renovations</h3>
-                                    <p>Structural integrity restoration and premium refurbishment.</p>
-                                    <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-detail-overlay"></div>
-                            <div class="card-detail-content">
-                                <h3>Renovation Details</h3>
-                                <ul class="detail-list-content">
-                                    <li><strong>Building Renovations:</strong> Expert layout remodeling and general extensions.</li>
-                                    <li><strong>Interior Upgrading:</strong> Premium aesthetic & architectural interior upgrades.</li>
-                                    <li><strong>Structural Repair:</strong> Advanced reinforcement & structural damage restoration.</li>
-                                    <li><strong>Facility Refurbishment:</strong> Revitalizing and modernizing industrial facilities.</li>
-                                </ul>
-                                <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 7: Mechanical -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=1200">
-                    <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-front-overlay"></div>
                             <div class="card-front-content">
                                 <div class="card-front-visual">
                                     <img src="assets/img/service3d/mekanikal.png" class="floating-3d" alt="3D Visual">
                                 </div>
                                 <div class="card-front-info">
-                                    <h3>Mechanical</h3>
-                                    <p>Industrial steel fabrication and energy plant maintenance.</p>
+                                    <h3>Digital & IT Solutions</h3>
+                                    <p>Corporate platform systems, network operations, and cyber security.</p>
                                     <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800')">
+                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800')">
                             <div class="card-detail-overlay"></div>
                             <div class="card-detail-content">
-                                <h3>Mechanical Details</h3>
+                                <h3>Digital & IT Solutions</h3>
                                 <ul class="detail-list-content">
-                                    <li><strong>Structural Steel:</strong> High-capacity steel fabrication & erection.</li>
-                                    <li><strong>Industrial Maintenance:</strong> Routine inspections & plant system maintenance.</li>
-                                    <li><strong>Equipment Installation:</strong> Precision industrial machinery placement & setup.</li>
-                                    <li><strong>Engineering Support:</strong> Highly certified technical support services.</li>
+                                    <li><strong>Digital Solutions:</strong> Web portals, system integrations, and business workflow digitization.</li>
+                                    <li><strong>IT Infrastructure:</strong> Secured network setup, server setups, and active IT maintenance.</li>
+                                    <li><strong>Industrial Integration:</strong> Productivity dashboards, digital assets, and system monitoring.</li>
+                                    <li><strong>Cybersecurity Support:</strong> Complete threat assessments, firewall setups, and consultations.</li>
                                 </ul>
                                 <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card 8: Landscape -->
-                <div class="swiper-slide" data-bg="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1200">
-                    <div class="static-service-card">
-                        <div class="card-front" style="background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-front-overlay"></div>
-                            <div class="card-front-content">
-                                <div class="card-front-visual">
-                                    <img src="assets/img/service3d/lanscape.png" class="floating-3d" alt="3D Visual">
-                                </div>
-                                <div class="card-front-info">
-                                    <h3>Landscape</h3>
-                                    <p>Sustainable eco-landscaping and corporate outdoor facilities.</p>
-                                    <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-detail" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800')">
-                            <div class="card-detail-overlay"></div>
-                            <div class="card-detail-content">
-                                <h3>Landscape Details</h3>
-                                <ul class="detail-list-content">
-                                    <li><strong>Landscape Development:</strong> Creative eco-friendly green space planning.</li>
-                                    <li><strong>Hardscape Construction:</strong> Custom patios, stone paths, & outdoor layouts.</li>
-                                    <li><strong>Drainage Works:</strong> Clean surface runoff & external drainage setup.</li>
-                                    <li><strong>Outdoor Facilities:</strong> Recreational outdoor development & garden maintenance.</li>
-                                </ul>
-                                <button class="detail-back-btn"><i class="fas fa-arrow-left"></i> BACK</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
-
             </div>
         </div>
     </div>
@@ -1642,22 +1550,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const hash = window.location.hash;
         if (hash) {
             let targetIndex = -1;
-            if (hash === '#marine') {
+            if (hash === '#core' || hash === '#contractor' || hash === '#engineering') {
                 targetIndex = 0;
-            } else if (hash === '#cross' || hash === '#logistics') {
+            } else if (hash === '#marine') {
                 targetIndex = 1;
-            } else if (hash === '#env' || hash === '#environmental') {
+            } else if (hash === '#cross' || hash === '#logistics') {
                 targetIndex = 2;
-            } else if (hash === '#construction') {
+            } else if (hash === '#corrosion') {
                 targetIndex = 3;
-            } else if (hash === '#civil') {
+            } else if (hash === '#digital' || hash === '#it') {
                 targetIndex = 4;
-            } else if (hash === '#renovations') {
-                targetIndex = 5;
-            } else if (hash === '#mechanical') {
-                targetIndex = 6;
-            } else if (hash === '#landscape') {
-                targetIndex = 7;
             }
             
             if (targetIndex !== -1) {

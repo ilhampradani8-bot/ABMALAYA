@@ -290,11 +290,11 @@ $(function() {
             tags: 'about, vision, mission, journey, history, team'
         },
         {
-            title: 'Certified & Excellence',
-            desc: 'Our commitment to global standards, ISO certifications, and industrial excellence.',
-            link: '/certified',
+            title: 'Why Us — Certified & Trusted',
+            desc: 'Our commitment to global standards, corporate credibility, ISO certifications, and industrial excellence.',
+            link: '/why-us',
             icon: 'fa-certificate',
-            tags: 'certified, certification, iso, quality, safety, petronas, license'
+            tags: 'why us, certified, trusted, quality, safety, cidb, mof, ssm, compliance'
         },
         {
             title: 'Contact Us',

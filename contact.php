@@ -10,8 +10,9 @@ include 'includes/header.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <?php 
+$heroSubtitle = "GET IN TOUCH";
 $heroTitle = "Connect With <span style='color: #005ee9;'>AB MALAYA</span>";
-$heroDesc = "Ready to discuss your next industrial project? Our technical experts are standing by to provide the solutions you need.";
+$heroDesc = "Whether you require industrial support, technical consultation, logistics coordination, or engineering solutions, our team is ready to assist you.";
 $showButtons = false;
 include 'includes/hero_visual.php';
 ?>
@@ -91,19 +92,52 @@ include 'includes/hero_visual.php';
                 </div>
                 
                 <div class="info-cards">
-                    <!-- HQ Card -->
+                    <!-- 1. Corporate Office Address & Business Hours -->
                     <div class="neu-card-raised info-card contact-item">
-                        <div class="icon-box-3d">
+                        <div class="icon-box-3d address">
                             <div class="pulse-layer"></div>
                             <i class="fas fa-map-location-dot"></i>
                         </div>
                         <div class="info-content">
-                            <h4>Kuala Lumpur HQ</h4>
-                            <p>2-2-40, Lantai 2 Wisma Rampai, Jalan 34/26, Taman Sri Rampai, 53300 Kuala Lumpur.</p>
+                            <h4>Corporate Office Address</h4>
+                            <p>2-2-40, 2nd Floor Wisma Rampai, Jalan 34/26, Taman Sri Rampai, 53300 Kuala Lumpur.</p>
+                            <div class="compact-hours">
+                                <i class="far fa-clock"></i> <span><strong>Business Hours:</strong> Mon - Fri: 9:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Direct Phone Lines -->
+                    <div class="neu-card-raised info-card contact-item">
+                        <div class="icon-box-3d phone">
+                            <div class="pulse-layer"></div>
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone Number</h4>
+                            <div class="links">
+                                <a href="tel:+60172240091"><i class="fas fa-phone"></i> +60 17-224 0091</a>
+                                <a href="tel:+60105577282"><i class="fas fa-phone"></i> +60 10-557 7282</a>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- WhatsApp Card -->
+                    <!-- 3. Email Address -->
+                    <div class="neu-card-raised info-card contact-item">
+                        <div class="icon-box-3d mail">
+                            <div class="pulse-layer"></div>
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email Address</h4>
+                            <div class="links">
+                                <a href="mailto:sales@abmalaya.com"><i class="fas fa-envelope"></i> sales@abmalaya.com</a>
+                                <a href="mailto:info@abmalaya.com"><i class="fas fa-envelope"></i> info@abmalaya.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. WhatsApp Support & Dedicated Button -->
                     <div class="neu-card-raised info-card contact-item">
                         <div class="icon-box-3d wa">
                             <div class="pulse-layer"></div>
@@ -111,24 +145,11 @@ include 'includes/hero_visual.php';
                         </div>
                         <div class="info-content">
                             <h4>WhatsApp Support</h4>
-                            <div class="links">
-                                <a href="https://wa.me/60172240091">+60 17-224 0091</a>
-                                <a href="https://wa.me/601113777282">+60 11-1377 7282</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Email Card -->
-                    <div class="neu-card-raised info-card contact-item">
-                        <div class="icon-box-3d mail">
-                            <div class="pulse-layer"></div>
-                            <i class="fas fa-envelope-open-text"></i>
-                        </div>
-                        <div class="info-content">
-                            <h4>Email Inquiry</h4>
-                            <div class="links">
-                                <a href="mailto:sales@abmalaya.com">sales@abmalaya.com</a>
-                                <a href="mailto:info@abmalaya.com">info@abmalaya.com</a>
+                            <p class="compact-txt">Connect instantly with our project coordinators for rapid response.</p>
+                            <div class="wa-btn-container">
+                                <a href="https://wa.me/60172240091" target="_blank" class="neu-wa-btn">
+                                    <i class="fab fa-whatsapp"></i> CHAT ON WHATSAPP
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -422,8 +443,67 @@ include 'includes/hero_visual.php';
         position: relative;
     }
 
+    .icon-box-3d.address { color: #f59e0b; }
+    .icon-box-3d.phone { color: #0ea5e9; }
     .icon-box-3d.wa { color: #25d366; }
     .icon-box-3d.mail { color: #ef4444; }
+
+    .compact-hours {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+        padding: 4px 12px;
+        background: #f1f5f9;
+        border-radius: 30px;
+        font-size: 0.82rem;
+        color: #475569;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .compact-hours i {
+        color: #f59e0b;
+    }
+
+    .compact-txt {
+        color: #64748b;
+        font-size: 0.9rem !important;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+    }
+
+    .wa-btn-container {
+        margin-top: 0.5rem;
+    }
+
+    .neu-wa-btn {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 0.5rem;
+        background: #25d366;
+        color: #fff !important;
+        padding: 0.6rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 800;
+        font-size: 0.85rem !important;
+        letter-spacing: 0.5px;
+        border: none;
+        box-shadow: 4px 4px 10px rgba(37, 211, 102, 0.3), inset -2px -2px 5px rgba(0,0,0,0.1), inset 2px 2px 5px rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .neu-wa-btn:hover {
+        background: #20ba5a;
+        transform: translateY(-2px);
+        box-shadow: 6px 6px 15px rgba(37, 211, 102, 0.4);
+    }
+
+    .neu-wa-btn:active {
+        transform: translateY(1px);
+        box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+    }
 
     .pulse-layer {
         position: absolute;
@@ -471,8 +551,12 @@ include 'includes/hero_visual.php';
 
     @media (max-width: 992px) {
         .contact-grid {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column-reverse; /* Render actionable contact details first on mobile, then the long form */
             gap: 3rem;
+        }
+        .contact-form-side, .contact-info-side {
+            width: 100%;
         }
     }
 
@@ -487,6 +571,17 @@ include 'includes/hero_visual.php';
 
         .contact-grid {
             gap: 2rem;
+        }
+
+        .compact-hours {
+            margin: 0.6rem auto 0 !important;
+            display: inline-flex !important;
+        }
+
+        .wa-btn-container {
+            display: flex !important;
+            justify-content: center !important;
+            width: 100%;
         }
 
         .neu-card-3d-pop, .neu-card-raised, .glass-info-card {

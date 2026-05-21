@@ -80,10 +80,15 @@ if (empty($images)) {
                     <div class="interaction-hint mobile-only"><i class="fas fa-undo"></i> Back to title</div>
                 </div>
             </div>
-            <?php if(isset($showButtons) && $showButtons): ?>
+            <?php if(isset($showButtons) && $showButtons): 
+                $btn1Text = isset($heroBtn1Text) ? $heroBtn1Text : "Our Services";
+                $btn2Text = isset($heroBtn2Text) ? $heroBtn2Text : "Get a Quote";
+                $btn1Link = isset($heroBtn1Link) ? $heroBtn1Link : "/services";
+                $btn2Link = isset($heroBtn2Link) ? $heroBtn2Link : "/contact";
+            ?>
             <div class="hero-btns">
-                <a href="/services" class="hero-link">Our Services <i class="fas fa-arrow-right"></i></a>
-                <a href="/contact" class="hero-link secondary-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+                <a href="<?php echo htmlspecialchars($btn1Link); ?>" class="hero-link"><?php echo htmlspecialchars($btn1Text); ?> <i class="fas fa-arrow-right"></i></a>
+                <a href="<?php echo htmlspecialchars($btn2Link); ?>" class="hero-link secondary-link"><?php echo htmlspecialchars($btn2Text); ?> <i class="fas fa-arrow-right"></i></a>
             </div>
             <?php endif; ?>
         </div>

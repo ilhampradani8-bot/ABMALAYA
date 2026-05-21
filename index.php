@@ -12,10 +12,14 @@ include 'includes/header.php';
 <link rel="stylesheet" href="assets/css/home.css">
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>We Deliver Tailored Solutions</span> To Meet The Diverse Needs Of Our Clients.";
+$heroTitle = "<span style='color: #005ee9;'>Integrated Industrial Solutions</span> for a Smarter Future";
 $heroSubtitle = ""; /* Subtitle merged into Title for impact */
-$heroDesc = "AB Malaya Sdn Bhd delivers reliable engineering and logistics services across industries and borders in Kuala Lumpur. <br>Discover seamless management today.";
+$heroDesc = "AB Malaya Sdn Bhd delivers reliable solutions across construction, marine services, logistics, corrosion management, and digital technology — empowering industries with operational excellence, technical precision, and sustainable growth.";
 $showButtons = true;
+$heroBtn1Text = "Explore Our Solutions";
+$heroBtn1Link = "#service";
+$heroBtn2Text = "Contact Our Team";
+$heroBtn2Link = "/contact";
 include 'includes/hero_visual.php';
 ?>
 
@@ -410,19 +414,31 @@ include 'includes/hero_visual.php';
                 <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #000; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
                     Leading the Way in <br><span style="color: #005ee9;">Industrial Evolution</span>
                 </h2>
-                <p style="color: #475569; font-size: 1.15rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; width: 100%;">
-                    Founded by industry experts to address modern market revolutions, AB Malaya Sdn Bhd delivers first-class services that optimize both operational excellence and financial efficiency. We are the premier choice for businesses seeking high-quality maritime, logistics, and environmental solutions at an exceptional value.
+                <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; margin-bottom: 1.5rem; width: 100%;">
+                    With a strong commitment to quality, compliance, and innovation, we provide end-to-end solutions tailored to the evolving needs of modern industries across Malaysia and the regional market.
+                </p>
+                <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; width: 100%;">
+                    Our mission is to bridge operational efficiency, sustainability, and technological advancement through practical and cost-effective industrial solutions.
                 </p>
             </div>
 
             <!-- Right Half: Exactly 50% -->
-            <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; text-align: right; gap: 1.2rem;">
-                <h3 style="color: #94a3b8; text-transform: uppercase; font-size: 1.8rem; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-top: 1rem; letter-spacing: -0.5px; line-height: 1.2;">Introduction</h3>
-                <div>
+            <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left; padding-left: 4rem;">
+                <div style="margin-top: 1rem; margin-bottom: 2rem;">
                     <a href="/about" class="hero-link" style="color: #000; font-size: 0.85rem;">
                         Learn More About Us <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif;">
+                    AB Malaya Sdn Bhd is a multidisciplinary industrial solutions company specializing in:
+                </p>
+                <ul style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; list-style-type: none; padding-left: 0; margin-top: 1.2rem; width: 100%;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Contractor & Engineering Services</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Marine Industrial Support</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Cross-Border Logistics</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Corrosion Management</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Digital & IT Solutions</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -440,7 +456,31 @@ include 'includes/hero_visual.php';
         <div class="embla" id="embla-services">
             <div class="embla__viewport">
                 <div class="embla__container">
-                    <!-- Slide 1: Marine Division -->
+                    <!-- Slide 1: Contractor & Engineering Services -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/civil.png" alt="Contractor & Engineering Icon">
+                            </div>
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Contractor & Engineering">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Empty (No button) -->
+                                    <div class="card-footer-left"></div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Contractor & Engineering</div>
+                                        <div class="card-desc">Building Construction — Comprehensive construction covering commercial, industrial, and infrastructure projects.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Marine Services -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
@@ -448,7 +488,7 @@ include 'includes/hero_visual.php';
                                 <img src="assets/img/service3d/marine.png" alt="Marine Icon">
                             </div>
                             <div class="media">
-                                <img src="assets/img/kapal-tanker.jpg" alt="Marine Division">
+                                <img src="assets/img/kapal-tanker.jpg" alt="Marine Services">
                             </div>
                             <div class="card-sections">
                                 <div class="card-footer-layout">
@@ -464,77 +504,22 @@ include 'includes/hero_visual.php';
                                     <!-- Right Side: Title & Description -->
                                     <div class="card-footer-right">
                                         <div class="card-caption">Marine Division</div>
-                                        <div class="card-desc">Offshore & Subsea Services</div>
+                                        <div class="card-desc">Marine Industrial Solutions — Reliable industrial supply and technical support services for marine & offshore operations.</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Slide 2: Industrial IT -->
+                    <!-- Slide 3: Cross-Border Logistics -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/mekanikal.png" alt="Industrial IT Icon">
+                                <img src="assets/img/service3d/logistics.png" alt="Logistics Icon">
                             </div>
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="Industrial IT">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <!-- Left Side: Empty (No button) -->
-                                    <div class="card-footer-left"></div>
-                                    <!-- Right Side: Title & Description -->
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Industrial IT</div>
-                                        <div class="card-desc">Automation & Controls</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3: Environmental -->
-                    <div class="embla__slide">
-                        <div class="slide-card">
-                            <!-- Direct 3D Render (No border box) -->
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/pohon3d.png" alt="Environmental Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Environmental">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <!-- Left Side: Arrow Button -->
-                                    <div class="card-footer-left">
-                                        <a href="services#env" class="card-arrow-btn" aria-label="Know More">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                <polyline points="12 5 19 12 12 19"></polyline>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <!-- Right Side: Title & Description -->
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Environmental</div>
-                                        <div class="card-desc">Eco & Resource Management</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Logistic Division -->
-                    <div class="embla__slide">
-                        <div class="slide-card">
-                            <!-- Direct 3D Render (No border box) -->
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/logistics.png" alt="Logistic Division Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistic Division">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistics Services">
                             </div>
                             <div class="card-sections">
                                 <div class="card-footer-layout">
@@ -550,22 +535,53 @@ include 'includes/hero_visual.php';
                                     <!-- Right Side: Title & Description -->
                                     <div class="card-footer-right">
                                         <div class="card-caption">Logistic Division</div>
-                                        <div class="card-desc">Cross-Border Solutions</div>
+                                        <div class="card-desc">Cross-Border Solutions — Reliable logistics coordination across Malaysia, Singapore, Thailand, and Indonesia.</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Slide 5: Bio-Solutions -->
+                    <!-- Slide 4: Corrosion Management -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/lanscape.png" alt="Bio-Solutions Icon">
+                                <img src="assets/img/service3d/pohon3d.png" alt="Corrosion Management Icon">
                             </div>
                             <div class="media">
-                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&h=1000" alt="Bio-Solutions">
+                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Corrosion Management">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Arrow Button -->
+                                    <div class="card-footer-left">
+                                        <a href="services#env" class="card-arrow-btn" aria-label="Know More">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Corrosion Management</div>
+                                        <div class="card-desc">Prevention & Protection — Specialized corrosion management solutions for marine, oil & gas, industrial, and infrastructure sectors.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Digital & IT Solutions -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/mekanikal.png" alt="Digital & IT Icon">
+                            </div>
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="Digital & IT Solutions">
                             </div>
                             <div class="card-sections">
                                 <div class="card-footer-layout">
@@ -573,32 +589,8 @@ include 'includes/hero_visual.php';
                                     <div class="card-footer-left"></div>
                                     <!-- Right Side: Title & Description -->
                                     <div class="card-footer-right">
-                                        <div class="card-caption">Bio-Solutions</div>
-                                        <div class="card-desc">Organic Agrotech Solutions</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6: Procurement -->
-                    <div class="embla__slide">
-                        <div class="slide-card">
-                            <!-- Direct 3D Render (No border box) -->
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/civil.png" alt="Procurement Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Procurement">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <!-- Left Side: Empty (No button) -->
-                                    <div class="card-footer-left"></div>
-                                    <!-- Right Side: Title & Description -->
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Procurement</div>
-                                        <div class="card-desc">Global Sourcing & Supply</div>
+                                        <div class="card-caption">Digital & IT Solutions</div>
+                                        <div class="card-desc">Digital Transformation — Operational efficiency through modern digital technologies and smart system integration.</div>
                                     </div>
                                 </div>
                             </div>
