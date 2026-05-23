@@ -64,10 +64,12 @@ include 'includes/header.php';
                 <h2 class="story-title-main">Pioneering Technical Excellence</h2>
                 <div class="story-text-container">
                     <div class="story-description-content collapsed" id="story-text">
-                        <p>The idea to form AB MALAYA Sdn Bhd began when a group of industrial experts from various fields assembled to discuss the current market pressures evolving towards a modern revolution. For years, many national and global entities from large corporations have sought the best ways to receive optimal services while optimizing their financial health.</p>
+                        <p>AB Malaya Sdn Bhd was established with a vision to bridge industrial expertise, operational excellence, and innovative solutions to meet the evolving demands of modern industries. The company was founded by a team of experienced professionals from diverse industrial backgrounds who recognized the growing market need for reliable, cost-efficient, and high-quality integrated services in an increasingly dynamic business environment.</p>
+                        <p>As industries continue to undergo rapid transformation driven by technological advancement, sustainability initiatives, and operational challenges, organizations are seeking strategic partners capable of delivering comprehensive solutions while maintaining efficiency and financial sustainability. AB Malaya Sdn Bhd was formed to answer this need.</p>
                         <div class="hidden-content" id="extra-story-content">
-                            <p>AB Malaya Sdn Bhd focuses its main attention on providing first-class services to realize these agendas. Without neglecting the quality of its services, AB MALAYA is the best choice for businesses looking for high-quality services at affordable prices.</p>
-                            <p>AB Malaya Sdn Bhd is a dynamic company specializing in Marine Industrial Services, Cross-Border Logistics, and Environmental Solutions.</p>
+                            <p>Built upon strong technical capabilities and industry knowledge, AB Malaya focuses on delivering value-driven solutions without compromising quality, safety, or compliance standards. Our commitment is centered on providing professional services that enhance operational performance, optimize resources, and support long-term business growth for our clients.</p>
+                            <p>Today, AB Malaya Sdn Bhd has evolved into a multidisciplinary industrial solutions provider specializing in Contractor Services, Marine Industrial Solutions, Cross-Border Logistics, Corrosion Management, and Digital & Information Technology Services. Through innovation, technical expertise, and customer-focused execution, we continue to support businesses across various industries in achieving sustainable and efficient operations.</p>
+                            <p>At AB Malaya, we believe that strong partnerships, technical precision, and continuous improvement are the foundation of delivering industrial excellence.</p>
                         </div>
                     </div>
                     <button class="more-toggle-btn" id="story-toggle" onclick="toggleStoryText()">
@@ -278,7 +280,7 @@ include 'includes/header.php';
                     <div class="vm-parallax-info neumorphic-info">
                         <span class="vm-num-top neumorphic-num">01</span>
                         <h3>Our Vision</h3>
-                        <p>To be a leading and innovative provider of marine, logistics, and environmental solutions in the region, focusing on quality, safety, and sustainability—while remaining the most reliable partner.</p>
+                        <p>To become a leading industrial solutions provider in Southeast Asia through innovation, technical excellence, and sustainable business practices.</p>
                     </div>
                 </div>
             </div>
@@ -291,10 +293,11 @@ include 'includes/header.php';
                         <span class="vm-num-top neumorphic-num">02</span>
                         <h3>Our Mission</h3>
                         <div class="mission-compact-list">
-                            <p>1. First-class services & expert solutions.</p>
-                            <p>2. Integrity & environmental responsibility.</p>
-                            <p>3. Long-term corporate partnerships.</p>
-                            <p>4. High quality, efficiency, and absolute safety.</p>
+                            <p>1. Deliver reliable and high-quality industrial solutions.</p>
+                            <p>2. Support operational efficiency and business sustainability.</p>
+                            <p>3. Build long-term strategic partnerships.</p>
+                            <p>4. Drive innovation through technology and expertise.</p>
+                            <p>5. Maintain excellence in safety, compliance, and service delivery.</p>
                         </div>
                     </div>
                 </div>

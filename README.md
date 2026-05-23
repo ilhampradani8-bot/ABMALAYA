@@ -115,6 +115,9 @@ Re-engineered the 3D Parallax Hero visual landscape in `about.php` to meet ultim
 *   **Cinematic Scroll Distance Tuning (`250vh` Desktop Space)**: Expanded the default desktop scroll distance to `250vh` (while keeping mobile tight at `180vh` to avoid thumb fatigue). This creates a luxurious breathing room for the stationary hero scene, pushing the `Our Story` content far below so it enters the viewport slower and later.
 *   **Elevated Cloud Parallax Alignment (+60px Shift)**: Shifted starting and ending vertical offsets of all three cloud layers (`cloud1`, `cloud2`, `cloud3`) upwards by exactly `60px` on both desktop and mobile. This elevates the clouds beautifully above the screen horizon for optimal composition, while keeping all relative 3D parallax speeds perfectly intact.
 *   **Principles Section Accordion Cleanup**: Cleanly removed the 'Learn More' action buttons from all five cards (Integrity, Safety, Innovation, Collaboration, Quality) inside the principles industrial accordion, resulting in a tighter, cleaner catalog presentation.
+*   **Fresh Expanded Brand Narrative & 5-Point Values Copy**: Fully updated the page with the newly finalized, expanded corporate text assets:
+    *   *Our Story*: Upgraded to a 5-paragraph professional narrative, split beautifully between a high-impact visible segment and a smooth slide-down extra content drawer.
+    *   *Vision & Mission*: Re-aligned values with a revised Southeast Asia-focused vision statement and a highly polished, comprehensive 5-point mission grid.
 
 ### 🔗 Clean-URL Architecture & Unified Route Integration
 Re-engineered the website navigation system to utilize fully SEO-friendly, clean URLs without `.php` extensions. Endpoints like `/about`, `/services`, `/certified`, `/projects`, and `/contact` are processed natively, generating professional address bars similar to modern application routers.
