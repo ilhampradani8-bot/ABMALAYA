@@ -59,7 +59,7 @@ if (empty($images)) {
                 $altText = ucwords(str_replace(['-', '_'], ' ', $fileName));
             ?>
             <div class="img-wrap">
-                <img src="<?php echo htmlspecialchars($img); ?>" alt="<?php echo htmlspecialchars($altText); ?>">
+                <img src="<?php echo htmlspecialchars($img); ?>?v=<?php echo file_exists($img) ? filemtime($img) : time(); ?>" alt="<?php echo htmlspecialchars($altText); ?>">
             </div>
             <?php endforeach; ?>
         </div>
