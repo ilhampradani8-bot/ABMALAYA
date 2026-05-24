@@ -714,35 +714,100 @@
         /* Footer Mobile Refinement */
         @media (max-width: 768px) {
             footer {
-                padding: 40px 0 30px;
+                padding: 40px 0 25px !important;
+            }
+            .footer-logo {
+                margin-bottom: 1rem !important;
+            }
+            .footer-logo img {
+                height: 42px !important; /* Compact logo on mobile */
+            }
+            .footer-info p {
+                font-size: 0.8rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.4 !important;
             }
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 2rem 1rem;
+                gap: 1.5rem 1rem !important;
             }
             .footer-info {
                 grid-column: span 2;
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem !important;
             }
             .footer-links:last-child {
                 grid-column: span 2;
-                margin-top: 1rem;
+                margin-top: 0.5rem !important;
             }
             .footer-links h4 {
-                font-size: 1rem;
-                margin-bottom: 1rem;
+                font-size: 0.9rem !important;
+                margin-bottom: 0.8rem !important;
+                letter-spacing: 0.5px !important;
             }
+            .footer-links ul {
+                gap: 5px !important; /* Tighter gap between links on mobile */
+            }
+            .footer-btn {
+                font-size: 0.8rem !important; /* Compact font-size */
+                gap: 6px !important; /* Tight gap */
+                padding: 2px 0 !important; /* Extremely tight padding to reduce vertical space */
+            }
+            .footer-btn svg {
+                width: 12px !important;
+                height: 12px !important;
+            }
+            /* Contact section styles */
             .footer-links ul li {
-                font-size: 0.85rem;
+                font-size: 0.8rem !important;
+                gap: 8px !important;
             }
+            .footer-links ul li svg {
+                width: 12px !important;
+                height: 12px !important;
+                margin-top: 2px !important;
+            }
+            .footer-links ul li span {
+                font-size: 0.8rem !important;
+                line-height: 1.35 !important;
+            }
+            .search-wrapper-footer {
+                margin-top: 0.8rem !important; /* Tighter search bar margin */
+                width: 38px !important;
+                height: 38px !important;
+            }
+            .search-wrapper-footer.active {
+                width: 200px !important; /* Tighter active search on mobile */
+            }
+            .search-btn-footer {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            .search-input-footer {
+                font-size: 0.8rem !important;
+            }
+            /* Bottom alignment */
             .footer-bottom {
-                text-align: left;
-                padding-top: 30px;
+                padding-top: 25px !important;
+                margin-top: 25px !important;
             }
             .footer-bottom > div {
-                flex-direction: column;
+                flex-direction: column !important;
                 align-items: flex-start !important;
-                gap: 1.5rem;
+                gap: 0.8rem !important; /* Much tighter gap to prevent feeling "forced" */
+            }
+            .footer-bottom p {
+                font-size: 0.72rem !important;
+                margin: 0 !important;
+                opacity: 0.6 !important;
+            }
+            .footer-bottom div:last-child {
+                display: flex !important;
+                gap: 0.8rem 1.2rem !important; /* Tighter links gap on mobile */
+                flex-wrap: wrap !important;
+            }
+            .footer-bottom div:last-child a {
+                font-size: 0.72rem !important;
+                opacity: 0.5 !important;
             }
         }
     </style>

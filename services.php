@@ -51,12 +51,12 @@ html, body {
     padding: 120px 0 40px;
     background-color: #0f172a;
     position: relative;
-    z-index: 10;
+    z-index: 15; /* Sits higher than footer stacking context */
     min-height: 100vh;
     display: flex;
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
-    overflow: hidden;
+    overflow: visible; /* Let absolute 3D graphics float over the footer beautifully */
     transform: translate3d(0, 0, 0);
     will-change: transform;
 }
@@ -846,17 +846,25 @@ html, body {
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
 }
 
+/* Ensure the footer sits underneath the service section's floating graphics on desktop */
+@media (min-width: 992px) {
+    footer {
+        position: relative !important;
+        z-index: 5 !important;
+    }
+}
+
 @media (max-width: 991px) {
     /* 1. Viewport-Relative Mathematical Mobile Scale Overhaul - GUARANTEES ZERO VERTICAL CUT-OFF ON ALL SCREENS */
     .services-content-grid {
         position: relative !important;
-        height: 100vh !important; /* Strict lock to phone viewport height ratio */
-        min-height: 100vh !important;
-        overflow: hidden !important; /* Eliminates dynamic layout page scrolling, keeping it premium full-screen */
+        height: auto !important; /* Let container expand naturally to prevent layout overlaps */
+        min-height: 100vh !important; /* Keep full screen minimum backdrop */
+        overflow: visible !important; /* Allow scroll if content is taller than phone screen */
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;
-        padding: 2vh 0 !important; /* Scaled vertical padding */
+        justify-content: flex-start !important; /* Top-align content to clear navigation header */
+        padding: 100px 0 60px !important; /* Generous vertical padding to clear headers and provide breathing room */
     }
 
     .services-content-grid .container {
@@ -866,8 +874,8 @@ html, body {
         padding-right: 0 !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;
-        height: 100% !important;
+        justify-content: flex-start !important;
+        height: auto !important; /* Remove viewport lock */
     }
 
     /* 1b. Force background layers to adapt perfectly to the dynamic container size instead of fixed constraints */
@@ -899,11 +907,11 @@ html, body {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 0.5vh !important;
-        margin-bottom: 0px !important;
+        gap: 10px !important;
+        margin-bottom: 20px !important;
         width: 100% !important;
         padding: 0 !important;
-        height: 14vh !important; /* Compacted height ratio safely accommodates wrapped category menu */
+        height: auto !important; /* Relax height constraint to prevent layout overlaps */
         display: flex !important;
         justify-content: center !important;
     }
@@ -921,14 +929,14 @@ html, body {
     /* PREMIUM 2-ROW CAPSULE MENU - WRAPS BEAUTIFULLY, ELIMINATES SIDE CLIPPING, AND NEVER CUTS OFF */
     .service-nav-list {
         display: flex !important;
-        flex-wrap: wrap !important; /* Dynamic wrapped 2-row layout */
+        flex-wrap: wrap !important; /* Dynamic wrapped layout */
         justify-content: center !important; /* Centered capsule items */
         overflow: visible !important;
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 16px !important;
         margin: 0 auto !important;
-        gap: 0.4rem 0.5rem !important; /* Compact gap between rows and columns */
+        gap: 6px !important; /* Compact robust spacing gap */
     }
 
     .service-nav-list::-webkit-scrollbar {
@@ -936,24 +944,39 @@ html, body {
     }
 
     .service-link-item {
-        flex: 0 1 auto !important; /* Allow capsule auto sizing */
-        padding: 5px 12px !important; /* Comfortable capsule touch targets */
-        background: rgba(255, 255, 255, 0.05) !important; /* Translucent glass capsule */
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        border-radius: 20px !important; /* Rounded pill style */
-        font-size: 0.72rem !important;
-        letter-spacing: 0.5px !important;
+        width: calc(50% - 3px) !important; /* Exactly 2 buttons per row with a gap */
+        flex: 0 0 calc(50% - 3px) !important;
+        text-align: center !important;
+        padding: 8px 4px !important; /* Compact high-tactility touch target padding */
+        background: #131b2e !important; /* Soft neomorphic base color */
+        border: none !important; /* Clean borderless neomorphism */
+        border-radius: 12px !important; /* Sleek rounded corners */
+        font-size: 0.65rem !important; /* Ultra-compact readable font size */
+        font-weight: 700 !important;
+        letter-spacing: 0.3px !important;
         color: rgba(255, 255, 255, 0.6) !important;
         text-transform: uppercase !important;
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.2, 1) !important;
-        line-height: 1 !important;
+        transition: all 0.2s ease !important;
+        line-height: 1.1 !important;
+        box-sizing: border-box !important;
+        
+        /* Raised soft dark neomorphism shadows */
+        box-shadow: 2px 2px 5px #080d18, -2px -2px 5px #1e2944 !important;
+    }
+
+    /* Last item spans full width on its own row for premium symmetric layout */
+    .service-nav-list .service-link-item:last-child {
+        width: calc(100% - 6px) !important;
+        flex: 0 0 calc(100% - 6px) !important;
     }
 
     .service-link-item.active {
-        color: #fff !important;
-        background: #3b82f6 !important; /* Glowing active blue pill style */
-        border-color: #3b82f6 !important;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;
+        color: #3b82f6 !important; /* Glowing active brand blue */
+        background: #131b2e !important;
+        
+        /* Sunken soft dark neomorphism shadows */
+        box-shadow: inset 2px 2px 4px #080d18, inset -2px -2px 4px #1e2944, 0 0 10px rgba(59, 130, 246, 0.15) !important;
+        border: none !important;
     }
 
     .service-link-item::after {
@@ -961,19 +984,19 @@ html, body {
     }
 
     .service-swiper {
-        margin: 11vh auto 9vh !important; /* Pushed Swiper down to 11vh top margin to create wide breathing space below category menu */
+        margin: 20px auto 0 !important; /* Clean stable top margin to create space below category menu */
         padding: 0 !important;
         max-width: calc(100% - 32px) !important;
         width: calc(100% - 32px) !important;
         border-radius: 24px !important;
-        height: 50vh !important; /* PERFECT VERTICAL ORIENTATION (TALL TACTILE PORTRAIT CARD) */
+        height: 480px !important; /* Stable vertical height for front state */
         min-height: auto !important;
         overflow: visible !important;
         transition: height 0.4s cubic-bezier(0.25, 1, 0.2, 1) !important; /* Smooth morphing transition when extending card height */
     }
 
     #service-section-wrap.detail-active .service-swiper {
-        height: 56vh !important; /* DYNAMICALLY EXTEND SWIPER HEIGHT IN DETAIL MODE SO THE TITLE FITS PERFECTLY! */
+        height: auto !important; /* Handled dynamically by JS auto-adjuster */
     }
 
     #service-section-wrap .service-swiper .swiper-wrapper {
@@ -1371,6 +1394,59 @@ html, body {
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Dynamic Swiper Height Auto-Adjuster to completely eliminate empty space on desktop and prevent cutoffs on mobile
+    function adjustSwiperHeight(isDetailed) {
+        const swiperEl = document.querySelector('.service-swiper');
+        if (!swiperEl) return;
+        
+        if (isDetailed) {
+            const activeSlide = swiperEl.querySelector('.swiper-slide-active');
+            if (activeSlide) {
+                const cardDetail = activeSlide.querySelector('.card-detail');
+                const detailContent = activeSlide.querySelector('.card-detail-content');
+                if (cardDetail && detailContent) {
+                    // Temporarily set inline style properties to auto to measure natural scrollHeight
+                    const origCardDetailHeight = cardDetail.style.height;
+                    const origDetailContentHeight = detailContent.style.height;
+                    
+                    cardDetail.style.setProperty('height', 'auto', 'important');
+                    detailContent.style.setProperty('height', 'auto', 'important');
+                    
+                    // Sum the physical offset heights of all child elements of detail-content including margins
+                    let childrenHeight = 0;
+                    Array.from(detailContent.children).forEach(child => {
+                        const style = window.getComputedStyle(child);
+                        const marginTop = parseFloat(style.marginTop) || 0;
+                        const marginBottom = parseFloat(style.marginBottom) || 0;
+                        childrenHeight += child.offsetHeight + marginTop + marginBottom;
+                    });
+                    
+                    // Add padding top and bottom based on viewport
+                    let paddingY = 80; // Desktop padding (40px top + 40px bottom)
+                    if (window.innerWidth <= 991) {
+                        paddingY = 60; // Mobile padding (30px top + 30px bottom)
+                    }
+                    
+                    const totalHeight = childrenHeight + paddingY;
+                    
+                    // Restore original height inline styles
+                    cardDetail.style.height = origCardDetailHeight;
+                    detailContent.style.height = origDetailContentHeight;
+                    
+                    // Animate and apply exact fitting height to the Swiper container
+                    swiperEl.style.setProperty('height', `${totalHeight}px`, 'important');
+                }
+            }
+        } else {
+            // Reset to default front state heights
+            if (window.innerWidth <= 991) {
+                swiperEl.style.setProperty('height', '480px', 'important');
+            } else {
+                swiperEl.style.setProperty('height', '300px', 'important');
+            }
+        }
+    }
+
     const sectionWrap = document.getElementById('service-section-wrap');
     const shutter = document.getElementById('bg-shutter');
     const menuItems = document.querySelectorAll('.service-link-item');
@@ -1541,6 +1617,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (sectionWrap) {
                     sectionWrap.classList.remove('detail-active');
                 }
+                
+                // Reset swiper height to front state height
+                adjustSwiperHeight(false);
             }
         }
     });
@@ -1569,14 +1648,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Enforce 100% stable screen coordinates reset to top left
                 setTimeout(() => {
                     window.scrollTo(0, 0);
-                }, 10);
+                }, 50);
             }
         }
     }
 
-    // Check on page load and hash change
-    window.addEventListener('load', handleServiceHash);
+    // Bind event listeners for hash links
     window.addEventListener('hashchange', handleServiceHash);
+    
+    // Trigger on initial page load if hash exists
+    setTimeout(handleServiceHash, 300);
 
     // Custom Navigation Click Handlers
     const prevNavBtn = document.querySelector('.swiper-custom-prev');
@@ -1592,7 +1673,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Global Click Delegation
+    // Global Click Listener for Dual-State toggle
     document.addEventListener('click', function(e) {
         const readMore = e.target.closest('.read-more-link');
         const backBtn = e.target.closest('.detail-back-btn');
@@ -1625,6 +1706,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     transitionBG(targetBg, 'down');
                     sectionWrap.classList.add('detail-active');
                 }
+                
+                // Dynamically adjust height to perfectly wrap content text
+                adjustSwiperHeight(true);
             }, 200);
         }
 
@@ -1657,6 +1741,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         transitionBG(originalBg, 'back');
                     }
                 }
+                
+                // Restore default front state heights
+                adjustSwiperHeight(false);
             }, 200);
             
             setTimeout(() => {
@@ -1684,6 +1771,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Re-sync on window resize
     window.addEventListener('resize', () => {
         if (serviceSwiper.update) serviceSwiper.update();
+        const isDetailed = document.querySelector('.static-service-card.is-detailed') !== null;
+        adjustSwiperHeight(isDetailed);
     });
 });
 </script>

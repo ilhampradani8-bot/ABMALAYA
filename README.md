@@ -91,8 +91,9 @@ Implemented a site-wide early-load CSS shield in `<head>` that instantly parses 
 ### 💎 5 Active Divisions & Responsive Dual-State Transition (services.php)
 Fully upgraded the solutions catalog to render all 5 active business divisions: **Contractor & Engineering**, **Marine Services**, **Logistics Services**, **Corrosion Management**, and **Digital & IT Solutions**, completely eliminating all server-side hidden blocks.
 * **Dynamic Swiper Alignment**: Redesigned the solutions catalog Swiper showcase to present all 5 divisions in a beautiful tactile slider synced perfectly with interactive, high-contrast neobrutalist menu navigation options above.
-* **Responsive Height Transition**: Injected smooth container height animations on desktop, dynamically resizing the Swiper slider from its thin cinematic focus height of **300px** on the front state to an expanded **560px** in the detailed state using a highly elastic `cubic-bezier(0.25, 1, 0.2, 1)` transition curve to prevent text overlaps.
-* **Mobile Cutoff & Scroll Shield**: Refactored the mobile layout (max-width: 991px) to enforce a high-responsiveness `overflow-y: auto` scroll container on the detailed cards with hidden webkit scrollbars. This guarantees that all detailed items scroll smoothly on compact mobile screens, preventing any visual cutoff or layout shifts on small physical devices.
+* **Dynamic Height Auto-Adjuster (JS-driven)**: Integrated an advanced JavaScript-driven Swiper height calculator (`adjustSwiperHeight`) that dynamically sums the offset heights and vertical margins of all children inside `.card-detail-content` plus safety paddings.
+* **Aesthetic Desktop Optimization**: Eliminates excessive empty space in Detailed Mode on desktop by automatically shrinking or stretching the slider container height to match the exact length of the active card's description text.
+* **Anti-Cutoff Mobile Shield**: Solves vertical text cutting on compact phone screens by dynamically expanding the white card height to match the natural height of the detailed text, completely eliminating the need for scrolling inside cards.
 * **Staggered Bullet Reveal**: Added animation delays for the detailed bullet lists, enabling a staggered slide-up entrance for all 5 points during the active state.
 
 ### 🛡️ Document Anti-Theft Protection Modal

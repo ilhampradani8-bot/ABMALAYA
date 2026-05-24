@@ -30,6 +30,7 @@ include 'includes/hero_visual.php';
     .mobile-only-logo { display: none; }
 
     /* Mobile Styles for Partner & About */
+    /* Mobile Styles for Partner & About */
     @media (max-width: 768px) {
         .mobile-only-logo { display: flex !important; }
         /* Partner Marquee on Mobile */
@@ -60,7 +61,14 @@ include 'includes/hero_visual.php';
             text-align: left !important;
             align-items: flex-start !important;
         }
+        #about div[style*="padding-left: 4rem"] {
+            padding-left: 0 !important;
+        }
         #about h2 { font-size: 2.2rem !important; }
+        #about p, #about ul, #about li {
+            font-size: 0.95rem !important;
+            line-height: 1.6 !important;
+        }
         #about .hero-link { margin-top: 2rem; }
 
         /* Service Section Mobile Fix */
@@ -76,7 +84,7 @@ include 'includes/hero_visual.php';
         #location > div > div, 
         #cta > div > div {
             flex-direction: column !important;
-            gap: 3rem !important;
+            gap: 2rem !important;
         }
         #location div[style*="width: 50%"], 
         #cta div[style*="width: 55%"],
@@ -85,13 +93,38 @@ include 'includes/hero_visual.php';
             padding-right: 0 !important;
             text-align: left !important;
         }
-        #location h2, #cta h2 { font-size: 2.2rem !important; }
+        #location h2, #cta h2, .cta-title { font-size: 2.2rem !important; }
         #location div[style*="align-items: flex-end"] {
             align-items: flex-start !important;
             text-align: left !important;
         }
+        #location div[style*="margin-top: 5rem"] {
+            margin-top: 0 !important;
+        }
+        #location div[style*="margin-bottom: 5rem"] {
+            margin-bottom: 1.5rem !important;
+        }
+        #location .contact-item {
+            margin-bottom: 1.8rem !important;
+        }
+        #location p, #location span {
+            font-size: 0.95rem !important;
+            line-height: 1.6 !important;
+        }
+        #location p[style*="font-size: 0.7rem"] {
+            font-size: 0.7rem !important;
+            margin-bottom: 0.25rem !important;
+        }
         #cta div[style*="justify-content: flex-end"] {
             justify-content: flex-start !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #about h2, #service h2, #location h2, #cta h2, .cta-title {
+            font-size: 1.85rem !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
         }
     }
 
@@ -390,17 +423,68 @@ include 'includes/hero_visual.php';
         }
         .slide-card {
             max-width: 100%;
-            height: 23rem; /* Compact height for a perfect zoomed-in preview */
+            height: 24rem; /* Slightly larger height on tablet/mobile to prevent vertical cutoff */
         }
         .card-caption {
             font-size: 1.2rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.4rem !important;
+            text-align: right;
+        }
+        .card-desc {
+            font-size: 0.8rem;
+            line-height: 1.35;
+            text-align: right;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .card-sections {
-            padding: 2rem 1.25rem;
+            padding: 2rem 1rem 1.5rem;
+        }
+        .card-footer-right {
+            padding-left: 0.8rem;
+        }
+        .card-arrow-btn {
+            width: 32px;
+            height: 32px;
+        }
+        .card-arrow-btn svg {
+            width: 16px;
+            height: 16px;
         }
         .embla__viewport {
             padding: 20px 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .embla__slide {
+            flex: 0 0 78%; /* Wider card on small screens to give text maximum horizontal width */
+        }
+        .slide-card {
+            height: 24.5rem; /* Spacious enough to hold the text cleanly without any clip */
+        }
+        .card-caption {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem !important;
+        }
+        .card-desc {
+            font-size: 0.74rem;
+            line-height: 1.3;
+        }
+        .card-sections {
+            padding: 1.8rem 0.8rem 1.2rem;
+        }
+        .card-footer-right {
+            padding-left: 0.6rem;
+        }
+        .card-arrow-btn {
+            width: 28px;
+            height: 28px;
+        }
+        .card-arrow-btn svg {
+            width: 14px;
+            height: 14px;
         }
     }
 </style>

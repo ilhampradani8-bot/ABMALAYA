@@ -473,8 +473,8 @@ include 'includes/header.php';
             padding: 0 15px; 
         }
         .vm-parallax-wrap { 
-            height: auto !important; 
-            min-height: 400px;
+            height: 380px !important; 
+            min-height: 380px !important;
             width: 100% !important; 
             margin-bottom: 30px;
             perspective: 1000px !important; /* Re-enabled for tilt */
@@ -487,7 +487,7 @@ include 'includes/header.php';
             opacity: 1 !important;
             display: flex !important;
             flex-direction: column;
-            height: 400px !important;
+            height: 380px !important;
             transition: transform 0.2s ease-out;
         }
         .neumorphic-info {
@@ -503,9 +503,11 @@ include 'includes/header.php';
             opacity: 1 !important; 
             transform: none !important; 
             display: block !important;
+            font-size: 0.85rem !important; /* Elegant compact font size matching index.php mobile typography */
+            line-height: 1.5 !important;
         }
         .neumorphic-num { font-size: 3rem; top: 15px; right: 20px; opacity: 0.1 !important; transform: translateZ(20px); }
-        .neumorphic-info h3 { font-size: 2rem; transform: translateZ(40px); }
+        .neumorphic-info h3 { font-size: 1.4rem !important; transform: translateZ(40px); }
         .neumorphic-bg-overlay { opacity: 0.4 !important; }
     }
 
@@ -519,10 +521,13 @@ include 'includes/header.php';
             padding: 60px 0;
         }
         .vm-parallax-wrap {
-            height: 350px;
+            height: 380px !important;
+        }
+        .neumorphic-card {
+            height: 380px !important;
         }
         .vm-parallax-info h3 {
-            font-size: 1.8rem;
+            font-size: 1.4rem !important;
         }
         .core-values {
             padding: 60px 0;
@@ -547,7 +552,6 @@ include 'includes/header.php';
     }
 </style>
 
-<!-- Core Values Section -->
 <!-- Core Values - Funky Industrial Accordion -->
 <section class="funky-values-section parallax-section" id="principles-section">
     <div class="container-fluid px-lg-5">
@@ -900,7 +904,6 @@ include 'includes/header.php';
 </style>
 
 <!-- High-End CTA Section -->
-
 <style>
     /* About Page Specific Styles */
     :root {
