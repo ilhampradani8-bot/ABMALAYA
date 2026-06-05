@@ -17,7 +17,7 @@ This document serves as the primary technical blueprint and knowledge base for t
 ### Core Pages (Root)
 *   `index.php`: High-impact landing page containing the Canvas particle hero, solutions slider, tabbed Neumorphic partners & credentials marquee, and expanded regional offices block (HQ + Penang & Perak) with HQ-focused Google Map.
 *   `about.php`: Immersive company profile with a 3D parallax hero, timeline narrative drawer, and gyroscopic mission panels.
-*   `services.php`: Full solutions catalog showcasing active divisions in a detailed vertical scroll layout with nested neumorphic tab cards and progress track indicators.
+*   `services.php`: Full solutions catalog showcasing active divisions in a detailed vertical scroll layout with nested neumorphic tab cards and progress track indicators. Positioned at the top of the page is the premium, full-width Project Strategic Consultation division.
 *   `why-us.php`: Corporate credibility showcase presenting certifications and compliance details, featuring an interactive Swiper slider for credentials (without download/view buttons for document security) and a premium, fully-responsive vertical accordion for the 5 Core Strengths.
 *   `certified.php`: Certification gallery showcasing license modals and GPU-accelerated statistics.
 *   `contact.php`: Contact portal featuring neumorphic inquiry forms, VanillaTilt office locations, and brutalist maps.
@@ -112,6 +112,7 @@ Replaced the legacy Swiper-based layout with a modern, high-fidelity vertical sc
 *   **Neumorphic Inset Sub-Tabs**: Employs a dark-theme inset (concave) neumorphic button navigation (`.sub-tab-btn`) for division sub-topics. In the active state, buttons sink into the card surface (`box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.7), inset -3px -3px 8px rgba(255, 255, 255, 0.03)`).
 *   **Responsive 2-Column Wrapping Grid**: Translates horizontal-scrolling menus into clean 2-column button grids on mobile, using CSS rules to auto-span the last button if the count is odd. It allows full text-wrapping to prevent layout blowouts on narrow viewports.
 *   **Lenis-Aware Read More Engine**: Detects long descriptions (over 250 characters) and automatically binds a 'Read More' toggle with CSS-controlled height states (`max-height: 185px` collapsed). On click, it triggers `lenis.resize()` to recalibrate scroll triggers and prevent layout jitter.
+*   **Hybrid Layout Variation**: While the standard divisions (Contractor, Marine, Logistics, Corrosion, IT) utilize neumorphic inset sub-tabs to navigate sub-topics, the newly added *Project Strategic Consultation* division utilizes a full-width immersive narrative card layout because it acts as a unified consulting service without sub-divisions.
 
 ### 🗂️ "Hide & View" Accordion & Dynamic Hash-Syncing Architecture (`why-us.php`)
 Replaced the legacy Swiper-based layout for the Core Strengths section with a custom, high-fidelity interactive vertical accordion structure.
@@ -119,6 +120,7 @@ Replaced the legacy Swiper-based layout for the Core Strengths section with a cu
 *   **Dynamic Reveal Content**: On trigger click, the card expands smoothly using CSS transitions (`max-height: 800px`, `opacity: 1`), and changes the background to the respective division's Unsplash imagery overlayed with a dark Slate-900 gradient (`rgba(15, 23, 42, 0.95)`) for legibility.
 *   **GPU Float Animation**: Features animated floating 3D graphic layers wrapper using CSS keyframe-based transforms (`float3d`) for immersive parallax feedback.
 *   **Dynamic Hash Linking & Auto-Expand**: The custom `handleWhyUsHash()` script parses incoming URL hashes (e.g. `#sustainability`, `#expertise`). It auto-expands the matching accordion item and performs a Lenis-aware smooth scroll down to the targeted card offset.
+*   **Synchronized Navigation Anchors**: The 5 accordion strengths (`expertise`, `solutions`, `regional`, `sustainability`, `customer`) are fully synchronized with the site's header navigation dropdown menu links (`/why-us#expertise`, `/why-us#solutions`, etc.) to allow direct page routing and auto-expansion from other pages.
 
 ---
 
