@@ -9,7 +9,7 @@ include 'includes/header.php';
 <link rel="stylesheet" href="assets/css/home.css">
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Proven Excellence</span> <br>In Every Major Sector.";
+$heroTitle = "<span style='color: #005ee9;'>Proven Excellence</span> <br><span style='color: #093862;'>In Every Major Sector.</span>";
 $heroSubtitle = "PORTFOLIO";
 $heroDesc = "From large-scale industrial constructions to innovative mobility solutions, explore how AB Malaya delivers technical superiority across Malaysia.";
 $showButtons = false;

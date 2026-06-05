@@ -6,7 +6,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. ENTRY ANIMATIONS (GSAP) ---
-    if (typeof gsap !== 'undefined') {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
         gsap.from('.hero-content > *', {
             y: 50,
             opacity: 0,
@@ -16,54 +18,68 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Office Address Cards - staggered entrance
-        gsap.from('.address-card', {
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power4.out',
-            scrollTrigger: {
+        const addressCards = document.querySelectorAll('.address-card');
+        if (addressCards.length) {
+            ScrollTrigger.create({
                 trigger: '#office-addresses',
-                start: 'top 80%'
-            }
-        });
+                start: 'top 85%',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(addressCards, 
+                        { y: 60, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power4.out' }
+                    );
+                }
+            });
+        }
 
         // Contact Detail Cards - staggered entrance
-        gsap.from('.detail-card', {
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power4.out',
-            scrollTrigger: {
+        const detailCards = document.querySelectorAll('.detail-card');
+        if (detailCards.length) {
+            ScrollTrigger.create({
                 trigger: '#contact-details',
-                start: 'top 80%'
-            }
-        });
+                start: 'top 85%',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(detailCards,
+                        { y: 60, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power4.out' }
+                    );
+                }
+            });
+        }
 
         // Map Section
-        gsap.from('.neo-map-card', {
-            y: 80,
-            opacity: 0,
-            duration: 1.2,
-            ease: 'power4.out',
-            scrollTrigger: {
+        const mapCard = document.querySelector('.neo-map-card');
+        if (mapCard) {
+            ScrollTrigger.create({
                 trigger: '#map',
-                start: 'top 80%'
-            }
-        });
+                start: 'top 85%',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(mapCard,
+                        { y: 80, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 1, ease: 'power4.out' }
+                    );
+                }
+            });
+        }
 
         // Inquiry Form
-        gsap.from('.inquiry-form-wrapper', {
-            y: 80,
-            opacity: 0,
-            duration: 1.2,
-            ease: 'power4.out',
-            scrollTrigger: {
+        const formWrapper = document.querySelector('.inquiry-form-wrapper');
+        if (formWrapper) {
+            ScrollTrigger.create({
                 trigger: '#contact-form',
-                start: 'top 80%'
-            }
-        });
+                start: 'top 85%',
+                once: true,
+                onEnter: () => {
+                    gsap.fromTo(formWrapper,
+                        { y: 80, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 1, ease: 'power4.out' }
+                    );
+                }
+            });
+        }
     }
 
     // --- 2. TILT INTERACTION ---

@@ -8,6 +8,7 @@ This document serves as the primary technical blueprint and knowledge base for t
 
 *   **Company**: AB Malaya Sdn Bhd (Maritime, Oil & Gas, and Energy sectors contractor/service provider based in Malaysia).
 *   **Aesthetics**: Merges **Industrial Authority** with a premium **Neuromorphic (Tactile), Glassmorphic, and Neo-Brutalist UI** design language.
+*   **Corporate Color Palette**: Unifies all major section headings and hero titles under a sleek, high-contrast **Light/Electric Blue (`#005ee9`) and Corporate Dark Blue (`#093862`)** dual-color system to maintain strict brand cohesion.
 *   **Architecture**: Built using **Native PHP 8.3** with a zero-framework modular layout. This ensures blazing-fast rendering and an instant Time to First Byte (TTFB ~0ms).
 
 ---
@@ -20,7 +21,7 @@ This document serves as the primary technical blueprint and knowledge base for t
 *   `services.php`: Full solutions catalog showcasing active divisions in a detailed vertical scroll layout with nested neumorphic tab cards and progress track indicators. Positioned at the top of the page is the premium, full-width Project Strategic Consultation division.
 *   `why-us.php`: Corporate credibility showcase presenting certifications and compliance details, featuring an interactive Swiper slider for credentials (without download/view buttons for document security) and a premium, fully-responsive vertical accordion for the 5 Core Strengths.
 *   `certified.php`: Certification gallery showcasing license modals and GPU-accelerated statistics.
-*   `contact.php`: Contact portal featuring neumorphic inquiry forms, VanillaTilt office locations, and brutalist maps.
+*   `contact.php`: Restructured contact portal with a 4-section vertical flow: (1) **Our Offices** — a 3-column neumorphic grid showcasing HQ (Kuala Lumpur), Penang Office, and Perak Office with horizontal icon-left card layout; (2) **Contact Details** — a 2×2 grid for Phone, Email, Business Hours, and WhatsApp Support cards; (3) **HQ Office Map** — a neo-brutalist Google Maps embed; (4) **Inquiry Form** — a full-width neumorphic form. All section titles use corporate dark blue (`#093862`), text is left-aligned, and cards use a `linear-gradient` raised background for clear visibility. GSAP animations use `ScrollTrigger.create()` with `onEnter` + `gsap.fromTo()` pattern to prevent the opacity-flash bug caused by `gsap.from()` setting `opacity: 0` before the trigger fires.
 *   `router.php`: Dynamic clean-URL routing engine that handles clean URLs and overrides PHP's static assets serving bug.
 
 ### Shared Templates (`includes/`)

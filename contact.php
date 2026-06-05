@@ -11,7 +11,7 @@ include 'includes/header.php';
 
 <?php 
 $heroSubtitle = "GET IN TOUCH";
-$heroTitle = "Connect With <span style='color: #005ee9;'>AB MALAYA</span>";
+$heroTitle = "<span style='color: #093862;'>Connect With</span> <span style='color: #005ee9;'>AB MALAYA</span>";
 $heroDesc = "Whether you require industrial support, technical consultation, logistics coordination, or engineering solutions, our team is ready to assist you.";
 $showButtons = false;
 include 'includes/hero_visual.php';
@@ -19,7 +19,7 @@ include 'includes/hero_visual.php';
 
 <section class="contact-main" id="office-addresses">
     <div class="container">
-        <div class="section-header text-center">
+        <div class="section-header">
             <span class="tag">LOCATIONS</span>
             <h2>Our Offices</h2>
         </div>
@@ -64,7 +64,7 @@ include 'includes/hero_visual.php';
 <!-- Contact Details Section -->
 <section class="contact-main" id="contact-details" style="padding-top: 0;">
     <div class="container">
-        <div class="section-header text-center">
+        <div class="section-header">
             <span class="tag">GET IN TOUCH</span>
             <h2>Contact Details</h2>
         </div>
@@ -134,7 +134,7 @@ include 'includes/hero_visual.php';
 <!-- Full-Width Map Section -->
 <section class="map-section" id="map">
     <div class="container">
-        <div class="section-header text-center">
+        <div class="section-header">
             <span class="tag">LOCATION MAP</span>
             <h2>HQ Office Map</h2>
         </div>
@@ -170,7 +170,7 @@ include 'includes/hero_visual.php';
     <div class="container">
         <div class="inquiry-form-wrapper">
             <div class="neu-card-raised form-wrapper">
-                <div class="form-header text-center">
+                <div class="form-header">
                     <span class="tag">INQUIRY</span>
                     <h2>Send a Message</h2>
                 </div>
@@ -253,10 +253,7 @@ include 'includes/hero_visual.php';
 
     .section-header {
         margin-bottom: 3rem;
-    }
-
-    .section-header.text-center {
-        text-align: center;
+        text-align: left;
     }
 
     .tag {
@@ -268,10 +265,10 @@ include 'includes/hero_visual.php';
         margin-bottom: 0.5rem;
     }
 
-    .section-header h2 {
+    .section-header h2, .form-header h2 {
         font-size: 2.5rem;
         font-weight: 800;
-        color: #1e293b;
+        color: var(--accent-blue);
     }
 
     /* 3-Column Address Grid */
@@ -281,26 +278,31 @@ include 'includes/hero_visual.php';
         gap: 2.5rem;
     }
 
-    /* 4-Column Details Grid */
+    /* 2-Column Details Grid (2 rows) */
     .details-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
 
     /* Clean Neumorphic Cards */
     .neu-card-raised {
-        background: var(--neu-bg);
+        background: linear-gradient(145deg, #eef1f6, #e2e5ea);
         border-radius: 30px;
-        box-shadow: 15px 15px 30px var(--neu-shadow-dark), -15px -15px 30px var(--neu-shadow-light);
+        box-shadow: 20px 20px 40px #b0b4ba, -20px -20px 40px #ffffff;
         padding: 2.5rem 2rem;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
         position: relative;
+    }
+
+    /* Horizontal card layout: icon left, text left, buttons right */
+    .info-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 1.5rem;
     }
 
     .neu-card-raised:hover {
@@ -319,7 +321,6 @@ include 'includes/hero_visual.php';
         justify-content: center;
         font-size: 1.8rem;
         color: var(--accent-blue-bright);
-        margin-bottom: 1.5rem;
         flex-shrink: 0;
         position: relative;
     }
@@ -345,7 +346,8 @@ include 'includes/hero_visual.php';
     }
 
     .info-content {
-        width: 100%;
+        flex: 1;
+        min-width: 0;
     }
 
     .info-content h4 {
@@ -375,7 +377,6 @@ include 'includes/hero_visual.php';
         transition: color 0.3s;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
         gap: 8px;
     }
 
@@ -403,9 +404,7 @@ include 'includes/hero_visual.php';
     }
 
     .wa-btn-container {
-        width: 100%;
         display: flex;
-        justify-content: center;
     }
 
     .neu-wa-btn {
@@ -524,8 +523,7 @@ include 'includes/hero_visual.php';
     }
 
     .inquiry-form-wrapper {
-        max-width: 900px;
-        margin: 0 auto;
+        width: 100%;
     }
 
     .form-wrapper {
@@ -622,12 +620,7 @@ include 'includes/hero_visual.php';
     }
 
     /* Responsiveness */
-    @media (max-width: 1200px) {
-        .details-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-    }
+
 
     @media (max-width: 992px) {
         .address-grid {
@@ -650,6 +643,16 @@ include 'includes/hero_visual.php';
         .neu-card-raised {
             padding: 2rem;
             border-radius: 24px;
+        }
+        .info-card {
+            flex-direction: column;
+            text-align: center;
+        }
+        .wa-btn-container {
+            justify-content: center;
+        }
+        .info-content .links a {
+            justify-content: center;
         }
         .neu-form .form-row {
             flex-direction: column;

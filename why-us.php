@@ -7,7 +7,7 @@ include 'includes/header.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Why AB Malaya?</span><br>Certified & Trusted.";
+$heroTitle = "<span style='color: #005ee9;'>Why AB Malaya?</span><br><span style='color: #093862;'>Certified & Trusted.</span>";
 $heroDesc = "AB MALAYA is a trusted partner delivering certified quality, industrial compliance, end-to-end solutions, and environmental sustainability across Malaysia and neighbouring countries.";
 $showButtons = false;
 include 'includes/hero_visual.php';

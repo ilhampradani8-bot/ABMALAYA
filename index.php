@@ -12,7 +12,7 @@ include 'includes/header.php';
 <link rel="stylesheet" href="assets/css/home.css">
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Integrated Industrial Solutions</span> for a Smarter Future";
+$heroTitle = "<span style='color: #005ee9;'>Integrated Industrial Solutions</span> <span style='color: #093862;'>for a Smarter Future</span>";
 $heroSubtitle = ""; /* Subtitle merged into Title for impact */
 $heroDesc = "AB Malaya Sdn Bhd delivers reliable solutions across construction, marine services, logistics, corrosion management, and digital technology — empowering industries with operational excellence, technical precision, and sustainable growth.";
 $showButtons = true;
@@ -495,7 +495,7 @@ include 'includes/hero_visual.php';
         <div style="display: flex; justify-content: space-between; align-items: stretch;">
             <!-- Left Half: Exactly 50% -->
             <div style="width: 50%; text-align: left; padding-right: 4rem;">
-                <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #000; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
+                <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #093862; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
                     Leading the Way in <br><span style="color: #005ee9;">Industrial Evolution</span>
                 </h2>
                 <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; margin-bottom: 1.5rem; width: 100%;">
@@ -532,7 +532,7 @@ include 'includes/hero_visual.php';
     <div class="container">
         <div class="section-title" style="text-align: left; margin-bottom: 3rem;">
             <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 0.5rem; font-family: 'Aeonik', sans-serif;">Solutions</h5>
-            <h2 style="font-size: 3rem; color: #000; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Integrated Expertise</h2>
+            <h2 style="font-size: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;"><span style="color: #093862;">Integrated</span> <span style="color: #005ee9;">Expertise</span></h2>
         </div>
     </div>
         
@@ -928,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Left Side: Address & Map Info -->
             <div style="width: 50%; padding-right: 4rem;">
                 <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Offices</h5>
-                <h2 style="font-size: 3.2rem; color: #000; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Our Offices & <br>Headquarters</h2>
+                <h2 style="font-size: 3.2rem; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;"><span style="color: #093862;">Our Offices &</span> <br><span style="color: #005ee9;">Headquarters</span></h2>
                 
                 <!-- Head Office (HQ) -->
                 <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
