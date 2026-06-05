@@ -47,7 +47,6 @@ include 'includes/hero_visual.php';
                         <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
                         <div class="blog-slider__title">CIDB G7 License</div>
                         <div class="blog-slider__text">The highest grade contractor registration in Malaysia, authorizing AB MALAYA to undertake civil engineering and building construction projects of unlimited value.</div>
-                        <button class="blog-slider__button" onclick="openPreview('assets/img/certified/cidb-certificate.png', 'CIDB G7 License')">VIEW CERTIFICATE</button>
                     </div>
                 </div>
 
@@ -60,7 +59,6 @@ include 'includes/hero_visual.php';
                         <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
                         <div class="blog-slider__title">MOF License</div>
                         <div class="blog-slider__text">Official procurement registration with the Ministry of Finance Malaysia, qualifying AB MALAYA for government tenders and corporate financial solutions.</div>
-                        <button class="blog-slider__button" onclick="openPreview('assets/img/mof.png', 'MOF Registration Certificate')">VIEW CERTIFICATE</button>
                     </div>
                 </div>
 
@@ -73,7 +71,6 @@ include 'includes/hero_visual.php';
                         <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
                         <div class="blog-slider__title">SSM Registration</div>
                         <div class="blog-slider__text">Official incorporation certificate from the Companies Commission of Malaysia, verifying our legal status and operational compliance as a leading industry provider.</div>
-                        <button class="blog-slider__button" onclick="openPreview('assets/img/certified/ssm-certificate.png', 'SSM Corporate Certificate')">VIEW CERTIFICATE</button>
                     </div>
                 </div>
             </div>
@@ -91,154 +88,178 @@ include 'includes/hero_visual.php';
     </div>
 </section>
 
-<!-- Section 2: Core Pillars & Strategic Advantages (Interactive Horizontal Slider!) -->
+<!-- Section 2: Core Pillars & Strategic Advantages -->
 <section class="excellence-philosophy" id="advantages">
-    <div class="container" style="width: 100%; max-width: 100%; padding: 0; position: relative;">
+    <div class="container" style="width: 100%; max-width: 1200px; padding: 0 20px; position: relative;">
         <div class="section-header strengths-sec-header">
             <h5 class="strengths-subtitle">Core Strengths</h5>
             <h2 class="strengths-title">Strategic Advantages of Choosing <span style="color: var(--primary);">AB MALAYA</span></h2>
         </div>
 
-        <!-- Horizontal Swiper Slider for Core Strengths (Slide dari kiri ke kanan) -->
-        <div class="strengths-slider-container">
-            <div class="swiper strengths-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1: Technical Expertise -->
-                    <div class="swiper-slide">
-                        <div class="slide-card pillar-card-3d">
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/civil.png" alt="Technical Expertise Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Technical Expertise" loading="lazy">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Technical Expertise</div>
-                                        <div class="card-desc">Our team combines multidisciplinary industrial experience with practical field execution and technical precision.</div>
-                                        <div class="pillar-tag-3d">Compliance & Precision</div>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="strengths-accordion">
+            <!-- Strength 1: Technical Expertise -->
+            <div class="strength-item" id="expertise">
+                <div class="strength-trigger" onclick="toggleStrength('expertise')">
+                    <div class="strength-trigger-left">
+                        <span class="strength-num">01</span>
+                        <div class="strength-icon-mini">
+                            <img src="assets/img/service3d/civil.png" alt="Technical Expertise">
                         </div>
+                        <h3 class="strength-item-title">Technical Expertise</h3>
                     </div>
-
-                    <!-- Slide 2: End-to-End Solutions -->
-                    <div class="swiper-slide">
-                        <div class="slide-card pillar-card-3d">
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/cinstruction.png" alt="End-to-End Solutions Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&h=1000" alt="End-to-End Solutions" loading="lazy">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">End-to-End Solutions</div>
-                                        <div class="card-desc">We provide integrated support from planning and consultation to execution, maintenance, and after-sales support.</div>
-                                        <div class="pillar-tag-3d">Core Advantage: End-to-End</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3: Regional Operational Capability -->
-                    <div class="swiper-slide">
-                        <div class="slide-card pillar-card-3d">
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/logistics.png" alt="Regional Operational Capability Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Regional Operational Capability" loading="lazy">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Regional Capability</div>
-                                        <div class="card-desc">Our cross-border operational network enables seamless coordination across Malaysia and neighbouring countries.</div>
-                                        <div class="pillar-tag-3d">Operational Reach</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Sustainability Commitment -->
-                    <div class="swiper-slide">
-                        <div class="slide-card pillar-card-3d" id="sustainability">
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/pohon3d.png" alt="Sustainability Commitment Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Sustainability Commitment" loading="lazy">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Sustainability</div>
-                                        <div class="card-desc">We support environmentally responsible practices through sustainable operational methods and efficient resource management.</div>
-                                        <div class="pillar-tag-3d">Sustainability: Eco-Friendly</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5: Customer-Focused Approach -->
-                    <div class="swiper-slide">
-                        <div class="slide-card pillar-card-3d">
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/renov.png" alt="Customer-Focused Approach Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&h=1000" alt="Customer-Focused Approach" loading="lazy">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Customer-Focused</div>
-                                        <div class="card-desc">We prioritize long-term partnerships by delivering reliable service, responsive communication, and consistent support.</div>
-                                        <div class="pillar-tag-3d">Core Advantage: After Sales</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6: Compliance & Safety -->
-                    <div class="swiper-slide">
-                        <div class="slide-card pillar-card-3d" id="compliance">
-                            <div class="badge-3d">
-                                <img src="assets/img/service3d/mekanikal.png" alt="Compliance & Safety Icon">
-                            </div>
-                            <div class="media">
-                                <img src="https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?q=80&w=800&h=1000" alt="Compliance & Safety" loading="lazy">
-                            </div>
-                            <div class="card-sections">
-                                <div class="card-footer-layout">
-                                    <div class="card-footer-right">
-                                        <div class="card-caption">Compliance & Safety</div>
-                                        <div class="card-desc">We don't just follow safety and environmental rules; we live them. Our Zero-Harm goal is integrated into every workflow.</div>
-                                        <div class="pillar-tag-3d">Compliance: Safety Culture</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="strength-trigger-right">
+                        <button class="strength-view-btn">
+                            <span class="btn-text">View Details</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
                     </div>
                 </div>
-                <!-- Pagination -->
-                <div class="swiper-pagination strengths-swiper-pagination"></div>
+                <div class="strength-reveal-content">
+                    <div class="strength-inner-grid">
+                        <div class="strength-text-col">
+                            <span class="pillar-tag-3d">Compliance & Precision</span>
+                            <p class="strength-description">Our team combines multidisciplinary industrial experience with practical field execution and technical precision.</p>
+                        </div>
+                        <div class="strength-image-col">
+                            <div class="badge-3d-wrapper">
+                                <img src="assets/img/service3d/civil.png" alt="Technical Expertise 3D Icon" class="badge-3d-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-bg-cover" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&h=800');"></div>
+                </div>
             </div>
 
-            <!-- Premium Custom Navigation Buttons -->
-            <div class="strengths-nav-btn strengths-prev-btn" title="Previous Slide">
-                <i class="fas fa-chevron-left"></i>
+            <!-- Strength 2: End-to-End Solutions -->
+            <div class="strength-item" id="solutions">
+                <div class="strength-trigger" onclick="toggleStrength('solutions')">
+                    <div class="strength-trigger-left">
+                        <span class="strength-num">02</span>
+                        <div class="strength-icon-mini">
+                            <img src="assets/img/service3d/cinstruction.png" alt="End-to-End Solutions">
+                        </div>
+                        <h3 class="strength-item-title">End-to-End Solutions</h3>
+                    </div>
+                    <div class="strength-trigger-right">
+                        <button class="strength-view-btn">
+                            <span class="btn-text">View Details</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="strength-reveal-content">
+                    <div class="strength-inner-grid">
+                        <div class="strength-text-col">
+                            <span class="pillar-tag-3d">Core Advantage: End-to-End</span>
+                            <p class="strength-description">We provide integrated support from planning and consultation to execution, maintenance, and after-sales support.</p>
+                        </div>
+                        <div class="strength-image-col">
+                            <div class="badge-3d-wrapper">
+                                <img src="assets/img/service3d/cinstruction.png" alt="End-to-End Solutions 3D Icon" class="badge-3d-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-bg-cover" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&h=800');"></div>
+                </div>
             </div>
-            <div class="strengths-nav-btn strengths-next-btn" title="Next Slide">
-                <i class="fas fa-chevron-right"></i>
+
+            <!-- Strength 3: Regional Operational Capability -->
+            <div class="strength-item" id="regional">
+                <div class="strength-trigger" onclick="toggleStrength('regional')">
+                    <div class="strength-trigger-left">
+                        <span class="strength-num">03</span>
+                        <div class="strength-icon-mini">
+                            <img src="assets/img/service3d/logistics.png" alt="Regional Operational Capability">
+                        </div>
+                        <h3 class="strength-item-title">Regional Operational Capability</h3>
+                    </div>
+                    <div class="strength-trigger-right">
+                        <button class="strength-view-btn">
+                            <span class="btn-text">View Details</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="strength-reveal-content">
+                    <div class="strength-inner-grid">
+                        <div class="strength-text-col">
+                            <span class="pillar-tag-3d">Operational Reach</span>
+                            <p class="strength-description">Our cross-border operational network enables seamless coordination across Malaysia and neighbouring countries.</p>
+                        </div>
+                        <div class="strength-image-col">
+                            <div class="badge-3d-wrapper">
+                                <img src="assets/img/service3d/logistics.png" alt="Regional Operational Capability 3D Icon" class="badge-3d-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-bg-cover" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&h=800');"></div>
+                </div>
+            </div>
+
+            <!-- Strength 4: Sustainability Commitment -->
+            <div class="strength-item" id="sustainability">
+                <div class="strength-trigger" onclick="toggleStrength('sustainability')">
+                    <div class="strength-trigger-left">
+                        <span class="strength-num">04</span>
+                        <div class="strength-icon-mini">
+                            <img src="assets/img/service3d/pohon3d.png" alt="Sustainability Commitment">
+                        </div>
+                        <h3 class="strength-item-title">Sustainability Commitment</h3>
+                    </div>
+                    <div class="strength-trigger-right">
+                        <button class="strength-view-btn">
+                            <span class="btn-text">View Details</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="strength-reveal-content">
+                    <div class="strength-inner-grid">
+                        <div class="strength-text-col">
+                            <span class="pillar-tag-3d">Sustainability: Eco-Friendly</span>
+                            <p class="strength-description">We support environmentally responsible practices through sustainable operational methods and efficient resource management.</p>
+                        </div>
+                        <div class="strength-image-col">
+                            <div class="badge-3d-wrapper">
+                                <img src="assets/img/service3d/pohon3d.png" alt="Sustainability Commitment 3D Icon" class="badge-3d-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-bg-cover" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1200&h=800');"></div>
+                </div>
+            </div>
+
+            <!-- Strength 5: Customer-Focused Approach -->
+            <div class="strength-item" id="customer">
+                <div class="strength-trigger" onclick="toggleStrength('customer')">
+                    <div class="strength-trigger-left">
+                        <span class="strength-num">05</span>
+                        <div class="strength-icon-mini">
+                            <img src="assets/img/service3d/renov.png" alt="Customer-Focused Approach">
+                        </div>
+                        <h3 class="strength-item-title">Customer-Focused Approach</h3>
+                    </div>
+                    <div class="strength-trigger-right">
+                        <button class="strength-view-btn">
+                            <span class="btn-text">View Details</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="strength-reveal-content">
+                    <div class="strength-inner-grid">
+                        <div class="strength-text-col">
+                            <span class="pillar-tag-3d">Core Advantage: After Sales</span>
+                            <p class="strength-description">We prioritize long-term partnerships by delivering reliable service, responsive communication, and consistent operational support.</p>
+                        </div>
+                        <div class="strength-image-col">
+                            <div class="badge-3d-wrapper">
+                                <img src="assets/img/service3d/renov.png" alt="Customer-Focused Approach 3D Icon" class="badge-3d-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-bg-cover" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=800');"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -743,140 +764,227 @@ include 'includes/hero_visual.php';
         cursor: zoom-out;
     }
 
-    /* Core Strengths Swiper Slider - Matching index.php services */
-    .strengths-slider-container {
-        width: 100%;
-        max-width: 1240px;
-        margin: 0 auto;
-        padding: 0 20px;
-        position: relative;
-    }
-
-    .strengths-swiper {
-        padding: 30px 10px 50px !important;
-        overflow: visible !important;
-    }
-
-    .swiper-slide {
+    /* Custom Accordion Styling */
+    .strengths-accordion {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-    }
-
-    .slide-card {
+        flex-direction: column;
+        gap: 25px;
         width: 100%;
-        max-width: 22rem;
-        height: 30rem;
-        background: #000;
+        margin-top: 40px;
+    }
+
+    .strength-item {
+        background: #e6e9ef;
         border-radius: 20px;
-        position: relative;
+        box-shadow: 6px 6px 12px var(--neu-shadow-dark), -6px -6px 12px var(--neu-shadow-light);
+        border: 1px solid rgba(255, 255, 255, 0.5);
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        transform-style: preserve-3d;
-        will-change: transform, opacity;
-        backface-visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
     }
 
-    .slide-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 30px 60px rgba(0, 94, 233, 0.25);
+    .strength-item:hover {
+        box-shadow: 8px 8px 16px var(--neu-shadow-dark), -8px -8px 16px var(--neu-shadow-light);
+        transform: translateY(-2px);
     }
 
-    .media {
+    .strength-trigger {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 32px;
+        cursor: pointer;
+        user-select: none;
+        z-index: 10;
+        position: relative;
+        background: transparent;
+        transition: background 0.3s ease;
+    }
+
+    .strength-trigger-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .strength-num {
+        font-family: 'Aeonik', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--primary);
+        opacity: 0.8;
+    }
+
+    .strength-icon-mini {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.4s ease;
+    }
+
+    .strength-icon-mini img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .strength-item-title {
+        font-family: 'Aeonik', sans-serif;
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0;
+        transition: color 0.3s ease;
+    }
+
+    .strength-view-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #e6e9ef;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-family: 'Aeonik', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 3px 3px 6px var(--neu-shadow-dark), -3px -3px 6px var(--neu-shadow-light);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .strength-item:hover .strength-view-btn {
+        color: var(--primary);
+    }
+
+    .strength-view-btn i {
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reveal content area */
+    .strength-reveal-content {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                    visibility 0.6s;
+        z-index: 5;
+    }
+
+    .strength-inner-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        padding: 20px 40px 48px;
+        position: relative;
+        z-index: 6;
+    }
+
+    .strength-text-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .strength-description {
+        font-family: 'Aeonik', sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 15px 0 0;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .strength-image-col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .badge-3d-wrapper {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+        animation: float3d 6s ease-in-out infinite;
+    }
+
+    .badge-3d-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* Float 3D Animation */
+    @keyframes float3d {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(3deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Background image of expanded item */
+    .strength-bg-cover {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 4;
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        -webkit-user-drag: none;
-        user-drag: none;
-        pointer-events: none;
+    /* Expanded state styles */
+    .strength-item.active {
+        background: #0f172a;
+        border-color: rgba(255, 255, 255, 0.1);
     }
 
-    .slide-card:hover .media img {
-        transform: scale(1.05);
+    .strength-item.active .strength-item-title {
+        color: #ffffff;
     }
 
-    /* Floating 3D Hologram Badge in Top-Left Corner */
-    .badge-3d {
-        position: absolute;
-        top: 24px;
-        left: 24px;
-        width: 72px;
-        height: 72px;
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .strength-item.active .strength-num {
+        color: #38bdf8;
     }
 
-    .badge-3d img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .strength-item.active .strength-view-btn {
+        background: #0f172a;
+        color: #ffffff;
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(255, 255, 255, 0.05);
     }
 
-    .slide-card:hover .badge-3d {
-        transform: translateY(-4px) scale(1.08);
+    .strength-item.active .strength-view-btn i {
+        transform: rotate(180deg);
     }
 
-    .slide-card:hover .badge-3d img {
-        transform: scale(1.12) rotate(6deg);
+    .strength-item.active .strength-reveal-content {
+        max-height: 800px;
+        opacity: 1;
+        visibility: visible;
     }
 
-    .card-sections {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 3rem 2rem 2.2rem;
-        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
-        z-index: 2;
+    .strength-item.active .strength-bg-cover {
+        opacity: 0.95;
     }
 
-    .card-footer-layout {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 100%;
-    }
-
-    .card-footer-right {
-        text-align: left;
-        flex-grow: 1;
-    }
-
-    .card-caption {
-        color: #fff;
-        font-family: 'Aeonik', sans-serif;
-        font-weight: 800;
-        font-size: 1.5rem;
-        margin-bottom: 8px !important;
-        letter-spacing: -0.5px;
-        text-align: left;
-    }
-
-    .card-desc {
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 0.88rem;
-        font-family: 'Aeonik', sans-serif;
-        line-height: 1.4;
-        font-weight: 400;
-        text-align: left;
-        margin-bottom: 12px !important;
+    .strength-item.active .strength-icon-mini {
+        transform: rotate(10deg) scale(1.1);
     }
 
     /* Tag overlay within card */
@@ -893,86 +1001,88 @@ include 'includes/hero_visual.php';
         box-shadow: 0 4px 10px rgba(0, 94, 233, 0.3);
     }
 
-    /* Custom Swiper Pagination for Strengths */
-    .strengths-swiper-pagination {
-        position: relative !important;
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100% !important;
-    }
-
-    .strengths-swiper-pagination .swiper-pagination-bullet {
-        width: 11px;
-        height: 11px;
-        border-radius: 10px;
-        background: #005ee9;
-        opacity: 0.2;
-        transition: all .3s;
-        margin: 0 6px !important;
-    }
-
-    .strengths-swiper-pagination .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: #005ee9;
-        width: 30px;
-        box-shadow: 0px 0px 20px rgba(0, 94, 233, 0.3);
-    }
-
-    /* Premium Navigation Buttons for Strengths Slider */
-    .strengths-nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 54px;
-        height: 54px;
-        border-radius: 50%;
-        background: #fff;
-        box-shadow: 0 10px 30px rgba(0, 94, 233, 0.15);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #0f172a;
-        font-size: 1.1rem;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        border: 1px solid rgba(0, 94, 233, 0.08);
-    }
-
-    .strengths-prev-btn {
-        left: -27px;
-    }
-
-    .strengths-next-btn {
-        right: -27px;
-    }
-
-    .strengths-nav-btn:hover {
-        background: var(--primary);
-        color: #fff;
-        box-shadow: 0 15px 35px rgba(0, 94, 233, 0.35);
-        transform: translateY(-50%) scale(1.1);
-        border-color: var(--primary);
-    }
-
-    .strengths-nav-btn.swiper-button-disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-        pointer-events: none;
-    }
-
-    @media (max-width: 1280px) {
-        .strengths-prev-btn {
-            left: 10px;
-        }
-        .strengths-next-btn {
-            right: 10px;
-        }
-    }
-
     /* Responsive adjustments for mobile/tablet */
+    @media (max-width: 768px) {
+        .certification-showcase {
+            padding: 40px 0 !important;
+        }
+        .excellence-philosophy {
+            padding: 40px 0 !important;
+        }
+        .cert-sec-header {
+            margin-bottom: 25px !important;
+        }
+        .strengths-sec-header {
+            margin-bottom: 25px !important;
+            padding: 0 15px;
+        }
+        
+        /* Section typography mobile optimization */
+        .award-title {
+            font-size: 1.6rem !important;
+            gap: 8px !important;
+        }
+        .cert-subtitle {
+            font-size: 0.85rem !important;
+        }
+        .strengths-subtitle {
+            font-size: 0.72rem !important;
+            letter-spacing: 2px !important;
+            margin-bottom: 0.3rem !important;
+        }
+        .strengths-title {
+            font-size: 1.5rem !important;
+            letter-spacing: -0.6px !important;
+            line-height: 1.25 !important;
+        }
+
+        .blog-slider {
+            margin: 20px auto !important;
+            padding: 20px !important;
+        }
+
+        .strength-trigger {
+            padding: 18px 20px;
+        }
+        
+        .strength-num {
+            font-size: 1.1rem;
+        }
+        
+        .strength-icon-mini {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .strength-item-title {
+            font-size: 1rem;
+        }
+        
+        .strength-view-btn {
+            padding: 8px 14px;
+            font-size: 0.7rem;
+        }
+        
+        .strength-inner-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 10px 20px 24px;
+        }
+        
+        .strength-description {
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        
+        .strength-text-col {
+            align-items: center;
+        }
+        
+        .badge-3d-wrapper {
+            width: 120px;
+            height: 120px;
+        }
+    }
     @media (max-width: 768px) {
         .certification-showcase {
             padding: 40px 0 !important;
@@ -1073,57 +1183,67 @@ include 'includes/hero_visual.php';
         }
     });
 
-    // Initialize Swiper for Core Strengths Horizontal Slider (Slide dari kiri ke kanan!)
-    var strengthsSwiper = new Swiper('.strengths-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        centeredSlides: true,
-        autoplay: {
-            delay: 4500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.strengths-swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.strengths-next-btn',
-            prevEl: '.strengths-prev-btn',
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 25,
-                centeredSlides: false
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-                centeredSlides: false
-            }
+    // Toggle Accordion Strengths
+    function toggleStrength(id) {
+        const item = document.getElementById(id);
+        const isActive = item.classList.contains('active');
+        
+        // Close other active strengths
+        document.querySelectorAll('.strength-item').forEach(el => {
+            el.classList.remove('active');
+        });
+        
+        if (!isActive) {
+            item.classList.add('active');
+            // Smooth scroll to the expanded item
+            setTimeout(() => {
+                const yOffset = -120;
+                const y = item.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                if (window.lenis) {
+                    window.lenis.scrollTo(y, { duration: 1.2 });
+                } else {
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 300);
         }
-    });
+        
+        // Recalibrate Lenis scroll triggers
+        setTimeout(() => {
+            if (window.lenis) {
+                window.lenis.resize();
+            }
+        }, 600);
+    }
 
     // Handle URL Hash on Page Load or Hash Change without browser scroll jumping
     function handleWhyUsHash() {
         const hash = window.location.hash;
         if (hash) {
-            let targetIndex = -1;
-            if (hash === '#sustainability') {
-                targetIndex = 3;
-            } else if (hash === '#compliance') {
-                targetIndex = 5;
-            } else if (hash === '#advantages' || hash === '#core-advantages') {
-                targetIndex = 1;
-            } else if (hash === '#expertise' || hash === '#technical') {
-                targetIndex = 0;
+            let targetId = hash.substring(1);
+            
+            // Map legacy or custom hashes if any
+            if (targetId === 'advantages' || targetId === 'core-advantages') {
+                targetId = 'expertise'; // default to first one
             }
             
-            if (targetIndex !== -1 && typeof strengthsSwiper !== 'undefined') {
+            const targetItem = document.getElementById(targetId);
+            if (targetItem) {
+                if (targetItem.classList.contains('strength-item')) {
+                    document.querySelectorAll('.strength-item').forEach(el => {
+                        el.classList.remove('active');
+                    });
+                    targetItem.classList.add('active');
+                }
+                
                 setTimeout(() => {
-                    strengthsSwiper.slideToLoop(targetIndex, 400);
-                }, 150);
+                    const yOffset = -120;
+                    const y = targetItem.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    if (window.lenis) {
+                        window.lenis.scrollTo(y, { duration: 1.2 });
+                    } else {
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                }, 200);
             }
         }
     }

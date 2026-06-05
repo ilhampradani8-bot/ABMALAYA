@@ -1203,10 +1203,12 @@
                     <div class="nav-item-wrapper">
                         <a href="/why-us" class="nav-link-item <?php echo $currentPage == 'why-us' ? 'active' : ''; ?>">Why Us <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/why-us#certified"><i class="fas fa-certificate"></i> Certified & Licensed</a>
-                            <a href="/why-us#compliance"><i class="fas fa-shield-halved"></i> Compliance & Safety</a>
-                            <a href="/why-us#sustainability"><i class="fas fa-leaf"></i> Sustainability</a>
-                            <a href="/why-us#advantages"><i class="fas fa-award"></i> Core Advantages</a>
+                            <a href="/why-us#certified"><i class="fas fa-certificate"></i> Certified & Trusted</a>
+                            <a href="/why-us#expertise"><i class="fas fa-briefcase"></i> Technical Expertise</a>
+                            <a href="/why-us#solutions"><i class="fas fa-cubes"></i> End-to-End Solutions</a>
+                            <a href="/why-us#regional"><i class="fas fa-globe"></i> Regional Operational Capability</a>
+                            <a href="/why-us#sustainability"><i class="fas fa-leaf"></i> Sustainability Commitment</a>
+                            <a href="/why-us#customer"><i class="fas fa-handshake"></i> Customer-Focused Approach</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
@@ -1293,10 +1295,12 @@
                         <a href="javascript:void(0)" class="mobile-sub-toggle">Why Us <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
                         <div class="mobile-sub-menu">
                             <a href="/why-us">Why Us Page</a>
-                            <a href="/why-us#certified">Certified & Licensed</a>
-                            <a href="/why-us#compliance">Compliance & Safety</a>
-                            <a href="/why-us#sustainability">Sustainability</a>
-                            <a href="/why-us#advantages">Core Advantages</a>
+                            <a href="/why-us#certified">Certified & Trusted</a>
+                            <a href="/why-us#expertise">Technical Expertise</a>
+                            <a href="/why-us#solutions">End-to-End Solutions</a>
+                            <a href="/why-us#regional">Regional Operational Capability</a>
+                            <a href="/why-us#sustainability">Sustainability Commitment</a>
+                            <a href="/why-us#customer">Customer-Focused Approach</a>
                         </div>
                     </div>
                     

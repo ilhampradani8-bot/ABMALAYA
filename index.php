@@ -700,10 +700,17 @@ include 'includes/hero_visual.php';
 <!-- Client Logos Section (Partners) -->
 <section id="clients" class="client-marquee-section">
     <div class="marquee-container">
-        <h5 class="marquee-title">Our Strategic Partners</h5>
+        <!-- Interactive Marquee Tabs -->
+        <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 4.5rem;">
+            <div class="marquee-tabs">
+                <button class="marquee-tab-btn active" data-target="partners-track">Strategic Partners</button>
+                <button class="marquee-tab-btn" data-target="accredited-track">Accredited & Certified</button>
+            </div>
+        </div>
         
         <div class="marquee-content">
-            <div class="marquee-track">
+            <!-- Strategic Partners Track -->
+            <div class="marquee-track" id="partners-track">
                 <!-- Original Set -->
                 <div class="client-logo-item">
                     <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
@@ -731,25 +738,122 @@ include 'includes/hero_visual.php';
                     <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
                 </div>
             </div>
+
+            <!-- Accredited & Certified Track -->
+            <div class="marquee-track" id="accredited-track" style="display: none;">
+                <!-- Original Set -->
+                <div class="client-logo-item">
+                    <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/mof.png" alt="MOF">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/ssm.png" alt="SSM">
+                </div>
+                <!-- Duplicate Set 1 -->
+                <div class="client-logo-item">
+                    <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/mof.png" alt="MOF">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/ssm.png" alt="SSM">
+                </div>
+                <!-- Duplicate Set 2 -->
+                <div class="client-logo-item">
+                    <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/mof.png" alt="MOF">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/ssm.png" alt="SSM">
+                </div>
+                <!-- Duplicate Set 3 -->
+                <div class="client-logo-item">
+                    <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/mof.png" alt="MOF">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/img/ssm.png" alt="SSM">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Inline script fallback to prevent caching issues -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.marquee-tab-btn');
+    const tracks = document.querySelectorAll('.marquee-track');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle active class on tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            const targetId = this.getAttribute('data-target');
+            
+            // Toggle visibility of tracks
+            tracks.forEach(track => {
+                if (track.id === targetId) {
+                    track.style.display = 'flex';
+                } else {
+                    track.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+
 <style>
     .client-marquee-section {
-        background: #fff;
+        background: #f8fafc;
         padding: 100px 0;
         border-bottom: 1px solid #f1f5f9;
         overflow: hidden;
     }
-    .marquee-title {
-        text-align: center;
-        color: #94a3b8;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 0.7rem;
-        margin-bottom: 4.5rem;
+    .marquee-tabs {
+        display: inline-flex;
+        background: #f8fafc;
+        padding: 6px;
+        border-radius: 16px;
+        box-shadow: inset 3px 3px 6px #cbd5e1, inset -3px -3px 6px #ffffff;
+        position: relative;
+        z-index: 10;
+    }
+    .marquee-tab-btn {
+        background: transparent;
+        border: none;
+        outline: none;
         font-family: 'Aeonik', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #64748b;
+        padding: 10px 22px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+    .marquee-tab-btn.active {
+        color: #005ee9;
+        background: #f8fafc;
+        box-shadow: 3px 3px 6px #cbd5e1, -3px -3px 6px #ffffff;
+    }
+    .marquee-tab-btn:hover:not(.active) {
+        color: #005ee9;
     }
     .marquee-content {
         width: 100%;
@@ -774,7 +878,7 @@ include 'includes/hero_visual.php';
         transform-style: preserve-3d;
     }
     .client-logo-item:hover {
-        background: #f8fafc;
+        background: #f1f5f9;
     }
     .client-logo-item img {
         height: 55px;
@@ -798,8 +902,22 @@ include 'includes/hero_visual.php';
     @media (max-width: 768px) {
         .marquee-track { gap: 4rem; animation-duration: 9s; }
         .client-logo-item img { height: 45px; }
-        .marquee-title { margin-bottom: 2rem; }
         .client-marquee-section { padding: 40px 0; }
+    }
+
+    @media (max-width: 480px) {
+        .marquee-tabs {
+            border-radius: 8px;
+            width: 90%;
+            display: flex;
+        }
+        .marquee-tab-btn {
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            padding: 8px 12px;
+            flex: 1;
+            text-align: center;
+        }
     }
 </style>
 
@@ -812,11 +930,30 @@ include 'includes/hero_visual.php';
                 <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Offices</h5>
                 <h2 style="font-size: 3.2rem; color: #000; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Our Offices & <br>Headquarters</h2>
                 
-                <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 3rem;">
+                <!-- Head Office (HQ) -->
+                <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
                     <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
                     <div>
-                        <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Office Address</p>
+                        <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Office Address (HQ)</p>
                         <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">2-2-40, Lantai 2 Wisma Rampai, Jalan 34/26, <br>Taman Sri Rampai, 53300 Kuala Lumpur.</p>
+                    </div>
+                </div>
+
+                <!-- Penang Office -->
+                <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
+                    <div>
+                        <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Penang Office</p>
+                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">4761D, Jalan Pongsu Seribu, <br>13200 Kepala Batas, Pulau Pinang.</p>
+                    </div>
+                </div>
+
+                <!-- Perak Office -->
+                <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
+                    <div>
+                        <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Perak Office</p>
+                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">lot 5465B (A), Simpang Empat Pekan Simpang Empat, <br>34400, Semanggol, Perak.</p>
                     </div>
                 </div>
             </div>
@@ -984,6 +1121,6 @@ include 'includes/hero_visual.php';
 <!-- Local Embla Carousel -->
 <script src="assets/js/embla-carousel.umd.js"></script>
 <!-- Home Page Logic -->
-<script src="assets/js/index.js?v=5.4"></script>
+<script src="assets/js/index.js?v=5.5"></script>
 
 <?php include 'includes/footer.php'; ?>

@@ -91,6 +91,11 @@ if (empty($images)) {
                 <a href="<?php echo htmlspecialchars($btn2Link); ?>" class="hero-link secondary-link"><?php echo htmlspecialchars($btn2Text); ?> <i class="fas fa-arrow-right"></i></a>
             </div>
             <?php endif; ?>
+            <?php if(isset($customHeroContent) && $customHeroContent !== ""): ?>
+                <div class="hero-custom-content">
+                    <?php echo $customHeroContent; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

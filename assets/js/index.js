@@ -147,4 +147,24 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         })());
     }
+
+    // --- 3. MARQUEE TABS TOGGLER ---
+    const marqueeTabs = document.querySelectorAll('.marquee-tab-btn');
+    const marqueeTracks = document.querySelectorAll('.marquee-track');
+
+    marqueeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            marqueeTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const targetId = tab.getAttribute('data-target');
+            marqueeTracks.forEach(track => {
+                if (track.id === targetId) {
+                    track.style.display = 'flex';
+                } else {
+                    track.style.display = 'none';
+                }
+            });
+        });
+    });
 });
