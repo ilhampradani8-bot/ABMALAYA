@@ -83,13 +83,9 @@
                 <div class="footer-links">
                     <h4>Contact Us</h4>
                     <ul style="display: flex; flex-direction: column; gap: 12px; padding: 0; list-style: none; margin-bottom: 1.5rem;">
-                        <li style="display: flex; align-items: flex-start; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem; line-height: 1.45;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>Wisma Rampai, Jalan 34/26,<br>Taman Sri Rampai,<br>53300 Kuala Lumpur.</span>
-                        </li>
                         <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
+                            <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#093862'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
                         </li>
                     </ul>
                     
@@ -101,6 +97,31 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                             </button>
                         </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offices Address Row -->
+            <div class="footer-offices">
+                <div class="office-col">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <strong>HQ Office:</strong>
+                        <span>Wisma Rampai, Jalan 34/26,<br>Taman Sri Rampai,<br>53300 Kuala Lumpur.</span>
+                    </div>
+                </div>
+                <div class="office-col">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <strong>Penang Office:</strong>
+                        <span>4761D, Jalan Pongsu Seribu,<br>13200 Kepala Batas,<br>Pulau Pinang.</span>
+                    </div>
+                </div>
+                <div class="office-col">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <strong>Perak Office:</strong>
+                        <span>Lot 5465B (A), Simpang Empat Pekan Simpang Empat,<br>34400 Semanggol, Perak.</span>
                     </div>
                 </div>
             </div>
@@ -315,7 +336,7 @@
         }
 
         .footer-btn:hover {
-            color: #005ee9 !important; /* Brand Blue */
+            color: #093862 !important; /* Brand Dark Blue */
             transform: translateX(6px) !important;
         }
 
@@ -325,7 +346,7 @@
         }
 
         .footer-btn:hover svg {
-            color: #005ee9 !important;
+            color: #093862 !important;
             transform: scale(1.15) !important;
         }
 
@@ -345,8 +366,8 @@
 
         .search-wrapper-footer.active {
             background: rgba(255, 255, 255, 0.1) !important;
-            border-color: #005ee9 !important;
-            box-shadow: 0 4px 15px rgba(0, 94, 233, 0.2) !important;
+            border-color: #093862 !important;
+            box-shadow: 0 4px 15px rgba(9, 56, 98, 0.2) !important;
         }
 
         .search-input-footer {
@@ -358,9 +379,9 @@
         }
 
         .search-wrapper-footer.active .search-btn-footer {
-            background: #005ee9 !important;
+            background: #093862 !important;
             color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(0, 94, 233, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(9, 56, 98, 0.3) !important;
         }
 
         .fade-in-init {
@@ -394,8 +415,8 @@
             width: 240px;
             padding-left: 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-color: #005ee9;
-            box-shadow: 0 4px 15px rgba(0, 94, 233, 0.2);
+            border-color: #093862;
+            box-shadow: 0 4px 15px rgba(9, 56, 98, 0.2);
         }
 
         .search-input-footer {
@@ -433,8 +454,8 @@
         }
 
         .search-wrapper-footer.active .search-btn-footer {
-            background: #005ee9;
-            box-shadow: 0 4px 12px rgba(0, 94, 233, 0.3);
+            background: #093862;
+            box-shadow: 0 4px 12px rgba(9, 56, 98, 0.3);
         }
 
         /* Footer Quick Link Buttons - Clean Text Links with SVG */
@@ -461,12 +482,12 @@
         }
 
         .footer-btn:hover {
-            color: #005ee9 !important;
+            color: #093862 !important;
             transform: translateX(6px);
         }
 
         .footer-btn:hover svg {
-            color: #005ee9;
+            color: #093862;
             transform: scale(1.15);
         }
 
@@ -542,6 +563,49 @@
             }
         }
 
+        /* Premium Offices Layout at bottom of footer */
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 2rem;
+        }
+
+        .office-col {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .office-col svg {
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .office-col div {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .office-col strong {
+            color: #ffffff;
+            font-family: 'Aeonik', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .office-col span {
+            font-family: 'Inter', sans-serif;
+        }
+
         /* Unified Floating Support Capsule Container Style */
         .floating-capsule-wrap {
             position: fixed;
@@ -609,7 +673,7 @@
 
         .cookie-icon {
             font-size: 1.8rem;
-            color: #005ee9; /* Brand Blue */
+            color: #093862; /* Brand Dark Blue */
             animation: cookiePulse 3s ease-in-out infinite;
         }
 
@@ -638,9 +702,9 @@
 
         .cookie-btn-primary {
             flex: 1;
-            background: #005ee9;
+            background: #093862;
             color: #ffffff;
-            border: 2px solid #005ee9;
+            border: 2px solid #093862;
             padding: 11px 20px;
             border-radius: 50px;
             font-family: 'Aeonik', sans-serif;
@@ -651,14 +715,14 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             
             /* Blue Claymorphism Inset */
-            box-shadow: 4px 4px 12px rgba(0, 94, 233, 0.22),
+            box-shadow: 4px 4px 12px rgba(9, 56, 98, 0.22),
                         inset 2px 2px 4px rgba(255, 255, 255, 0.4),
                         inset -4px -4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .cookie-btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 6px 6px 18px rgba(0, 94, 233, 0.3),
+            box-shadow: 6px 6px 18px rgba(9, 56, 98, 0.3),
                         inset 2px 2px 4px rgba(255, 255, 255, 0.5),
                         inset -4px -4px 8px rgba(0, 0, 0, 0.15);
         }
@@ -808,6 +872,15 @@
             .footer-bottom div:last-child a {
                 font-size: 0.72rem !important;
                 opacity: 0.5 !important;
+            }
+            .footer-offices {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                margin-top: 2rem !important;
+                padding-top: 2rem !important;
+            }
+            .office-col {
+                padding: 0 !important;
             }
         }
     </style>

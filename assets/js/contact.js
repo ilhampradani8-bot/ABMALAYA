@@ -1,6 +1,7 @@
 /**
  * AB MALAYA - Contact Page Logic
- * Handles GSAP entry animations and Neumorphic tilt
+ * Handles GSAP entry animations for the restructured contact layout
+ * (Offices → Contact Details → Map → Inquiry Form)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,25 +15,52 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power3.out'
         });
 
-        gsap.from('.contact-form-side', {
-            x: -100,
+        // Office Address Cards - staggered entrance
+        gsap.from('.address-card', {
+            y: 60,
             opacity: 0,
-            duration: 1.2,
+            duration: 1,
+            stagger: 0.15,
             ease: 'power4.out',
             scrollTrigger: {
-                trigger: '.contact-main',
+                trigger: '#office-addresses',
                 start: 'top 80%'
             }
         });
 
-        gsap.from('.contact-info-side > *', {
-            x: 100,
+        // Contact Detail Cards - staggered entrance
+        gsap.from('.detail-card', {
+            y: 60,
             opacity: 0,
-            duration: 1.2,
-            stagger: 0.2,
+            duration: 1,
+            stagger: 0.15,
             ease: 'power4.out',
             scrollTrigger: {
-                trigger: '.contact-main',
+                trigger: '#contact-details',
+                start: 'top 80%'
+            }
+        });
+
+        // Map Section
+        gsap.from('.neo-map-card', {
+            y: 80,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '#map',
+                start: 'top 80%'
+            }
+        });
+
+        // Inquiry Form
+        gsap.from('.inquiry-form-wrapper', {
+            y: 80,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '#contact-form',
                 start: 'top 80%'
             }
         });

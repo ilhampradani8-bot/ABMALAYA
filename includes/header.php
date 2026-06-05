@@ -42,7 +42,7 @@
             --neu-bg: #e6e9ef;
             --neu-shadow-dark: #b8bcc2;
             --neu-shadow-light: #ffffff;
-            --neu-accent: #005ee9; /* AB Malaya Blue */
+            --neu-accent: #093862; /* AB Malaya Dark Blue */
         }
 
         header {
@@ -347,10 +347,10 @@
 
         /* Hover action on dropdown items - shifting horizontally */
         .dropdown-panel a:hover {
-            background: rgba(0, 94, 233, 0.08) !important;
-            color: #005ee9 !important;
+            background: rgba(9, 56, 98, 0.08) !important;
+            color: #093862 !important;
             transform: translateX(4px) !important; /* Shift horizontally on hover */
-            border-color: rgba(0, 94, 233, 0.15) !important;
+            border-color: rgba(9, 56, 98, 0.15) !important;
         }
 
         /* Intermediate desktop screen responsiveness */
@@ -378,7 +378,7 @@
 
         /* Icons inside the dropdown list items */
         .dropdown-panel a i {
-            color: rgba(0, 94, 233, 0.6) !important;
+            color: rgba(9, 56, 98, 0.6) !important;
             font-size: 0.85rem !important;
             transition: all 0.3s ease !important;
             width: 16px;
@@ -386,13 +386,13 @@
         }
 
         .dropdown-panel a:hover i {
-            color: #005ee9 !important;
+            color: #093862 !important;
             transform: scale(1.15) !important;
         }
 
         /* Neumorphic CTA Button (Raised) */
         .cta-btn {
-            background: linear-gradient(135deg, #005ee9, #004bbd) !important;
+            background: linear-gradient(135deg, #093862, #072d4f) !important;
             color: #fff !important;
             padding: 0.6rem 1.8rem;
             border-radius: 50px;
@@ -1097,12 +1097,12 @@
                 border-bottom: none !important;
             }
             .mobile-sub-menu a:hover {
-                background: rgba(0, 94, 233, 0.05) !important;
-                color: #005ee9 !important;
+                background: rgba(9, 56, 98, 0.05) !important;
+                color: #093862 !important;
             }
             .has-mobile-sub.expanded .mobile-sub-toggle i {
                 transform: rotate(180deg);
-                color: #005ee9 !important;
+                color: #093862 !important;
             }
         }
 
@@ -1120,11 +1120,11 @@
             left: 0;
             height: 3px;
             width: 0%;
-            background: linear-gradient(90deg, #005ee9, #00dbde, #005ee9);
+            background: linear-gradient(90deg, #093862, #1191cc, #093862);
             background-size: 200% auto;
             z-index: 1000000;
             transition: width 0.4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 94, 233, 0.3);
+            box-shadow: 0 2px 10px rgba(9, 56, 98, 0.3);
             animation: loaderShimmer 2s linear infinite;
         }
 

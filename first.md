@@ -24,8 +24,8 @@ This document serves as the primary technical blueprint and knowledge base for t
 *   `router.php`: Dynamic clean-URL routing engine that handles clean URLs and overrides PHP's static assets serving bug.
 
 ### Shared Templates (`includes/`)
-*   `header.php`: SEO tags, CSS styles, critical layout shields, glassmorphic header navigation, and Spotify-style search overlay.
-*   `footer.php`: Dark corporate footer list, support capsule, and claymorphic Cookie Consent Card.
+*   `header.php`: SEO tags, CSS styles, critical layout shields, glassmorphic header navigation (using corporate dark blue accent `#093862`), and Spotify-style search overlay.
+*   `footer.php`: Dark corporate footer, support capsule, claymorphic Cookie Consent Card, and a reorganized, full-width 3-column regional offices text layout (HQ + Penang & Perak) at the bottom, collapsing to a single-column stack on mobile.
 *   `hero_visual.php`: Shared canvas particle engine and dynamic machinery carousel component.
 
 ### Assets & Styling (`assets/`)
