@@ -545,7 +545,7 @@ include 'includes/hero_visual.php';
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/civil.png" alt="Contractor & Engineering Icon">
+                                <img src="assets/img/service3d/civil.webp" alt="Contractor & Engineering Icon">
                             </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&h=1000" alt="Contractor & Engineering">
@@ -569,7 +569,7 @@ include 'includes/hero_visual.php';
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/marine.png" alt="Marine Icon">
+                                <img src="assets/img/service3d/marine.webp" alt="Marine Icon">
                             </div>
                             <div class="media">
                                 <img src="assets/img/kapal-tanker.jpg" alt="Marine Services">
@@ -600,7 +600,7 @@ include 'includes/hero_visual.php';
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/logistics.png" alt="Logistics Icon">
+                                <img src="assets/img/service3d/logistics.webp" alt="Logistics Icon">
                             </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&h=1000" alt="Logistics Services">
@@ -631,7 +631,7 @@ include 'includes/hero_visual.php';
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/pohon3d.png" alt="Corrosion Management Icon">
+                                <img src="assets/img/service3d/pohon3d.webp" alt="Corrosion Management Icon">
                             </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&h=1000" alt="Corrosion Management">
@@ -662,7 +662,7 @@ include 'includes/hero_visual.php';
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
                             <div class="badge-3d">
-                                <img src="assets/img/service3d/mekanikal.png" alt="Digital & IT Icon">
+                                <img src="assets/img/service3d/mekanikal.webp" alt="Digital & IT Icon">
                             </div>
                             <div class="media">
                                 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=1000" alt="Digital & IT Solutions">
@@ -716,26 +716,26 @@ include 'includes/hero_visual.php';
                     <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                    <img src="assets/img/partners/durachem-logo.webp" alt="Durachem">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                    <img src="assets/img/partners/belzona-logo.webp" alt="Belzona">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                    <img src="assets/img/partners/loctite-logo.webp" alt="Loctite">
                 </div>
                 <!-- Duplicate Set for Infinite Loop -->
                 <div class="client-logo-item">
                     <img src="assets/img/partners/vecom-logo.jpg" alt="Vecom">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/partners/durachem-logo.png" alt="Durachem">
+                    <img src="assets/img/partners/durachem-logo.webp" alt="Durachem">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/partners/belzona-logo.png" alt="Belzona">
+                    <img src="assets/img/partners/belzona-logo.webp" alt="Belzona">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/partners/loctite-logo.png" alt="Loctite">
+                    <img src="assets/img/partners/loctite-logo.webp" alt="Loctite">
                 </div>
             </div>
 
@@ -746,40 +746,40 @@ include 'includes/hero_visual.php';
                     <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/mof.png" alt="MOF">
+                    <img src="assets/img/mof.webp" alt="MOF">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/ssm.png" alt="SSM">
+                    <img src="assets/img/ssm.webp" alt="SSM">
                 </div>
                 <!-- Duplicate Set 1 -->
                 <div class="client-logo-item">
                     <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/mof.png" alt="MOF">
+                    <img src="assets/img/mof.webp" alt="MOF">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/ssm.png" alt="SSM">
+                    <img src="assets/img/ssm.webp" alt="SSM">
                 </div>
                 <!-- Duplicate Set 2 -->
                 <div class="client-logo-item">
                     <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/mof.png" alt="MOF">
+                    <img src="assets/img/mof.webp" alt="MOF">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/ssm.png" alt="SSM">
+                    <img src="assets/img/ssm.webp" alt="SSM">
                 </div>
                 <!-- Duplicate Set 3 -->
                 <div class="client-logo-item">
                     <img src="assets/img/cidb.jpg" alt="CIDB" style="mix-blend-mode: multiply;">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/mof.png" alt="MOF">
+                    <img src="assets/img/mof.webp" alt="MOF">
                 </div>
                 <div class="client-logo-item">
-                    <img src="assets/img/ssm.png" alt="SSM">
+                    <img src="assets/img/ssm.webp" alt="SSM">
                 </div>
             </div>
         </div>
@@ -1098,7 +1098,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 <!-- Final CTA Section with Wisma Rampai Background -->
-<section id="cta" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/img/wisma-rampai-front.png'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; padding: 120px 0;">
+<section id="cta" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('assets/img/wisma-rampai-front.webp'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; padding: 120px 0;">
     <div style="width: 100%; padding: 0 6vw;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <!-- Left Side -->

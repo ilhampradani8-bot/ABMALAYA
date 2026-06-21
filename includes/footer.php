@@ -4,7 +4,7 @@
             <div class="footer-grid">
                 <div class="footer-info">
                     <div class="footer-logo" style="margin-bottom: 2rem;">
-                        <img src="assets/img/logo-abmalaya.png?v=1.2" alt="AB Malaya Logo" style="height: 55px; width: auto; filter: brightness(0) invert(1); display: block;">
+                        <img src="assets/img/logo-abmalaya.webp?v=1.2" alt="AB Malaya Logo" style="height: 55px; width: auto; filter: brightness(0) invert(1); display: block;">
                     </div>
                     <p style="opacity: 0.7; margin-bottom: 1.5rem;">
                         Trusted Partner in Marine Services, Cross-Border Solutions, and Environmental Excellence.

@@ -53,7 +53,7 @@ include 'includes/hero_visual.php';
                 <!-- MOF Slide -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/mof.png" alt="MOF License" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
+                        <img src="assets/img/mof.webp" alt="MOF License" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
@@ -65,7 +65,7 @@ include 'includes/hero_visual.php';
                 <!-- SSM Slide -->
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="assets/img/ssm.png" alt="SSM Registration" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
+                        <img src="assets/img/ssm.webp" alt="SSM Registration" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
@@ -103,7 +103,7 @@ include 'includes/hero_visual.php';
                     <div class="strength-trigger-left">
                         <span class="strength-num">01</span>
                         <div class="strength-icon-mini">
-                            <img src="assets/img/service3d/civil.png" alt="Technical Expertise">
+                            <img src="assets/img/service3d/civil.webp" alt="Technical Expertise">
                         </div>
                         <h3 class="strength-item-title">Technical Expertise</h3>
                     </div>
@@ -122,7 +122,7 @@ include 'includes/hero_visual.php';
                         </div>
                         <div class="strength-image-col">
                             <div class="badge-3d-wrapper">
-                                <img src="assets/img/service3d/civil.png" alt="Technical Expertise 3D Icon" class="badge-3d-img">
+                                <img src="assets/img/service3d/civil.webp" alt="Technical Expertise 3D Icon" class="badge-3d-img">
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@ include 'includes/hero_visual.php';
                     <div class="strength-trigger-left">
                         <span class="strength-num">02</span>
                         <div class="strength-icon-mini">
-                            <img src="assets/img/service3d/cinstruction.png" alt="End-to-End Solutions">
+                            <img src="assets/img/service3d/cinstruction.webp" alt="End-to-End Solutions">
                         </div>
                         <h3 class="strength-item-title">End-to-End Solutions</h3>
                     </div>
@@ -155,7 +155,7 @@ include 'includes/hero_visual.php';
                         </div>
                         <div class="strength-image-col">
                             <div class="badge-3d-wrapper">
-                                <img src="assets/img/service3d/cinstruction.png" alt="End-to-End Solutions 3D Icon" class="badge-3d-img">
+                                <img src="assets/img/service3d/cinstruction.webp" alt="End-to-End Solutions 3D Icon" class="badge-3d-img">
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@ include 'includes/hero_visual.php';
                     <div class="strength-trigger-left">
                         <span class="strength-num">03</span>
                         <div class="strength-icon-mini">
-                            <img src="assets/img/service3d/logistics.png" alt="Regional Operational Capability">
+                            <img src="assets/img/service3d/logistics.webp" alt="Regional Operational Capability">
                         </div>
                         <h3 class="strength-item-title">Regional Operational Capability</h3>
                     </div>
@@ -188,7 +188,7 @@ include 'includes/hero_visual.php';
                         </div>
                         <div class="strength-image-col">
                             <div class="badge-3d-wrapper">
-                                <img src="assets/img/service3d/logistics.png" alt="Regional Operational Capability 3D Icon" class="badge-3d-img">
+                                <img src="assets/img/service3d/logistics.webp" alt="Regional Operational Capability 3D Icon" class="badge-3d-img">
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@ include 'includes/hero_visual.php';
                     <div class="strength-trigger-left">
                         <span class="strength-num">04</span>
                         <div class="strength-icon-mini">
-                            <img src="assets/img/service3d/pohon3d.png" alt="Sustainability Commitment">
+                            <img src="assets/img/service3d/pohon3d.webp" alt="Sustainability Commitment">
                         </div>
                         <h3 class="strength-item-title">Sustainability Commitment</h3>
                     </div>
@@ -221,7 +221,7 @@ include 'includes/hero_visual.php';
                         </div>
                         <div class="strength-image-col">
                             <div class="badge-3d-wrapper">
-                                <img src="assets/img/service3d/pohon3d.png" alt="Sustainability Commitment 3D Icon" class="badge-3d-img">
+                                <img src="assets/img/service3d/pohon3d.webp" alt="Sustainability Commitment 3D Icon" class="badge-3d-img">
                             </div>
                         </div>
                     </div>
@@ -235,7 +235,7 @@ include 'includes/hero_visual.php';
                     <div class="strength-trigger-left">
                         <span class="strength-num">05</span>
                         <div class="strength-icon-mini">
-                            <img src="assets/img/service3d/renov.png" alt="Customer-Focused Approach">
+                            <img src="assets/img/service3d/renov.webp" alt="Customer-Focused Approach">
                         </div>
                         <h3 class="strength-item-title">Customer-Focused Approach</h3>
                     </div>
@@ -254,7 +254,7 @@ include 'includes/hero_visual.php';
                         </div>
                         <div class="strength-image-col">
                             <div class="badge-3d-wrapper">
-                                <img src="assets/img/service3d/renov.png" alt="Customer-Focused Approach 3D Icon" class="badge-3d-img">
+                                <img src="assets/img/service3d/renov.webp" alt="Customer-Focused Approach 3D Icon" class="badge-3d-img">
                             </div>
                         </div>
                     </div>

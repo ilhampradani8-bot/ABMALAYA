@@ -1166,7 +1166,7 @@
         <div class="header-container">
             <!-- Logo (Left) -->
             <a href="/" class="logo">
-                <img src="/assets/img/logo-abmalaya.png?v=1.2" alt="AB Malaya Logo">
+                <img src="/assets/img/logo-abmalaya.webp?v=1.2" alt="AB Malaya Logo">
             </a>
  
             <!-- Desktop Navigation & Search (Right) -->

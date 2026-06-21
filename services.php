@@ -820,7 +820,7 @@ include 'includes/hero_visual.php';
                     <div class="solution-title-container">
                         <h2 class="solution-title">Project Strategic Consultant</h2>
                         <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/lanscape.png" class="floating-3d-graphic" alt="Project Strategic Consultation">
+                            <img src="assets/img/service3d/lanscape.webp" class="floating-3d-graphic" alt="Project Strategic Consultation">
                         </div>
                     </div>
                     <div class="solution-desc">
@@ -831,7 +831,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="solution-image-col">
                     <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/lanscape.png" class="floating-3d-graphic" alt="Project Strategic Consultation">
+                        <img src="assets/img/service3d/lanscape.webp" class="floating-3d-graphic" alt="Project Strategic Consultation">
                     </div>
                 </div>
             </div>
@@ -845,7 +845,7 @@ include 'includes/hero_visual.php';
                     <div class="solution-title-container">
                         <h2 class="solution-title">Contractor & Engineering Services</h2>
                         <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/civil.png" class="floating-3d-graphic" alt="Contractor & Engineering">
+                            <img src="assets/img/service3d/civil.webp" class="floating-3d-graphic" alt="Contractor & Engineering">
                         </div>
                     </div>
                     <div class="solution-desc">
@@ -911,7 +911,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="solution-image-col">
                     <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/civil.png" class="floating-3d-graphic" alt="Contractor & Engineering">
+                        <img src="assets/img/service3d/civil.webp" class="floating-3d-graphic" alt="Contractor & Engineering">
                     </div>
                 </div>
             </div>
@@ -925,7 +925,7 @@ include 'includes/hero_visual.php';
                     <div class="solution-title-container">
                         <h2 class="solution-title">Marine Services</h2>
                         <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/marine.png" class="floating-3d-graphic" alt="Marine Services">
+                            <img src="assets/img/service3d/marine.webp" class="floating-3d-graphic" alt="Marine Services">
                         </div>
                     </div>
                     <div class="solution-desc">
@@ -991,7 +991,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="solution-image-col">
                     <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/marine.png" class="floating-3d-graphic" alt="Marine Services">
+                        <img src="assets/img/service3d/marine.webp" class="floating-3d-graphic" alt="Marine Services">
                     </div>
                 </div>
             </div>
@@ -1005,7 +1005,7 @@ include 'includes/hero_visual.php';
                     <div class="solution-title-container">
                         <h2 class="solution-title">Logistics Services</h2>
                         <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/logistics.png" class="floating-3d-graphic" alt="Logistics Services">
+                            <img src="assets/img/service3d/logistics.webp" class="floating-3d-graphic" alt="Logistics Services">
                         </div>
                     </div>
                     <div class="solution-desc">
@@ -1069,7 +1069,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="solution-image-col">
                     <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/logistics.png" class="floating-3d-graphic" alt="Logistics Services">
+                        <img src="assets/img/service3d/logistics.webp" class="floating-3d-graphic" alt="Logistics Services">
                     </div>
                 </div>
             </div>
@@ -1083,7 +1083,7 @@ include 'includes/hero_visual.php';
                     <div class="solution-title-container">
                         <h2 class="solution-title">Corrosion Management</h2>
                         <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/renov.png" class="floating-3d-graphic" alt="Corrosion Management">
+                            <img src="assets/img/service3d/renov.webp" class="floating-3d-graphic" alt="Corrosion Management">
                         </div>
                     </div>
                     <div class="solution-desc">
@@ -1149,7 +1149,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="solution-image-col">
                     <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/renov.png" class="floating-3d-graphic" alt="Corrosion Management">
+                        <img src="assets/img/service3d/renov.webp" class="floating-3d-graphic" alt="Corrosion Management">
                     </div>
                 </div>
             </div>
@@ -1163,7 +1163,7 @@ include 'includes/hero_visual.php';
                     <div class="solution-title-container">
                         <h2 class="solution-title">Digital & IT Solutions</h2>
                         <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/mekanikal.png" class="floating-3d-graphic" alt="Digital & IT Solutions">
+                            <img src="assets/img/service3d/mekanikal.webp" class="floating-3d-graphic" alt="Digital & IT Solutions">
                         </div>
                     </div>
                     <div class="solution-desc">
@@ -1222,7 +1222,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="solution-image-col">
                     <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/mekanikal.png" class="floating-3d-graphic" alt="Digital & IT Solutions">
+                        <img src="assets/img/service3d/mekanikal.webp" class="floating-3d-graphic" alt="Digital & IT Solutions">
                     </div>
                 </div>
             </div>

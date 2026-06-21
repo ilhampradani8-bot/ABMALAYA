@@ -30,7 +30,7 @@ if (empty($images)) {
         'assets/img/head/greeen1.webp',
         'assets/img/head/logistik.webp',
         'assets/img/head/logistik1.webp',
-        'assets/img/head/logistik2.png',
+        'assets/img/head/logistik2.webp',
         'assets/img/head/logistik3.jpeg',
         'assets/img/head/marine.webp',
         'assets/img/head/marine1.webp',

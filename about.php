@@ -28,10 +28,10 @@ include 'includes/header.php';
             </mask>
             
             <image class="sky" xlink:href="https://assets.codepen.io/721952/sky.jpg" x="-300" y="-600" width="1800" height="2200" preserveAspectRatio="none" />
-            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.png" x="-40" y="-40" width="1280" height="880" />    
-            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.png" x="-40" y="-40" width="1280" height="880" preserveAspectRatio="xMidYMid slice" />    
+            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.webp" x="-40" y="-40" width="1280" height="880" />    
+            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.webp" x="-40" y="-40" width="1280" height="880" preserveAspectRatio="xMidYMid slice" />    
             <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" />    
-            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.png" x="-40" y="0" width="1280" height="880" />
+            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.webp" x="-40" y="0" width="1280" height="880" />
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
             
