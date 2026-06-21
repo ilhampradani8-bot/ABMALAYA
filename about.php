@@ -26,11 +26,11 @@ include 'includes/header.php';
                     <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
                 </g>
             </mask>
-            <image class="sky" xlink:href="/assets/img/about3D/sky.webp" x="-300" y="-600" width="1800" height="2200" preserveAspectRatio="xMidYMid slice" />
-            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.webp" x="-40" y="-40" width="1280" height="880" preserveAspectRatio="xMidYMid slice" />    
-            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.webp" x="-40" y="-40" width="1280" height="880" preserveAspectRatio="xMidYMid slice" />    
+            <image class="sky" xlink:href="/assets/img/about3D/sky.webp" x="-300" y="0" width="1800" height="1200" preserveAspectRatio="xMidYMid slice" />
+            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.webp" x="-60" y="0" width="1320" height="880" preserveAspectRatio="xMidYMid slice" />    
+            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.webp" x="-60" y="0" width="1320" height="880" preserveAspectRatio="xMidYMid slice" />    
             <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />    
-            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.webp" x="-40" y="0" width="1280" height="880" preserveAspectRatio="xMidYMid slice" />
+            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.webp" x="-60" y="60" width="1320" height="880" preserveAspectRatio="xMidYMid slice" />
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />
             
@@ -940,7 +940,7 @@ include 'includes/header.php';
 
     .scrollDist {
         width: 100%;
-        height: 250vh; /* Expanded scroll distance on desktop to ensure next section sits far below and appears slower */
+        height: 200vh; /* Increased scroll distance to slow down second page entry */
     }
 
     .parallax-main {
@@ -1363,7 +1363,7 @@ include 'includes/header.php';
         .section-header-centered h2 { font-size: 2.2rem; }
         .parallax-text-main { font-size: 42px; font-weight: 900; }
         .parallax-text-sub-desc { font-size: 10.5px; letter-spacing: 2px; font-weight: 700; }
-        .scrollDist { height: 180vh !important; } /* Maintain tight mobile scroll bounds */
+        .scrollDist { height: 150vh !important; } /* Slower second page entry on mobile */
     }
 
     @media (max-width: 480px) {

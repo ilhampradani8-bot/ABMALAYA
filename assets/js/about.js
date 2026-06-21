@@ -12,13 +12,13 @@ $(function() {
         let { isDesktop, isMobile } = context.conditions;
 
         // Tailored coordinates for mobile vs desktop to prevent cropping and gaps
-        let skyStart = 0, skyEnd = -200;
-        let cloud1Start = 160, cloud1End = -760; // Lifted up by 60px
-        let cloud2Start = -80, cloud2End = -440; // Lifted up by 60px
-        let cloud3Start = 20, cloud3End = -580;  // Lifted up by 60px
-        let mountBgStart = -10, mountBgEnd = -100;
-        let mountMgStart = -30, mountMgEnd = -250;
-        let mountFgStart = 60, mountFgEnd = -500;
+        let skyStart = 0, skyEnd = -40;
+        let cloud1Start = 160, cloud1End = -700;
+        let cloud2Start = -80, cloud2End = -420;
+        let cloud3Start = 20, cloud3End = -560;
+        let mountBgStart = 0, mountBgEnd = -15;
+        let mountMgStart = 0, mountMgEnd = -35;
+        let mountFgStart = 0, mountFgEnd = -60;
 
         // Dynamic scale variables to fit entire city skyline on mobile viewports
         let skyScale = 1, mountBgScale = 1, mountMgScale = 1, mountFgScale = 1;
@@ -27,23 +27,23 @@ $(function() {
         let fadeStart = 'top 80%', fadeEnd = 'top 20%';
 
         if (isMobile) {
-            // Mobile optimized values (keep city fully visible & prevent sky top/bottom gaps)
-            skyStart = 0; skyEnd = -150; // Native SVG handles bleed perfectly
+            // Keep mobile scale at 1.0 to prevent bottom gaps and squishing
+            skyStart = 0; skyEnd = -30;
 
-            cloud1Start = 140; cloud1End = -680; // Lifted up by 60px
-            cloud2Start = 40; cloud2End = -300;   // Lifted up by 60px
-            cloud3Start = 160; cloud3End = -400;  // Lifted up by 60px
+            cloud1Start = 140; cloud1End = -580;
+            cloud2Start = 40; cloud2End = -280;
+            cloud3Start = 160; cloud3End = -460;
 
-            mountBgStart = -140; mountBgEnd = -220; // Lifted upwards to sit proudly above clouds
-            mountBgScale = 0.58; // Scaled down to show all city elements horizontally
+            mountBgStart = 0; mountBgEnd = -15;
+            mountBgScale = 1;
 
-            mountMgStart = -170; mountMgEnd = -290; // Lifted higher
-            mountMgScale = 0.58;
+            mountMgStart = 0; mountMgEnd = -35;
+            mountMgScale = 1;
 
-            mountFgStart = -200; mountFgEnd = -380; // Lifted highest
-            mountFgScale = 0.58;
+            mountFgStart = 0; mountFgEnd = -60;
+            mountFgScale = 1;
 
-            fadeStart = 'top 55%'; // Slower/later fade out on mobile to let mask animation play completely
+            fadeStart = 'top 55%';
             fadeEnd = 'top 15%';
         }
 
