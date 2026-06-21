@@ -34,9 +34,9 @@ include 'includes/header.php';
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />
             
-            <text fill="#fff" x="50%" y="250" text-anchor="middle" class="parallax-text-main">ABOUT US</text>
-            <text fill="#fff" x="50%" y="320" text-anchor="middle" class="parallax-text-sub-desc">ABMALAYA INNOVATION</text>
-            <polyline class="arrow" fill="#fff" points="599,400 599,439 590,429 590,432 600,442 610,432 610,429 601,439 601,400" />
+            <text fill="#90caf9" x="50%" y="250" text-anchor="middle" class="parallax-text-main">ABOUT US</text>
+            <text fill="#90caf9" x="50%" y="320" text-anchor="middle" class="parallax-text-sub-desc">ABMALAYA INNOVATION</text>
+            <polyline class="arrow" fill="#90caf9" points="599,400 599,439 590,429 590,432 600,442 610,432 610,429 601,439 601,400" />
             
             <g mask="url(#m)">
                 <rect fill="#fff" width="100%" height="100%" />      
