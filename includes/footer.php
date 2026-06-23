@@ -86,6 +86,7 @@
                         <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                             <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#093862'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
+                            <a href="mailto:sales@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#093862'" onmouseout="this.style.color='inherit'">sales@abmalaya.com</a>
                         </li>
                     </ul>
                     
@@ -147,7 +148,7 @@
             <a href="https://wa.me/60172240091" target="_blank" class="liquid-metal-item">
                 <i class="fab fa-whatsapp" style="color: #25d366; font-size: 1.2rem;"></i> Sales Support
             </a>
-            <a href="https://wa.me/601113777282" target="_blank" class="liquid-metal-item">
+            <a href="https://wa.me/60117117282" target="_blank" class="liquid-metal-item">
                 <i class="fab fa-whatsapp" style="color: #25d366; font-size: 1.2rem;"></i> Tech Inquiry
             </a>
         </div>

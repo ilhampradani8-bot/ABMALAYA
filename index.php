@@ -704,7 +704,7 @@ include 'includes/hero_visual.php';
         <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 4.5rem;">
             <div class="marquee-tabs">
                 <button class="marquee-tab-btn active" data-target="partners-track">Strategic Partners</button>
-                <button class="marquee-tab-btn" data-target="accredited-track">Accredited & Certified</button>
+                <button class="marquee-tab-btn" data-target="accredited-track">Licensed & Registered</button>
             </div>
         </div>
         
@@ -964,7 +964,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- WhatsApp -->
                     <div class="contact-item" style="margin-bottom: 2.5rem;">
                         <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">WhatsApp Support</p>
-                        <p style="color: #000; font-size: 1.1rem; font-weight: 500;">+6017-2240091 / +6011-13777282</p>
+                        <p style="color: #000; font-size: 1.1rem; font-weight: 500;">+6017-2240091 / +6011-7117282</p>
                     </div>
                     <!-- Email -->
                     <div class="contact-item" style="margin-bottom: 2.5rem;">

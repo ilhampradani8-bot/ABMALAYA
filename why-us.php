@@ -44,8 +44,8 @@ include 'includes/hero_visual.php';
                         <img src="assets/img/cidb.jpg" alt="CIDB G7 License" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
-                        <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
-                        <div class="blog-slider__title">CIDB G7 License</div>
+                        <span class="blog-slider__code">LICENSED | REGISTERED</span>
+                        <div class="blog-slider__title">CIDB Licensed</div>
                         <div class="blog-slider__text">The highest grade contractor registration in Malaysia, authorizing AB MALAYA to undertake civil engineering and building construction projects of unlimited value.</div>
                     </div>
                 </div>
@@ -56,9 +56,9 @@ include 'includes/hero_visual.php';
                         <img src="assets/img/mof.webp" alt="MOF License" style="object-fit: contain; padding: 30px; background: #fff;" loading="lazy">
                     </div>
                     <div class="blog-slider__content">
-                        <span class="blog-slider__code">CREDENTIAL | REGISTERED</span>
-                        <div class="blog-slider__title">MOF License</div>
-                        <div class="blog-slider__text">Official procurement registration with the Ministry of Finance Malaysia, qualifying AB MALAYA for government tenders and corporate financial solutions.</div>
+                        <span class="blog-slider__code">LICENSED | REGISTERED</span>
+                        <div class="blog-slider__title">MOF Registered</div>
+                        <div class="blog-slider__text">Official procurement registered with the Ministry of Finance Malaysia, qualifying AB MALAYA for government tenders and corporate financial solutions.</div>
                     </div>
                 </div>
 
