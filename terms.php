@@ -19,11 +19,11 @@ include 'includes/hero_visual.php';
                 <div style="position: sticky; top: 120px; background: #f8fafc; border-radius: 20px; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
                     <h5 style="color: #0f172a; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">Navigation</h5>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem;">
-                        <li><a href="#acceptance" style="color: #005ee9; text-decoration: none; font-weight: 600;">1. Acceptance of Terms</a></li>
-                        <li><a href="#license" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">2. Use License</a></li>
-                        <li><a href="#limitations" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">3. Limitations</a></li>
-                        <li><a href="#accuracy" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">4. Accuracy of Materials</a></li>
-                        <li><a href="#governing-law" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">5. Governing Law</a></li>
+                        <li><a href="#acceptance" style="color: #1191cc; text-decoration: none; font-weight: 600;">1. Acceptance of Terms</a></li>
+                        <li><a href="#license" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">2. Use License</a></li>
+                        <li><a href="#limitations" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">3. Limitations</a></li>
+                        <li><a href="#accuracy" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">4. Accuracy of Materials</a></li>
+                        <li><a href="#governing-law" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">5. Governing Law</a></li>
                     </ul>
                 </div>
             </div>

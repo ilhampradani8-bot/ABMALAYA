@@ -12,7 +12,7 @@ include 'includes/header.php';
 <link rel="stylesheet" href="assets/css/home.css">
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Integrated Industrial Solutions</span> <span style='color: #093862;'>for a Smarter Future</span>";
+$heroTitle = "<span style='color: #1191cc;'>Integrated Industrial Solutions</span> <span style='color: #093863;'>for a Smarter Future</span>";
 $heroSubtitle = ""; /* Subtitle merged into Title for impact */
 $heroDesc = "AB Malaya Sdn Bhd delivers reliable solutions across construction, marine services, logistics, corrosion management, and digital technology — empowering industries with operational excellence, technical precision, and sustainable growth.";
 $showButtons = true;
@@ -328,7 +328,7 @@ include 'includes/hero_visual.php';
     }
 
     .card-arrow-btn svg {
-        stroke: #005ee9;
+        stroke: #1191cc;
         stroke-width: 2.8;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -342,8 +342,8 @@ include 'includes/hero_visual.php';
     }
 
     .card-arrow-btn:hover {
-        background: #005ee9;
-        border-color: #005ee9;
+        background: #1191cc;
+        border-color: #1191cc;
     }
 
     .card-arrow-btn:hover svg {
@@ -377,8 +377,8 @@ include 'includes/hero_visual.php';
     }
 
     .left-arrow:hover, .right-arrow:hover {
-        background: #005ee9;
-        border-color: #005ee9;
+        background: #1191cc;
+        border-color: #1191cc;
         color: #fff;
         transform: scale(1.05);
     }
@@ -411,7 +411,7 @@ include 'includes/hero_visual.php';
     }
 
     .embla__dot[aria-selected="true"] {
-        background: #005ee9;
+        background: #1191cc;
         transform: scale(1.5);
     }
 
@@ -495,8 +495,8 @@ include 'includes/hero_visual.php';
         <div style="display: flex; justify-content: space-between; align-items: stretch;">
             <!-- Left Half: Exactly 50% -->
             <div style="width: 50%; text-align: left; padding-right: 4rem;">
-                <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #093862; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
-                    Leading the Way in <br><span style="color: #005ee9;">Industrial Evolution</span>
+                <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #093863; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
+                    Leading the Way in <br><span style="color: #1191cc;">Industrial Evolution</span>
                 </h2>
                 <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; margin-bottom: 1.5rem; width: 100%;">
                     With a strong commitment to quality, compliance, and innovation, we provide end-to-end solutions tailored to the evolving needs of modern industries across Malaysia and the regional market.
@@ -517,11 +517,11 @@ include 'includes/hero_visual.php';
                     AB Malaya Sdn Bhd is a multidisciplinary industrial solutions company specializing in:
                 </p>
                 <ul style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; list-style-type: none; padding-left: 0; margin-top: 1.2rem; width: 100%;">
-                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Contractor & Engineering Services</li>
-                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Marine Industrial Support</li>
-                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Cross-Border Logistics</li>
-                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Corrosion Management</li>
-                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #005ee9; margin-right: 10px;"></i> Digital & IT Solutions</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Contractor & Engineering Services</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Marine Industrial Support</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Cross-Border Logistics</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Corrosion Management</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Digital & IT Solutions</li>
                 </ul>
             </div>
         </div>
@@ -532,7 +532,7 @@ include 'includes/hero_visual.php';
     <div class="container">
         <div class="section-title" style="text-align: left; margin-bottom: 3rem;">
             <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 0.5rem; font-family: 'Aeonik', sans-serif;">Solutions</h5>
-            <h2 style="font-size: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;"><span style="color: #093862;">Integrated</span> <span style="color: #005ee9;">Expertise</span></h2>
+            <h2 style="font-size: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;"><span style="color: #093863;">Integrated</span> <span style="color: #1191cc;">Expertise</span></h2>
         </div>
     </div>
         
@@ -540,7 +540,38 @@ include 'includes/hero_visual.php';
         <div class="embla" id="embla-services">
             <div class="embla__viewport">
                 <div class="embla__container">
-                    <!-- Slide 1: Contractor & Engineering Services -->
+                    <!-- Slide 1: Strategic Consultant -->
+                    <div class="embla__slide">
+                        <div class="slide-card">
+                            <!-- Direct 3D Render (No border box) -->
+                            <div class="badge-3d">
+                                <img src="assets/img/service3d/lanscape.webp" alt="Strategic Consultant Icon">
+                            </div>
+                            <div class="media">
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&h=1000" alt="Strategic Consultant">
+                            </div>
+                            <div class="card-sections">
+                                <div class="card-footer-layout">
+                                    <!-- Left Side: Arrow Button -->
+                                    <div class="card-footer-left">
+                                        <a href="services#strategic-consultant" class="card-arrow-btn" aria-label="Know More">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <!-- Right Side: Title & Description -->
+                                    <div class="card-footer-right">
+                                        <div class="card-caption">Strategic Consultant</div>
+                                        <div class="card-desc">Project Advisory — End-to-end strategic consultation from feasibility assessment to implementation strategy.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Contractor & Engineering Services -->
                     <div class="embla__slide">
                         <div class="slide-card">
                             <!-- Direct 3D Render (No border box) -->
@@ -552,8 +583,15 @@ include 'includes/hero_visual.php';
                             </div>
                             <div class="card-sections">
                                 <div class="card-footer-layout">
-                                    <!-- Left Side: Empty (No button) -->
-                                    <div class="card-footer-left"></div>
+                                    <!-- Left Side: Arrow Button -->
+                                    <div class="card-footer-left">
+                                        <a href="services#contractor-engineering" class="card-arrow-btn" aria-label="Know More">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
                                     <!-- Right Side: Title & Description -->
                                     <div class="card-footer-right">
                                         <div class="card-caption">Contractor & Engineering</div>
@@ -848,12 +886,12 @@ document.addEventListener('DOMContentLoaded', function() {
         transition: all 0.25s ease;
     }
     .marquee-tab-btn.active {
-        color: #005ee9;
+        color: #1191cc;
         background: #f8fafc;
         box-shadow: 3px 3px 6px #cbd5e1, -3px -3px 6px #ffffff;
     }
     .marquee-tab-btn:hover:not(.active) {
-        color: #005ee9;
+        color: #1191cc;
     }
     .marquee-content {
         width: 100%;
@@ -928,20 +966,20 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Left Side: Address & Map Info -->
             <div style="width: 50%; padding-right: 4rem;">
                 <h5 style="color: #94a3b8; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'Aeonik', sans-serif;">Offices</h5>
-                <h2 style="font-size: 3.2rem; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;"><span style="color: #093862;">Our Offices &</span> <br><span style="color: #005ee9;">Headquarters</span></h2>
+                <h2 style="font-size: 3.2rem; margin-bottom: 3rem; font-family: 'Aeonik', sans-serif; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;"><span style="color: #093863;">Our Offices &</span> <br><span style="color: #1191cc;">Headquarters</span></h2>
                 
                 <!-- Head Office (HQ) -->
                 <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
+                    <div style="color: #1191cc; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
                     <div>
                         <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Office Address (HQ)</p>
-                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">2-2-40, Lantai 2 Wisma Rampai, Jalan 34/26, <br>Taman Sri Rampai, 53300 Kuala Lumpur.</p>
+                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">2-2-40, 2nd Floor Wisma Rampai, Jalan 34/26, <br>Taman Sri Rampai, 53300 Kuala Lumpur.</p>
                     </div>
                 </div>
 
                 <!-- Penang Office -->
                 <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
+                    <div style="color: #1191cc; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
                     <div>
                         <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Penang Office</p>
                         <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">4761D, Jalan Pongsu Seribu, <br>13200 Kepala Batas, Pulau Pinang.</p>
@@ -950,10 +988,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <!-- Perak Office -->
                 <div class="contact-item" style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="color: #005ee9; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
+                    <div style="color: #1191cc; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
                     <div>
                         <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Perak Office</p>
-                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">lot 5465B (A), Simpang Empat Pekan Simpang Empat, <br>34400, Semanggol, Perak.</p>
+                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">Lot 5465B (A), Simpang Empat Pekan Simpang Empat, <br>34400 Semanggol, Perak.</p>
                     </div>
                 </div>
             </div>
@@ -1045,12 +1083,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     .map-info-brutal i {
-        color: #005ee9;
+        color: #1191cc;
         font-size: 1.4rem;
     }
 
     .neo-btn-brutal-large {
-        background: #005ee9;
+        background: #1191cc;
         color: #fff;
         padding: 1rem 2.5rem;
         font-weight: 800;

@@ -188,7 +188,7 @@ if (empty($images)) {
     .hero-badge {
         display: inline-block;
         padding: 6px 15px;
-        background: #005ee9;
+        background: #1191cc;
         color: #fff;
         font-family: 'Aeonik', sans-serif;
         font-weight: 800;
@@ -243,7 +243,7 @@ if (empty($images)) {
         left: 0;
         width: 30px;
         height: 2px;
-        background: #005ee9;
+        background: #1191cc;
         transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .hero-link i { font-size: 0.8rem; transition: 0.3s; }

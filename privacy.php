@@ -19,12 +19,12 @@ include 'includes/hero_visual.php';
                 <div style="position: sticky; top: 120px; background: #f8fafc; border-radius: 20px; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
                     <h5 style="color: #0f172a; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">Privacy Sections</h5>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem;">
-                        <li><a href="#introduction" style="color: #005ee9; text-decoration: none; font-weight: 600;">1. Introduction</a></li>
-                        <li><a href="#collection" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">2. Information We Collect</a></li>
-                        <li><a href="#usage" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">3. How We Use Data</a></li>
-                        <li><a href="#security" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">4. Data Security</a></li>
-                        <li><a href="#rights" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">5. Your Rights</a></li>
-                        <li><a href="#changes" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">6. Policy Updates</a></li>
+                        <li><a href="#introduction" style="color: #1191cc; text-decoration: none; font-weight: 600;">1. Introduction</a></li>
+                        <li><a href="#collection" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">2. Information We Collect</a></li>
+                        <li><a href="#usage" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">3. How We Use Data</a></li>
+                        <li><a href="#security" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">4. Data Security</a></li>
+                        <li><a href="#rights" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">5. Your Rights</a></li>
+                        <li><a href="#changes" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">6. Policy Updates</a></li>
                     </ul>
                 </div>
             </div>

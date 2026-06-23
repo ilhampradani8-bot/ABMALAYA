@@ -42,7 +42,7 @@
             --neu-bg: #e6e9ef;
             --neu-shadow-dark: #b8bcc2;
             --neu-shadow-light: #ffffff;
-            --neu-accent: #093862; /* AB Malaya Dark Blue */
+            --neu-accent: #093863; /* AB Malaya Dark Blue */
         }
 
         header {
@@ -348,7 +348,7 @@
         /* Hover action on dropdown items - shifting horizontally */
         .dropdown-panel a:hover {
             background: rgba(9, 56, 98, 0.08) !important;
-            color: #093862 !important;
+            color: #093863 !important;
             transform: translateX(4px) !important; /* Shift horizontally on hover */
             border-color: rgba(9, 56, 98, 0.15) !important;
         }
@@ -386,13 +386,13 @@
         }
 
         .dropdown-panel a:hover i {
-            color: #093862 !important;
+            color: #093863 !important;
             transform: scale(1.15) !important;
         }
 
         /* Neumorphic CTA Button (Raised) */
         .cta-btn {
-            background: linear-gradient(135deg, #093862, #072d4f) !important;
+            background: linear-gradient(135deg, #093863, #072d4f) !important;
             color: #fff !important;
             padding: 0.6rem 1.8rem;
             border-radius: 50px;
@@ -1098,11 +1098,11 @@
             }
             .mobile-sub-menu a:hover {
                 background: rgba(9, 56, 98, 0.05) !important;
-                color: #093862 !important;
+                color: #093863 !important;
             }
             .has-mobile-sub.expanded .mobile-sub-toggle i {
                 transform: rotate(180deg);
-                color: #093862 !important;
+                color: #093863 !important;
             }
         }
 
@@ -1120,7 +1120,7 @@
             left: 0;
             height: 3px;
             width: 0%;
-            background: linear-gradient(90deg, #093862, #1191cc, #093862);
+            background: linear-gradient(90deg, #093863, #1191cc, #093863);
             background-size: 200% auto;
             z-index: 1000000;
             transition: width 0.4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.3s ease;
@@ -1173,14 +1173,7 @@
             <div class="nav-wrapper-desktop">
                 <div class="nav-links">
                     <div class="nav-item-wrapper">
-                        <a href="/" class="nav-link-item <?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
-                        <div class="dropdown-panel">
-                            <a href="/#about"><i class="fas fa-user-friends"></i> Introduction</a>
-                            <a href="/#service"><i class="fas fa-concierge-bell"></i> Solutions</a>
-                            <a href="/#clients"><i class="fas fa-handshake"></i> Partners</a>
-                            <a href="/#location"><i class="fas fa-map-marker-alt"></i> Offices</a>
-                            <a href="/#cta"><i class="fas fa-rocket"></i> Reach Us</a>
-                        </div>
+                        <a href="/" class="nav-link-item <?php echo $currentPage == 'home' ? 'active' : ''; ?>">Home</a>
                     </div>
                     <div class="nav-item-wrapper">
                         <a href="/about" class="nav-link-item <?php echo $currentPage == 'about' ? 'active' : ''; ?>">About Us <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
@@ -1193,11 +1186,12 @@
                     <div class="nav-item-wrapper">
                         <a href="/services" class="nav-link-item <?php echo $currentPage == 'services' ? 'active' : ''; ?>">Solutions <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/services#core"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
-                            <a href="/services#marine"><i class="fas fa-ship"></i> Marine Services</a>
-                            <a href="/services#logistics"><i class="fas fa-truck"></i> Logistics Services</a>
-                            <a href="/services#corrosion"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
-                            <a href="/services#digital"><i class="fas fa-laptop-code"></i> Digital & IT Solutions</a>
+                            <a href="/services#strategic-consultant"><i class="fas fa-chess-queen"></i> Strategic Consultant</a>
+                            <a href="/services#contractor-engineering"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
+                            <a href="/services#marine-services"><i class="fas fa-ship"></i> Marine Services</a>
+                            <a href="/services#logistics-services"><i class="fas fa-truck"></i> Logistics Services</a>
+                            <a href="/services#corrosion-management"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
+                            <a href="/services#digital-it-solutions"><i class="fas fa-laptop-code"></i> Digital & IT Solutions</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
@@ -1212,10 +1206,7 @@
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
-                        <a href="/projects" class="nav-link-item <?php echo $currentPage == 'projects' ? 'active' : ''; ?>">Projects <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
-                        <div class="dropdown-panel dropdown-right">
-                            <a href="/projects#portfolio"><i class="fas fa-project-diagram"></i> Portfolio Showcase</a>
-                        </div>
+                        <a href="/projects" class="nav-link-item <?php echo $currentPage == 'projects' ? 'active' : ''; ?>">Projects</a>
                     </div>
                     <div class="nav-item-wrapper">
                         <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
@@ -1253,17 +1244,9 @@
             <div class="mobile-nav-wrapper">
                 <div class="list mks-menu">
                     
-                    <!-- Item 1: Home (has submenu) -->
-                    <div class="mks-card has-mobile-sub">
-                        <a href="javascript:void(0)" class="mobile-sub-toggle">Home <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
-                        <div class="mobile-sub-menu">
-                            <a href="/">Home Page</a>
-                            <a href="/#about">Introduction</a>
-                            <a href="/#service">Solutions</a>
-                            <a href="/#clients">Partners</a>
-                            <a href="/#location">Offices</a>
-                            <a href="/#cta">Reach Us</a>
-                        </div>
+                    <!-- Item 1: Home (direct link, no submenu) -->
+                    <div class="mks-card">
+                        <a href="/">Home</a>
                     </div>
                     
                     <!-- Item 2: About Us (has submenu) -->
@@ -1277,16 +1260,17 @@
                         </div>
                     </div>
                     
-                    <!-- Item 3: Solutions (has submenu) -->
+                    <!-- Item 3: Solutions (has submenu - 6 items matching services page) -->
                     <div class="mks-card has-mobile-sub">
                         <a href="javascript:void(0)" class="mobile-sub-toggle">Solutions <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
                         <div class="mobile-sub-menu">
                             <a href="/services">Solutions Page</a>
-                            <a href="/services#core">Contractor & Engineering</a>
-                            <a href="/services#marine">Marine Services</a>
-                            <a href="/services#logistics">Logistics Services</a>
-                            <a href="/services#corrosion">Corrosion Management</a>
-                            <a href="/services#digital">Digital & IT Solutions</a>
+                            <a href="/services#strategic-consultant">Strategic Consultant</a>
+                            <a href="/services#contractor-engineering">Contractor & Engineering</a>
+                            <a href="/services#marine-services">Marine Services</a>
+                            <a href="/services#logistics-services">Logistics Services</a>
+                            <a href="/services#corrosion-management">Corrosion Management</a>
+                            <a href="/services#digital-it-solutions">Digital & IT Solutions</a>
                         </div>
                     </div>
                     
@@ -1304,13 +1288,9 @@
                         </div>
                     </div>
                     
-                    <!-- Item 5: Projects (has submenu) -->
-                    <div class="mks-card has-mobile-sub">
-                        <a href="javascript:void(0)" class="mobile-sub-toggle">Projects <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
-                        <div class="mobile-sub-menu">
-                            <a href="/projects">Projects Page</a>
-                            <a href="/projects#portfolio">Portfolio Showcase</a>
-                        </div>
+                    <!-- Item 5: Projects (direct link, no submenu) -->
+                    <div class="mks-card">
+                        <a href="/projects">Projects</a>
                     </div>
                     
                     <!-- Item 6: Contact (has submenu) -->

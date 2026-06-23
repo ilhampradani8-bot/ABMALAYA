@@ -40,7 +40,7 @@ include 'includes/header.php';
             
             <g mask="url(#m)">
                 <rect fill="#fff" width="100%" height="100%" />      
-                <text x="50%" y="250" text-anchor="middle" fill="#093862" class="parallax-text-main">STARTING FROM</text>
+                <text x="50%" y="250" text-anchor="middle" fill="#093863" class="parallax-text-main">STARTING FROM</text>
                 <text x="50%" y="320" text-anchor="middle" fill="#0f172a" class="parallax-text-sub-desc">
                     <tspan x="50%" dy="0">Pioneering the industrial evolution</tspan>
                     <tspan x="50%" dy="25">with technical excellence & innovative solutions.</tspan>
@@ -119,7 +119,7 @@ include 'includes/header.php';
         margin-bottom: 2.5rem;
         font-weight: 800;
         letter-spacing: -2px;
-        color: #093862;
+        color: #093863;
     }
 
     .story-text-container {
@@ -331,7 +331,7 @@ include 'includes/header.php';
         box-shadow: 
             inset 4px 4px 10px #b8c4ce, 
             inset -4px -4px 10px #ffffff;
-        color: #005ee9;
+        color: #1191cc;
         font-family: 'Aeonik', sans-serif;
         font-size: 0.72rem;
         font-weight: 800;
@@ -349,7 +349,7 @@ include 'includes/header.php';
     }
 
     .tilt-phone-icon {
-        color: #005ee9;
+        color: #1191cc;
         transform-origin: center center;
     }
 
@@ -428,7 +428,7 @@ include 'includes/header.php';
     }
 
     .neumorphic-info h3 {
-        color: #093862;
+        color: #093863;
         font-size: 2.8rem;
         font-weight: 900;
         margin-bottom: 20px;
@@ -683,7 +683,7 @@ include 'includes/header.php';
     .funky-title {
         font-size: 3.5rem;
         font-weight: 800;
-        color: #093862;
+        color: #093863;
         margin-top: 15px;
         letter-spacing: -2px;
         line-height: 1.1;

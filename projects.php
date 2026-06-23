@@ -9,12 +9,70 @@ include 'includes/header.php';
 <link rel="stylesheet" href="assets/css/home.css">
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Proven Excellence</span> <br><span style='color: #093862;'>In Every Major Sector.</span>";
+$heroTitle = "<span style='color: #1191cc;'>Proven Excellence</span> <br><span style='color: #093863;'>In Every Major Sector.</span>";
 $heroSubtitle = "PORTFOLIO";
 $heroDesc = "From large-scale industrial constructions to innovative mobility solutions, explore how AB Malaya delivers technical superiority across Malaysia.";
 $showButtons = false;
 include 'includes/hero_visual.php';
 ?>
+
+<style>
+    /* Update Notice Banner */
+    .update-notice-banner {
+        background: linear-gradient(135deg, #093863 0%, #0c4a7a 100%);
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .update-notice-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255,255,255,0.02) 10px,
+            rgba(255,255,255,0.02) 20px
+        );
+    }
+    .update-notice-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .update-notice-inner i {
+        font-size: 2rem;
+        color: #1191cc;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .update-notice-inner h3 {
+        font-family: 'Aeonik', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+    .update-notice-inner p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+</style>
+
+<section class="update-notice-banner">
+    <div class="update-notice-inner">
+        <i class="fas fa-hard-hat"></i>
+        <h3>Portfolio Will Be Updated Shortly</h3>
+        <p>We are currently updating our project portfolio with the latest milestones and completed works. Please check back soon for new additions.</p>
+    </div>
+</section>
 
 <style>
     .projects-slider-section {
@@ -212,7 +270,7 @@ include 'includes/hero_visual.php';
 
     .blog-slider__button {
         display: inline-flex;
-        background-image: linear-gradient(147deg, #005ee9 0%, #003a91 74%);
+        background-image: linear-gradient(147deg, #1191cc 0%, #003a91 74%);
         padding: 15px 40px;
         border-radius: 50px;
         color: #fff;
@@ -273,7 +331,7 @@ include 'includes/hero_visual.php';
         height: 11px;
         display: block;
         border-radius: 10px;
-        background: #005ee9;
+        background: #1191cc;
         opacity: 0.2;
         transition: all .3s;
         margin: 8px 0;
@@ -281,7 +339,7 @@ include 'includes/hero_visual.php';
 
     .blog-slider__pagination .swiper-pagination-bullet-active {
         opacity: 1;
-        background: #005ee9;
+        background: #1191cc;
         height: 30px;
         box-shadow: 0px 0px 20px rgba(0, 94, 233, 0.3);
     }
@@ -300,19 +358,19 @@ include 'includes/hero_visual.php';
     .swiper-btn {
         width: 50px;
         height: 50px;
-        border: 2px solid #005ee9;
+        border: 2px solid #1191cc;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #005ee9;
+        color: #1191cc;
         cursor: pointer;
         transition: all 0.3s ease;
         background: #fff;
     }
 
     .swiper-btn:hover {
-        background: #005ee9;
+        background: #1191cc;
         color: #fff;
         transform: scale(1.05);
     }
@@ -326,7 +384,7 @@ include 'includes/hero_visual.php';
         display: none;
         font-family: 'Aeonik', sans-serif;
         font-weight: 700;
-        color: #005ee9;
+        color: #1191cc;
         font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -351,7 +409,7 @@ include 'includes/hero_visual.php';
         <div class="section-title-wrapper" style="width: 100%; padding: 0 4vw; max-width: 950px; margin-bottom: 60px;">
             <div class="title-left">
                 <h5>Technical Milestones</h5>
-                <h2>Significant <span style="color: #005ee9;">Milestones</span> 2025</h2>
+                <h2>Significant <span style="color: #1191cc;">Milestones</span> 2025</h2>
             </div>
             
             <div class="slider-nav-wrapper">

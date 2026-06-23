@@ -19,9 +19,9 @@ include 'includes/hero_visual.php';
                 <div style="position: sticky; top: 120px; background: #f8fafc; border-radius: 20px; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
                     <h5 style="color: #0f172a; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">Policy Sections</h5>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem;">
-                        <li><a href="#hse" style="color: #005ee9; text-decoration: none; font-weight: 600;">1. HSE Policy</a></li>
-                        <li><a href="#environmental" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">2. Environmental Policy</a></li>
-                        <li><a href="#quality" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">3. Quality Assurance</a></li>
+                        <li><a href="#hse" style="color: #1191cc; text-decoration: none; font-weight: 600;">1. HSE Policy</a></li>
+                        <li><a href="#environmental" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">2. Environmental Policy</a></li>
+                        <li><a href="#quality" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">3. Quality Assurance</a></li>
                     </ul>
                 </div>
             </div>

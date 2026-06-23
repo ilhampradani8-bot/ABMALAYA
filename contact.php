@@ -11,7 +11,7 @@ include 'includes/header.php';
 
 <?php 
 $heroSubtitle = "GET IN TOUCH";
-$heroTitle = "<span style='color: #093862;'>Connect With</span> <span style='color: #005ee9;'>AB MALAYA</span>";
+$heroTitle = "<span style='color: #093863;'>Connect With</span> <span style='color: #1191cc;'>AB MALAYA</span>";
 $heroDesc = "Whether you require industrial support, technical consultation, logistics coordination, or engineering solutions, our team is ready to assist you.";
 $showButtons = false;
 include 'includes/hero_visual.php';
@@ -242,8 +242,8 @@ include 'includes/hero_visual.php';
         --neu-bg: #e6e9ef;
         --neu-shadow-dark: #b8bcc2;
         --neu-shadow-light: #ffffff;
-        --accent-blue: #093862;
-        --accent-blue-bright: #005ee9;
+        --accent-blue: #093863;
+        --accent-blue-bright: #1191cc;
     }
 
     .contact-main {

@@ -76,9 +76,9 @@ if (!empty($query)) {
 ?>
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Search Results</span>";
+$heroTitle = "<span style='color: #1191cc;'>Search Results</span>";
 $heroSubtitle = "Discovery";
-$heroDesc = count($results) . " results found for <span style='color: #005ee9; font-weight: 700;'>\"" . htmlspecialchars($query) . "\"</span>";
+$heroDesc = count($results) . " results found for <span style='color: #1191cc; font-weight: 700;'>\"" . htmlspecialchars($query) . "\"</span>";
 $showButtons = false;
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
@@ -94,7 +94,7 @@ include 'includes/hero_visual.php';
                     <i class="fas fa-search" style="font-size: 2.5rem; color: #94a3b8;"></i>
                 </div>
                 <h2 style="font-family: 'Aeonik', sans-serif; color: #0f172a; font-weight: 700; font-size: 2rem;">No matches found</h2>
-                <p style="font-family: 'Aeonik', sans-serif; color: #64748b; font-size: 1.1rem; margin-top: 1rem;">Try searching for something else like <br> <span style="color: #005ee9;">"marine"</span>, <span style="color: #005ee9;">"logistics"</span>, or <span style="color: #005ee9;">"contact"</span>.</p>
+                <p style="font-family: 'Aeonik', sans-serif; color: #64748b; font-size: 1.1rem; margin-top: 1rem;">Try searching for something else like <br> <span style="color: #1191cc;">"marine"</span>, <span style="color: #1191cc;">"logistics"</span>, or <span style="color: #1191cc;">"contact"</span>.</p>
             </div>
         <?php else: ?>
             <div style="display: grid; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
@@ -146,7 +146,7 @@ include 'includes/hero_visual.php';
                     transform: translateX(8px);
                 }
                 .search-result-card:hover h3 {
-                    color: #005ee9 !important;
+                    color: #1191cc !important;
                 }
                 .arrow-circle {
                     width: 45px;
@@ -156,13 +156,13 @@ include 'includes/hero_visual.php';
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    color: #005ee9;
+                    color: #1191cc;
                     transition: all 0.3s ease;
                     margin-left: 2rem;
                     flex-shrink: 0;
                 }
                 .search-result-card:hover .arrow-circle {
-                    background: #005ee9;
+                    background: #1191cc;
                     color: #fff;
                 }
 

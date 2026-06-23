@@ -49,31 +49,37 @@
                     <h4>Solutions</h4>
                     <ul style="display: flex; flex-direction: column; gap: 8px; padding: 0; list-style: none;">
                         <li>
-                            <a href="/services#core" class="footer-btn">
+                            <a href="/services#strategic-consultant" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                Strategic Consultant
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services#contractor-engineering" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                                 Contractor & Engineering
                             </a>
                         </li>
                         <li>
-                            <a href="/services#marine" class="footer-btn">
+                            <a href="/services#marine-services" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M19 12a7 7 0 0 1-14 0"/></svg>
                                 Marine Services
                             </a>
                         </li>
                         <li>
-                            <a href="/services#logistics" class="footer-btn">
+                            <a href="/services#logistics-services" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                                 Logistics Services
                             </a>
                         </li>
                         <li>
-                            <a href="/services#corrosion" class="footer-btn">
+                            <a href="/services#corrosion-management" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                                 Corrosion Management
                             </a>
                         </li>
                         <li>
-                            <a href="/services#digital" class="footer-btn">
+                            <a href="/services#digital-it-solutions" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                 Digital & IT Solutions
                             </a>
@@ -85,8 +91,11 @@
                     <ul style="display: flex; flex-direction: column; gap: 12px; padding: 0; list-style: none; margin-bottom: 1.5rem;">
                         <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#093862'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
-                            <a href="mailto:sales@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#093862'" onmouseout="this.style.color='inherit'">sales@abmalaya.com</a>
+                            <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <a href="mailto:sales@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='inherit'">sales@abmalaya.com</a>
                         </li>
                     </ul>
                     
@@ -108,7 +117,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <div>
                         <strong>HQ Office:</strong>
-                        <span>Wisma Rampai, Jalan 34/26,<br>Taman Sri Rampai,<br>53300 Kuala Lumpur.</span>
+                        <span>2-2-40, 2nd Floor Wisma Rampai,<br>Jalan 34/26, Taman Sri Rampai,<br>53300 Kuala Lumpur.</span>
                     </div>
                 </div>
                 <div class="office-col">
@@ -122,7 +131,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <div>
                         <strong>Perak Office:</strong>
-                        <span>Lot 5465B (A), Simpang Empat Pekan Simpang Empat,<br>34400 Semanggol, Perak.</span>
+                        <span>Lot 5465B (A), Simpang Empat<br>Pekan Simpang Empat,<br>34400 Semanggol, Perak.</span>
                     </div>
                 </div>
             </div>
@@ -337,7 +346,7 @@
         }
 
         .footer-btn:hover {
-            color: #093862 !important; /* Brand Dark Blue */
+            color: #093863 !important; /* Brand Dark Blue */
             transform: translateX(6px) !important;
         }
 
@@ -347,7 +356,7 @@
         }
 
         .footer-btn:hover svg {
-            color: #093862 !important;
+            color: #093863 !important;
             transform: scale(1.15) !important;
         }
 
@@ -367,7 +376,7 @@
 
         .search-wrapper-footer.active {
             background: rgba(255, 255, 255, 0.1) !important;
-            border-color: #093862 !important;
+            border-color: #093863 !important;
             box-shadow: 0 4px 15px rgba(9, 56, 98, 0.2) !important;
         }
 
@@ -380,7 +389,7 @@
         }
 
         .search-wrapper-footer.active .search-btn-footer {
-            background: #093862 !important;
+            background: #093863 !important;
             color: #ffffff !important;
             box-shadow: 0 4px 12px rgba(9, 56, 98, 0.3) !important;
         }
@@ -416,7 +425,7 @@
             width: 240px;
             padding-left: 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-color: #093862;
+            border-color: #093863;
             box-shadow: 0 4px 15px rgba(9, 56, 98, 0.2);
         }
 
@@ -455,7 +464,7 @@
         }
 
         .search-wrapper-footer.active .search-btn-footer {
-            background: #093862;
+            background: #093863;
             box-shadow: 0 4px 12px rgba(9, 56, 98, 0.3);
         }
 
@@ -483,12 +492,12 @@
         }
 
         .footer-btn:hover {
-            color: #093862 !important;
+            color: #093863 !important;
             transform: translateX(6px);
         }
 
         .footer-btn:hover svg {
-            color: #093862;
+            color: #093863;
             transform: scale(1.15);
         }
 
@@ -674,7 +683,7 @@
 
         .cookie-icon {
             font-size: 1.8rem;
-            color: #093862; /* Brand Dark Blue */
+            color: #093863; /* Brand Dark Blue */
             animation: cookiePulse 3s ease-in-out infinite;
         }
 
@@ -703,9 +712,9 @@
 
         .cookie-btn-primary {
             flex: 1;
-            background: #093862;
+            background: #093863;
             color: #ffffff;
-            border: 2px solid #093862;
+            border: 2px solid #093863;
             padding: 11px 20px;
             border-radius: 50px;
             font-family: 'Aeonik', sans-serif;

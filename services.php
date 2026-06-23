@@ -15,7 +15,7 @@ $currentPage = "services";
 <style>
 /* AB MALAYA - Custom Solutions Theme */
 :root {
-    --brand-blue: #093862;
+    --brand-blue: #093863;
     --brand-blue-glow: rgba(9, 56, 98, 0.4);
     --brand-light-blue: #1191cc;
     --dark-bg: #0b0f19;
@@ -769,7 +769,7 @@ body {
 </style>
 
 <?php
-$heroTitle = "<span style='color: #093862;'>Our Solutions</span>";
+$heroTitle = "<span style='color: #093863;'>Our Solutions</span>";
 $heroSubtitle = "SPECIALIZED DIVISIONS";
 $heroDesc = "Interactive guide to AB Malaya's specialized divisions. Select a capability below to jump to detail planning, mechanical, logistics, or corrosion prevention solutions.";
 $showButtons = false;

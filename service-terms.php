@@ -19,11 +19,11 @@ include 'includes/hero_visual.php';
                 <div style="position: sticky; top: 120px; background: #f8fafc; border-radius: 20px; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
                     <h5 style="color: #0f172a; font-family: 'Aeonik', sans-serif; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">Terms Navigation</h5>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem;">
-                        <li><a href="#scope" style="color: #005ee9; text-decoration: none; font-weight: 600;">1. Scope of Services</a></li>
-                        <li><a href="#standards" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">2. Professional Standards</a></li>
-                        <li><a href="#payment" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">3. Payment & Billing</a></li>
-                        <li><a href="#confidentiality" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">4. Confidentiality</a></li>
-                        <li><a href="#termination" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#005ee9'" onmouseout="this.style.color='#475569'">5. Termination</a></li>
+                        <li><a href="#scope" style="color: #1191cc; text-decoration: none; font-weight: 600;">1. Scope of Services</a></li>
+                        <li><a href="#standards" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">2. Professional Standards</a></li>
+                        <li><a href="#payment" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">3. Payment & Billing</a></li>
+                        <li><a href="#confidentiality" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">4. Confidentiality</a></li>
+                        <li><a href="#termination" style="color: #475569; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='#475569'">5. Termination</a></li>
                     </ul>
                 </div>
             </div>

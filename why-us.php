@@ -7,7 +7,7 @@ include 'includes/header.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <?php 
-$heroTitle = "<span style='color: #005ee9;'>Why AB Malaya?</span><br><span style='color: #093862;'>Certified & Trusted.</span>";
+$heroTitle = "<span style='color: #1191cc;'>Why AB Malaya?</span><br><span style='color: #093863;'>Certified & Trusted.</span>";
 $heroDesc = "AB MALAYA is a trusted partner delivering certified quality, industrial compliance, end-to-end solutions, and environmental sustainability across Malaysia and neighbouring countries.";
 $showButtons = false;
 include 'includes/hero_visual.php';
@@ -483,7 +483,7 @@ include 'includes/hero_visual.php';
 
     .blog-slider__button {
         display: inline-flex;
-        background-image: linear-gradient(147deg, #005ee9 0%, #003a91 74%);
+        background-image: linear-gradient(147deg, #1191cc 0%, #003a91 74%);
         padding: 15px 35px;
         border-radius: 50px;
         color: #fff;
@@ -536,7 +536,7 @@ include 'includes/hero_visual.php';
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #005ee9;
+        color: #1191cc;
         font-size: 0.8rem;
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -545,7 +545,7 @@ include 'includes/hero_visual.php';
     }
 
     .blog-slider__nav-btn:hover {
-        background: #005ee9;
+        background: #1191cc;
         color: #fff;
         box-shadow: 0 8px 16px rgba(0, 94, 233, 0.25);
         transform: scale(1.15);
@@ -598,7 +598,7 @@ include 'includes/hero_visual.php';
         height: 11px;
         display: block;
         border-radius: 10px;
-        background: #005ee9;
+        background: #1191cc;
         opacity: 0.2;
         transition: all .3s;
         margin: 8px 0;
@@ -610,7 +610,7 @@ include 'includes/hero_visual.php';
 
     .blog-slider__pagination .swiper-pagination-bullet-active {
         opacity: 1;
-        background: #005ee9;
+        background: #1191cc;
         height: 30px;
         box-shadow: 0px 0px 20px rgba(0, 94, 233, 0.3);
     }
