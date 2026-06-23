@@ -43,7 +43,7 @@ include 'includes/hero_visual.php';
                 </div>
                 <div class="info-content">
                     <h4>Penang Office</h4>
-                    <p>4761D, Jalan Pongsu Seribu, 13200 Kepala Batas, Pulau Pinang.</p>
+                    <p>4761D, Jalan Pongsu Seribu, 13200 Kepala Batas, Penang.</p>
                 </div>
             </div>
             <!-- Perak Office -->
@@ -79,7 +79,7 @@ include 'includes/hero_visual.php';
                     <h4>Phone Number</h4>
                     <div class="links">
                         <a href="tel:+60172240091"><i class="fas fa-phone"></i> +60 17-224 0091</a>
-                        <a href="tel:+60105577282"><i class="fas fa-phone"></i> +60 10-557 7282</a>
+                        <a href="tel:+60117117282"><i class="fas fa-phone"></i> +60 11-711 7282</a>
                     </div>
                 </div>
             </div>

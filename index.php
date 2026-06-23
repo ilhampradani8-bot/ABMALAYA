@@ -982,7 +982,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div style="color: #1191cc; font-size: 1.5rem; padding-top: 5px;"><i class="fas fa-map-location-dot"></i></div>
                     <div>
                         <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Penang Office</p>
-                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">4761D, Jalan Pongsu Seribu, <br>13200 Kepala Batas, Pulau Pinang.</p>
+                        <p style="color: #000; font-size: 1.1rem; line-height: 1.6;">4761D, Jalan Pongsu Seribu, <br>13200 Kepala Batas, Penang.</p>
                     </div>
                 </div>
 
