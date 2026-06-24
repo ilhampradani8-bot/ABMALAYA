@@ -517,6 +517,7 @@ include 'includes/hero_visual.php';
                     AB Malaya Sdn Bhd is a multidisciplinary industrial solutions company specializing in:
                 </p>
                 <ul style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; list-style-type: none; padding-left: 0; margin-top: 1.2rem; width: 100%;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Strategic Consultant Services</li>
                     <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Contractor & Engineering Services</li>
                     <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Marine Industrial Support</li>
                     <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #1191cc; margin-right: 10px;"></i> Cross-Border Logistics</li>
@@ -903,8 +904,13 @@ document.addEventListener('DOMContentLoaded', function() {
         align-items: center;
         width: max-content;
         gap: 8rem;
-        animation: marqueeScroll 6s linear infinite;
         transform-style: preserve-3d;
+    }
+    #partners-track {
+        animation: marqueeScroll 6s linear infinite;
+    }
+    #accredited-track {
+        animation: marqueeScroll 9s linear infinite;
     }
     .client-logo-item {
         flex-shrink: 0;
@@ -938,7 +944,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     @media (max-width: 768px) {
-        .marquee-track { gap: 4rem; animation-duration: 9s; }
+        .marquee-track { gap: 4rem; }
+        #partners-track { animation-duration: 9s; }
+        #accredited-track { animation-duration: 13.5s; }
         .client-logo-item img { height: 45px; }
         .client-marquee-section { padding: 40px 0; }
     }

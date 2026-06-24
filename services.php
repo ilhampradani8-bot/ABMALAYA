@@ -838,7 +838,7 @@ include 'includes/hero_visual.php';
         </section>
 
         <!-- SECTION 2: Contractor & Engineering Services -->
-        <section class="solution-section" id="contractor-engineering" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200');">
+        <section class="solution-section" id="contractor-engineering" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200');">
             <div class="solution-grid">
                 <div class="solution-content-col">
                     <span class="solution-badge">02 / Construction & Engineering</span>
