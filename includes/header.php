@@ -81,7 +81,7 @@
             align-items: center;
         }
 
-        .logo img { height: 60px; width: auto; display: block; }
+        .logo img { height: 120px; width: auto; display: block; }
         .logo-hidden { 
             opacity: 0 !important; 
             visibility: hidden !important; 
@@ -974,7 +974,7 @@
         @media (max-width: 992px) {
             header { top: 15px; padding: 0 20px; }
             .header-container { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-            .logo img { height: 45px; }
+            .logo img { height: 90px; }
             .nav-links { display: none; } 
             .menu-toggle { display: flex; }
             .nav-wrapper-desktop { gap: 0.8rem; }

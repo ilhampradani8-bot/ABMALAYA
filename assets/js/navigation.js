@@ -229,12 +229,7 @@ $(function() {
     function handleScrollAction() {
         const scrollY = window.scrollY;
         
-        // Logo Autohide Logic
-        if (scrollY > 40 && !$wrapper.hasClass('active')) {
-            if (logo) logo.classList.add('logo-hidden');
-        } else {
-            if (logo) logo.classList.remove('logo-hidden');
-        }
+        // Logo Autohide Logic has been removed as requested
         
         // Auto-close menu on significant scroll
         if (scrollY > 150 && $wrapper.hasClass('active')) {
