@@ -22,7 +22,7 @@ This document outlines the complete technology stack used in the **AB Malaya Sdn
 *   **Role**: Controls all layout presentations, responsive grid adjustments, corporate dark-theme colors, and micro-animations.
 *   **Benefits**:
     *   **Zero Overhead**: Operates entirely without bulky CSS frameworks (like Bootstrap/Tailwind), minimizing static asset file sizes.
-    *   **Centralized Styling**: Uses CSS custom variables (e.g., `--primary: #005EE9`) to control global colors, spacings, and typography from a single, unified source.
+    *   **Centralized Styling**: Uses CSS custom variables (e.g., `--primary: #1191cc`) to control global colors, spacings, and typography from a single, unified source.
 
 ---
 

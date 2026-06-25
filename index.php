@@ -204,7 +204,7 @@ include 'includes/hero_visual.php';
     .embla__slide.is-selected .slide-card {
         transform: scale(1.04);
         opacity: 1;
-        box-shadow: 0 30px 60px rgba(0, 94, 233, 0.25);
+        box-shadow: 0 30px 60px rgba(17, 145, 204, 0.25);
     }
 
     /* Card inner elements styling */
@@ -316,10 +316,10 @@ include 'includes/hero_visual.php';
         justify-content: center;
         width: 38px;
         height: 38px;
-        background: rgba(0, 94, 233, 0.08);
+        background: rgba(17, 145, 204, 0.08);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(0, 94, 233, 0.25);
+        border: 1px solid rgba(17, 145, 204, 0.25);
         border-radius: 50%;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         opacity: 0;

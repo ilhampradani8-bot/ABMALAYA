@@ -22,7 +22,7 @@ Dokumen ini menjabarkan seluruh spesifikasi tumpukan teknologi (*tech stack*) ya
 *   **Peran**: Mengelola seluruh presentasi visual, tata letak responsif, skema warna gelap korporat (*corporate dark theme*), serta transisi mikro.
 *   **Manfaat**: 
     *   **Zero Overhead**: Tidak bergantung pada framework CSS eksternal (seperti Bootstrap/Tailwind) yang menambah ukuran unduhan aset.
-    *   **Variabel CSS Kompatibel**: Memudahkan pemeliharaan warna utama (`--primary: #005EE9`), transisi global, dan font hanya dari satu pusat kendali.
+    *   **Variabel CSS Kompatibel**: Memudahkan pemeliharaan warna utama (`--primary: #1191cc`), transisi global, dan font hanya dari satu pusat kendali.
 
 ---
 

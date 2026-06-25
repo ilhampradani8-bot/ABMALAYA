@@ -426,7 +426,7 @@ if (empty($images)) {
                     targetX: x, targetY: y,
                     baseX: x, baseY: y,
                     size: dotSize, 
-                    color: 'rgba(0, 94, 233, 0.3)'
+                    color: 'rgba(17, 145, 204, 0.3)'
                 });
             }
         }
@@ -458,11 +458,11 @@ if (empty($images)) {
                 let moveY = (dy / distance) * force * 35;
                 dot.targetX = dot.baseX - moveX;
                 dot.targetY = dot.baseY - moveY;
-                dot.color = `rgba(0, 94, 233, ${0.3 + force * 0.45})`;
+                dot.color = `rgba(17, 145, 204, ${0.3 + force * 0.45})`;
             } else {
                 dot.targetX = dot.baseX;
                 dot.targetY = dot.baseY;
-                dot.color = 'rgba(0, 94, 233, 0.3)';
+                dot.color = 'rgba(17, 145, 204, 0.3)';
             }
 
             dot.x += (dot.targetX - dot.x) * easing;

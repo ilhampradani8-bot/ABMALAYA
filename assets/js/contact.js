@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     inputs.forEach(input => {
         const parent = input.closest('.neu-input-inset');
         input.addEventListener('focus', () => {
-            parent.style.borderColor = 'rgba(0, 94, 233, 0.5)';
-            parent.style.boxShadow = 'inset 8px 8px 16px #b8bcc2, inset -8px -8px 16px #ffffff, 0 0 10px rgba(0, 94, 233, 0.1)';
+            parent.style.borderColor = 'rgba(17, 145, 204, 0.5)';
+            parent.style.boxShadow = 'inset 8px 8px 16px #b8bcc2, inset -8px -8px 16px #ffffff, 0 0 10px rgba(17, 145, 204, 0.1)';
         });
         input.addEventListener('blur', () => {
             parent.style.borderColor = 'rgba(255, 255, 255, 0.1)';

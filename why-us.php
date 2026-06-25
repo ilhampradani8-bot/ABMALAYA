@@ -413,7 +413,7 @@ include 'includes/hero_visual.php';
         flex-shrink: 0;
         height: 320px;
         background: #f8fafc;
-        box-shadow: 4px 13px 30px 1px rgba(0, 94, 233, 0.1);
+        box-shadow: 4px 13px 30px 1px rgba(17, 145, 204, 0.1);
         border-radius: 25px;
         transform: translateX(-100px);
         overflow: hidden;
@@ -487,7 +487,7 @@ include 'includes/hero_visual.php';
         padding: 15px 35px;
         border-radius: 50px;
         color: #fff;
-        box-shadow: 0px 10px 30px rgba(0, 94, 233, 0.3);
+        box-shadow: 0px 10px 30px rgba(17, 145, 204, 0.3);
         text-decoration: none;
         font-weight: 600;
         justify-content: center;
@@ -500,7 +500,7 @@ include 'includes/hero_visual.php';
 
     .blog-slider__button:hover {
         transform: translateY(-3px);
-        box-shadow: 0px 15px 40px rgba(0, 94, 233, 0.4);
+        box-shadow: 0px 15px 40px rgba(17, 145, 204, 0.4);
     }
 
     /* Certification Slider Right Controls (Vertical Layout) */
@@ -532,7 +532,7 @@ include 'includes/hero_visual.php';
         height: 32px;
         border-radius: 50%;
         background: #fff;
-        box-shadow: 0 4px 10px rgba(0, 94, 233, 0.12);
+        box-shadow: 0 4px 10px rgba(17, 145, 204, 0.12);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -540,14 +540,14 @@ include 'includes/hero_visual.php';
         font-size: 0.8rem;
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        border: 1px solid rgba(0, 94, 233, 0.05);
+        border: 1px solid rgba(17, 145, 204, 0.05);
         z-index: 23;
     }
 
     .blog-slider__nav-btn:hover {
         background: #1191cc;
         color: #fff;
-        box-shadow: 0 8px 16px rgba(0, 94, 233, 0.25);
+        box-shadow: 0 8px 16px rgba(17, 145, 204, 0.25);
         transform: scale(1.15);
     }
 
@@ -612,7 +612,7 @@ include 'includes/hero_visual.php';
         opacity: 1;
         background: #1191cc;
         height: 30px;
-        box-shadow: 0px 0px 20px rgba(0, 94, 233, 0.3);
+        box-shadow: 0px 0px 20px rgba(17, 145, 204, 0.3);
     }
 
     @media screen and (max-width: 768px) {
@@ -998,7 +998,7 @@ include 'includes/hero_visual.php';
         background: var(--primary);
         padding: 4px 10px;
         border-radius: 30px;
-        box-shadow: 0 4px 10px rgba(0, 94, 233, 0.3);
+        box-shadow: 0 4px 10px rgba(17, 145, 204, 0.3);
     }
 
     /* Responsive adjustments for mobile/tablet */

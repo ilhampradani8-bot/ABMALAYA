@@ -423,7 +423,7 @@ include 'includes/header.php';
         right: 40px;
         font-size: 6rem;
         font-weight: 900;
-        color: rgba(0, 94, 233, 0.1);
+        color: rgba(17, 145, 204, 0.1);
         letter-spacing: -5px;
     }
 
@@ -769,7 +769,7 @@ include 'includes/header.php';
     }
 
     /* Colors */
-    label:nth-of-type(1) .funky-tab { background: #005EE9; } /* AB Blue */
+    label:nth-of-type(1) .funky-tab { background: #1191cc; } /* AB Blue */
     label:nth-of-type(2) .funky-tab { background: #0f172a; } /* Dark Slate */
     label:nth-of-type(3) .funky-tab { background: #1e293b; } /* Medium Slate */
     label:nth-of-type(4) .funky-tab { background: #334155; } /* Light Slate */
@@ -803,7 +803,7 @@ include 'includes/header.php';
         transition: 0.3s;
     }
 
-    .funky-btn:hover { background: #fff; color: #005EE9; }
+    .funky-btn:hover { background: #fff; color: #1191cc; }
 
     .tab-left {
         position: absolute;
@@ -907,7 +907,7 @@ include 'includes/header.php';
 <style>
     /* About Page Specific Styles */
     :root {
-        --primary-gradient: linear-gradient(135deg, #005EE9 0%, #1191CC 100%);
+        --primary-gradient: linear-gradient(135deg, #1191cc 0%, #1191CC 100%);
         --dark-overlay: rgba(15, 23, 42, 0.85);
     }
 
@@ -1081,7 +1081,7 @@ include 'includes/header.php';
         display: flex;
         align-items: center;
         gap: 1.5rem;
-        box-shadow: 0 20px 40px rgba(0, 94, 233, 0.3);
+        box-shadow: 0 20px 40px rgba(17, 145, 204, 0.3);
     }
 
     .experience-badge .number {
@@ -1248,14 +1248,14 @@ include 'includes/header.php';
 
     .cta-glass-card {
         background: var(--primary);
-        background: linear-gradient(135deg, #005EE9 0%, #003DA0 100%);
+        background: linear-gradient(135deg, #1191cc 0%, #003DA0 100%);
         border-radius: 40px;
         padding: 5rem;
         position: relative;
         overflow: hidden;
         display: flex;
         align-items: center;
-        box-shadow: 0 30px 60px rgba(0, 94, 233, 0.2);
+        box-shadow: 0 30px 60px rgba(17, 145, 204, 0.2);
     }
 
     .cta-content {

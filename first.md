@@ -8,7 +8,7 @@ This document serves as the primary technical blueprint and knowledge base for t
 
 *   **Company**: AB Malaya Sdn Bhd (Maritime, Oil & Gas, and Energy sectors contractor/service provider based in Malaysia).
 *   **Aesthetics**: Merges **Industrial Authority** with a premium **Neuromorphic (Tactile), Glassmorphic, and Neo-Brutalist UI** design language.
-*   **Corporate Color Palette**: Unifies all major section headings and hero titles under a sleek, high-contrast **Light/Electric Blue (`#005ee9`) and Corporate Dark Blue (`#093862`)** dual-color system to maintain strict brand cohesion.
+*   **Corporate Color Palette**: Unifies all major section headings and hero titles under a sleek, high-contrast **Light/Electric Blue (`#1191cc`) and Corporate Dark Blue (`#093862`)** dual-color system to maintain strict brand cohesion.
 *   **Architecture**: Built using **Native PHP 8.3** with a zero-framework modular layout. This ensures blazing-fast rendering and an instant Time to First Byte (TTFB ~0ms).
 
 ---
