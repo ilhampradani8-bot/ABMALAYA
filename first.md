@@ -18,7 +18,7 @@ This document serves as the primary technical blueprint and knowledge base for t
 ### Core Pages (Root)
 *   `index.php`: High-impact landing page containing the Canvas particle hero, solutions slider, tabbed Neumorphic partners & credentials marquee, and expanded regional offices block (HQ + Penang & Perak) with HQ-focused Google Map.
 *   `about.php`: Immersive company profile with a 3D parallax hero, timeline narrative drawer, and gyroscopic mission panels.
-*   `services.php`: Full solutions catalog showcasing active divisions in a detailed vertical scroll layout with nested neumorphic tab cards and progress track indicators. Positioned at the top of the page is the premium, full-width Project Strategic Consultation division.
+*   `solutions.php`: Full solutions catalog showcasing active divisions in a detailed vertical scroll layout with nested neumorphic tab cards and progress track indicators. Positioned at the top of the page is the premium, full-width Project Strategic Consultation division.
 *   `why-us.php`: Corporate credibility showcase presenting certifications and compliance details, featuring an interactive Swiper slider for credentials (without download/view buttons for document security) and a premium, fully-responsive vertical accordion for the 5 Core Strengths.
 *   `certified.php`: Certification gallery showcasing license modals and GPU-accelerated statistics.
 *   `contact.php`: Restructured contact portal with a 4-section vertical flow: (1) **Our Offices** — a 3-column neumorphic grid showcasing HQ (Kuala Lumpur), Penang Office, and Perak Office with horizontal icon-left card layout; (2) **Contact Details** — a 2×2 grid for Phone, Email, Business Hours, and WhatsApp Support cards; (3) **HQ Office Map** — a neo-brutalist Google Maps embed; (4) **Inquiry Form** — a full-width neumorphic form. All section titles use corporate dark blue (`#093862`), text is left-aligned, and cards use a `linear-gradient` raised background for clear visibility. GSAP animations use `ScrollTrigger.create()` with `onEnter` + `gsap.fromTo()` pattern to prevent the opacity-flash bug caused by `gsap.from()` setting `opacity: 0` before the trigger fires.
@@ -107,7 +107,7 @@ Prevents theft/downloads of ISO and legal certificates:
 *   **Dynamic Tracks**: Toggles visibility between `#partners-track` (Vecom, Durachem, Belzona, Loctite) and `#accredited-track` (CIDB, MOF, SSM). The accredited track features a seamless 12-item loop layout.
 *   **No-Cache Fallback**: Incorporates inline Javascript event listeners alongside version-bumped external JS (`index.js?v=5.5`) to eliminate browser cache bypass issues.
 
-### 🏔️ Vertical Scroll & Neumorphic Tab-Card Architecture (`services.php`)
+### 🏔️ Vertical Scroll & Neumorphic Tab-Card Architecture (`solutions.php`)
 Replaced the legacy Swiper-based layout with a modern, high-fidelity vertical scroll section architecture integrated with the Lenis smooth scrolling engine.
 *   **Mobile-Optimized Title & 3D Inline Layout**: Stacks section columns vertically on mobile screens. To maximize usable screen height, desktop image columns are hidden, and 3D graphics are displayed as compact (`75px`) inline graphics nested directly next to the section titles in a responsive flex layout.
 *   **Neumorphic Inset Sub-Tabs**: Employs a dark-theme inset (concave) neumorphic button navigation (`.sub-tab-btn`) for division sub-topics. In the active state, buttons sink into the card surface (`box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.7), inset -3px -3px 8px rgba(255, 255, 255, 0.03)`).

@@ -10,19 +10,19 @@ $siteContent = [
     [
         'title' => 'Marine Division',
         'desc' => 'Comprehensive engineering solutions for the marine industry, ship consumables, and logistics.',
-        'link' => '/services#marine',
+        'link' => '/solutions#marine',
         'tags' => 'marine, subsea, ship, rust, coating, boiler, vecom, crew'
     ],
     [
         'title' => 'Logistic Division',
         'desc' => 'Seamless logistics between Singapore, Malaysia, and Thailand with professional handling.',
-        'link' => '/services#cross',
+        'link' => '/solutions#cross',
         'tags' => 'logistics, transport, cross-border, singapore, thailand, cargo, storage'
     ],
     [
         'title' => 'Environmental Solutions',
         'desc' => 'Corrosion prevention, waste management, and industrial spill containment.',
-        'link' => '/services#env',
+        'link' => '/solutions#env',
         'tags' => 'environment, green, energy, corrosion, waste, spill, wastewater'
     ],
     [

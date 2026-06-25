@@ -22,9 +22,9 @@ Website ini menggunakan **PHP Native Premium** berstruktur modular dengan kecepa
 ## 🔗 2. Manajemen URL Bersih (Clean URLs)
 
 Situs ini menggunakan routing tanpa ekstensi `.php` yang dikelola secara dinamis oleh:
-*   [router.php](file:///root/ABMALAYA/router.php): Menangkap permintaan URL (seperti `/about`, `/services`, `/why-us`, `/projects`, `/contact`) dan memetakannya secara internal ke file `.php` yang sesuai.
+*   [router.php](file:///root/ABMALAYA/router.php): Menangkap permintaan URL (seperti `/about`, `/solutions`, `/why-us`, `/projects`, `/contact`) dan memetakannya secara internal ke file `.php` yang sesuai.
 *   **Aturan Pemeliharaan Tautan**:
-    *   Selalu gunakan tautan bersih di HTML/PHP (misalnya `<a href="/services">` bukan `services.php`).
+    *   Selalu gunakan tautan bersih di HTML/PHP (misalnya `<a href="/solutions">` bukan `solutions.php`).
     *   Jika Anda membuat halaman baru bernama `kemitraan.php`, daftarkan rutenya di `router.php` agar dapat diakses via `/kemitraan`.
 
 ---

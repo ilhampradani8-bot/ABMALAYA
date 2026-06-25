@@ -26,7 +26,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/services" class="footer-btn">
+                            <a href="/solutions" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
                                 Solutions
                             </a>
@@ -49,37 +49,37 @@
                     <h4>Solutions</h4>
                     <ul style="display: flex; flex-direction: column; gap: 8px; padding: 0; list-style: none;">
                         <li>
-                            <a href="/services#strategic-consultant" class="footer-btn">
+                            <a href="/solutions#strategic-consultant" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                                 Strategic Consultant
                             </a>
                         </li>
                         <li>
-                            <a href="/services#contractor-engineering" class="footer-btn">
+                            <a href="/solutions#contractor-engineering" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                                 Contractor & Engineering
                             </a>
                         </li>
                         <li>
-                            <a href="/services#marine-services" class="footer-btn">
+                            <a href="/solutions#marine-services" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M19 12a7 7 0 0 1-14 0"/></svg>
                                 Marine Services
                             </a>
                         </li>
                         <li>
-                            <a href="/services#logistics-services" class="footer-btn">
+                            <a href="/solutions#logistics-services" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                                 Logistics Services
                             </a>
                         </li>
                         <li>
-                            <a href="/services#corrosion-management" class="footer-btn">
+                            <a href="/solutions#corrosion-management" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                                 Corrosion Management
                             </a>
                         </li>
                         <li>
-                            <a href="/services#digital-it-solutions" class="footer-btn">
+                            <a href="/solutions#digital-it-solutions" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                 Digital & IT Solutions
                             </a>

@@ -555,7 +555,7 @@ include 'includes/hero_visual.php';
                                 <div class="card-footer-layout">
                                     <!-- Left Side: Arrow Button -->
                                     <div class="card-footer-left">
-                                        <a href="services#strategic-consultant" class="card-arrow-btn" aria-label="Know More">
+                                        <a href="solutions#strategic-consultant" class="card-arrow-btn" aria-label="Know More">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -586,7 +586,7 @@ include 'includes/hero_visual.php';
                                 <div class="card-footer-layout">
                                     <!-- Left Side: Arrow Button -->
                                     <div class="card-footer-left">
-                                        <a href="services#contractor-engineering" class="card-arrow-btn" aria-label="Know More">
+                                        <a href="solutions#contractor-engineering" class="card-arrow-btn" aria-label="Know More">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -617,7 +617,7 @@ include 'includes/hero_visual.php';
                                 <div class="card-footer-layout">
                                     <!-- Left Side: Arrow Button -->
                                     <div class="card-footer-left">
-                                        <a href="services#marine" class="card-arrow-btn" aria-label="Know More">
+                                        <a href="solutions#marine" class="card-arrow-btn" aria-label="Know More">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -648,7 +648,7 @@ include 'includes/hero_visual.php';
                                 <div class="card-footer-layout">
                                     <!-- Left Side: Arrow Button -->
                                     <div class="card-footer-left">
-                                        <a href="services#cross" class="card-arrow-btn" aria-label="Know More">
+                                        <a href="solutions#cross" class="card-arrow-btn" aria-label="Know More">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -679,7 +679,7 @@ include 'includes/hero_visual.php';
                                 <div class="card-footer-layout">
                                     <!-- Left Side: Arrow Button -->
                                     <div class="card-footer-left">
-                                        <a href="services#env" class="card-arrow-btn" aria-label="Know More">
+                                        <a href="solutions#env" class="card-arrow-btn" aria-label="Know More">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 <polyline points="12 5 19 12 12 19"></polyline>

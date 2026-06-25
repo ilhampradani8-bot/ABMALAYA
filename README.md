@@ -27,7 +27,7 @@ For a detailed breakdown of the roles, performance benefits, and features of eac
 ## 📂 3. Project Structure
 
 *   `index.php`: High-impact landing page featuring the GPU-accelerated **Particle Canvas**, sequential machinery parallax, **Embla Solutions Slider**, and a **Neo-Brutalist Google Map Widget**.
-*   `services.php`: Immersive solutions catalog showcasing the **3 Core Active Divisions** in a high-fidelity **Dual-State Swiper Showcase** with dynamic asset loading, visual perspective shifts, and responsive heights.
+*   `solutions.php`: Immersive solutions catalog showcasing the **3 Core Active Divisions** in a high-fidelity **Dual-State Swiper Showcase** with dynamic asset loading, visual perspective shifts, and responsive heights.
 *   `projects.php`: High-end, immersive project showcase driven by **Swiper.js**, featuring perfectly centered desktop layouts and dynamic mobile-optimized 95%-width slider cards with responsive inquiry triggers.
 *   `about.php`: Immersive company profile featuring a 3D Neumorphic Parallax Vision & Mission section and custom **Funky Industrial CSS Accordions**.
 *   `certified.php`: High-end certification showcase featuring an interactive Swiper.js-based slider, a custom GPU-accelerated Neumorphic statistics panel, and **Secure Modal Document Preview**.
@@ -80,15 +80,15 @@ Upgraded the slide transitions on the hero slider from basic cross-fades to a pr
 To maximize readability and corporate solidness, the hero visual layer has been stripped of distracting mouse-based 3D tilt translations (`VanillaTilt` completely bypassed) and scroll-based parallax shifting. The image container renders statically and performs with maximum fluidness, dramatically saving GPU cycles and phone battery.
 
 ### 💎 Optimized Solution Cards & Smart Button Hiding (index.php)
-Aligned the home page Embla Solutions slider to perfectly match the active corporate offerings on `/services`. Only active divisions on the service page (**Marine Division**, **Logistic Division**, **Environmental**) display their fully styled *Know More* action buttons. Other premium showcase categories (**Industrial IT**, **Bio-Solutions**, **Procurement**) remain as beautiful portfolio visual cards, but their buttons are cleanly hidden to prevent broken/dead links, with their captions seamlessly centered using automated `margin-bottom: 0` overrides.
+Aligned the home page Embla Solutions slider to perfectly match the active corporate offerings on `/solutions`. Only active divisions on the service page (**Marine Division**, **Logistic Division**, **Environmental**) display their fully styled *Know More* action buttons. Other premium showcase categories (**Industrial IT**, **Bio-Solutions**, **Procurement**) remain as beautiful portfolio visual cards, but their buttons are cleanly hidden to prevent broken/dead links, with their captions seamlessly centered using automated `margin-bottom: 0` overrides.
 
-### 🛡️ Proactive FOUC, CLS, & Image Stacking Prevention (services.php)
+### 🛡️ Proactive FOUC, CLS, & Image Stacking Prevention (solutions.php)
 Re-engineered the services slider load sequence to completely prevent Flash of Unstyled Content (FOUC), Image Stacking, and Cumulative Layout Shift (CLS) on initial load. Implemented inline stylesheet defaults hiding inactive slides (`opacity: 0; visibility: hidden;`) and explicitly hardcoded the first active card's class (`swiper-slide-active`) and active background slide image in the raw HTML. This ensures the first active slide paints fully rendered and gorgeous immediately upon loading, entirely preventing vertical shifting, blank flashing, or messy overlapping image stacks before JavaScript initializes.
 
 ### 🛡️ Global Critical Layout Shield (Anti-FOUC & Anti-CLS in header.php)
 Implemented a site-wide early-load CSS shield in `<head>` that instantly parses layout boundaries and opacity rules for all custom sliders and dynamic image carousels *before* a single byte of the HTML `<body>` is painted by the browser. Enforces zero-bleed opacity (`opacity: 0`) and immediate absolute positioning (`position: absolute`) for the hero sequential layer, and pre-establishes strict horizontal flex containment (`display: flex; flex-direction: row; flex-wrap: nowrap; overflow: hidden;`) for Embla and Swiper wrappers. This completely eliminates Flash of Unstyled Content (FOUC), layout shifts (CLS), and messy card/image stacking site-wide, providing a flawless premium paint sequence.
 
-### 💎 5 Active Divisions & Responsive Dual-State Transition (services.php)
+### 💎 5 Active Divisions & Responsive Dual-State Transition (solutions.php)
 Fully upgraded the solutions catalog to render all 5 active business divisions: **Contractor & Engineering**, **Marine Services**, **Logistics Services**, **Corrosion Management**, and **Digital & IT Solutions**, completely eliminating all server-side hidden blocks.
 * **Dynamic Swiper Alignment**: Redesigned the solutions catalog Swiper showcase to present all 5 divisions in a beautiful tactile slider synced perfectly with interactive, high-contrast neobrutalist menu navigation options above.
 * **Dynamic Height Auto-Adjuster (JS-driven)**: Integrated an advanced JavaScript-driven Swiper height calculator (`adjustSwiperHeight`) that dynamically sums the offset heights and vertical margins of all children inside `.card-detail-content` plus safety paddings.
@@ -121,7 +121,7 @@ Re-engineered the 3D Parallax Hero visual landscape in `about.php` to meet ultim
     *   *Vision & Mission*: Re-aligned values with a revised Southeast Asia-focused vision statement and a highly polished, comprehensive 5-point mission grid.
 
 ### 🔗 Clean-URL Architecture & Unified Route Integration
-Re-engineered the website navigation system to utilize fully SEO-friendly, clean URLs without `.php` extensions. Endpoints like `/about`, `/services`, `/certified`, `/projects`, and `/contact` are processed natively, generating professional address bars similar to modern application routers.
+Re-engineered the website navigation system to utilize fully SEO-friendly, clean URLs without `.php` extensions. Endpoints like `/about`, `/solutions`, `/certified`, `/projects`, and `/contact` are processed natively, generating professional address bars similar to modern application routers.
 
 ### 🎬 High-End Cinematic Swiper.js Projects Showcase (projects.php)
 Employs a custom-tailored **Swiper.js** architecture optimized separately for desktop and mobile displays:

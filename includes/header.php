@@ -1184,14 +1184,14 @@
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
-                        <a href="/services" class="nav-link-item <?php echo $currentPage == 'services' ? 'active' : ''; ?>">Solutions <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                        <a href="/solutions" class="nav-link-item <?php echo $currentPage == 'solutions' ? 'active' : ''; ?>">Solutions <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/services#strategic-consultant"><i class="fas fa-chess-queen"></i> Strategic Consultant</a>
-                            <a href="/services#contractor-engineering"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
-                            <a href="/services#marine-services"><i class="fas fa-ship"></i> Marine Services</a>
-                            <a href="/services#logistics-services"><i class="fas fa-truck"></i> Logistics Services</a>
-                            <a href="/services#corrosion-management"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
-                            <a href="/services#digital-it-solutions"><i class="fas fa-laptop-code"></i> Digital & IT Solutions</a>
+                            <a href="/solutions#strategic-consultant"><i class="fas fa-chess-queen"></i> Strategic Consultant</a>
+                            <a href="/solutions#contractor-engineering"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
+                            <a href="/solutions#marine-services"><i class="fas fa-ship"></i> Marine Services</a>
+                            <a href="/solutions#logistics-services"><i class="fas fa-truck"></i> Logistics Services</a>
+                            <a href="/solutions#corrosion-management"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
+                            <a href="/solutions#digital-it-solutions"><i class="fas fa-laptop-code"></i> Digital & IT Solutions</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
@@ -1264,13 +1264,13 @@
                     <div class="mks-card has-mobile-sub">
                         <a href="javascript:void(0)" class="mobile-sub-toggle">Solutions <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
                         <div class="mobile-sub-menu">
-                            <a href="/services">Solutions Page</a>
-                            <a href="/services#strategic-consultant">Strategic Consultant</a>
-                            <a href="/services#contractor-engineering">Contractor & Engineering</a>
-                            <a href="/services#marine-services">Marine Services</a>
-                            <a href="/services#logistics-services">Logistics Services</a>
-                            <a href="/services#corrosion-management">Corrosion Management</a>
-                            <a href="/services#digital-it-solutions">Digital & IT Solutions</a>
+                            <a href="/solutions">Solutions Page</a>
+                            <a href="/solutions#strategic-consultant">Strategic Consultant</a>
+                            <a href="/solutions#contractor-engineering">Contractor & Engineering</a>
+                            <a href="/solutions#marine-services">Marine Services</a>
+                            <a href="/solutions#logistics-services">Logistics Services</a>
+                            <a href="/solutions#corrosion-management">Corrosion Management</a>
+                            <a href="/solutions#digital-it-solutions">Digital & IT Solutions</a>
                         </div>
                     </div>
                     

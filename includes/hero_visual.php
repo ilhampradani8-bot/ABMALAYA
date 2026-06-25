@@ -83,7 +83,7 @@ if (empty($images)) {
             <?php if(isset($showButtons) && $showButtons): 
                 $btn1Text = isset($heroBtn1Text) ? $heroBtn1Text : "Our Services";
                 $btn2Text = isset($heroBtn2Text) ? $heroBtn2Text : "Get a Quote";
-                $btn1Link = isset($heroBtn1Link) ? $heroBtn1Link : "/services";
+                $btn1Link = isset($heroBtn1Link) ? $heroBtn1Link : "/solutions";
                 $btn2Link = isset($heroBtn2Link) ? $heroBtn2Link : "/contact";
             ?>
             <div class="hero-btns">
