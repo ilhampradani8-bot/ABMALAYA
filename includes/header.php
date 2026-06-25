@@ -3,8 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title><?php echo isset($pageTitle) ? $pageTitle . " | AB Malaya Sdn Bhd" : "AB Malaya Sdn Bhd - Marine & Industrial Solutions"; ?></title>
-    <meta name="description" content="AB Malaya Sdn Bhd - Specialists in Marine Industrial Services, Cross-Border Logistics, and Environmental Solutions.">
+    <?php
+    // Dynamic SEO Configuration
+    $seoTitle = isset($pageTitle) ? $pageTitle . " | AB Malaya Sdn Bhd" : "AB Malaya Sdn Bhd - Marine & Industrial Solutions";
+    $seoDesc = "AB Malaya Sdn Bhd delivers reliable solutions across construction, marine services, logistics, corrosion management, and digital technology — empowering industries with operational excellence.";
+    $seoUrl = "https://abmalaya.com" . $_SERVER['REQUEST_URI'];
+    $canonicalUrl = strtok($seoUrl, '?'); // Clean canonical URL without query parameters
+    ?>
+    <title><?php echo $seoTitle; ?></title>
+    <meta name="description" content="<?php echo $seoDesc; ?>">
+    <meta name="keywords" content="Marine Industrial Services, Cross-Border Logistics, Environmental Solutions, Contractor Engineering, Corrosion Management, Digital IT Solutions, AB Malaya">
+    <meta name="author" content="AB Malaya Sdn Bhd">
+
+    <!-- Canonical URL to prevent duplicate content issues -->
+    <link rel="canonical" href="<?php echo $canonicalUrl; ?>">
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $canonicalUrl; ?>">
+    <meta property="og:title" content="<?php echo $seoTitle; ?>">
+    <meta property="og:description" content="<?php echo $seoDesc; ?>">
+    <meta property="og:image" content="https://abmalaya.com/assets/img/kapal-tanker.jpg">
+    <meta property="og:site_name" content="AB Malaya Sdn Bhd">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<?php echo $canonicalUrl; ?>">
+    <meta name="twitter:title" content="<?php echo $seoTitle; ?>">
+    <meta name="twitter:description" content="<?php echo $seoDesc; ?>">
+    <meta name="twitter:image" content="https://abmalaya.com/assets/img/kapal-tanker.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
