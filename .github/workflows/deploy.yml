@@ -1,4 +1,4 @@
-name: Deploy to InfinityFree
+name: Deploy to Exabytes
 
 on:
   push:
@@ -13,11 +13,12 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
-      - name: 📂 Sync files to InfinityFree
+      - name: 📂 Sync files to Exabytes
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftpupload.net
-          username: if0_41922321
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # InfinityFree menyimpan file di folder htdocs
-          server-dir: /htdocs/
+          port: 21
+          # Karena akun FTP langsung mengarah ke root web, kita gunakan /
+          server-dir: /
