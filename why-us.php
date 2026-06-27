@@ -380,17 +380,14 @@ include 'includes/hero_visual.php';
         .blog-slider { max-width: 680px; height: 400px; }
     }
 
-    @media screen and (max-width: 768px) {
-        .blog-slider { min-height: 500px; height: auto; margin: 80px auto; padding: 25px; }
+    /* Prevent FOUC and layout break before Swiper initializes */
+    .blog-slider:not(.swiper-initialized) .swiper-slide:not(:first-child) {
+        display: none !important;
     }
 
     .blog-slider__item {
         display: flex;
         align-items: center;
-    }
-
-    @media screen and (max-width: 768px) {
-        .blog-slider__item { flex-direction: column; }
     }
 
     .blog-slider__item.swiper-slide-active .blog-slider__img img {
@@ -438,17 +435,9 @@ include 'includes/hero_visual.php';
         display: none;
     }
 
-    @media screen and (max-width: 768px) {
-        .blog-slider__img { transform: translateY(-50%); width: 90%; margin-left: 5%; }
-    }
-
     .blog-slider__content {
         padding-right: 25px;
         margin-left: -50px;
-    }
-
-    @media screen and (max-width: 768px) {
-        .blog-slider__content { margin-top: -80px; text-align: center; padding: 0 20px; margin-left: 0; padding-bottom: 30px; }
     }
 
     .blog-slider__content > * {
@@ -552,9 +541,29 @@ include 'includes/hero_visual.php';
     }
 
     @media screen and (max-width: 768px) {
-        .blog-slider { min-height: 450px; height: auto; margin: 120px auto 40px; padding: 20px; }
-        .blog-slider__img { transform: translateY(-50%); width: 90%; height: 220px; margin-left: 5%; transform: translateY(-40%); }
-        .blog-slider__content { margin-top: -40px; text-align: center; padding: 0 10px; margin-left: 0; padding-bottom: 30px; }
+        .blog-slider { 
+            min-height: auto; 
+            height: auto; 
+            margin: 80px auto 40px; 
+            padding: 20px; 
+        }
+        .blog-slider__item { 
+            flex-direction: column; 
+        }
+        .blog-slider__img { 
+            width: 90%; 
+            height: 220px; 
+            margin-left: 0; 
+            margin-top: -60px; /* Pull up safely */
+            transform: none; /* Removed translate to fix overlap */
+        }
+        .blog-slider__content { 
+            margin-top: 20px; /* Safe spacing from image */
+            text-align: center; 
+            padding: 0 10px; 
+            margin-left: 0; 
+            padding-bottom: 30px; 
+        }
         .blog-slider__title { font-size: 1.3rem; }
         .blog-slider__text { font-size: 0.85rem; margin-bottom: 20px; }
         .blog-slider__button { width: 100%; padding: 12px 20px; font-size: 0.8rem; }
@@ -564,7 +573,8 @@ include 'includes/hero_visual.php';
             right: auto !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
-            top: 160px !important;
+            top: auto !important;
+            bottom: 10px !important;
             gap: 12px;
             width: auto !important;
             justify-content: center;

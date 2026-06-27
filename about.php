@@ -26,13 +26,14 @@ include 'includes/header.php';
                     <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
                 </g>
             </mask>
-            <image class="sky" xlink:href="/assets/img/about3D/sky.webp" x="-300" y="0" width="1800" height="1200" preserveAspectRatio="xMidYMid slice" />
-            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.webp" x="-60" y="0" width="1320" height="880" preserveAspectRatio="xMidYMid slice" />    
-            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.webp" x="-60" y="0" width="1320" height="880" preserveAspectRatio="xMidYMid slice" />    
+            <image class="sky" xlink:href="/assets/img/about3D/sky.webp" x="-300" y="-100" width="1800" height="1300" preserveAspectRatio="xMidYMid slice" />
+            <image class="mountBg" xlink:href="/assets/img/about3D/mountBg.webp" x="-60" y="-100" width="1320" height="980" preserveAspectRatio="xMidYMid slice" />    
+            <image class="mountMg" xlink:href="/assets/img/about3D/mountMg.webp" x="-60" y="-100" width="1320" height="980" preserveAspectRatio="xMidYMid slice" />    
             <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />    
-            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.webp" x="-60" y="60" width="1320" height="880" preserveAspectRatio="xMidYMid slice" />
+            <image class="mountFg" xlink:href="/assets/img/about3D/mountFg.webp" x="-60" y="-100" width="1320" height="1040" preserveAspectRatio="xMidYMid slice" />
             <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />
             <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800" preserveAspectRatio="xMidYMid slice" />
+            
             
             <text fill="#093863" x="50%" y="250" text-anchor="middle" class="parallax-text-main">ABOUT US</text>
             <text fill="#ffffffff" x="50%" y="320" text-anchor="middle" class="parallax-text-sub-desc">ABMALAYA INNOVATION</text>
