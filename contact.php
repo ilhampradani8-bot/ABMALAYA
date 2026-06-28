@@ -79,7 +79,7 @@ include 'includes/hero_visual.php';
                     <h4>Phone Number</h4>
                     <div class="links">
                         <a href="tel:+60172240091"><i class="fas fa-phone"></i> +60 17-224 0091</a>
-                        <a href="tel:+60117117282"><i class="fas fa-phone"></i> +60 11-711 7282</a>
+                        <a href="tel:+601171117282"><i class="fas fa-phone"></i> +60 11-7111 7282</a>
                     </div>
                 </div>
             </div>

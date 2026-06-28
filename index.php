@@ -1010,7 +1010,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- WhatsApp -->
                     <div class="contact-item" style="margin-bottom: 2.5rem;">
                         <p style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">WhatsApp Support</p>
-                        <p style="color: #000; font-size: 1.1rem; font-weight: 500;">+6017-2240091 / +6011-7117282</p>
+                        <p style="color: #000; font-size: 1.1rem; font-weight: 500;">+6017-2240091 / +6011-71117282</p>
                     </div>
                     <!-- Email -->
                     <div class="contact-item" style="margin-bottom: 2.5rem;">
