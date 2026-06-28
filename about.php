@@ -474,7 +474,7 @@ include 'includes/header.php';
             padding: 0 15px; 
         }
         .vm-parallax-wrap { 
-            height: 380px !important; 
+            height: auto !important; 
             min-height: 380px !important;
             width: 100% !important; 
             margin-bottom: 30px;
@@ -488,7 +488,8 @@ include 'includes/header.php';
             opacity: 1 !important;
             display: flex !important;
             flex-direction: column;
-            height: 380px !important;
+            height: auto !important;
+            min-height: 380px !important;
             transition: transform 0.2s ease-out;
         }
         .neumorphic-info {
@@ -522,10 +523,12 @@ include 'includes/header.php';
             padding: 60px 0;
         }
         .vm-parallax-wrap {
-            height: 380px !important;
+            height: auto !important;
+            min-height: 380px !important;
         }
         .neumorphic-card {
-            height: 380px !important;
+            height: auto !important;
+            min-height: 380px !important;
         }
         .vm-parallax-info h3 {
             font-size: 1.4rem !important;
@@ -889,7 +892,7 @@ include 'includes/header.php';
         .tab-right p { font-size: 0.85rem; margin: 6px 0 0 0; max-width: 100%; }
         .funky-btn { padding: 4px 12px; font-size: 0.75rem; }
 
-        input[type="radio"]:checked + label .funky-tab { height: 245px; } /* Safe mobile height preventing overflow bleed on narrow viewports */
+        input[type="radio"]:checked + label .funky-tab { height: 320px; } /* Increased mobile height preventing overflow bleed on narrow viewports */
         input[type="radio"]:checked + label .funky-tab h2 { top: 12px; } /* Breathable position for category watermark */
         input[type="radio"]:checked + label .funky-tab .tab-right { top: 60px; } /* Aligned perfectly with the active icon (top: 60px) to prevent title clashes */
         
