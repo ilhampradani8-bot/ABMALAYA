@@ -168,7 +168,9 @@ body {
 /* Desktop: fits screen exactly, fixed background parallax */
 @media (min-width: 1025px) {
     .solution-section {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
+        padding: 80px 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -176,7 +178,7 @@ body {
     }
     .solution-grid {
         grid-template-columns: 1.1fr 0.9fr;
-        height: 100%;
+        height: auto;
         padding: 40px 4%;
         gap: 60px;
     }
@@ -824,9 +826,26 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                     <div class="solution-desc">
-                        Our Project Strategic Consultation services are designed to support clients throughout every stage of project development, from initial planning and feasibility assessment to funding acquisition, regulatory approvals, and implementation strategy. 
-                        <br><br>
-                        We work closely with businesses, investors, and stakeholders to identify opportunities, mitigate risks, and develop practical solutions that align with project objectives and long-term growth plans. Through our expertise and industry network, we assist clients in navigating complex application processes, securing government grants and financing facilities, obtaining necessary permits and approvals, and establishing a clear roadmap for successful project execution. Our goal is to ensure that every project is strategically positioned, financially viable, and fully prepared for sustainable success.
+                        We provide strategic consultation services to support businesses, investors, project owners, and entrepreneurs in transforming ideas into viable and sustainable ventures. Our expertise spans project planning, business expansion, regulatory compliance, funding facilitation, and long-term growth strategies.
+                    </div>
+                    
+                    <div class="sub-tab-wrapper">
+                        <div class="sub-tab-contents">
+                            <div class="sub-tab-pane active" data-pane="strategic-overview">
+                                <h3 class="pane-title">Key Areas of Expertise</h3>
+                                <ul class="bullet-list" style="grid-template-columns: 1fr;">
+                                    <li>Project feasibility evaluation and strategic planning</li>
+                                    <li>Business growth and expansion strategies</li>
+                                    <li>Government grants and financing facilitation</li>
+                                    <li>Regulatory approvals, permits, and licensing support</li>
+                                    <li>Stakeholder engagement and coordination</li>
+                                    <li>Risk assessment and project viability analysis</li>
+                                    <li>Business restructuring and recovery planning</li>
+                                    <li>Implementation roadmaps and project execution strategies</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Whether you are launching a new venture, expanding an existing business, overcoming operational challenges, or rebuilding after setbacks, we provide practical guidance and strategic solutions that support sustainable growth and successful project delivery.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="solution-image-col">
@@ -849,7 +868,9 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                     <div class="solution-desc">
-                        We provide comprehensive contractor and engineering solutions across diverse sectors, including commercial building construction, complex civil developments, and critical mechanical and electrical grid management.
+                        We deliver integrated contractor and engineering solutions across a wide range of industries, supporting clients from project planning and technical evaluation through to execution, commissioning, and long-term operational support. Our expertise encompasses commercial and industrial construction, civil infrastructure works, mechanical and electrical engineering systems, asset enhancement, and specialized engineering solutions tailored to project-specific requirements.
+                        <br><br>
+                        With a strong emphasis on quality, safety, regulatory compliance, and operational efficiency, we work closely with clients, consultants, developers, and stakeholders to ensure every project is executed to the highest professional standards. By combining technical expertise, industry knowledge, and practical project delivery experience, we provide reliable engineering solutions that enhance performance, optimize resources, and support sustainable project outcomes.
                     </div>
                     
                     <!-- Inner Tabbed System to save space -->
@@ -866,45 +887,91 @@ include 'includes/hero_visual.php';
                             <!-- Pane 1 -->
                             <div class="sub-tab-pane active" data-pane="building">
                                 <h3 class="pane-title">Building Construction</h3>
-                                <p class="pane-desc">We provide comprehensive building construction services covering commercial, industrial, and infrastructure projects. Our expertise includes structural works, renovation, fit-outs, and building maintenance with a strong emphasis on safety, quality, and timely delivery.</p>
+                                <p class="pane-desc">We provide comprehensive building construction solutions for commercial, industrial, institutional, and infrastructure developments, delivering projects from site preparation through to completion and handover.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Scope of Services:</p>
+                                <ul class="bullet-list">
+                                    <li>Structural construction works</li>
+                                    <li>Architectural and finishing works</li>
+                                    <li>Refurbishment and renovation projects</li>
+                                    <li>Interior fit-out solutions</li>
+                                    <li>Facility upgrading and enhancement works</li>
+                                    <li>Building maintenance programs</li>
+                                    <li>Project coordination and construction management</li>
+                                    <li>Quality, safety, and compliance management</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">We are committed to delivering durable, functional, and cost-effective built environments that support long-term operational performance and asset value.</p>
                             </div>
                             
                             <!-- Pane 2 -->
                             <div class="sub-tab-pane" data-pane="civil">
                                 <h3 class="pane-title">Civil Engineering</h3>
-                                <p class="pane-desc">Our civil engineering capabilities include earthworks, road construction, pavement works, drainage systems, site clearing, and infrastructure development for both public and private sector projects.</p>
+                                <p class="pane-desc">Our civil engineering capabilities cover a broad spectrum of infrastructure development works, supporting both public and private sector projects. We deliver reliable civil engineering solutions that form the foundation of successful developments, from site preparation through to infrastructure completion.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Scope of Services:</p>
+                                <ul class="bullet-list">
+                                    <li>Earthworks and site preparation</li>
+                                    <li>Site clearing and ground development</li>
+                                    <li>Road and pavement construction</li>
+                                    <li>Drainage and stormwater management systems</li>
+                                    <li>Infrastructure development works</li>
+                                    <li>Utility and site support works</li>
+                                    <li>Project coordination and execution</li>
+                                    <li>Quality, safety, and regulatory compliance</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Backed by experienced engineering personnel and project teams, we are committed to delivering durable, cost-effective, and technically sound civil engineering solutions that support long-term asset performance and project success.</p>
                             </div>
 
                             <!-- Pane 3 -->
                             <div class="sub-tab-pane" data-pane="mechanical">
                                 <h3 class="pane-title">Mechanical Engineering</h3>
-                                <p class="pane-desc">We specialize in mechanical systems installation and maintenance including:</p>
+                                <p class="pane-desc">We specialise in comprehensive mechanical engineering solutions for commercial, industrial, and specialised facilities. Our services are designed to ensure operational reliability, system efficiency, and long-term performance throughout the entire asset lifecycle.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Scope of Services:</p>
                                 <ul class="bullet-list">
-                                    <li>HVAC systems</li>
-                                    <li>Fire protection systems</li>
-                                    <li>Industrial piping</li>
-                                    <li>Mechanical fabrication</li>
-                                    <li>Preventive maintenance solutions</li>
+                                    <li>HVAC Systems</li>
+                                    <li>Fire Protection Systems</li>
+                                    <li>Industrial Piping Works</li>
+                                    <li>Mechanical Fabrication</li>
+                                    <li>Testing & Commissioning</li>
+                                    <li>Preventive Maintenance Programs</li>
+                                    <li>Shutdown and Turnaround Support</li>
+                                    <li>Mechanical Technical Personnel Deployment</li>
                                 </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Supported by competent and highly experienced technical personnel, we deliver mechanical engineering solutions that meet industry standards, project specifications, and operational requirements while maintaining the highest levels of safety and quality.</p>
                             </div>
 
                             <!-- Pane 4 -->
                             <div class="sub-tab-pane" data-pane="electrical">
                                 <h3 class="pane-title">Electrical Engineering</h3>
-                                <p class="pane-desc">Our electrical services cover:</p>
+                                <p class="pane-desc">Our electrical engineering services provide end-to-end solutions for industrial, commercial, and infrastructure facilities. We combine technical expertise with practical execution to ensure safe, efficient, and reliable electrical system performance.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Scope of Services:</p>
                                 <ul class="bullet-list">
-                                    <li>Industrial electrical installation</li>
-                                    <li>Power distribution systems</li>
-                                    <li>Lighting systems</li>
-                                    <li>Preventive electrical maintenance</li>
-                                    <li>Troubleshooting and upgrades</li>
+                                    <li>Industrial Electrical Installation</li>
+                                    <li>Power Distribution Systems</li>
+                                    <li>Lighting Systems</li>
+                                    <li>Preventive Electrical Maintenance</li>
+                                    <li>Troubleshooting and Fault Rectification</li>
+                                    <li>Electrical System Upgrades</li>
+                                    <li>Testing & Commissioning</li>
+                                    <li>Electrical Technical Personnel Deployment</li>
                                 </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">With experienced technical personnel and a commitment to engineering excellence, we support clients in maintaining reliable electrical systems, reducing operational risks, and improving overall efficiency.</p>
                             </div>
 
                             <!-- Pane 5 -->
                             <div class="sub-tab-pane" data-pane="marine-eng">
                                 <h3 class="pane-title">Marine Engineering</h3>
-                                <p class="pane-desc">We support marine and offshore industries through repair, maintenance, and servicing of mechanical, electrical, and structural systems for vessels and offshore assets.</p>
+                                <p class="pane-desc">We provide specialised marine and offshore engineering support services for vessels, marine facilities, and offshore assets. Our focus is on maintaining operational readiness, system reliability, and compliance with industry standards in demanding marine environments.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Scope of Services:</p>
+                                <ul class="bullet-list">
+                                    <li>Mechanical System Repair & Maintenance</li>
+                                    <li>Electrical System Repair & Maintenance</li>
+                                    <li>Structural Repair Works</li>
+                                    <li>Vessel Servicing Support</li>
+                                    <li>Offshore Asset Maintenance</li>
+                                    <li>Inspection & Technical Support Services</li>
+                                    <li>Shutdown and Maintenance Activities</li>
+                                    <li>Marine Technical Personnel Deployment</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Supported by a highly competent and experienced technical workforce, we deliver reliable marine engineering solutions that help clients maintain safe, efficient, and uninterrupted operations throughout the service life of their assets.</p>
                             </div>
                         </div>
                     </div>
@@ -929,62 +996,72 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                     <div class="solution-desc">
-                        AB Malaya supports marine and offshore operations with reliable industrial supply and technical support services.
+                        AB Malaya provides comprehensive marine support services for vessel operators, ship owners, offshore contractors, and marine industry stakeholders. Our services are designed to support day-to-day vessel operations, maintenance activities, offshore projects, and operational requirements through reliable supply chain management, technical support, and marine logistics solutions.
+                        <br><br>
+                        With a strong understanding of marine operational demands, safety requirements, and industry standards, we are committed to delivering responsive, dependable, and cost-effective solutions that help clients maintain operational continuity, optimize asset performance, and minimize downtime.
                     </div>
                     
                     <!-- Inner Tabbed System -->
                     <div class="sub-tab-wrapper">
                         <div class="sub-tab-nav">
-                            <button class="sub-tab-btn active" data-tab="marine-solutions">Solutions</button>
-                            <button class="sub-tab-btn" data-tab="consumables">Consumables</button>
-                            <button class="sub-tab-btn" data-tab="crew">Crew Logistics</button>
-                            <button class="sub-tab-btn" data-tab="chemicals">Chemicals</button>
+                            <button class="sub-tab-btn active" data-tab="marine-solutions">Consumable Supply</button>
+                            <button class="sub-tab-btn" data-tab="consumables">Crew Logistics</button>
+                            <button class="sub-tab-btn" data-tab="crew">Marine Chemicals</button>
                         </div>
                         
                         <div class="sub-tab-contents">
                             <!-- Pane 1 -->
                             <div class="sub-tab-pane active" data-pane="marine-solutions">
-                                <h3 class="pane-title">Marine Industrial Solutions</h3>
-                                <p class="pane-desc">AB Malaya supports marine and offshore operations with reliable industrial supply and technical support services.</p>
+                                <h3 class="pane-title">Consumable Supply</h3>
+                                <p class="pane-desc">We provide reliable sourcing and supply solutions for a wide range of marine consumables required to support vessel operations, maintenance activities, and offshore projects. Our supply services are focused on ensuring product quality, timely delivery, and compliance with operational requirements to minimize disruption and maintain operational readiness.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Products & Supply Capabilities:</p>
+                                <ul class="bullet-list">
+                                    <li>Machinery and spare parts</li>
+                                    <li>Industrial tools and equipment</li>
+                                    <li>Lifting and rigging equipment</li>
+                                    <li>Personal protective equipment (PPE) and safety products</li>
+                                    <li>General vessel consumables</li>
+                                    <li>Maintenance and operational supplies</li>
+                                    <li>Technical consumables for marine and offshore applications</li>
+                                    <li>Project-based procurement support</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Through our established supplier network and procurement capabilities, we assist clients in obtaining dependable products that meet industry standards and operational expectations.</p>
                             </div>
                             
                             <!-- Pane 2 -->
                             <div class="sub-tab-pane" data-pane="consumables">
-                                <h3 class="pane-title">Vessel Consumables & Supplies</h3>
-                                <p class="pane-desc">We supply high-quality marine consumables including:</p>
+                                <h3 class="pane-title">Crew Logistics & Transportation</h3>
+                                <p class="pane-desc">We provide comprehensive crew logistics and transportation support to facilitate the efficient movement of personnel between vessels, offshore installations, ports, airports, and operational facilities. Our services are designed to ensure smooth crew transitions while maintaining operational schedules and minimizing logistical challenges.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
                                 <ul class="bullet-list">
-                                    <li>Machinery & spare parts</li>
-                                    <li>Industrial tools</li>
-                                    <li>Lifting & rigging equipment</li>
-                                    <li>Safety products</li>
-                                    <li>General vessel consumables</li>
+                                    <li>Crew sign-on and sign-off coordination</li>
+                                    <li>Port and airport transportation services</li>
+                                    <li>Vessel transfer arrangements</li>
+                                    <li>Logistics planning and coordination</li>
+                                    <li>Emergency crew mobilization support</li>
+                                    <li>Crew movement scheduling and management</li>
+                                    <li>Offshore personnel transportation support</li>
+                                    <li>Operational and project logistics assistance</li>
                                 </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">With a strong focus on reliability, responsiveness, and operational efficiency, we help clients manage crew movements safely and effectively in accordance with project and operational requirements.</p>
                             </div>
 
                             <!-- Pane 3 -->
                             <div class="sub-tab-pane" data-pane="crew">
-                                <h3 class="pane-title">Crew Logistics & Transportation</h3>
-                                <p class="pane-desc">We coordinate efficient crew transitions including:</p>
-                                <ul class="bullet-list">
-                                    <li>Crew sign-on & sign-off</li>
-                                    <li>Port transportation</li>
-                                    <li>Logistics coordination</li>
-                                    <li>Emergency crew support</li>
-                                </ul>
-                            </div>
-
-                            <!-- Pane 4 -->
-                            <div class="sub-tab-pane" data-pane="chemicals">
                                 <h3 class="pane-title">Marine Chemicals & Maintenance</h3>
-                                <p class="pane-desc">We supply industrial-grade marine chemicals including:</p>
+                                <p class="pane-desc">We supply industrial-grade marine chemical solutions and maintenance products designed to support equipment reliability, system performance, and operational efficiency across marine and offshore environments. Our solutions are sourced from trusted manufacturers and selected to meet the demanding requirements of vessel operations and maintenance programs.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Products & Solutions:</p>
                                 <ul class="bullet-list">
                                     <li>Boiler water treatment chemicals</li>
                                     <li>Cooling water treatment solutions</li>
                                     <li>Maintenance chemicals</li>
-                                    <li>Cleaning solutions</li>
-                                    <li>Testing kits & equipment</li>
+                                    <li>Industrial cleaning solutions</li>
+                                    <li>Water testing kits and equipment</li>
+                                    <li>Corrosion prevention solutions</li>
+                                    <li>Equipment protection chemicals</li>
+                                    <li>Operational maintenance consumables</li>
                                 </ul>
-                                <p class="pane-desc" style="margin-top: 15px;">We also distribute trusted marine chemical solutions for operational efficiency and equipment protection.</p>
+                                <p class="pane-desc" style="margin-top: 15px;">In addition to product supply, we assist clients in selecting appropriate chemical solutions that support preventive maintenance strategies, equipment protection, regulatory compliance, and long-term asset performance.</p>
                             </div>
                         </div>
                     </div>
@@ -1009,60 +1086,91 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                     <div class="solution-desc">
-                        We provide reliable logistics coordination across Malaysia, Singapore, Thailand, and Indonesia, ensuring seamless regional transitions.
+                        AB Malaya provides integrated logistics solutions designed to support the efficient movement of goods, equipment, materials, and personnel across Malaysia, Singapore, Thailand, and Indonesia. Through effective planning, regional coordination, and responsive execution, we help clients streamline supply chain operations and maintain continuity across multiple locations and project environments.
+                        <br><br>
+                        With a strong understanding of regional logistics requirements, customs regulations, transportation networks, and operational challenges, we deliver reliable and cost-effective logistics solutions tailored to the unique needs of each client.
                     </div>
                     
                     <!-- Inner Tabbed System -->
                     <div class="sub-tab-wrapper">
                         <div class="sub-tab-nav">
-                            <button class="sub-tab-btn active" data-tab="logistics-overview">Overview</button>
-                            <button class="sub-tab-btn" data-tab="transport">Transportation</button>
-                            <button class="sub-tab-btn" data-tab="handling">Handling & Storage</button>
-                            <button class="sub-tab-btn" data-tab="compliance">Compliance</button>
-                            <button class="sub-tab-btn" data-tab="log-support">24/7 Support</button>
+                            <button class="sub-tab-btn active" data-tab="logistics-overview">Cross-Border Transport</button>
+                            <button class="sub-tab-btn" data-tab="transport">Handling & Storage</button>
+                            <button class="sub-tab-btn" data-tab="handling">Documentation & Compliance</button>
+                            <button class="sub-tab-btn" data-tab="compliance">24/7 Support</button>
                         </div>
                         
                         <div class="sub-tab-contents">
                             <!-- Pane 1 -->
                             <div class="sub-tab-pane active" data-pane="logistics-overview">
-                                <h3 class="pane-title">Cross-Border Logistics</h3>
-                                <p class="pane-desc">We provide reliable logistics coordination across Malaysia, Singapore, Thailand, and Indonesia.</p>
+                                <h3 class="pane-title">Cross-Border Transportation</h3>
+                                <p class="pane-desc">We provide comprehensive cross-border transportation solutions to facilitate the seamless movement of goods, equipment, and project materials throughout the region. Our logistics team coordinates every stage of the transportation process to ensure timely delivery, efficient routing, and compliance with cross-border requirements.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
+                                <ul class="bullet-list">
+                                    <li>Regional transportation planning and coordination</li>
+                                    <li>Cross-border cargo movement</li>
+                                    <li>Project cargo transportation</li>
+                                    <li>Equipment and material mobilization</li>
+                                    <li>Route optimization and scheduling</li>
+                                    <li>Customs clearance coordination</li>
+                                    <li>Multi-country logistics support</li>
+                                    <li>Time-sensitive delivery management</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">By leveraging established transportation networks and regional logistics expertise, we help clients achieve efficient cargo movement while minimizing transit delays and operational risks.</p>
                             </div>
                             
                             <!-- Pane 2 -->
                             <div class="sub-tab-pane" data-pane="transport">
-                                <h3 class="pane-title">Cross-Border Transportation</h3>
-                                <p class="pane-desc">Our team manages efficient movement of goods through optimized transportation planning and regional logistics coordination.</p>
+                                <h3 class="pane-title">Goods Handling & Storage</h3>
+                                <p class="pane-desc">We provide professional goods handling and storage solutions designed to support operational efficiency, inventory control, and supply chain continuity. Our services ensure that cargo, equipment, and materials are managed safely and systematically throughout the logistics process.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
+                                <ul class="bullet-list">
+                                    <li>Cargo handling and coordination</li>
+                                    <li>Temporary storage solutions</li>
+                                    <li>Inventory coordination and monitoring</li>
+                                    <li>Safe loading and unloading operations</li>
+                                    <li>Equipment and material staging</li>
+                                    <li>Warehouse support services</li>
+                                    <li>Project logistics storage arrangements</li>
+                                    <li>Cargo movement planning</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Through structured handling procedures and effective storage management, we help clients maintain operational readiness while safeguarding valuable assets and project materials.</p>
                             </div>
 
                             <!-- Pane 3 -->
                             <div class="sub-tab-pane" data-pane="handling">
-                                <h3 class="pane-title">Goods Handling & Storage</h3>
-                                <p class="pane-desc">We provide:</p>
+                                <h3 class="pane-title">Documentation & Compliance</h3>
+                                <p class="pane-desc">Efficient logistics operations require accurate documentation and strict compliance with regulatory requirements. Our team provides administrative and coordination support to ensure that shipments, equipment movements, and cross-border transactions are managed in accordance with applicable regulations and industry requirements.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
                                 <ul class="bullet-list">
-                                    <li>Cargo handling</li>
-                                    <li>Temporary storage solutions</li>
-                                    <li>Inventory coordination</li>
-                                    <li>Safe loading & unloading operations</li>
+                                    <li>Customs documentation coordination</li>
+                                    <li>Regulatory compliance support</li>
+                                    <li>Permit application and coordination</li>
+                                    <li>Import and export documentation</li>
+                                    <li>Shipment documentation management</li>
+                                    <li>Cross-border regulatory coordination</li>
+                                    <li>Cargo clearance support</li>
+                                    <li>Logistics compliance administration</li>
                                 </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">By ensuring documentation accuracy and regulatory compliance, we help clients reduce administrative burdens, minimize delays, and facilitate smoother logistics operations across multiple jurisdictions.</p>
                             </div>
 
                             <!-- Pane 4 -->
                             <div class="sub-tab-pane" data-pane="compliance">
-                                <h3 class="pane-title">Documentation & Compliance</h3>
-                                <p class="pane-desc">We assist clients with:</p>
-                                <ul class="bullet-list">
-                                    <li>Customs documentation</li>
-                                    <li>Regulatory compliance</li>
-                                    <li>Permit coordination</li>
-                                    <li>Import/export procedures</li>
-                                </ul>
-                            </div>
-
-                            <!-- Pane 5 -->
-                            <div class="sub-tab-pane" data-pane="log-support">
                                 <h3 class="pane-title">24/7 Operational Support</h3>
-                                <p class="pane-desc">Our standby logistics team and transportation network ensure continuous operational support anytime and anywhere.</p>
+                                <p class="pane-desc">Recognizing that logistics operations often extend beyond standard business hours, we provide responsive operational support to address urgent requirements, unexpected disruptions, and time-critical movements. Our logistics personnel and transportation network remain ready to support clients whenever operational needs arise.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
+                                <ul class="bullet-list">
+                                    <li>24/7 logistics coordination support</li>
+                                    <li>Emergency transportation arrangements</li>
+                                    <li>Urgent cargo mobilization</li>
+                                    <li>Standby transportation services</li>
+                                    <li>Rapid response logistics solutions</li>
+                                    <li>Project-critical delivery support</li>
+                                    <li>Operational contingency coordination</li>
+                                    <li>Regional logistics assistance</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">With a commitment to responsiveness, reliability, and operational continuity, we help clients maintain smooth operations and minimize disruptions regardless of location or timing requirements.</p>
                             </div>
                         </div>
                     </div>
@@ -1087,62 +1195,72 @@ include 'includes/hero_visual.php';
                         </div>
                     </div>
                     <div class="solution-desc">
-                        AB Malaya provides specialized corrosion management solutions for marine, oil & gas, industrial, and infrastructure sectors.
+                        AB Malaya provides specialized corrosion management solutions designed to protect, preserve, and extend the service life of critical assets across the marine, oil & gas, industrial, and infrastructure sectors. Our approach combines technical expertise, proven protection systems, and industry best practices to minimize asset deterioration, reduce maintenance costs, and improve long-term operational reliability.
+                        <br><br>
+                        Understanding that corrosion poses significant operational, safety, and financial risks, we work closely with asset owners, facility operators, contractors, and project stakeholders to develop effective protection strategies tailored to specific environmental and operational conditions. Through integrated inspection, coating, maintenance, and advisory services, we help clients safeguard valuable assets while supporting regulatory compliance and operational sustainability.
                     </div>
                     
                     <!-- Inner Tabbed System -->
                     <div class="sub-tab-wrapper">
                         <div class="sub-tab-nav">
-                            <button class="sub-tab-btn active" data-tab="corrosion-overview">Overview</button>
-                            <button class="sub-tab-btn" data-tab="coating">Painting & Coating</button>
-                            <button class="sub-tab-btn" data-tab="surface">Surface Prep</button>
-                            <button class="sub-tab-btn" data-tab="consultation">Consultation</button>
+                            <button class="sub-tab-btn active" data-tab="coating">Painting & Coating</button>
+                            <button class="sub-tab-btn" data-tab="surface">Surface Prep & Protection</button>
+                            <button class="sub-tab-btn" data-tab="consultation">Technical Consultation</button>
                         </div>
                         
                         <div class="sub-tab-contents">
                             <!-- Pane 1 -->
-                            <div class="sub-tab-pane active" data-pane="corrosion-overview">
-                                <h3 class="pane-title">Corrosion Protection Solutions</h3>
-                                <p class="pane-desc">AB Malaya provides specialized corrosion management solutions for marine, oil & gas, industrial, and infrastructure sectors.</p>
+                            <div class="sub-tab-pane active" data-pane="coating">
+                                <h3 class="pane-title">Industrial Painting & Coating</h3>
+                                <p class="pane-desc">We provide professional industrial painting and protective coating solutions designed to safeguard assets against corrosion, environmental exposure, and operational wear. Our coating systems are selected based on project requirements, operating environments, and industry specifications to ensure long-term protection and performance.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
+                                <ul class="bullet-list">
+                                    <li>Marine coating systems</li>
+                                    <li>Oil & gas protective coatings</li>
+                                    <li>Industrial infrastructure coatings</li>
+                                    <li>Aviation industry coating applications</li>
+                                    <li>Certified industrial coating systems</li>
+                                    <li>General protective coating solutions</li>
+                                    <li>New-build and maintenance coating works</li>
+                                    <li>Surface protection and asset preservation programs</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Our solutions are designed to enhance asset durability, reduce maintenance requirements, and provide long-term protection against harsh operating conditions, ensuring optimal performance throughout the asset lifecycle.</p>
                             </div>
                             
                             <!-- Pane 2 -->
-                            <div class="sub-tab-pane" data-pane="coating">
-                                <h3 class="pane-title">Industrial Painting & Coating</h3>
-                                <p class="pane-desc">We supply and apply customized coating systems for:</p>
+                            <div class="sub-tab-pane" data-pane="surface">
+                                <h3 class="pane-title">Surface Preparation & Corrosion Protection</h3>
+                                <p class="pane-desc">Effective corrosion control begins with proper surface preparation and systematic maintenance practices. We provide specialized services to ensure coating systems achieve maximum performance, adhesion, and service life under demanding operating environments.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
                                 <ul class="bullet-list">
-                                    <li>Marine industry</li>
-                                    <li>Oil & gas facilities</li>
-                                    <li>Industrial infrastructure</li>
-                                    <li>Aviation sector</li>
+                                    <li>Sandblasting and abrasive blasting works</li>
+                                    <li>Surface preparation and treatment</li>
+                                    <li>Coating inspection services</li>
+                                    <li>Corrosion assessment support</li>
+                                    <li>Maintenance and repair works</li>
+                                    <li>Preventive corrosion management programs</li>
+                                    <li>Protective coating maintenance</li>
+                                    <li>Asset preservation solutions</li>
                                 </ul>
-                                <p class="pane-desc" style="margin-top: 15px;">Our solutions include both certified industrial coatings and general protective coating systems.</p>
+                                <p class="pane-desc" style="margin-top: 15px;">By implementing structured corrosion prevention and maintenance strategies, we help clients improve asset reliability, reduce unplanned maintenance costs, and maximise long-term operational efficiency.</p>
                             </div>
 
                             <!-- Pane 3 -->
-                            <div class="sub-tab-pane" data-pane="surface">
-                                <h3 class="pane-title">Surface Prep & Maintenance</h3>
-                                <p class="pane-desc">Our services include:</p>
-                                <ul class="bullet-list">
-                                    <li>Sandblasting</li>
-                                    <li>Surface treatment</li>
-                                    <li>Inspection services</li>
-                                    <li>Maintenance & repair</li>
-                                    <li>Preventive corrosion programs</li>
-                                </ul>
-                            </div>
-
-                            <!-- Pane 4 -->
                             <div class="sub-tab-pane" data-pane="consultation">
                                 <h3 class="pane-title">Technical Consultation</h3>
-                                <p class="pane-desc">We provide:</p>
+                                <p class="pane-desc">Our technical consultation services provide clients with professional guidance on corrosion management, coating technologies, asset protection strategies, and long-term maintenance planning. We support organizations in developing practical solutions that align with operational requirements, industry standards, and asset integrity objectives.</p>
+                                <p class="pane-desc" style="margin-top: 10px; font-weight: 700; color: #1191cc;">Service Capabilities:</p>
                                 <ul class="bullet-list">
                                     <li>Industrial technical consultation</li>
-                                    <li>Corrosion management advisory</li>
-                                    <li>Industry-academia collaboration</li>
-                                    <li>Professional technical training</li>
+                                    <li>Corrosion management advisory services</li>
+                                    <li>Asset integrity and protection strategies</li>
+                                    <li>Industry-academia collaboration initiatives</li>
+                                    <li>Professional technical training programs</li>
+                                    <li>Technical knowledge transfer sessions</li>
+                                    <li>Coating system evaluation and recommendations</li>
+                                    <li>Maintenance strategy development</li>
                                 </ul>
-                                <p class="pane-desc" style="margin-top: 15px;">We also collaborate with leading Malaysian research institutions to support innovation and technical advancement.</p>
+                                <p class="pane-desc" style="margin-top: 15px;">We actively collaborate with leading Malaysian research institutions, industry specialists, and technical partners to support innovation, knowledge development, and the adoption of advanced corrosion management practices. Through continuous learning and technical engagement, we help clients make informed decisions that enhance asset protection, operational performance, and long-term sustainability.</p>
                             </div>
                         </div>
                     </div>
