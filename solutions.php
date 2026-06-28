@@ -354,13 +354,14 @@ body {
 
 .bullet-list li::before {
     content: '→';
-    color: var(--brand-blue);
+    color: var(--brand-light-blue);
     position: absolute;
     left: 0;
-    font-size: 0.95rem;
-    line-height: 1;
-    top: 1px;
-    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    top: -1px;
+    font-weight: 900;
+    text-shadow: 0 0 8px rgba(17, 145, 204, 0.4);
 }
 
 /* Right 3D Image Column */
