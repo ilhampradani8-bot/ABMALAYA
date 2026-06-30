@@ -23,7 +23,7 @@
     <meta property="og:url" content="<?php echo $canonicalUrl; ?>">
     <meta property="og:title" content="<?php echo $seoTitle; ?>">
     <meta property="og:description" content="<?php echo $seoDesc; ?>">
-    <meta property="og:image" content="https://abmalaya.com/assets/img/kapal-tanker.jpg">
+    <meta property="og:image" content="https://abmalaya.com/assets/img/logo-abmalaya.webp">
     <meta property="og:site_name" content="AB Malaya Sdn Bhd">
 
     <!-- Twitter Cards -->
@@ -31,7 +31,7 @@
     <meta name="twitter:url" content="<?php echo $canonicalUrl; ?>">
     <meta name="twitter:title" content="<?php echo $seoTitle; ?>">
     <meta name="twitter:description" content="<?php echo $seoDesc; ?>">
-    <meta name="twitter:image" content="https://abmalaya.com/assets/img/kapal-tanker.jpg">
+    <meta name="twitter:image" content="https://abmalaya.com/assets/img/logo-abmalaya.webp">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
