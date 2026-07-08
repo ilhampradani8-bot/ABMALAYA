@@ -208,10 +208,12 @@ include 'includes/hero_visual.php';
                                 <i class="fas fa-cog"></i>
                                 <select>
                                     <option value="">Select a Service</option>
-                                    <option value="marine">Maritime & Subsea Services</option>
-                                    <option value="it">Cross-Border Solutions</option>
-                                    <option value="environmental">Environmental Solutions</option>
-                                    <option value="consultancy">Technical Consultancy</option>
+                                    <option value="strategic-consultant">Strategic Consultant</option>
+                                    <option value="contractor-engineering">Contractor & Engineering</option>
+                                    <option value="marine-services">Marine Services</option>
+                                    <option value="logistics-services">Logistics Services</option>
+                                    <option value="corrosion-management">Corrosion Management</option>
+                                    <option value="digital-it-solutions">Digital & IT Solutions</option>
                                 </select>
                             </div>
                         </div>
