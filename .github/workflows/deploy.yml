@@ -3,15 +3,17 @@ name: Deploy to Exabytes
 on:
   push:
     branches:
-      - master  # Atau 'main' tergantung nama branch Anda
+      - master
 
 jobs:
   deploy:
-    name: FTP Deploy
+    name: FTP Deploy & Push to Company
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ambil seluruh histori agar push ke repo perusahaan sukses
 
       - name: 📂 Sync files to Exabytes
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -23,3 +25,13 @@ jobs:
           # Karena akun FTP langsung mengarah ke root web, kita gunakan /
           server-dir: /
 
+      - name: 🚀 Push to Company Repository
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.COMPANY_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git remote add company git@github.com:mijdigital2026git/ABMALAYA-SC.git
+          git push -f company master
