@@ -1,5 +1,5 @@
 <?php 
-// Force browser to bypass cache for index.php to immediately reflect local 3D assets and carousel improvements
+// Force force browser to bypass cache for index.php to immediately reflect local 3D assets and carousel improvements
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
