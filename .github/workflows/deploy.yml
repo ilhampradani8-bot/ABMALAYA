@@ -22,3 +22,4 @@ jobs:
           port: 21
           # Karena akun FTP langsung mengarah ke root web, kita gunakan /
           server-dir: /
+
