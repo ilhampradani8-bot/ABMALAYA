@@ -5,3 +5,5 @@ ui.md
 .DS_Store
 .antigravityignore
 *.log
+data/rfq/*.json
+*.pdf

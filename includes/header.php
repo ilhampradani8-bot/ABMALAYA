@@ -1215,6 +1215,7 @@
                         <div class="dropdown-panel">
                             <a href="/solutions#contractor-engineering"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
                             <a href="/solutions#marine-services"><i class="fas fa-ship"></i> Marine Services</a>
+                            <a href="/view_impa.php"><i class="fas fa-book-bookmark"></i> IMPA Marine Catalog (49k+)</a>
                             <a href="/solutions#logistics-services"><i class="fas fa-truck"></i> Logistics Services</a>
                             <a href="/solutions#corrosion-management"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
                             <a href="/solutions#strategic-consultant"><i class="fas fa-chess-queen"></i> Project Development & Advisory</a>
@@ -1326,6 +1327,11 @@
                     <!-- Item 5b: Tender / RFQ -->
                     <div class="mks-card">
                         <a href="/tender" style="color: #1191cc; font-weight: 700;">Tender / RFQ</a>
+                    </div>
+
+                    <!-- Item 5c: IMPA Catalog -->
+                    <div class="mks-card">
+                        <a href="/view_impa.php">IMPA Marine Catalog</a>
                     </div>
                     
                     <!-- Item 6: Contact (has submenu) -->
