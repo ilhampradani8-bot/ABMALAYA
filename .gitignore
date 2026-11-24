@@ -4,3 +4,4 @@ rosemarine.zip
 ui.md
 .DS_Store
 .antigravityignore
+*.log

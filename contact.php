@@ -173,6 +173,7 @@ include 'includes/hero_visual.php';
                 <div class="form-header">
                     <span class="tag">INQUIRY</span>
                     <h2>Send a Message</h2>
+                    <p style="color: #64748b; font-size: 0.92rem; margin-top: 8px;">For formal tender submissions, technical BOQ, and document attachments, please visit our dedicated <a href="/tender" style="color: #1191cc; font-weight: 700; text-decoration: underline;">Tender & RFQ Portal</a>.</p>
                 </div>
                 
                 <form action="#" class="neu-form">
@@ -208,11 +209,11 @@ include 'includes/hero_visual.php';
                                 <i class="fas fa-cog"></i>
                                 <select>
                                     <option value="">Select a Service</option>
-                                    <option value="strategic-consultant">Strategic Consultant</option>
                                     <option value="contractor-engineering">Contractor & Engineering</option>
                                     <option value="marine-services">Marine Services</option>
                                     <option value="logistics-services">Logistics Services</option>
                                     <option value="corrosion-management">Corrosion Management</option>
+                                    <option value="strategic-consultant">Project Development & Strategic Advisory</option>
                                     <option value="digital-it-solutions">Digital & IT Solutions</option>
                                 </select>
                             </div>

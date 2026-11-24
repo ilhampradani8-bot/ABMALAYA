@@ -563,9 +563,9 @@ include 'includes/header.php';
             <!-- Left Side: Titles -->
             <div class="funky-left">
                 <div class="funky-left-inner">
-                    <span class="tagline">Our Principle</span>
-                    <h1 class="funky-title">Principles of <span class="text-primary-blue">Authority</span></h1>
-                    <p class="funky-desc">The foundation of every decision and project we undertake to ensure excellence in every maritime solution.</p>
+                    <span class="tagline">Guiding Principles</span>
+                    <h1 class="funky-title">Our Core <span class="text-primary-blue">Values</span></h1>
+                    <p class="funky-desc">The ethical standards and operating principles guiding every decision, project, and multidisciplinary solution we deliver.</p>
                 </div>
             </div>
 

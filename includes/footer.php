@@ -7,7 +7,7 @@
                         <img src="assets/img/logo-abmalaya.webp?v=1.2" alt="AB Malaya Logo" style="height: 55px; width: auto; filter: brightness(0) invert(1); display: block;">
                     </div>
                     <p style="opacity: 0.7; margin-bottom: 1.5rem;">
-                        Trusted Partner in Marine Services, Cross-Border Solutions, and Environmental Excellence.
+                        Integrated Construction, Engineering & Industrial Solutions.
                     </p>
                 </div>
                 <div class="footer-links">
@@ -38,9 +38,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/contact" class="footer-btn">
+                            <a href="/tender" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-                                Tender Inquiry
+                                Tender & RFQ
                             </a>
                         </li>
                     </ul>
@@ -48,12 +48,6 @@
                 <div class="footer-links">
                     <h4>Solutions</h4>
                     <ul style="display: flex; flex-direction: column; gap: 8px; padding: 0; list-style: none;">
-                        <li>
-                            <a href="/solutions#strategic-consultant" class="footer-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                                Strategic Consultant
-                            </a>
-                        </li>
                         <li>
                             <a href="/solutions#contractor-engineering" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
@@ -79,6 +73,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/solutions#strategic-consultant" class="footer-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                Project Development & Advisory
+                            </a>
+                        </li>
+                        <li>
                             <a href="/solutions#digital-it-solutions" class="footer-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                 Digital & IT Solutions
@@ -86,32 +86,42 @@
                         </li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links footer-contact-col">
                     <h4>Contact Us</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 12px; padding: 0; list-style: none; margin-bottom: 1.5rem;">
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <a href="tel:+60172240091" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='inherit'">+60 17-224 0091</a>
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <a href="tel:+601171117282" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='inherit'">+60 11-7111 7282</a>
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            <a href="mailto:info@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='inherit'">info@abmalaya.com</a>
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); flex-shrink: 0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            <a href="mailto:sales@abmalaya.com" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#1191cc'" onmouseout="this.style.color='inherit'">sales@abmalaya.com</a>
-                        </li>
-                    </ul>
+                    <div class="footer-contact-grid">
+                        <div class="contact-subcol">
+                            <span class="contact-subhead">Direct Lines</span>
+                            <ul class="contact-sublist">
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="contact-icon-svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    <a href="tel:+60172240091">+60 17-224 0091</a>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="contact-icon-svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    <a href="tel:+601171117282">+60 11-7111 7282</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="contact-subcol">
+                            <span class="contact-subhead">Official Email</span>
+                            <ul class="contact-sublist">
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="contact-icon-svg"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                    <a href="mailto:info@abmalaya.com">info@abmalaya.com</a>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="contact-icon-svg"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                    <a href="mailto:sales@abmalaya.com">sales@abmalaya.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     
                     <!-- Dynamic Expanding Glassmorphic Footer Search Bar -->
                     <div class="search-wrapper-footer" id="search-footer-container">
                         <form action="search.php" method="GET" style="display: flex; align-items: center; width: 100%; height: 100%;">
                             <input type="text" name="q" class="search-input-footer" placeholder="Search website..." id="search-footer-input" required autocomplete="off">
-                            <button type="button" class="search-btn-footer" id="search-footer-trigger">
+                            <button type="button" class="search-btn-footer" id="search-footer-trigger" aria-label="Search">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                             </button>
                         </form>
@@ -121,7 +131,7 @@
 
             <!-- Offices Address Row -->
             <div class="footer-offices">
-                <div class="office-col">
+                <div class="office-col office-col-hq">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255, 255, 255, 0.4); margin-top: 3px; flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <div>
                         <strong>HQ Office:</strong>
@@ -143,15 +153,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 2-Row Split Footer Bottom (Baris 1 & Baris 2 Kanan-Kiri) -->
             <div class="footer-bottom">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                    <p>&copy; <?php echo date("Y"); ?> AB MALAYA Sdn Bhd. All rights reserved.</p>
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Powered by <a href="https://mijdigital.my" target="_blank" style="color: inherit; text-decoration: underline;">Mijdigital</a></p>
-                    <div style="display: flex; gap: 1.5rem; font-size: 0.8rem; flex-wrap: wrap;">
-                        <a href="/policies" style="opacity: 0.6; color: inherit; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Company Policies</a>
-                        <a href="/privacy" style="opacity: 0.6; color: inherit; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Privacy Policy</a>
-                        <a href="/terms" style="opacity: 0.6; color: inherit; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Terms of Use</a>
-                        <a href="/service-terms" style="opacity: 0.6; color: inherit; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Terms of Service</a>
+                <div class="footer-bottom-row row-main">
+                    <p class="footer-copy">&copy; <?php echo date("Y"); ?> AB MALAYA Sdn Bhd. All rights reserved.</p>
+                    <p class="footer-powered">Powered by <a href="https://mijdigital.my" target="_blank" rel="noopener">Mijdigital</a></p>
+                </div>
+                <div class="footer-bottom-row row-legal">
+                    <div class="legal-group-left">
+                        <a href="/policies">Company Policies</a>
+                        <span class="legal-sep">•</span>
+                        <a href="/privacy">Privacy Policy</a>
+                    </div>
+                    <div class="legal-group-right">
+                        <a href="/terms">Terms of Use</a>
+                        <span class="legal-sep">•</span>
+                        <a href="/service-terms">Terms of Service</a>
                     </div>
                 </div>
             </div>
@@ -793,112 +811,317 @@
             }
         }
 
+        /* Footer Base Layout & 2-Row Split */
+        .contact-subhead {
+            display: none;
+        }
+
+        .footer-contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-sublist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .contact-sublist li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.88rem;
+        }
+
+        .contact-sublist li a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-sublist li a:hover {
+            color: #1191cc;
+        }
+
+        .contact-icon-svg {
+            color: rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+        }
+
+        /* 2-Row Split Footer Bottom (Baris 1 & Baris 2 Kanan-Kiri) */
+        .footer-bottom {
+            padding-top: 25px;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-row.row-main .footer-copy {
+            margin: 0;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.75);
+            text-align: left;
+        }
+
+        .footer-bottom-row.row-main .footer-powered {
+            margin: 0;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.65);
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .footer-bottom-row.row-main .footer-powered a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .footer-bottom-row.row-legal {
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.06);
+            font-size: 0.82rem;
+        }
+
+        .footer-bottom-row.row-legal .legal-group-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+        }
+
+        .footer-bottom-row.row-legal .legal-group-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: right;
+            justify-content: flex-end;
+        }
+
+        .footer-bottom-row.row-legal a {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-row.row-legal a:hover {
+            color: #1191cc;
+        }
+
+        .footer-bottom-row.row-legal .legal-sep {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.75rem;
+        }
+
         /* Footer Mobile Refinement */
         @media (max-width: 768px) {
             footer {
-                padding: 40px 0 25px !important;
+                padding: 36px 0 22px !important;
             }
             .footer-logo {
-                margin-bottom: 1rem !important;
+                margin-bottom: 0.8rem !important;
             }
             .footer-logo img {
-                height: 42px !important; /* Compact logo on mobile */
+                height: 38px !important; /* Compact logo on mobile */
             }
             .footer-info p {
-                font-size: 0.8rem !important;
-                margin-bottom: 1rem !important;
-                line-height: 1.4 !important;
+                font-size: 0.82rem !important;
+                margin-bottom: 0.8rem !important;
+                line-height: 1.45 !important;
+                opacity: 0.75 !important;
             }
             .footer-grid {
-                grid-template-columns: 1fr 1fr;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
                 gap: 1.5rem 1rem !important;
             }
             .footer-info {
-                grid-column: span 2;
-                margin-bottom: 0.5rem !important;
+                grid-column: span 2 !important;
+                margin-bottom: 0.3rem !important;
             }
             .footer-links:last-child {
-                grid-column: span 2;
-                margin-top: 0.5rem !important;
+                grid-column: span 2 !important;
+                margin-top: 0.4rem !important;
             }
             .footer-links h4 {
-                font-size: 0.9rem !important;
-                margin-bottom: 0.8rem !important;
+                font-size: 0.92rem !important;
+                margin-bottom: 0.75rem !important;
                 letter-spacing: 0.5px !important;
+                color: #ffffff !important;
             }
             .footer-links ul {
                 gap: 5px !important; /* Tighter gap between links on mobile */
             }
             .footer-btn {
-                font-size: 0.8rem !important; /* Compact font-size */
-                gap: 6px !important; /* Tight gap */
-                padding: 2px 0 !important; /* Extremely tight padding to reduce vertical space */
+                font-size: 0.80rem !important; /* Compact font-size */
+                gap: 6px !important;
+                padding: 2px 0 !important;
             }
             .footer-btn svg {
                 width: 12px !important;
                 height: 12px !important;
             }
-            /* Contact section styles */
-            .footer-links ul li {
-                font-size: 0.8rem !important;
+            /* Contact section on mobile: 2 Columns Kanan-Kiri */
+            .footer-contact-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .contact-subhead {
+                display: block !important;
+                font-size: 0.70rem !important;
+                text-transform: uppercase !important;
+                letter-spacing: 1px !important;
+                color: rgba(255, 255, 255, 0.45) !important;
+                margin-bottom: 6px !important;
+                font-family: 'Aeonik', sans-serif !important;
+                font-weight: 700 !important;
+            }
+            .contact-sublist {
                 gap: 8px !important;
             }
-            .footer-links ul li svg {
-                width: 12px !important;
-                height: 12px !important;
-                margin-top: 2px !important;
-            }
-            .footer-links ul li span {
-                font-size: 0.8rem !important;
+            .contact-sublist li {
+                font-size: 0.76rem !important;
+                gap: 6px !important;
                 line-height: 1.35 !important;
             }
+            .contact-icon-svg {
+                width: 12px !important;
+                height: 12px !important;
+                margin-top: 1px !important;
+            }
+            .contact-sublist li a {
+                word-break: break-all !important;
+            }
             .search-wrapper-footer {
-                margin-top: 0.8rem !important; /* Tighter search bar margin */
-                width: 38px !important;
-                height: 38px !important;
+                margin-top: 0.6rem !important;
+                width: 36px !important;
+                height: 36px !important;
             }
             .search-wrapper-footer.active {
-                width: 200px !important; /* Tighter active search on mobile */
+                width: 100% !important;
+                max-width: 260px !important;
             }
             .search-btn-footer {
-                width: 30px !important;
-                height: 30px !important;
+                width: 28px !important;
+                height: 28px !important;
             }
             .search-input-footer {
-                font-size: 0.8rem !important;
+                font-size: 0.78rem !important;
             }
-            /* Bottom alignment */
-            .footer-bottom {
-                padding-top: 25px !important;
-                margin-top: 25px !important;
-            }
-            .footer-bottom > div {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.8rem !important; /* Much tighter gap to prevent feeling "forced" */
-            }
-            .footer-bottom p {
-                font-size: 0.72rem !important;
-                margin: 0 !important;
-                opacity: 0.6 !important;
-            }
-            .footer-bottom div:last-child {
-                display: flex !important;
-                gap: 0.8rem 1.2rem !important; /* Tighter links gap on mobile */
-                flex-wrap: wrap !important;
-            }
-            .footer-bottom div:last-child a {
-                font-size: 0.72rem !important;
-                opacity: 0.5 !important;
-            }
+
+            /* Offices on Mobile: 2 Columns Kanan-Kiri */
             .footer-offices {
-                grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
-                margin-top: 2rem !important;
-                padding-top: 2rem !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1rem !important;
+                margin-top: 1.6rem !important;
+                padding-top: 1.4rem !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            }
+            .footer-offices .office-col-hq {
+                grid-column: span 2 !important;
+                padding-bottom: 0.6rem !important;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.08) !important;
             }
             .office-col {
+                font-size: 0.78rem !important;
+                gap: 8px !important;
                 padding: 0 !important;
+            }
+            .office-col strong {
+                font-size: 0.82rem !important;
+            }
+            .office-col span {
+                font-size: 0.74rem !important;
+                line-height: 1.35 !important;
+            }
+
+            /* Footer Bottom: 2 Baris Kanan-Kiri */
+            .footer-bottom {
+                padding-top: 16px !important;
+                margin-top: 1.5rem !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 9px !important;
+                width: 100% !important;
+            }
+            .footer-bottom-row {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+                gap: 8px !important;
+            }
+            .footer-bottom-row.row-main .footer-copy {
+                font-size: 0.72rem !important;
+                line-height: 1.3 !important;
+                text-align: left !important;
+                margin: 0 !important;
+                opacity: 0.75 !important;
+            }
+            .footer-bottom-row.row-main .footer-powered {
+                font-size: 0.72rem !important;
+                line-height: 1.3 !important;
+                text-align: right !important;
+                margin: 0 !important;
+                opacity: 0.65 !important;
+                white-space: nowrap !important;
+                flex-shrink: 0 !important;
+            }
+            .footer-bottom-row.row-legal {
+                padding-top: 8px !important;
+                border-top: 1px dashed rgba(255, 255, 255, 0.06) !important;
+                font-size: 0.68rem !important;
+            }
+            .footer-bottom-row.row-legal .legal-group-left {
+                display: flex !important;
+                align-items: center !important;
+                gap: 7px !important;
+                text-align: left !important;
+            }
+            .footer-bottom-row.row-legal .legal-group-right {
+                display: flex !important;
+                align-items: center !important;
+                gap: 7px !important;
+                text-align: right !important;
+                justify-content: flex-end !important;
+            }
+            .footer-bottom-row.row-legal a {
+                font-size: 0.68rem !important;
+                opacity: 0.6 !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                white-space: nowrap !important;
+            }
+            .footer-bottom-row.row-legal a:hover {
+                opacity: 1 !important;
+                color: #1191cc !important;
+            }
+            .footer-bottom-row.row-legal .legal-sep {
+                font-size: 0.60rem !important;
+                opacity: 0.3 !important;
             }
         }
     </style>

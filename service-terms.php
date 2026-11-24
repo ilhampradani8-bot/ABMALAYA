@@ -33,7 +33,7 @@ include 'includes/hero_visual.php';
                 <div id="scope" style="margin-bottom: 4rem; scroll-margin-top: 120px;">
                     <h2 style="color: #0f172a; font-family: 'Aeonik', sans-serif; font-weight: 800; font-size: 2rem; margin-bottom: 1.5rem; letter-spacing: -1px;">1. Scope of Services</h2>
                     <p style="margin-bottom: 1.5rem;">
-                        AB MALAYA Sdn Bhd provides high-performance technical and operational services in the fields of marine engineering, subsea operations, border logistics, and cross-border environmental IT solutions in strict accordance with the specifications agreed upon in the respective service contracts or purchase orders (PO).
+                        AB MALAYA Sdn Bhd provides high-performance technical and operational services in the fields of construction, civil engineering, marine services, corrosion management, logistics, and industrial IT solutions in strict accordance with the specifications agreed upon in the respective service contracts or purchase orders (PO).
                     </p>
                     <p>
                         Any modifications, additions, or expansions to the scope of work must be submitted in writing and formally approved by both parties via a signed addendum before deployment or execution.
@@ -46,7 +46,7 @@ include 'includes/hero_visual.php';
                         We are strictly committed to executing all services in alignment with the highest international professional benchmarks, engineering codes of ethics, and statutory industrial standards.
                     </p>
                     <p>
-                        AB Malaya ensures that all operations are managed under rigorous Health, Safety, and Environment (HSE) protocols. All field operators, subsea divers, and engineering technical staff hold valid, industry-recognized certifications required for their respective operational sectors.
+                        AB Malaya ensures that all operations are managed under rigorous Health, Safety, and Environment (HSE) protocols. All field operators, technical specialists, and engineering staff hold valid, industry-recognized certifications required for their respective operational sectors.
                     </p>
                 </div>
 

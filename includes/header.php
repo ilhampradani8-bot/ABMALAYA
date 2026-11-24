@@ -1207,17 +1207,17 @@
                         <div class="dropdown-panel">
                             <a href="/about#story-section"><i class="fas fa-book-open"></i> Our Story</a>
                             <a href="/about#vision-mission"><i class="fas fa-bullseye"></i> Vision & Mission</a>
-                            <a href="/about#principles-section"><i class="fas fa-scale-balanced"></i> Our Principles</a>
+                            <a href="/about#principles-section"><i class="fas fa-scale-balanced"></i> Core Values</a>
                         </div>
                     </div>
                     <div class="nav-item-wrapper">
                         <a href="/solutions" class="nav-link-item <?php echo $currentPage == 'solutions' ? 'active' : ''; ?>">Solutions <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
                         <div class="dropdown-panel">
-                            <a href="/solutions#strategic-consultant"><i class="fas fa-chess-queen"></i> Strategic Consultant</a>
                             <a href="/solutions#contractor-engineering"><i class="fas fa-cubes"></i> Contractor & Engineering</a>
                             <a href="/solutions#marine-services"><i class="fas fa-ship"></i> Marine Services</a>
                             <a href="/solutions#logistics-services"><i class="fas fa-truck"></i> Logistics Services</a>
                             <a href="/solutions#corrosion-management"><i class="fas fa-shield-halved"></i> Corrosion Management</a>
+                            <a href="/solutions#strategic-consultant"><i class="fas fa-chess-queen"></i> Project Development & Advisory</a>
                             <a href="/solutions#digital-it-solutions"><i class="fas fa-laptop-code"></i> Digital & IT Solutions</a>
                         </div>
                     </div>
@@ -1234,6 +1234,9 @@
                     </div>
                     <div class="nav-item-wrapper">
                         <a href="/projects" class="nav-link-item <?php echo $currentPage == 'projects' ? 'active' : ''; ?>">Projects</a>
+                    </div>
+                    <div class="nav-item-wrapper">
+                        <a href="/tender" class="nav-link-item <?php echo $currentPage == 'tender' ? 'active' : ''; ?>" style="color: #1191cc; font-weight: 700;"><i class="fas fa-file-signature" style="font-size: 0.8rem; margin-right: 4px;"></i> Tender / RFQ</a>
                     </div>
                     <div class="nav-item-wrapper">
                         <a href="/contact" class="cta-btn <?php echo $currentPage == 'contact' ? 'active' : ''; ?>">Contact <svg class="arrow-svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
@@ -1283,7 +1286,7 @@
                             <a href="/about">About Us Page</a>
                             <a href="/about#story-section">Our Story</a>
                             <a href="/about#vision-mission">Vision & Mission</a>
-                            <a href="/about#principles-section">Our Principles</a>
+                            <a href="/about#principles-section">Core Values</a>
                         </div>
                     </div>
                     
@@ -1292,11 +1295,11 @@
                         <a href="javascript:void(0)" class="mobile-sub-toggle">Solutions <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s;"></i></a>
                         <div class="mobile-sub-menu">
                             <a href="/solutions">Solutions Page</a>
-                            <a href="/solutions#strategic-consultant">Strategic Consultant</a>
                             <a href="/solutions#contractor-engineering">Contractor & Engineering</a>
                             <a href="/solutions#marine-services">Marine Services</a>
                             <a href="/solutions#logistics-services">Logistics Services</a>
                             <a href="/solutions#corrosion-management">Corrosion Management</a>
+                            <a href="/solutions#strategic-consultant">Project Development & Advisory</a>
                             <a href="/solutions#digital-it-solutions">Digital & IT Solutions</a>
                         </div>
                     </div>
@@ -1318,6 +1321,11 @@
                     <!-- Item 5: Projects (direct link, no submenu) -->
                     <div class="mks-card">
                         <a href="/projects">Projects</a>
+                    </div>
+
+                    <!-- Item 5b: Tender / RFQ -->
+                    <div class="mks-card">
+                        <a href="/tender" style="color: #1191cc; font-weight: 700;">Tender / RFQ</a>
                     </div>
                     
                     <!-- Item 6: Contact (has submenu) -->

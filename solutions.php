@@ -781,25 +781,25 @@ $showButtons = false;
 ob_start();
 ?>
 <div class="hero-page-map">
-    <div class="map-item" onclick="scrollToSection('#strategic-consultant')">
-        <div class="map-num">01</div>
-        <div class="map-title">Strategic Consultant</div>
-    </div>
     <div class="map-item" onclick="scrollToSection('#contractor-engineering')">
-        <div class="map-num">02</div>
+        <div class="map-num">01</div>
         <div class="map-title">Contractor & Engineering</div>
     </div>
     <div class="map-item" onclick="scrollToSection('#marine-services')">
-        <div class="map-num">03</div>
+        <div class="map-num">02</div>
         <div class="map-title">Marine Services</div>
     </div>
     <div class="map-item" onclick="scrollToSection('#logistics-services')">
-        <div class="map-num">04</div>
+        <div class="map-num">03</div>
         <div class="map-title">Logistics Services</div>
     </div>
     <div class="map-item" onclick="scrollToSection('#corrosion-management')">
-        <div class="map-num">05</div>
+        <div class="map-num">04</div>
         <div class="map-title">Corrosion Management</div>
+    </div>
+    <div class="map-item" onclick="scrollToSection('#strategic-consultant')">
+        <div class="map-num">05</div>
+        <div class="map-title">Project Development & Advisory</div>
     </div>
     <div class="map-item" onclick="scrollToSection('#digital-it-solutions')">
         <div class="map-num">06</div>
@@ -815,53 +815,11 @@ include 'includes/hero_visual.php';
 
     <div class="solutions-list-container">
         
-        <!-- SECTION 1: Project Strategic Consultant -->
-        <section class="solution-section" id="strategic-consultant" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200');">
-            <div class="solution-grid">
-                <div class="solution-content-col">
-                    <span class="solution-badge">01 / Strategic Advisor</span>
-                    <div class="solution-title-container">
-                        <h2 class="solution-title">Project Strategic Consultant</h2>
-                        <div class="mobile-3d-wrapper">
-                            <img src="assets/img/service3d/lanscape.webp" class="floating-3d-graphic" alt="Project Strategic Consultation">
-                        </div>
-                    </div>
-                    <div class="solution-desc">
-                        We provide strategic consultation services to support businesses, investors, project owners, and entrepreneurs in transforming ideas into viable and sustainable ventures. Our expertise spans project planning, business expansion, regulatory compliance, funding facilitation, and long-term growth strategies.
-                    </div>
-                    
-                    <div class="sub-tab-wrapper">
-                        <div class="sub-tab-contents">
-                            <div class="sub-tab-pane active" data-pane="strategic-overview">
-                                <h3 class="pane-title">Key Areas of Expertise</h3>
-                                <ul class="bullet-list" style="grid-template-columns: 1fr;">
-                                    <li>Project feasibility evaluation and strategic planning</li>
-                                    <li>Business growth and expansion strategies</li>
-                                    <li>Government grants and financing facilitation</li>
-                                    <li>Regulatory approvals, permits, and licensing support</li>
-                                    <li>Stakeholder engagement and coordination</li>
-                                    <li>Risk assessment and project viability analysis</li>
-                                    <li>Business restructuring and recovery planning</li>
-                                    <li>Implementation roadmaps and project execution strategies</li>
-                                </ul>
-                                <p class="pane-desc" style="margin-top: 15px;">Whether you are launching a new venture, expanding an existing business, overcoming operational challenges, or rebuilding after setbacks, we provide practical guidance and strategic solutions that support sustainable growth and successful project delivery.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="solution-image-col">
-                    <div class="graphic-3d-wrapper">
-                        <img src="assets/img/service3d/lanscape.webp" class="floating-3d-graphic" alt="Project Strategic Consultation">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2: Contractor & Engineering Services -->
+        <!-- SECTION 1: Contractor & Engineering Services -->
         <section class="solution-section" id="contractor-engineering" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200');">
             <div class="solution-grid">
                 <div class="solution-content-col">
-                    <span class="solution-badge">02 / Construction & Engineering</span>
+                    <span class="solution-badge">01 / Construction & Engineering</span>
                     <div class="solution-title-container">
                         <h2 class="solution-title">Contractor & Engineering Services</h2>
                         <div class="mobile-3d-wrapper">
@@ -985,11 +943,11 @@ include 'includes/hero_visual.php';
             </div>
         </section>
 
-        <!-- SECTION 3: Marine Services -->
+        <!-- SECTION 2: Marine Services -->
         <section class="solution-section" id="marine-services" style="background-image: url('assets/img/kapal-tanker.jpg');">
             <div class="solution-grid">
                 <div class="solution-content-col">
-                    <span class="solution-badge">03 / Marine Operations</span>
+                    <span class="solution-badge">02 / Marine Services</span>
                     <div class="solution-title-container">
                         <h2 class="solution-title">Marine Services</h2>
                         <div class="mobile-3d-wrapper">
@@ -1075,11 +1033,11 @@ include 'includes/hero_visual.php';
             </div>
         </section>
 
-        <!-- SECTION 4: Logistics Services -->
+        <!-- SECTION 3: Logistics Services -->
         <section class="solution-section" id="logistics-services" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200');">
             <div class="solution-grid">
                 <div class="solution-content-col">
-                    <span class="solution-badge">04 / Supply Chain</span>
+                    <span class="solution-badge">03 / Cross-Border Logistics</span>
                     <div class="solution-title-container">
                         <h2 class="solution-title">Logistics Services</h2>
                         <div class="mobile-3d-wrapper">
@@ -1184,11 +1142,11 @@ include 'includes/hero_visual.php';
             </div>
         </section>
 
-        <!-- SECTION 5: Corrosion Management -->
+        <!-- SECTION 4: Corrosion Management -->
         <section class="solution-section" id="corrosion-management" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200');">
             <div class="solution-grid">
                 <div class="solution-content-col">
-                    <span class="solution-badge">05 / Asset Integrity</span>
+                    <span class="solution-badge">04 / Asset Protection</span>
                     <div class="solution-title-container">
                         <h2 class="solution-title">Corrosion Management</h2>
                         <div class="mobile-3d-wrapper">
@@ -1274,11 +1232,53 @@ include 'includes/hero_visual.php';
             </div>
         </section>
 
+        <!-- SECTION 5: Project Development & Strategic Advisory -->
+        <section class="solution-section" id="strategic-consultant" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200');">
+            <div class="solution-grid">
+                <div class="solution-content-col">
+                    <span class="solution-badge">05 / Strategic Advisory</span>
+                    <div class="solution-title-container">
+                        <h2 class="solution-title">Project Development & Strategic Advisory</h2>
+                        <div class="mobile-3d-wrapper">
+                            <img src="assets/img/service3d/lanscape.webp" class="floating-3d-graphic" alt="Project Strategic Consultation">
+                        </div>
+                    </div>
+                    <div class="solution-desc">
+                        We provide strategic consultation services to support businesses, investors, project owners, and entrepreneurs in transforming ideas into viable and sustainable ventures. Our expertise spans project planning, business expansion, regulatory compliance, funding facilitation, and long-term growth strategies.
+                    </div>
+                    
+                    <div class="sub-tab-wrapper">
+                        <div class="sub-tab-contents">
+                            <div class="sub-tab-pane active" data-pane="strategic-overview">
+                                <h3 class="pane-title">Key Areas of Expertise</h3>
+                                <ul class="bullet-list" style="grid-template-columns: 1fr;">
+                                    <li>Project feasibility evaluation and strategic planning</li>
+                                    <li>Business growth and expansion strategies</li>
+                                    <li>Government grants and financing facilitation</li>
+                                    <li>Regulatory approvals, permits, and licensing support</li>
+                                    <li>Stakeholder engagement and coordination</li>
+                                    <li>Risk assessment and project viability analysis</li>
+                                    <li>Business restructuring and recovery planning</li>
+                                    <li>Implementation roadmaps and project execution strategies</li>
+                                </ul>
+                                <p class="pane-desc" style="margin-top: 15px;">Whether you are launching a new venture, expanding an existing business, overcoming operational challenges, or rebuilding after setbacks, we provide practical guidance and strategic solutions that support sustainable growth and successful project delivery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-image-col">
+                    <div class="graphic-3d-wrapper">
+                        <img src="assets/img/service3d/lanscape.webp" class="floating-3d-graphic" alt="Project Strategic Consultation">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- SECTION 6: Digital & IT Solutions -->
         <section class="solution-section" id="digital-it-solutions" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200');">
             <div class="solution-grid">
                 <div class="solution-content-col">
-                    <span class="solution-badge">06 / Digital Enablement</span>
+                    <span class="solution-badge">06 / Digital & IT Solutions</span>
                     <div class="solution-title-container">
                         <h2 class="solution-title">Digital & IT Solutions</h2>
                         <div class="mobile-3d-wrapper">
@@ -1354,20 +1354,20 @@ include 'includes/hero_visual.php';
         <div class="progress-line-track">
             <div class="progress-line-fill"></div>
             <div class="indicator-dots">
-                <div class="indicator-dot-item active" data-target="#strategic-consultant">
-                    <span class="dot-label">01. Strategic Consultant</span>
-                </div>
-                <div class="indicator-dot-item" data-target="#contractor-engineering">
-                    <span class="dot-label">02. Contractor & Engineering</span>
+                <div class="indicator-dot-item active" data-target="#contractor-engineering">
+                    <span class="dot-label">01. Contractor & Engineering</span>
                 </div>
                 <div class="indicator-dot-item" data-target="#marine-services">
-                    <span class="dot-label">03. Marine Services</span>
+                    <span class="dot-label">02. Marine Services</span>
                 </div>
                 <div class="indicator-dot-item" data-target="#logistics-services">
-                    <span class="dot-label">04. Logistics Services</span>
+                    <span class="dot-label">03. Logistics Services</span>
                 </div>
                 <div class="indicator-dot-item" data-target="#corrosion-management">
-                    <span class="dot-label">05. Corrosion Management</span>
+                    <span class="dot-label">04. Corrosion Management</span>
+                </div>
+                <div class="indicator-dot-item" data-target="#strategic-consultant">
+                    <span class="dot-label">05. Project Development & Advisory</span>
                 </div>
                 <div class="indicator-dot-item" data-target="#digital-it-solutions">
                     <span class="dot-label">06. Digital & IT Solutions</span>

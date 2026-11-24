@@ -11,7 +11,7 @@ $siteContent = [
         'title' => 'Marine Division',
         'desc' => 'Comprehensive engineering solutions for the marine industry, ship consumables, and logistics.',
         'link' => '/solutions#marine',
-        'tags' => 'marine, subsea, ship, rust, coating, boiler, vecom, crew'
+        'tags' => 'marine, vessel, offshore, ship, rust, coating, boiler, vecom, crew'
     ],
     [
         'title' => 'Logistic Division',
