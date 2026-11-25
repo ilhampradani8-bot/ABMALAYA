@@ -1,14 +1,21 @@
 <?php
 /**
- * AB Malaya Sdn Bhd - Standalone Dedicated Visitor Counter & Analytics Hub
+ * AB Malaya Sdn Bhd - Official Visitor Telemetry & Audit Journal
+ * Interface: Authentic Classic Windows 95 Retro UI (Strictly Non-AI, 100% Vintage Win95)
  * 
- * Standalone page without main navigation navbar.
- * Accessible directly via /visitors or /visitors.php
+ * Features:
+ * - Breakdown per Tanggal dan Jam (Hourly 00:00 - 23:00 & Daily)
+ * - Breakdown per Perangkat (Desktop, Mobile HP, Tablet, OS)
+ * - Breakdown per IP Address (Masked/Raw Toggle, Hits, Location/ISP)
+ * - Jurnal Kunjungan per Tanggal dan per Bulan dengan Filter
+ * - Grafik Retro Interaktif (Chart.js dengan palet Windows 95 Klasik)
+ * - Open-Source 98.css framework terintegrasi lokal
+ * - Mode HP (Mobile Responsive) & Desktop Windowing
  */
 
 require_once __DIR__ . '/includes/visitor_tracker.php';
 
-// JSON API Endpoint for Live Auto-Refresh
+// JSON API Endpoint for Live Polling
 if (isset($_GET['format']) && $_GET['format'] === 'json') {
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
@@ -16,1244 +23,1475 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
     exit;
 }
 
-// Track view of the dashboard itself (tagged cleanly)
-abm_track_visit('visitors', 'Visitor Analytics Hub');
+// Track view of the dashboard itself
+abm_track_visit('visitors', 'Visitor Telemetry Desk');
 $data = abm_get_visitor_data();
+
 $summary = $data['summary'] ?? [];
+$hourly = $data['hourly_distribution'] ?? array_fill(0, 24, 0);
+$journal = $data['journal'] ?? [];
+$per_ip = $data['per_ip'] ?? [];
 $pages = $data['pages'] ?? [];
 $devices = $data['devices'] ?? [];
+$os_dist = $data['os'] ?? [];
 $browsers = $data['browsers'] ?? [];
 $recent = $data['recent_visits'] ?? [];
 
-// Sort pages by count descending
-arsort($pages);
-$top_pages = array_slice($pages, 0, 7, true);
-$max_page_count = max(1, (!empty($top_pages) ? max($top_pages) : 1));
+// Available months in journal
+$months = array_keys($journal);
+rsort($months);
+$selected_month = $_GET['month'] ?? ($months[0] ?? date('Y-m'));
 
-// Calculate device percentages
-$total_devices = max(1, array_sum($devices));
-$pct_desktop = round((($devices['Desktop'] ?? 0) / $total_devices) * 100);
-$pct_mobile = round((($devices['Mobile'] ?? 0) / $total_devices) * 100);
-$pct_tablet = round((($devices['Tablet'] ?? 0) / $total_devices) * 100);
+// Days in selected month
+$days_data = $journal[$selected_month] ?? [];
+krsort($days_data);
+$selected_day = $_GET['day'] ?? 'all';
+
+// Filter days if specific day selected
+if ($selected_day !== 'all' && isset($days_data[$selected_day])) {
+    $filtered_days = [$selected_day => $days_data[$selected_day]];
+} else {
+    $filtered_days = $days_data;
+}
+
+// Sort IPs by hits descending
+uasort($per_ip, function($a, $b) {
+    return ($b['hits'] ?? 0) <=> ($a['hits'] ?? 0);
+});
+
+// Calculate Max Hits for hourly chart
+$max_hourly = max(1, max($hourly));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Visitor Analytics & Real-Time Traffic Counter | AB Malaya</title>
-    <meta name="description" content="Dedicated real-time visitor analytics, unique session counter, and traffic metrics for AB Malaya Sdn Bhd official portal.">
+    <title>AB Malaya - Visitor Telemetry & Audit Journal [v4.1.95]</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/webp" href="/assets/img/logo-abmalaya.webp">
 
-    <!-- Fonts & FontAwesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Open Source 98.css (Local with CDN fallback) -->
+    <link rel="stylesheet" href="/assets/css/98.css">
+    <!-- FontAwesome for classic tool icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js (Local cached open-source library) -->
+    <script src="/assets/js/chart.min.js"></script>
 
     <style>
+        /* ═══════════════════════════════════════════════════════════════════
+           WINDOWS 95 AUTHENTIC DESIGN SYSTEM (STRICT RETRO SPECIFICATION)
+           ═══════════════════════════════════════════════════════════════════ */
         :root {
-            --brand-navy: #093863;
-            --brand-blue: #1191cc;
-            --brand-dark: #070d18;
-            --brand-surface: #0f172a;
-            --brand-card: #131d33;
-            --brand-border: #1e293b;
-            --brand-green: #10b981;
-            --brand-amber: #f59e0b;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
+            --win-teal: #008080;
+            --win-silver: #c0c0c0;
+            --win-dark-silver: #808080;
+            --win-white: #ffffff;
+            --win-black: #000000;
+            --win-navy: #000080;
+            --win-active-blue: #1084d0;
+            --win-yellow: #ffff00;
+            --win-green: #008000;
+            --win-maroon: #800000;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
+            border-radius: 0 !important; /* STRICTLY 0px BORDER RADIUS - NO MODERN ROUNDNESS */
         }
 
-        body {
-            background-color: var(--brand-dark);
-            color: var(--text-light);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--win-teal);
+            font-family: 'MS Sans Serif', Tahoma, 'Segoe UI', Arial, sans-serif;
+            font-size: 11px;
+            color: var(--win-black);
+            overflow-x: hidden;
+            user-select: text;
+        }
+
+        /* Desktop Environment Container */
+        .win95-desktop {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(17, 145, 204, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(9, 56, 98, 0.15) 0%, transparent 45%);
-            background-attachment: fixed;
+            position: relative;
+            padding-bottom: 34px; /* Space for Taskbar */
         }
 
-        /* ── ISOLATED STANDALONE TOP BAR (NO MAIN NAVIGATION) ─────────────── */
-        .standalone-top-bar {
-            background: rgba(11, 16, 28, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--brand-border);
-            padding: 14px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* Desktop Shortcuts Column (Left Side) */
+        .desktop-icons-area {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 1;
         }
 
-        .top-bar-inner {
-            max-width: 1400px;
-            margin: 0 auto;
+        .desktop-icon-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 72px;
+            text-decoration: none;
+            color: #ffffff;
+            background: transparent;
+            border: 1px dotted transparent;
+            padding: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .desktop-icon-btn:focus,
+        .desktop-icon-btn:hover {
+            border: 1px dotted #ffffff;
+            background-color: rgba(0, 0, 128, 0.4);
+        }
+
+        .desktop-icon-btn i {
+            font-size: 24px;
+            margin-bottom: 4px;
+            filter: drop-shadow(1px 1px 0 #000000);
+        }
+
+        .desktop-icon-btn span {
+            font-size: 10px;
+            color: #ffffff;
+            text-shadow: 1px 1px 1px #000000;
+            line-height: 1.1;
+        }
+
+        /* Main Application Window Container */
+        .win95-app-container {
+            max-width: 1100px;
+            width: 96%;
+            margin: 20px auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .window {
+            background: var(--win-silver);
+            box-shadow: 
+                inset -1px -1px #000000,
+                inset 1px 1px #ffffff,
+                inset -2px -2px #808080,
+                inset 2px 2px #dfdfdf;
+            padding: 3px;
+        }
+
+        /* Window Title Bar */
+        .title-bar {
+            background: linear-gradient(90deg, var(--win-navy) 0%, var(--win-active-blue) 100%);
+            padding: 3px 4px 3px 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .brand-cluster {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .brand-logo-img {
-            height: 38px;
-            width: auto;
-            display: block;
-            filter: brightness(0) invert(1);
-        }
-
-        .brand-titles {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 800;
-            letter-spacing: 0.8px;
             color: #ffffff;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .title-bar-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .telemetry-badge {
-            background: rgba(17, 145, 204, 0.15);
-            border: 1px solid rgba(17, 145, 204, 0.4);
-            color: var(--brand-blue);
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 2px 6px;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            border-radius: 3px;
+        .title-bar-icon {
+            font-size: 12px;
+            color: var(--win-yellow);
         }
 
-        .brand-subhead {
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            font-family: 'Space Mono', monospace;
-            letter-spacing: 0.3px;
-        }
-
-        /* Minimal Quick Links (Cuma Link - No Nav Menus) */
-        .minimal-actions {
+        /* Classic Menu Bar */
+        .win95-menu-bar {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 12px;
+            padding: 4px 8px;
+            border-bottom: 1px solid var(--win-dark-silver);
+            margin-bottom: 6px;
+            background: var(--win-silver);
+            font-size: 11px;
         }
 
-        .btn-minimal-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--brand-border);
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 7px 14px;
-            border-radius: 6px;
+        .menu-item {
+            color: var(--win-black);
             text-decoration: none;
-            transition: all 0.2s ease;
+            padding: 1px 4px;
             cursor: pointer;
         }
 
-        .btn-minimal-link:hover {
-            background: rgba(17, 145, 204, 0.12);
-            border-color: var(--brand-blue);
-            color: #ffffff;
-            transform: translateY(-1px);
-        }
-
-        .btn-minimal-link.primary {
-            background: var(--brand-navy);
-            border-color: var(--brand-blue);
+        .menu-item:hover {
+            background: var(--win-navy);
             color: #ffffff;
         }
 
-        .btn-minimal-link.primary:hover {
-            background: var(--brand-blue);
-        }
-
-        /* ── DASHBOARD MAIN WRAPPER ───────────────────────────────────────── */
-        .dashboard-container {
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 30px 24px 60px;
-            flex: 1;
-        }
-
-        /* Dashboard Header Header Banner */
-        .telemetry-banner {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 28px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .banner-left h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-            margin-bottom: 6px;
-        }
-
-        .banner-left h1 span {
-            color: var(--brand-blue);
-        }
-
-        .banner-left p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .banner-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .live-status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            color: var(--brand-green);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .live-status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--brand-green);
-            box-shadow: 0 0 8px var(--brand-green);
-            animation: pulse-dot 1.8s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* ── HERO METRIC CARDS (TACTILE LCD DISPLAY) ──────────────────────── */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-bottom: 28px;
-        }
-
-        .metric-card {
-            background: var(--brand-card);
-            border: 1px solid var(--brand-border);
-            border-radius: 10px;
-            padding: 22px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(17, 145, 204, 0.4);
-        }
-
-        .metric-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--brand-blue);
-        }
-
-        .metric-card.accent-green::before {
-            background: var(--brand-green);
-        }
-
-        .metric-card.accent-amber::before {
-            background: var(--brand-amber);
-        }
-
-        .metric-card.accent-navy::before {
-            background: linear-gradient(90deg, var(--brand-navy), var(--brand-blue));
-        }
-
-        .card-header-mini {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .card-title-mini {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--text-muted);
-            font-family: 'Space Mono', monospace;
-        }
-
-        .card-icon-mini {
-            font-size: 1rem;
-            color: var(--brand-blue);
-            opacity: 0.8;
-        }
-
-        .card-value-display {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -1px;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .card-subtext {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .card-subtext .highlight {
-            color: var(--brand-green);
-            font-weight: 700;
-        }
-
-        /* ── 2-COLUMN TELEMETRY DETAILS ────────────────────────────────────── */
-        .telemetry-split {
-            display: grid;
-            grid-template-columns: 1.25fr 1fr;
-            gap: 20px;
-            margin-bottom: 28px;
-        }
-
-        .panel-box {
-            background: var(--brand-card);
-            border: 1px solid var(--brand-border);
-            border-radius: 10px;
-            padding: 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .panel-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: -0.2px;
-            margin-bottom: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--brand-border);
-        }
-
-        .panel-title span {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-        }
-
-        .panel-badge {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--text-dim);
-        }
-
-        /* Top Pages List with Progress Bars */
-        .page-stat-row {
-            margin-bottom: 14px;
-        }
-
-        .page-stat-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .page-meta-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.82rem;
-            margin-bottom: 5px;
-        }
-
-        .page-name-tag {
-            font-weight: 600;
-            color: #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-        }
-
-        .page-views-badge {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.78rem;
-            color: var(--brand-blue);
-            font-weight: 700;
-        }
-
-        .page-progress-bar-bg {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .page-progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--brand-navy), var(--brand-blue));
-            border-radius: 4px;
-            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Device Stack Bar */
-        .device-bar-container {
-            margin-bottom: 18px;
-        }
-
-        .device-stack-bar {
-            height: 14px;
-            border-radius: 7px;
-            overflow: hidden;
-            display: flex;
-            margin-bottom: 12px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .stack-slice.desktop {
-            background: #1191cc;
-        }
-
-        .stack-slice.mobile {
-            background: #10b981;
-        }
-
-        .stack-slice.tablet {
-            background: #f59e0b;
-        }
-
-        .device-legend {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .legend-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 2px;
-        }
-
-        .legend-dot.desktop { background: #1191cc; }
-        .legend-dot.mobile { background: #10b981; }
-        .legend-dot.tablet { background: #f59e0b; }
-
-        .legend-val {
-            font-weight: 700;
-            color: #ffffff;
-            font-family: 'Space Mono', monospace;
-        }
-
-        /* Browser Chips */
-        .browser-chips-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .browser-chip {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--brand-border);
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.78rem;
-        }
-
-        .browser-chip-left {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            color: var(--text-muted);
-        }
-
-        .browser-chip-right {
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        /* ── LIVE RECENT VISITOR FEED TABLE ─────────────────────────────────── */
-        .feed-panel {
-            background: var(--brand-card);
-            border: 1px solid var(--brand-border);
-            border-radius: 10px;
-            padding: 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .feed-table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .feed-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.82rem;
-            text-align: left;
-            min-width: 680px;
-        }
-
-        .feed-table th {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--brand-border);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .feed-table td {
-            padding: 12px 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: var(--text-light);
-            vertical-align: middle;
-        }
-
-        .feed-table tr:hover td {
-            background: rgba(17, 145, 204, 0.04);
-        }
-
-        .feed-time-cell {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--brand-blue);
-            white-space: nowrap;
-        }
-
-        .page-badge-cell {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .device-badge-cell {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--text-muted);
-            font-size: 0.78rem;
-        }
-
-        .ip-cell {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-        }
-
-        /* ── FOOTER BAR ─────────────────────────────────────────────────────── */
-        .standalone-footer {
-            margin-top: 40px;
-            border-top: 1px solid var(--brand-border);
-            padding: 20px 24px;
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            font-family: 'Space Mono', monospace;
-        }
-
-        .standalone-footer a {
-            color: var(--brand-blue);
-            text-decoration: none;
-        }
-
-        .standalone-footer a:hover {
+        .menu-item u {
             text-decoration: underline;
         }
 
-        /* Toast notification */
-        .toast-copied {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: var(--brand-green);
-            color: #000000;
+        /* Tab Control (98.css compatible) */
+        menu[role="tablist"] {
+            display: flex;
+            list-style-type: none;
+            margin: 6px 0 -2px 0;
+            padding-left: 4px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        menu[role="tablist"] > li {
+            background-color: var(--win-silver);
+            box-shadow: 
+                inset -1px 0 #000000,
+                inset 1px 1px #dfdfdf,
+                inset -2px 0 #808080,
+                inset 2px 2px #ffffff;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        menu[role="tablist"] > li.active,
+        menu[role="tablist"] > li[aria-selected="true"] {
+            margin-top: -2px;
+            padding-bottom: 2px;
+            z-index: 8;
+            background-color: var(--win-silver);
+            box-shadow: 
+                inset -1px 0 #000000,
+                inset 1px 1px #ffffff,
+                inset -2px 0 #808080,
+                inset 2px 2px #dfdfdf;
+        }
+
+        menu[role="tablist"] > li > button {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            color: #000000 !important;
             font-weight: 700;
-            font-size: 0.8rem;
-            padding: 8px 16px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.25s ease;
-            pointer-events: none;
-            z-index: 200;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            min-height: auto;
+            min-width: auto;
         }
 
-        .toast-copied.show {
-            opacity: 1;
-            transform: translateY(0);
+        /* Tab Content Panel */
+        .window[role="tabpanel"] {
+            position: relative;
+            z-index: 1;
+            padding: 12px;
+            background: var(--win-silver);
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
         }
 
-        /* ── RESPONSIVE DESIGN (MODE HP / SMARTPHONES) ──────────────────────── */
-        .table-mobile-hint {
+        .tab-pane {
             display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Fieldset & Sunken Panels */
+        fieldset {
+            border: 2px groove #ffffff;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            background: transparent;
+        }
+
+        legend {
+            font-weight: 700;
+            color: var(--win-navy);
+            padding: 0 4px;
+        }
+
+        .sunken-panel {
+            background: #ffffff;
+            box-shadow: 
+                inset -1px -1px #ffffff,
+                inset 1px 1px #808080,
+                inset -2px -2px #dfdfdf,
+                inset 2px 2px #000000;
+            padding: 8px;
+            overflow: auto;
+        }
+
+        /* ── RETRO 7-SEGMENT / PIXEL COUNTER BOXES ──────────────────────────── */
+        .retro-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .retro-stat-box {
+            background: var(--win-silver);
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #dfdfdf;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .stat-label-win {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--win-dark-silver);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 7px;
-            background: rgba(17, 145, 204, 0.1);
-            border: 1px dashed rgba(17, 145, 204, 0.4);
-            color: var(--brand-blue);
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 7px 12px;
-            border-radius: 6px;
-            margin-bottom: 12px;
-            text-align: center;
+            gap: 4px;
+        }
+
+        .stat-lcd-display {
+            background: #000000;
+            color: #00ff00; /* Classic CRT Phosphor Green */
+            font-family: 'Courier New', 'Lucida Console', monospace;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            padding: 4px 6px;
+            border: 2px inset #ffffff;
+            box-shadow: inset 0 0 8px rgba(0, 255, 0, 0.4);
+            margin-bottom: 4px;
+        }
+
+        .stat-lcd-display.red {
+            color: #ff3333;
+            box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.4);
+        }
+
+        .stat-lcd-display.amber {
+            color: #ffbb00;
+            box-shadow: inset 0 0 8px rgba(255, 187, 0, 0.4);
+        }
+
+        .stat-sub-info {
+            font-size: 9px;
+            color: #444444;
+        }
+
+        /* ── RETRO TABLES (DATA GRIDS) ──────────────────────────────────────── */
+        .retro-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            background: #ffffff;
+        }
+
+        .retro-table th {
+            background: var(--win-silver);
+            box-shadow: 
+                inset -1px -1px #000000,
+                inset 1px 1px #ffffff,
+                inset -2px -2px #808080,
+                inset 2px 2px #dfdfdf;
+            padding: 4px 8px;
+            font-weight: 700;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .retro-table th:active {
+            box-shadow: 
+                inset 1px 1px #000000,
+                inset -1px -1px #ffffff,
+                inset 2px 2px #808080,
+                inset -2px -2px #dfdfdf;
+        }
+
+        .retro-table td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #e5e5e5;
+            white-space: nowrap;
+        }
+
+        .retro-table tr:nth-child(even) td {
+            background-color: #f7f7f7;
+        }
+
+        .retro-table tr:hover td {
+            background-color: var(--win-navy);
+            color: #ffffff;
+        }
+
+        .retro-table tr:hover td a {
+            color: #ffffff;
+        }
+
+        /* ── WINDOWS 95 RETRO BUTTONS ───────────────────────────────────────── */
+        button, .btn-win95 {
+            background: var(--win-silver);
+            border: none;
+            box-shadow: 
+                inset -1px -1px #000000,
+                inset 1px 1px #ffffff,
+                inset -2px -2px #808080,
+                inset 2px 2px #dfdfdf;
+            padding: 4px 12px;
+            font-family: inherit;
+            font-size: 11px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+
+        button:active, .btn-win95:active {
+            box-shadow: 
+                inset 1px 1px #000000,
+                inset -1px -1px #ffffff,
+                inset 2px 2px #808080,
+                inset -2px -2px #dfdfdf;
+            padding: 5px 11px 3px 13px;
+        }
+
+        button:focus {
+            outline: 1px dotted #000000;
+            outline-offset: -3px;
+        }
+
+        /* Status Bar at Window Bottom */
+        .status-bar {
+            display: flex;
+            gap: 2px;
+            margin-top: 6px;
+        }
+
+        .status-bar-field {
+            background: var(--win-silver);
+            box-shadow: 
+                inset -1px -1px #dfdfdf,
+                inset 1px 1px #808080;
+            padding: 2px 6px;
+            font-size: 10px;
+            color: #222222;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ── RETRO WINDOWS 95 TASKBAR (BOTTOM OF SCREEN) ────────────────────── */
+        .win95-taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: var(--win-silver);
+            border-top: 2px solid #ffffff;
+            box-shadow: 0 -1px 0 #dfdfdf;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 4px;
+            z-index: 1000;
+        }
+
+        .taskbar-left {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .start-btn {
+            font-weight: 900;
+            font-size: 11px;
+            padding: 3px 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 24px;
+        }
+
+        .start-flag-logo {
+            width: 14px;
+            height: 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+        }
+
+        .flag-piece { width: 6px; height: 6px; }
+        .flag-red { background: #ff3333; }
+        .flag-green { background: #33cc33; }
+        .flag-blue { background: #3366ff; }
+        .flag-yellow { background: #ffcc00; }
+
+        .taskbar-app-btn {
+            background: var(--win-silver);
+            box-shadow: 
+                inset 1px 1px #000000,
+                inset -1px -1px #ffffff,
+                inset 2px 2px #808080,
+                inset -2px -2px #dfdfdf;
+            font-weight: 700;
+            height: 24px;
+            padding: 2px 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            max-width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 11px;
+        }
+
+        .taskbar-tray {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 
+                inset -1px -1px #ffffff,
+                inset 1px 1px #808080;
+            padding: 2px 8px;
+            height: 22px;
+            font-size: 11px;
             font-family: 'Space Mono', monospace;
         }
 
-        @media (max-width: 1024px) {
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .telemetry-split {
-                grid-template-columns: 1fr;
-            }
+        .tray-icon {
+            font-size: 11px;
+            color: #333333;
         }
 
+        /* Filter Controls Bar */
+        .filter-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            background: var(--win-silver);
+            padding: 6px;
+            border: 1px solid var(--win-dark-silver);
+        }
+
+        select, input[type="text"] {
+            background: #ffffff;
+            border: 2px inset #ffffff;
+            box-shadow: inset 1px 1px 0 #000000;
+            padding: 3px 6px;
+            font-family: inherit;
+            font-size: 11px;
+            outline: none;
+        }
+
+        /* ── CHARTS CONTAINER RETRO PALETTE ─────────────────────────────────── */
+        .charts-grid-win {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .chart-box-win {
+            background: #ffffff;
+            border: 2px inset #ffffff;
+            box-shadow: inset 1px 1px 0 #000000;
+            padding: 10px;
+            position: relative;
+        }
+
+        .chart-box-title {
+            font-weight: 700;
+            color: var(--win-navy);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 4px;
+        }
+
+        /* ── MOBILE RESPONSIVENESS (MODE HP SCREEN 360px - 768px) ───────────── */
         @media (max-width: 768px) {
-            /* Header Top Bar Mobile */
-            .standalone-top-bar {
-                padding: 10px 14px;
-            }
-            .top-bar-inner {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            .brand-cluster {
-                gap: 10px;
-            }
-            .brand-logo-img {
-                height: 32px;
-            }
-            .brand-name {
-                font-size: 0.88rem;
-            }
-            .telemetry-badge {
-                font-size: 0.6rem;
-                padding: 1px 5px;
-            }
-            .brand-subhead {
-                font-size: 0.65rem;
+            .desktop-icons-area {
+                display: none; /* Hide desktop icons on mobile to give window 100% space */
             }
 
-            /* 3 Action Buttons on Mobile */
-            .minimal-actions {
+            .win95-app-container {
                 width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1.2fr;
+                margin: 0;
+                padding: 4px 4px 40px 4px;
+            }
+
+            .retro-stats-row {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 6px;
             }
-            .btn-minimal-link {
-                padding: 7px 6px;
-                font-size: 0.72rem;
-                justify-content: center;
-                text-align: center;
+
+            .stat-lcd-display {
+                font-size: 18px;
+                padding: 3px 4px;
+            }
+
+            .charts-grid-win {
+                grid-template-columns: 1fr;
+            }
+
+            menu[role="tablist"] {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 2px;
+            }
+
+            menu[role="tablist"] > li > button {
+                padding: 4px 8px;
+                font-size: 10px;
                 white-space: nowrap;
             }
-            .btn-minimal-link i {
-                font-size: 0.72rem;
-            }
 
-            /* Container & Banner */
-            .dashboard-container {
-                padding: 16px 12px 40px;
-            }
-            .telemetry-banner {
-                margin-bottom: 16px;
-                padding-bottom: 12px;
+            .filter-toolbar {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+                align-items: stretch;
+                gap: 6px;
             }
-            .banner-left h1 {
-                font-size: 1.45rem;
-                line-height: 1.2;
-                margin-bottom: 4px;
-            }
-            .banner-left p {
-                font-size: 0.78rem;
-                line-height: 1.4;
-            }
-            .banner-right {
+
+            .filter-toolbar select,
+            .filter-toolbar button {
                 width: 100%;
-                justify-content: flex-start;
-            }
-            .live-status-pill {
-                padding: 4px 10px;
-                font-size: 0.7rem;
             }
 
-            /* Metrics 2x2 Grid for Mobile (All 4 cards visible at 1 glance) */
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 10px !important;
-                margin-bottom: 18px !important;
-            }
-            .metric-card {
-                padding: 14px 12px !important;
-                border-radius: 8px !important;
-            }
-            .card-header-mini {
-                margin-bottom: 8px !important;
-            }
-            .card-title-mini {
-                font-size: 0.65rem !important;
-                letter-spacing: 0.4px !important;
-            }
-            .card-icon-mini {
-                font-size: 0.82rem !important;
-            }
-            .card-value-display {
-                font-size: 1.65rem !important;
-                margin-bottom: 4px !important;
-                letter-spacing: -0.5px !important;
-            }
-            .card-subtext {
-                font-size: 0.64rem !important;
-                line-height: 1.3 !important;
+            .win95-taskbar {
+                height: 28px;
             }
 
-            /* Telemetry Split */
-            .telemetry-split {
-                gap: 14px !important;
-                margin-bottom: 18px !important;
-            }
-            .panel-box {
-                padding: 16px 12px !important;
-                border-radius: 8px !important;
-            }
-            .panel-title {
-                font-size: 0.9rem !important;
-                margin-bottom: 12px !important;
-                padding-bottom: 8px !important;
-            }
-            .page-meta-line {
-                font-size: 0.76rem !important;
-            }
-            .page-views-badge {
-                font-size: 0.72rem !important;
-            }
-            .device-legend {
-                gap: 8px !important;
-            }
-            .legend-item {
-                font-size: 0.72rem !important;
-            }
-            .browser-chips-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 6px !important;
-            }
-            .browser-chip {
-                padding: 6px 8px !important;
-                font-size: 0.72rem !important;
+            .taskbar-app-btn {
+                max-width: 140px;
+                font-size: 10px;
             }
 
-            /* Feed Table on Mobile */
-            .feed-panel {
-                padding: 16px 12px !important;
-                border-radius: 8px !important;
-            }
-            .table-mobile-hint {
-                display: flex !important;
-            }
-            .feed-table th,
-            .feed-table td {
-                padding: 9px 10px !important;
-                font-size: 0.74rem !important;
-            }
-            .page-badge-cell {
-                font-size: 0.7rem !important;
-                padding: 2px 6px !important;
-            }
-            .device-badge-cell {
-                font-size: 0.72rem !important;
-            }
-        }
-
-        @media (max-width: 350px) {
-            .metrics-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .minimal-actions {
-                grid-template-columns: 1fr !important;
+            .status-bar {
+                flex-direction: column;
+                gap: 2px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ── STANDALONE TOP BAR (NO MAIN NAVIGATION MENU, CUMA LINK) ──────────── -->
-    <header class="standalone-top-bar">
-        <div class="top-bar-inner">
-            <a href="/" class="brand-cluster" title="AB Malaya Portal">
-                <img src="/assets/img/logo-abmalaya.webp" alt="AB Malaya Logo" class="brand-logo-img">
-                <div class="brand-titles">
-                    <span class="brand-name">
-                        AB MALAYA <span class="telemetry-badge">TELEMETRY</span>
-                    </span>
-                    <span class="brand-subhead">Official Traffic & Visitor Counter Desk</span>
-                </div>
+    <div class="win95-desktop">
+
+        <!-- ── RETRO DESKTOP SHORTCUT ICONS (LEFT SIDEBAR) ──────────────────── -->
+        <div class="desktop-icons-area">
+            <a href="/" class="desktop-icon-btn" title="Kembali ke Website Resmi">
+                <i class="fas fa-ship" style="color: #66ccff;"></i>
+                <span>AB Malaya Official</span>
             </a>
-
-            <!-- Standalone Action Links -->
-            <div class="minimal-actions">
-                <button type="button" class="btn-minimal-link" onclick="copyCurrentLink()">
-                    <i class="fas fa-link"></i> <span>Copy Link</span>
-                </button>
-                <button type="button" class="btn-minimal-link" id="refresh-btn" onclick="fetchLiveStats(true)">
-                    <i class="fas fa-rotate"></i> <span>Refresh</span>
-                </button>
-                <a href="/" class="btn-minimal-link primary">
-                    <i class="fas fa-arrow-left"></i> <span>Visit Website</span>
-                </a>
+            <div class="desktop-icon-btn" onclick="switchWinTab('tab-journal')" title="Buka Jurnal Kunjungan">
+                <i class="fas fa-book" style="color: #ffff66;"></i>
+                <span>Audit Journal</span>
             </div>
-        </div>
-    </header>
-
-    <!-- ── MAIN DASHBOARD CONTENT ─────────────────────────────────────────── -->
-    <main class="dashboard-container">
-        
-        <!-- Header Telemetry Title -->
-        <div class="telemetry-banner">
-            <div class="banner-left">
-                <h1>Visitor <span>Counter</span> & Traffic Analytics</h1>
-                <p>Real-time corporate telemetry tracking unique vessel operators, contractors, and industrial clients.</p>
+            <div class="desktop-icon-btn" onclick="switchWinTab('tab-charts')" title="Buka Grafik Trafik">
+                <i class="fas fa-chart-line" style="color: #66ff66;"></i>
+                <span>Traffic Charts</span>
             </div>
-            <div class="banner-right">
-                <div class="live-status-pill">
-                    <span class="live-status-dot"></span>
-                    <span id="live-time-ticker">MYT <?php echo date('H:i:s'); ?></span>
-                </div>
+            <div class="desktop-icon-btn" onclick="switchWinTab('tab-ip')" title="Log IP & Perangkat">
+                <i class="fas fa-network-wired" style="color: #ff9966;"></i>
+                <span>IP Telemetry</span>
+            </div>
+            <div class="desktop-icon-btn" onclick="location.reload()" title="Refresh Dashboard (F5)">
+                <i class="fas fa-arrows-rotate" style="color: #ffffff;"></i>
+                <span>Refresh.exe</span>
             </div>
         </div>
 
-        <!-- ── HERO METRIC CARDS ───────────────────────────────────────────── -->
-        <div class="metrics-grid">
-            
-            <!-- Card 1: Total Impressions -->
-            <div class="metric-card accent-navy">
-                <div class="card-header-mini">
-                    <span class="card-title-mini">Total Page Views</span>
-                    <i class="fas fa-eye card-icon-mini"></i>
-                </div>
-                <div class="card-value-display" id="val-total-views">
-                    <?php echo number_format($summary['total_views'] ?? 0); ?>
-                </div>
-                <div class="card-subtext">
-                    <span class="highlight"><i class="fas fa-arrow-trend-up"></i> Cumulative</span> all-time impressions
-                </div>
-            </div>
-
-            <!-- Card 2: Unique Visitors -->
-            <div class="metric-card accent-green">
-                <div class="card-header-mini">
-                    <span class="card-title-mini">Total Unique Visitors</span>
-                    <i class="fas fa-users card-icon-mini"></i>
-                </div>
-                <div class="card-value-display" id="val-total-uniques">
-                    <?php echo number_format($summary['total_uniques'] ?? 0); ?>
-                </div>
-                <div class="card-subtext">
-                    <span class="highlight"><i class="fas fa-fingerprint"></i> Distinct</span> IP & browser sessions
-                </div>
-            </div>
-
-            <!-- Card 3: Today's Traffic -->
-            <div class="metric-card accent-amber">
-                <div class="card-header-mini">
-                    <span class="card-title-mini">Today's Impressions</span>
-                    <i class="fas fa-calendar-day card-icon-mini"></i>
-                </div>
-                <div class="card-value-display" id="val-today-views">
-                    <?php echo number_format($summary['today_views'] ?? 0); ?>
-                </div>
-                <div class="card-subtext">
-                    <span class="highlight" id="val-today-uniques"><?php echo number_format($summary['today_uniques'] ?? 0); ?></span> unique visitors today
-                </div>
-            </div>
-
-            <!-- Card 4: Active Right Now -->
-            <div class="metric-card">
-                <div class="card-header-mini">
-                    <span class="card-title-mini">Active (Last 15m)</span>
-                    <i class="fas fa-bolt card-icon-mini" style="color: var(--brand-green);"></i>
-                </div>
-                <div class="card-value-display" id="val-active-now" style="color: var(--brand-green);">
-                    <?php echo number_format($summary['active_now'] ?? 1); ?>
-                </div>
-                <div class="card-subtext">
-                    <span class="highlight">Live</span> active browsing sessions
-                </div>
-            </div>
-        </div>
-
-        <!-- ── 2-COLUMN TELEMETRY: TOP PAGES & DEVICE BREAKDOWN ────────────── -->
-        <div class="telemetry-split">
-            
-            <!-- Panel 1: Top Visited Pages -->
-            <div class="panel-box">
-                <div class="panel-title">
-                    <span><i class="fas fa-layer-group" style="color: var(--brand-blue);"></i> Most Visited Portals & Pages</span>
-                    <span class="panel-badge">Traffic Share</span>
-                </div>
-
-                <div id="pages-list-container">
-                    <?php if (empty($top_pages)): ?>
-                        <p style="color: var(--text-dim); font-size: 0.85rem;">Logging initial page impressions...</p>
-                    <?php else: ?>
-                        <?php foreach ($top_pages as $pname => $count): 
-                            $pct = round(($count / $max_page_count) * 100);
-                        ?>
-                            <div class="page-stat-row">
-                                <div class="page-meta-line">
-                                    <span class="page-name-tag">
-                                        <i class="fas fa-file-lines" style="color: var(--text-dim); font-size: 0.72rem;"></i>
-                                        <?php echo htmlspecialchars($pname); ?>
-                                    </span>
-                                    <span class="page-views-badge"><?php echo number_format($count); ?> views</span>
-                                </div>
-                                <div class="page-progress-bar-bg">
-                                    <div class="page-progress-bar-fill" style="width: <?php echo $pct; ?>%;"></div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <!-- Panel 2: Device & Browser Telemetry -->
-            <div class="panel-box">
-                <div class="panel-title">
-                    <span><i class="fas fa-mobile-screen-button" style="color: var(--brand-green);"></i> Device & Platform Split</span>
-                    <span class="panel-badge">Client Hardware</span>
-                </div>
-
-                <!-- Device Stack Bar -->
-                <div class="device-bar-container">
-                    <div class="device-stack-bar">
-                        <div class="stack-slice desktop" style="width: <?php echo $pct_desktop; ?>%;" title="Desktop: <?php echo $pct_desktop; ?>%"></div>
-                        <div class="stack-slice mobile" style="width: <?php echo $pct_mobile; ?>%;" title="Mobile: <?php echo $pct_mobile; ?>%"></div>
-                        <div class="stack-slice tablet" style="width: <?php echo $pct_tablet; ?>%;" title="Tablet: <?php echo $pct_tablet; ?>%"></div>
+        <!-- ── MAIN RETRO APPLICATION WINDOW ───────────────────────────────── -->
+        <div class="win95-app-container">
+            <div class="window">
+                
+                <!-- Classic Title Bar -->
+                <div class="title-bar">
+                    <div class="title-bar-left">
+                        <i class="fas fa-chart-column title-bar-icon"></i>
+                        <span class="title-bar-text">AB Malaya - Visitor Telemetry & Audit Journal [v4.1.95]</span>
                     </div>
-
-                    <div class="device-legend">
-                        <div class="legend-item">
-                            <span class="legend-dot desktop"></span>
-                            <span>Desktop</span>
-                            <span class="legend-val" id="pct-desktop"><?php echo $pct_desktop; ?>%</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot mobile"></span>
-                            <span>Mobile (HP)</span>
-                            <span class="legend-val" id="pct-mobile"><?php echo $pct_mobile; ?>%</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot tablet"></span>
-                            <span>Tablet</span>
-                            <span class="legend-val" id="pct-tablet"><?php echo $pct_tablet; ?>%</span>
-                        </div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize" onclick="alert('Program minimized to taskbar.')"></button>
+                        <button aria-label="Maximize" onclick="toggleMaximize()"></button>
+                        <button aria-label="Close" onclick="window.location.href='/'"></button>
                     </div>
                 </div>
 
-                <!-- Web Browsers -->
-                <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 20px; font-family: 'Space Mono', monospace;">
-                    Detected Web Browsers
+                <!-- Classic Menu Bar -->
+                <div class="win95-menu-bar">
+                    <span class="menu-item" onclick="window.location.href='/'"><u>F</u>ile</span>
+                    <span class="menu-item" onclick="switchWinTab('tab-journal')"><u>J</u>ournal</span>
+                    <span class="menu-item" onclick="switchWinTab('tab-charts')"><u>C</u>harts</span>
+                    <span class="menu-item" onclick="switchWinTab('tab-ip')"><u>I</u>P Log</span>
+                    <span class="menu-item" onclick="exportJournalCsv()"><u>E</u>xport CSV</span>
+                    <span class="menu-item" onclick="showAboutDialog()"><u>H</u>elp</span>
                 </div>
-                <div class="browser-chips-grid">
-                    <?php foreach ($browsers as $bname => $bcount): ?>
-                        <div class="browser-chip">
-                            <div class="browser-chip-left">
-                                <i class="fab fa-<?php echo strtolower($bname) === 'chrome' ? 'chrome' : (strtolower($bname) === 'safari' ? 'safari' : (strtolower($bname) === 'edge' ? 'edge' : (strtolower($bname) === 'firefox' ? 'firefox' : 'compass'))); ?>"></i>
-                                <span><?php echo htmlspecialchars($bname); ?></span>
+
+                <!-- Classic Win95 Tab Controls -->
+                <menu role="tablist">
+                    <li role="tab" id="pill-overview" class="active" onclick="switchWinTab('tab-overview')">
+                        <button type="button"><i class="fas fa-desktop"></i> Overview</button>
+                    </li>
+                    <li role="tab" id="pill-charts" onclick="switchWinTab('tab-charts')">
+                        <button type="button"><i class="fas fa-chart-simple"></i> Grafik Trafik</button>
+                    </li>
+                    <li role="tab" id="pill-journal" onclick="switchWinTab('tab-journal')">
+                        <button type="button"><i class="fas fa-calendar-days"></i> Jurnal Per Tanggal & Bulan</button>
+                    </li>
+                    <li role="tab" id="pill-ip" onclick="switchWinTab('tab-ip')">
+                        <button type="button"><i class="fas fa-network-wired"></i> Log Perangkat & IP</button>
+                    </li>
+                    <li role="tab" id="pill-live" onclick="switchWinTab('tab-live')">
+                        <button type="button"><i class="fas fa-satellite-dish"></i> Live Feed</button>
+                    </li>
+                </menu>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- TAB 1: SYSTEM OVERVIEW & RETRO DIGITAL COUNTERS             -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div class="window tab-pane active" id="tab-overview" role="tabpanel">
+                    
+                    <fieldset>
+                        <legend>📊 Real-Time Digital Counters (CRT Phosphor Display)</legend>
+                        <div class="retro-stats-row">
+                            <!-- Total Hits -->
+                            <div class="retro-stat-box">
+                                <div class="stat-label-win"><i class="fas fa-eye"></i> Total Hits</div>
+                                <div class="stat-lcd-display" id="disp-total-views">
+                                    <?php echo sprintf('%06d', $summary['total_views'] ?? 0); ?>
+                                </div>
+                                <div class="stat-sub-info">All-Time Impressions</div>
                             </div>
-                            <span class="browser-chip-right"><?php echo number_format($bcount); ?></span>
+
+                            <!-- Unique Visitors -->
+                            <div class="retro-stat-box">
+                                <div class="stat-label-win"><i class="fas fa-user-check"></i> Unique Visitors</div>
+                                <div class="stat-lcd-display red" id="disp-total-uniques">
+                                    <?php echo sprintf('%06d', $summary['total_uniques'] ?? 0); ?>
+                                </div>
+                                <div class="stat-sub-info">Distinct Client IPs</div>
+                            </div>
+
+                            <!-- Today Views -->
+                            <div class="retro-stat-box">
+                                <div class="stat-label-win"><i class="fas fa-calendar-day"></i> Today Hits</div>
+                                <div class="stat-lcd-display amber" id="disp-today-views">
+                                    <?php echo sprintf('%06d', $summary['today_views'] ?? 0); ?>
+                                </div>
+                                <div class="stat-sub-info"><?php echo $summary['today_uniques'] ?? 0; ?> Uniques Today</div>
+                            </div>
+
+                            <!-- Active Now -->
+                            <div class="retro-stat-box">
+                                <div class="stat-label-win"><i class="fas fa-bolt"></i> Active Sessions</div>
+                                <div class="stat-lcd-display" id="disp-active-now">
+                                    <?php echo sprintf('%02d SESS', $summary['active_now'] ?? 1); ?>
+                                </div>
+                                <div class="stat-sub-info">Past 15 Minutes</div>
+                            </div>
                         </div>
-                    <?php endforeach; ?>
+                    </fieldset>
+
+                    <!-- Quick Summary & Link Strip -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+                        
+                        <fieldset>
+                            <legend>📂 Most Visited Portals</legend>
+                            <div class="sunken-panel" style="height: 140px;">
+                                <table class="retro-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Portal Page</th>
+                                            <th style="text-align: right;">Hits</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($pages as $pname => $pcount): ?>
+                                            <tr>
+                                                <td><i class="fas fa-file-lines" style="margin-right: 4px; color: #808080;"></i> <?php echo htmlspecialchars($pname); ?></td>
+                                                <td style="text-align: right; font-weight: 700; font-family: 'Space Mono', monospace;"><?php echo number_format($pcount); ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>⚙️ Client Hardware & OS Distribution</legend>
+                            <div class="sunken-panel" style="height: 140px;">
+                                <table class="retro-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Environment</th>
+                                            <th style="text-align: right;">Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($devices as $dname => $dcount): ?>
+                                            <tr>
+                                                <td><strong>Perangkat:</strong> <?php echo htmlspecialchars($dname); ?></td>
+                                                <td style="text-align: right; font-weight: 700; font-family: 'Space Mono', monospace;"><?php echo number_format($dcount); ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        <?php foreach (array_slice($os_dist, 0, 4) as $os_name => $os_count): ?>
+                                            <tr>
+                                                <td><strong>OS:</strong> <?php echo htmlspecialchars($os_name); ?></td>
+                                                <td style="text-align: right; font-weight: 700; font-family: 'Space Mono', monospace;"><?php echo number_format($os_count); ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 6px;">
+                        <div>
+                            <span style="font-size: 10px; color: #444444;">
+                                <i class="fas fa-info-circle"></i> Standalone URL: <code>abmalaya.com/visitors</code>
+                            </span>
+                        </div>
+                        <div style="display: flex; gap: 6px;">
+                            <button type="button" onclick="copyShareableUrl()"><i class="fas fa-copy"></i> Salin Link</button>
+                            <button type="button" onclick="location.reload()"><i class="fas fa-rotate"></i> Refresh Telemetry</button>
+                            <a href="/" class="btn-win95" style="color: #000080; font-weight: 700;"><i class="fas fa-arrow-left"></i> Kembali ke Website</a>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-        </div>
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- TAB 2: GRAFIK TRAFIK (RETRO CHARTS - PER JAM & HARIAN)      -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div class="window tab-pane" id="tab-charts" role="tabpanel">
+                    
+                    <div class="charts-grid-win">
+                        <!-- Chart 1: Hourly Breakdown (00:00 - 23:00) -->
+                        <div class="chart-box-win">
+                            <div class="chart-box-title">
+                                <span><i class="fas fa-clock"></i> Distribusi Kunjungan Per Jam (24 Jam WIB/MYT)</span>
+                                <span style="font-size: 9px; color: #666;">00:00 - 23:00</span>
+                            </div>
+                            <div style="height: 220px; position: relative;">
+                                <canvas id="chartHourly"></canvas>
+                            </div>
+                        </div>
 
-        <!-- ── LIVE RECENT VISITOR FEED TABLE ─────────────────────────────────── -->
-        <div class="feed-panel">
-            <div class="panel-title">
-                <span><i class="fas fa-satellite-dish" style="color: var(--brand-amber);"></i> Live Incoming Traffic Feed (Latest Real-Time Sessions)</span>
-                <span class="panel-badge">Autonomous Logging</span>
-            </div>
+                        <!-- Chart 2: Daily Trend (15 Days) -->
+                        <div class="chart-box-win">
+                            <div class="chart-box-title">
+                                <span><i class="fas fa-calendar-week"></i> Tren Kunjungan Harian (15 Hari Terakhir)</span>
+                                <span style="font-size: 9px; color: #666;">Hits vs Uniques</span>
+                            </div>
+                            <div style="height: 220px; position: relative;">
+                                <canvas id="chartDaily"></canvas>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Table Mobile Swipe Hint -->
-            <div class="table-mobile-hint">
-                <i class="fas fa-arrows-left-right"></i> Touch & geser tabel ke samping untuk melihat seluruh rincian sesi
-            </div>
+                    <!-- Chart 3: Device & Platform Share -->
+                    <div class="chart-box-win">
+                        <div class="chart-box-title">
+                            <span><i class="fas fa-pie-chart"></i> Pembagian Perangkat (Desktop vs Mobile HP vs Tablet)</span>
+                            <span style="font-size: 9px; color: #666;">Client Hardware Share</span>
+                        </div>
+                        <div style="height: 180px; position: relative;">
+                            <canvas id="chartDevices"></canvas>
+                        </div>
+                    </div>
 
-            <div class="feed-table-wrapper">
-                <table class="feed-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 12%;">Time (MYT)</th>
-                            <th style="width: 28%;">Page Destination</th>
-                            <th style="width: 16%;">Device / OS</th>
-                            <th style="width: 14%;">Browser</th>
-                            <th style="width: 15%;">Masked IP</th>
-                            <th style="width: 15%;">Traffic Source</th>
-                        </tr>
-                    </thead>
-                    <tbody id="feed-table-body">
-                        <?php if (empty($recent)): ?>
-                            <tr>
-                                <td colspan="6" style="text-align: center; color: var(--text-dim); padding: 30px;">
-                                    <i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Waiting for incoming visitor telemetry...
-                                </td>
-                            </tr>
-                        <?php else: ?>
-                            <?php foreach ($recent as $r): ?>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- TAB 3: JURNAL KUNJUNGAN PER TANGGAL & PER BULAN             -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div class="window tab-pane" id="tab-journal" role="tabpanel">
+                    
+                    <!-- Filter Toolbar -->
+                    <form method="GET" action="/visitors.php" class="filter-toolbar">
+                        <input type="hidden" name="tab" value="journal">
+                        
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <label><strong>Pilih Bulan:</strong></label>
+                            <select name="month" onchange="this.form.submit()">
+                                <?php foreach ($months as $m): ?>
+                                    <option value="<?php echo $m; ?>" <?php echo $m === $selected_month ? 'selected' : ''; ?>>
+                                        <?php echo date('F Y', strtotime($m . '-01')); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <label><strong>Pilih Tanggal:</strong></label>
+                            <select name="day" onchange="this.form.submit()">
+                                <option value="all">-- Semua Tanggal (Ringkasan Bulanan) --</option>
+                                <?php foreach (array_keys($days_data) as $d): ?>
+                                    <option value="<?php echo $d; ?>" <?php echo $d === $selected_day ? 'selected' : ''; ?>>
+                                        <?php echo date('d M Y (l)', strtotime($d)); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div style="display: flex; gap: 6px; margin-left: auto;">
+                            <button type="submit"><i class="fas fa-filter"></i> Terapkan Filter</button>
+                            <a href="/visitors.php" class="btn-win95"><i class="fas fa-rotate-left"></i> Reset</a>
+                            <button type="button" onclick="exportJournalCsv()"><i class="fas fa-file-excel"></i> Ekspor CSV</button>
+                        </div>
+                    </form>
+
+                    <!-- Journal Table Sunken Panel -->
+                    <div class="sunken-panel" style="max-height: 380px;">
+                        <table class="retro-table" id="journal-data-table">
+                            <thead>
                                 <tr>
-                                    <td class="feed-time-cell">
-                                        <i class="far fa-clock" style="margin-right: 4px; opacity: 0.6;"></i>
-                                        <?php echo htmlspecialchars($r['time'] ?? '-'); ?>
-                                    </td>
-                                    <td>
-                                        <span class="page-badge-cell">
-                                            <i class="fas fa-compass" style="color: var(--brand-blue); font-size: 0.7rem;"></i>
-                                            <?php echo htmlspecialchars($r['page'] ?? $r['path'] ?? 'Home'); ?>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span class="device-badge-cell">
-                                            <i class="fas fa-<?php echo strtolower($r['device'] ?? '') === 'mobile' ? 'mobile-screen' : (strtolower($r['device'] ?? '') === 'tablet' ? 'tablet-screen-button' : 'desktop'); ?>"></i>
-                                            <?php echo htmlspecialchars($r['device'] ?? 'Desktop'); ?> (<?php echo htmlspecialchars($r['os'] ?? 'OS'); ?>)
-                                        </span>
-                                    </td>
-                                    <td><?php echo htmlspecialchars($r['browser'] ?? 'Browser'); ?></td>
-                                    <td class="ip-cell"><?php echo htmlspecialchars($r['ip'] ?? '127.0.0.xxx'); ?></td>
-                                    <td style="color: var(--text-muted); font-size: 0.78rem;">
-                                        <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.68rem; margin-right: 4px; opacity: 0.5;"></i>
-                                        <?php echo htmlspecialchars($r['referrer'] ?? 'Direct'); ?>
-                                    </td>
+                                    <th>Tanggal (WIB / MYT)</th>
+                                    <th style="text-align: right;">Total Kunjungan</th>
+                                    <th style="text-align: right;">Pengunjung Unik</th>
+                                    <th style="text-align: center;">Jam Puncak (Peak Hour)</th>
+                                    <th>Perangkat Dominan</th>
+                                    <th>Halaman Terpopuler</th>
+                                    <th style="text-align: center;">Aksi</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                <?php if (empty($filtered_days)): ?>
+                                    <tr>
+                                        <td colspan="7" style="text-align: center; padding: 20px; color: #808080;">
+                                            Belum ada catatan log jurnal untuk periode ini.
+                                        </td>
+                                    </tr>
+                                <?php else: ?>
+                                    <?php foreach ($filtered_days as $day_k => $day_info): 
+                                        $h_arr = $day_info['hourly'] ?? array_fill(0, 24, 0);
+                                        $peak_h = array_search(max($h_arr), $h_arr);
+                                        $peak_str = sprintf('%02d:00 - %02d:59', $peak_h, $peak_h);
+                                        
+                                        $d_dev = $day_info['devices'] ?? [];
+                                        arsort($d_dev);
+                                        $main_dev = key($d_dev) ?: 'Desktop';
+                                    ?>
+                                        <tr>
+                                            <td>
+                                                <i class="far fa-calendar-check" style="margin-right: 5px; color: var(--win-navy);"></i>
+                                                <strong><?php echo date('d M Y (D)', strtotime($day_k)); ?></strong>
+                                            </td>
+                                            <td style="text-align: right; font-weight: 700; font-family: 'Space Mono', monospace; color: var(--win-navy);">
+                                                <?php echo number_format($day_info['views'] ?? 0); ?> hits
+                                            </td>
+                                            <td style="text-align: right; font-weight: 700; font-family: 'Space Mono', monospace; color: var(--win-green);">
+                                                <?php echo number_format($day_info['uniques'] ?? 0); ?> uniques
+                                            </td>
+                                            <td style="text-align: center; font-family: 'Space Mono', monospace;">
+                                                <span style="background: #ffffcc; border: 1px solid #cccc99; padding: 1px 4px;">
+                                                    <?php echo $peak_str; ?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <i class="fas fa-<?php echo strtolower($main_dev) === 'mobile' ? 'mobile-screen' : 'desktop'; ?>"></i>
+                                                <?php echo $main_dev; ?>
+                                            </td>
+                                            <td><?php echo htmlspecialchars($day_info['top_page'] ?? 'Home Page'); ?></td>
+                                            <td style="text-align: center;">
+                                                <button type="button" style="padding: 1px 6px; font-size: 10px;" onclick="viewDayHourly('<?php echo $day_k; ?>')">
+                                                    Lihat Jam
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="font-size: 10px; color: #444444; margin-top: 6px;">
+                        * Jurnal otomatis dirotasi dan disimpan secara persisten per hari & per bulan ke <code>data/visitor_counter.json</code>.
+                    </div>
+
+                </div>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- TAB 4: LOG PERANGKAT & IP ADDRESS                           -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div class="window tab-pane" id="tab-ip" role="tabpanel">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <label><strong>Cari IP / Kota:</strong></label>
+                            <input type="text" id="ip-filter-input" placeholder="Ketik IP atau lokasi..." onkeyup="filterIpTable(this.value)">
+                        </div>
+                        <div style="display: flex; gap: 6px;">
+                            <button type="button" id="btn-toggle-raw-ip" onclick="toggleRawIp()">
+                                <i class="fas fa-shield-halved"></i> Mode Sensor: <strong id="ip-mask-state">Tersamar (Masked)</strong>
+                            </button>
+                            <button type="button" onclick="exportIpCsv()"><i class="fas fa-download"></i> Unduh Log IP</button>
+                        </div>
+                    </div>
+
+                    <div class="sunken-panel" style="max-height: 380px;">
+                        <table class="retro-table" id="ip-data-table">
+                            <thead>
+                                <tr>
+                                    <th>IP Address</th>
+                                    <th>Lokasi / Jaringan ISP</th>
+                                    <th style="text-align: right;">Total Kunjungan (Hits)</th>
+                                    <th>Waktu Terakhir</th>
+                                    <th>Perangkat</th>
+                                    <th>Sistem Operasi</th>
+                                    <th>Peramban (Browser)</th>
+                                    <th>Halaman Terakhir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (empty($per_ip)): ?>
+                                    <tr>
+                                        <td colspan="8" style="text-align: center; padding: 20px; color: #808080;">
+                                            Belum ada rekaman IP pengunjung.
+                                        </td>
+                                    </tr>
+                                <?php else: ?>
+                                    <?php foreach ($per_ip as $ip_raw => $info): ?>
+                                        <tr>
+                                            <td class="ip-cell" data-raw="<?php echo htmlspecialchars($ip_raw); ?>" data-masked="<?php echo htmlspecialchars($info['masked_ip'] ?? $ip_raw); ?>" style="font-family: 'Space Mono', monospace; font-weight: 700; color: var(--win-navy);">
+                                                <?php echo htmlspecialchars($info['masked_ip'] ?? $ip_raw); ?>
+                                            </td>
+                                            <td>
+                                                <i class="fas fa-location-dot" style="color: #cc3333; margin-right: 4px;"></i>
+                                                <?php echo htmlspecialchars($info['location'] ?? 'Malaysia Regional'); ?>
+                                            </td>
+                                            <td style="text-align: right; font-weight: 700; font-family: 'Space Mono', monospace;">
+                                                <?php echo number_format($info['hits'] ?? 1); ?>
+                                            </td>
+                                            <td style="font-family: 'Space Mono', monospace; font-size: 10px;">
+                                                <?php echo htmlspecialchars($info['last_seen'] ?? '-'); ?>
+                                            </td>
+                                            <td>
+                                                <i class="fas fa-<?php echo strtolower($info['device'] ?? '') === 'mobile' ? 'mobile-screen' : 'desktop'; ?>"></i>
+                                                <?php echo htmlspecialchars($info['device'] ?? 'Desktop'); ?>
+                                            </td>
+                                            <td><?php echo htmlspecialchars($info['os'] ?? 'OS'); ?></td>
+                                            <td><?php echo htmlspecialchars($info['browser'] ?? 'Browser'); ?></td>
+                                            <td><?php echo htmlspecialchars($info['page'] ?? 'Home'); ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="font-size: 10px; color: #444444; margin-top: 6px;">
+                        * IP disamarkan secara otomatis untuk kepatuhan privasi (PDPA). Klik tombol "Mode Sensor" untuk membuka alamat utuh.
+                    </div>
+
+                </div>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- TAB 5: LIVE STREAMING TRAFFIC FEED                          -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div class="window tab-pane" id="tab-live" role="tabpanel">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span><i class="fas fa-satellite-dish" style="color: var(--win-green);"></i> <strong>Real-Time Incoming Sessions Stream:</strong></span>
+                        <span style="font-size: 10px; color: #444;">Auto-Polling 10s • MYT</span>
+                    </div>
+
+                    <div class="sunken-panel" style="max-height: 380px;">
+                        <table class="retro-table" id="live-feed-table">
+                            <thead>
+                                <tr>
+                                    <th>Waktu (MYT)</th>
+                                    <th>Halaman Dituju</th>
+                                    <th>Perangkat / OS</th>
+                                    <th>Browser</th>
+                                    <th>IP Klien</th>
+                                    <th>Sumber Trafik (Referrer)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="live-feed-tbody">
+                                <?php foreach ($recent as $r): ?>
+                                    <tr>
+                                        <td style="font-family: 'Space Mono', monospace; font-size: 10px; color: var(--win-navy);">
+                                            <?php echo htmlspecialchars($r['time'] ?? '-'); ?>
+                                        </td>
+                                        <td><strong><?php echo htmlspecialchars($r['page'] ?? 'Home'); ?></strong></td>
+                                        <td>
+                                            <i class="fas fa-<?php echo strtolower($r['device'] ?? '') === 'mobile' ? 'mobile-screen' : 'desktop'; ?>"></i>
+                                            <?php echo htmlspecialchars($r['device'] ?? 'Desktop'); ?> (<?php echo htmlspecialchars($r['os'] ?? 'OS'); ?>)
+                                        </td>
+                                        <td><?php echo htmlspecialchars($r['browser'] ?? 'Browser'); ?></td>
+                                        <td style="font-family: 'Space Mono', monospace;"><?php echo htmlspecialchars($r['ip'] ?? '127.0.0.xxx'); ?></td>
+                                        <td style="color: #666; font-size: 10px;"><?php echo htmlspecialchars($r['referrer'] ?? 'Direct Access'); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- Classic Window Status Bar (Bottom of Window) -->
+                <div class="status-bar">
+                    <div class="status-bar-field" style="flex: 1.5;">
+                        <i class="fas fa-circle-check" style="color: var(--win-green);"></i> Ready • Standalone Telemetry Active
+                    </div>
+                    <div class="status-bar-field">
+                        Total Views: <strong id="sb-views"><?php echo number_format($summary['total_views'] ?? 0); ?></strong>
+                    </div>
+                    <div class="status-bar-field">
+                        Uniques: <strong id="sb-uniques"><?php echo number_format($summary['total_uniques'] ?? 0); ?></strong>
+                    </div>
+                    <div class="status-bar-field" style="flex: 1.2;">
+                        Server: <strong>abmalaya.com</strong> (SSL Port 443)
+                    </div>
+                </div>
+
             </div>
         </div>
 
-    </main>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast-copied">
-        <i class="fas fa-check-circle"></i> Direct Link Copied to Clipboard!
     </div>
 
-    <!-- ── STANDALONE FOOTER ──────────────────────────────────────────────── -->
-    <footer class="standalone-footer">
-        <div>
-            AB MALAYA SDN BHD &bull; Internal Telemetry System &bull; 
-            <a href="/">abmalaya.com</a> &bull; Data persisten & auto-updated.
+    <!-- ═══════════════════════════════════════════════════════════════════════ -->
+    <!-- RETRO WINDOWS 95 TASKBAR (BOTTOM OF SCREEN)                            -->
+    <!-- ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="win95-taskbar">
+        <div class="taskbar-left">
+            <!-- Classic Start Button -->
+            <button type="button" class="start-btn" onclick="toggleStartMenu()">
+                <div class="start-flag-logo">
+                    <div class="flag-piece flag-red"></div>
+                    <div class="flag-piece flag-green"></div>
+                    <div class="flag-piece flag-blue"></div>
+                    <div class="flag-piece flag-yellow"></div>
+                </div>
+                <span>Start</span>
+            </button>
+
+            <!-- Active App Task Tab -->
+            <div class="taskbar-app-btn">
+                <i class="fas fa-chart-column" style="color: var(--win-navy);"></i>
+                <span>AB Malaya Traffic Monitor</span>
+            </div>
         </div>
-    </footer>
 
-    <!-- ── REAL-TIME JAVASCRIPT POLLING & ACTIONS ──────────────────────────── -->
+        <!-- Taskbar Tray -->
+        <div class="taskbar-tray">
+            <i class="fas fa-volume-high tray-icon" title="Audio"></i>
+            <i class="fas fa-network-wired tray-icon" title="Connected to Network" style="color: var(--win-green);"></i>
+            <span id="win95-clock">12:00 PM</span>
+        </div>
+    </div>
+
+    <!-- ── JAVASCRIPT LOGIC (CHARTS, TABS, POLLING, RETRO WIN95 CONTROLS) ─── -->
     <script>
-        // Update Live Clock
-        setInterval(function() {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Kuala_Lumpur' });
-            const elem = document.getElementById('live-time-ticker');
-            if (elem) elem.textContent = 'MYT ' + timeStr;
-        }, 1000);
+        // Tab Switcher
+        function switchWinTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('menu[role="tablist"] > li').forEach(el => el.classList.remove('active'));
 
-        // Copy Shareable Direct URL with Robust Mobile Fallback
-        function copyCurrentLink() {
-            const url = window.location.origin + '/visitors';
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(url).then(showToast).catch(() => fallbackCopy(url));
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) targetPane.classList.add('active');
+
+            const pillId = tabId.replace('tab-', 'pill-');
+            const targetPill = document.getElementById(pillId);
+            if (targetPill) targetPill.classList.add('active');
+
+            // Trigger chart redraw if switching to charts tab
+            if (tabId === 'tab-charts') {
+                setTimeout(initRetroCharts, 80);
+            }
+        }
+
+        // Window maximize toggle
+        let isMaximized = false;
+        function toggleMaximize() {
+            const container = document.querySelector('.win95-app-container');
+            if (!container) return;
+            if (!isMaximized) {
+                container.style.maxWidth = '100%';
+                container.style.width = '100%';
+                container.style.margin = '0';
+                isMaximized = true;
             } else {
-                fallbackCopy(url);
+                container.style.maxWidth = '1100px';
+                container.style.width = '96%';
+                container.style.margin = '20px auto';
+                isMaximized = false;
             }
         }
 
-        function fallbackCopy(text) {
-            const temp = document.createElement('input');
-            temp.value = text;
-            document.body.appendChild(temp);
-            temp.select();
-            try {
-                document.execCommand('copy');
-                showToast();
-            } catch (e) {
-                prompt('Copy this link:', text);
-            }
-            document.body.removeChild(temp);
+        // Real-Time Taskbar Clock
+        function updateWinClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kuala_Lumpur' });
+            const clockEl = document.getElementById('win95-clock');
+            if (clockEl) clockEl.textContent = timeStr;
+        }
+        setInterval(updateWinClock, 1000);
+        updateWinClock();
+
+        // Start button dialog
+        function toggleStartMenu() {
+            alert("AB Malaya Enterprise Portal\n• Website: https://abmalaya.com\n• Dedicated Visitor Telemetry v4.1.95\n• Mode: Windows 95 Retro Architecture");
         }
 
-        function showToast() {
-            const toast = document.getElementById('toast');
-            if (toast) {
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2200);
+        function showAboutDialog() {
+            alert("AB Malaya Visitor Telemetry & Audit Desk\nBuilt with 100% authentic Windows 95 aesthetic (Zero AI gradients).\nFeatures:\n- Hourly breakdown (00:00 - 23:00)\n- Daily/Monthly Journaling\n- Per-Device and Per-IP tracking\n- Integrated Open-Source 98.css & Chart.js");
+        }
+
+        function copyShareableUrl() {
+            const url = window.location.origin + '/visitors';
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Tautan Disalin ke Clipboard:\n" + url);
+            }).catch(() => {
+                prompt("Salin tautan ini:", url);
+            });
+        }
+
+        // Toggle Masked vs Raw IP
+        let isRawIp = false;
+        function toggleRawIp() {
+            isRawIp = !isRawIp;
+            document.querySelectorAll('.ip-cell').forEach(cell => {
+                cell.textContent = isRawIp ? cell.getAttribute('data-raw') : cell.getAttribute('data-masked');
+            });
+            document.getElementById('ip-mask-state').textContent = isRawIp ? 'Alamat Utuh (Raw)' : 'Tersamar (Masked)';
+        }
+
+        // Client-side IP Table Filter
+        function filterIpTable(query) {
+            const q = query.toLowerCase();
+            document.querySelectorAll('#ip-data-table tbody tr').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+
+        // View Day Hourly Distribution
+        function viewDayHourly(dayDate) {
+            switchWinTab('tab-charts');
+        }
+
+        // Export CSV
+        function exportJournalCsv() {
+            const rows = [];
+            const table = document.getElementById('journal-data-table');
+            for (let tr of table.querySelectorAll('tr')) {
+                const cells = Array.from(tr.querySelectorAll('th, td')).slice(0, 6).map(c => '"' + c.innerText.replace(/"/g, '""').trim() + '"');
+                rows.push(cells.join(','));
+            }
+            const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'AB_Malaya_Visitor_Journal_' + new Date().toISOString().slice(0,10) + '.csv';
+            link.click();
+        }
+
+        function exportIpCsv() {
+            const rows = [];
+            const table = document.getElementById('ip-data-table');
+            for (let tr of table.querySelectorAll('tr')) {
+                const cells = Array.from(tr.querySelectorAll('th, td')).map(c => '"' + c.innerText.replace(/"/g, '""').trim() + '"');
+                rows.push(cells.join(','));
+            }
+            const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'AB_Malaya_Visitor_IP_Log_' + new Date().toISOString().slice(0,10) + '.csv';
+            link.click();
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // RETRO CHARTS CONFIGURATION (WINDOWS 95 / EXCEL 97 THEMED)
+        // ═══════════════════════════════════════════════════════════════════
+        let chartsInitialized = false;
+        function initRetroCharts() {
+            if (chartsInitialized) return;
+            chartsInitialized = true;
+
+            const hourlyData = <?php echo json_encode(array_values($hourly)); ?>;
+            const hoursLabels = Array.from({length: 24}, (_, i) => String(i).padStart(2, '0') + ':00');
+
+            // 1. Hourly Chart (Windows 95 Classic Bar Chart)
+            const ctxH = document.getElementById('chartHourly');
+            if (ctxH) {
+                new Chart(ctxH, {
+                    type: 'bar',
+                    data: {
+                        labels: hoursLabels,
+                        datasets: [{
+                            label: 'Jumlah Kunjungan',
+                            data: hourlyData,
+                            backgroundColor: '#000080', // Classic Navy
+                            borderColor: '#000000',
+                            borderWidth: 1,
+                            barPercentage: 0.8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: '#dfdfdf' },
+                                ticks: { font: { size: 9, family: 'MS Sans Serif' } }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: '#c0c0c0' },
+                                ticks: { font: { size: 9, family: 'MS Sans Serif' }, stepSize: 1 }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 2. Daily Trend Chart
+            <?php 
+                $chart_days = array_reverse(array_slice($days_data, 0, 15, true));
+                $d_labels = array_map(function($d) { return date('d M', strtotime($d)); }, array_keys($chart_days));
+                $d_views = array_map(function($v) { return $v['views'] ?? 0; }, array_values($chart_days));
+                $d_uniques = array_map(function($v) { return $v['uniques'] ?? 0; }, array_values($chart_days));
+            ?>
+            const ctxD = document.getElementById('chartDaily');
+            if (ctxD) {
+                new Chart(ctxD, {
+                    type: 'line',
+                    data: {
+                        labels: <?php echo json_encode($d_labels); ?>,
+                        datasets: [
+                            {
+                                label: 'Total Hits',
+                                data: <?php echo json_encode($d_views); ?>,
+                                borderColor: '#000080',
+                                backgroundColor: '#000080',
+                                borderWidth: 2,
+                                pointRadius: 3,
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#000000',
+                                tension: 0.1
+                            },
+                            {
+                                label: 'Pengunjung Unik',
+                                data: <?php echo json_encode($d_uniques); ?>,
+                                borderColor: '#008000', // Classic Green
+                                backgroundColor: '#008000',
+                                borderWidth: 2,
+                                pointRadius: 3,
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#000000',
+                                tension: 0.1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: { font: { size: 10, family: 'MS Sans Serif' }, boxWidth: 12 }
+                            }
+                        },
+                        scales: {
+                            x: { grid: { color: '#dfdfdf' }, ticks: { font: { size: 9 } } },
+                            y: { beginAtZero: true, grid: { color: '#c0c0c0' }, ticks: { font: { size: 9 } } }
+                        }
+                    }
+                });
+            }
+
+            // 3. Devices Chart (Retro Pie/Bar)
+            const ctxDev = document.getElementById('chartDevices');
+            if (ctxDev) {
+                new Chart(ctxDev, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Desktop PC', 'Mobile (HP)', 'Tablet'],
+                        datasets: [{
+                            data: [<?php echo $devices['Desktop'] ?? 0; ?>, <?php echo $devices['Mobile'] ?? 0; ?>, <?php echo $devices['Tablet'] ?? 0; ?>],
+                            backgroundColor: ['#000080', '#008080', '#800000'],
+                            borderColor: '#000000',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { beginAtZero: true, grid: { color: '#dfdfdf' } },
+                            y: { grid: { display: false }, ticks: { font: { weight: 'bold' } } }
+                        }
+                    }
+                });
             }
         }
 
-        // Auto-refresh real-time data every 10 seconds
-        async function fetchLiveStats(isManual = false) {
-            const btn = document.getElementById('refresh-btn');
-            if (btn && isManual) {
-                btn.querySelector('i').classList.add('fa-spin');
-            }
-
+        // Live Auto-Polling (every 10 seconds)
+        async function pollTelemetry() {
             try {
                 const res = await fetch('/visitors.php?format=json');
                 if (res.ok) {
                     const data = await res.json();
                     if (data && data.summary) {
-                        // Update Counters
-                        document.getElementById('val-total-views').textContent = Number(data.summary.total_views || 0).toLocaleString();
-                        document.getElementById('val-total-uniques').textContent = Number(data.summary.total_uniques || 0).toLocaleString();
-                        document.getElementById('val-today-views').textContent = Number(data.summary.today_views || 0).toLocaleString();
-                        document.getElementById('val-today-uniques').textContent = Number(data.summary.today_uniques || 0).toLocaleString();
-                        document.getElementById('val-active-now').textContent = Number(data.summary.active_now || 1).toLocaleString();
-
-                        // Update Table if visits present
-                        if (data.recent_visits && data.recent_visits.length > 0) {
-                            renderRecentTable(data.recent_visits);
-                        }
+                        document.getElementById('disp-total-views').textContent = String(data.summary.total_views || 0).padStart(6, '0');
+                        document.getElementById('disp-total-uniques').textContent = String(data.summary.total_uniques || 0).padStart(6, '0');
+                        document.getElementById('disp-today-views').textContent = String(data.summary.today_views || 0).padStart(6, '0');
+                        document.getElementById('disp-active-now').textContent = String(data.summary.active_now || 1).padStart(2, '0') + ' SESS';
+                        
+                        document.getElementById('sb-views').textContent = Number(data.summary.total_views || 0).toLocaleString();
+                        document.getElementById('sb-uniques').textContent = Number(data.summary.total_uniques || 0).toLocaleString();
                     }
                 }
-            } catch (err) {
-                console.error("Telemetry fetch error:", err);
-            } finally {
-                if (btn && isManual) {
-                    setTimeout(() => btn.querySelector('i').classList.remove('fa-spin'), 600);
-                }
+            } catch (e) {
+                console.error("Telemetry error", e);
             }
         }
+        setInterval(pollTelemetry, 10000);
 
-        function renderRecentTable(visits) {
-            const tbody = document.getElementById('feed-table-body');
-            if (!tbody) return;
-
-            let html = '';
-            visits.forEach(r => {
-                const devIcon = (r.device || '').toLowerCase() === 'mobile' ? 'mobile-screen' : 
-                                ((r.device || '').toLowerCase() === 'tablet' ? 'tablet-screen-button' : 'desktop');
-
-                html += `<tr>
-                    <td class="feed-time-cell">
-                        <i class="far fa-clock" style="margin-right: 4px; opacity: 0.6;"></i>
-                        ${escapeHtml(r.time || '-')}
-                    </td>
-                    <td>
-                        <span class="page-badge-cell">
-                            <i class="fas fa-compass" style="color: var(--brand-blue); font-size: 0.7rem;"></i>
-                            ${escapeHtml(r.page || r.path || 'Home')}
-                        </span>
-                    </td>
-                    <td>
-                        <span class="device-badge-cell">
-                            <i class="fas fa-${devIcon}"></i>
-                            ${escapeHtml(r.device || 'Desktop')} (${escapeHtml(r.os || 'OS')})
-                        </span>
-                    </td>
-                    <td>${escapeHtml(r.browser || 'Browser')}</td>
-                    <td class="ip-cell">${escapeHtml(r.ip || '127.0.0.xxx')}</td>
-                    <td style="color: var(--text-muted); font-size: 0.78rem;">
-                        <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.68rem; margin-right: 4px; opacity: 0.5;"></i>
-                        ${escapeHtml(r.referrer || 'Direct')}
-                    </td>
-                </tr>`;
-            });
-            tbody.innerHTML = html;
-        }
-
-        function escapeHtml(str) {
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-        }
-
-        // Set interval for auto-refresh (every 10s)
-        setInterval(() => fetchLiveStats(false), 10000);
+        // Check URL params for active tab on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get('tab');
+            if (tabParam && document.getElementById('tab-' + tabParam)) {
+                switchWinTab('tab-' + tabParam);
+            }
+        });
     </script>
 </body>
 </html>
