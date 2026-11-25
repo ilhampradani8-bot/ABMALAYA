@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <?php
+    // Non-blocking Enterprise Visitor Telemetry Tracking
+    if (file_exists(__DIR__ . '/visitor_tracker.php')) {
+        require_once __DIR__ . '/visitor_tracker.php';
+        abm_track_visit($currentPage ?? 'home', $pageTitle ?? 'AB Malaya');
+    }
+
     // Dynamic SEO Configuration
     $seoTitle = isset($pageTitle) ? $pageTitle . " | AB Malaya Sdn Bhd" : "AB Malaya Sdn Bhd - Marine & Industrial Solutions";
     $seoDesc = "AB Malaya Sdn Bhd delivers reliable solutions across construction, marine services, logistics, corrosion management, and digital technology — empowering industries with operational excellence.";

@@ -6,6 +6,8 @@ ui.md
 .antigravityignore
 *.log
 data/rfq/*.json
+data/visitor_counter*.json
+data/*.json
 *.pdf
 .env
 .env.*
