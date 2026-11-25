@@ -14,11 +14,11 @@ include 'includes/header.php';
 <?php 
 $heroTitle = "<span style='color: #1191cc;'>Integrated Construction, Engineering</span> <br><span style='color: #093863;'>& Industrial Solutions</span>";
 $heroSubtitle = ""; /* Subtitle merged into Title for impact */
-$heroDesc = "AB Malaya Sdn Bhd delivers reliable multidisciplinary project solutions across construction, engineering, marine services, logistics, and corrosion management — empowering industries with operational excellence, technical precision, and sustainable growth.";
+$heroDesc = "AB Malaya Sdn Bhd delivers integrated solutions across construction, engineering, marine, logistics, corrosion management and project development. We combine technical expertise, operational experience and strategic partnerships to provide reliable, practical and cost-effective solutions for commercial, industrial, infrastructure and marine projects.";
 $showButtons = true;
-$heroBtn1Text = "Explore Our Solutions";
+$heroBtn1Text = "Explore Our Capabilities";
 $heroBtn1Link = "#service";
-$heroBtn2Text = "Contact Our Team";
+$heroBtn2Text = "Discuss Your Project";
 $heroBtn2Link = "/contact";
 include 'includes/hero_visual.php';
 ?>
@@ -1081,13 +1081,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Left Half: Exactly 50% -->
             <div style="width: 50%; text-align: left; padding-right: 4rem;">
                 <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #093863; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
-                    Leading the Way in <br><span style="color: #1191cc;">Industrial Evolution</span>
+                    Building Capability. <br><span style="color: #1191cc;">Delivering Solutions.</span>
                 </h2>
                 <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; margin-bottom: 1.5rem; width: 100%;">
-                    With a strong commitment to quality, compliance, and innovation, we provide end-to-end solutions tailored to the evolving needs of modern industries across Malaysia and the regional market.
+                    AB Malaya Sdn Bhd is a Malaysian multidisciplinary company providing integrated construction, engineering, marine, logistics and industrial solutions.
                 </p>
                 <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; width: 100%;">
-                    Our mission is to bridge operational efficiency, sustainability, and technological advancement through practical and cost-effective industrial solutions.
+                    Our capabilities have developed from marine and industrial support into a broader project delivery platform serving commercial, industrial, infrastructure and marine sectors. Through our experienced team and strategic network of specialist partners, we provide practical solutions designed around our clients' requirements for quality, safety, cost and timely delivery.
                 </p>
             </div>
 
@@ -1095,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left; padding-left: 4rem;">
                 <div style="margin-top: 1rem; margin-bottom: 2rem;">
                     <a href="/about" class="hero-link" style="color: #000; font-size: 0.85rem;">
-                        Learn More About Us <i class="fas fa-arrow-right"></i>
+                        Discover AB Malaya <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif;">
@@ -1890,16 +1890,21 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="cta-flex-wrap">
             <!-- Left Side -->
             <div class="cta-col-text">
-                <h5 class="cta-badge">Reach Us</h5>
-                <h2 class="cta-title">Ready to Start <br>Your Project?</h2>
-                <p class="cta-desc">Our experts are ready to provide the best multidisciplinary engineering and industrial solutions for your business.</p>
+                <h5 class="cta-badge">Have a Project in Mind?</h5>
+                <h2 class="cta-title">Let's Build the Right <br><span style="color: #1191cc;">Solution Together.</span></h2>
+                <p class="cta-desc">Whether you require construction, engineering, marine support, logistics, corrosion management or project development assistance, AB Malaya is ready to discuss your requirements.</p>
             </div>
 
             <!-- Right Side -->
             <div class="cta-col-action">
-                <a href="/contact" class="hero-link final-cta-btn">
-                    Contact Our Team Now <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="cta-btn-group" style="display: flex; gap: 14px; flex-wrap: wrap;">
+                    <a href="/contact" class="hero-link final-cta-btn">
+                        Contact AB Malaya <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="/tender" class="hero-link final-cta-btn" style="background: #1191cc; border-color: #1191cc;">
+                        Submit Tender / RFQ <i class="fas fa-file-signature"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

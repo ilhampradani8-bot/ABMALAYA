@@ -11,8 +11,8 @@ include 'includes/header.php';
 
 <?php 
 $heroSubtitle = "GET IN TOUCH";
-$heroTitle = "<span style='color: #093863;'>Connect With</span> <span style='color: #1191cc;'>AB MALAYA</span>";
-$heroDesc = "Whether you require industrial support, technical consultation, logistics coordination, or engineering solutions, our team is ready to assist you.";
+$heroTitle = "<span style='color: #093863;'>Let's Discuss</span> <span style='color: #1191cc;'>Your Project</span>";
+$heroDesc = "Tell us about your project, procurement requirement or technical challenge. Our team will review your requirements and connect you with the appropriate division.";
 $showButtons = false;
 include 'includes/hero_visual.php';
 ?>

@@ -281,7 +281,7 @@ include 'includes/header.php';
                     <div class="vm-parallax-info neumorphic-info">
                         <span class="vm-num-top neumorphic-num">01</span>
                         <h3>Our Vision</h3>
-                        <p>To become a leading industrial solutions provider in Southeast Asia through innovation, technical excellence, and sustainable business practices.</p>
+                        <p>To become a leading integrated industrial solutions provider in Southeast Asia through technical excellence, innovation and sustainable business practices.</p>
                     </div>
                 </div>
             </div>

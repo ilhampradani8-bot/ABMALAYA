@@ -1415,18 +1415,18 @@ include 'includes/hero_visual.php';
         <!-- ── HERO CALLOUT LAUNCHER (Initial View with Button to reveal form) ─ -->
         <div class="portal-hero-launcher" id="portal-launcher">
             <span class="launcher-badge-sharp">
-                <i class="fas fa-ship"></i> Enterprise Marine Procurement & Tender Desk
+                <i class="fas fa-briefcase"></i> Tender & Project Enquiries
             </span>
             <h2 class="launcher-title-sharp">
-                Maritime Vessel Requisition & RFQ Portal
+                Partner With AB Malaya
             </h2>
             <p class="launcher-desc-sharp">
-                Official HSEMS Attachment 10.1D compliant procurement desk. Connected directly to the 49,459 certified IMPA marine stores database and the AB Malaya enterprise ERP pipeline. Interactive live A4 paperwork generator.
+                AB Malaya welcomes opportunities to collaborate with project owners, developers, contractors, consultants and organisations seeking reliable construction, engineering, marine, logistics and industrial solutions.
             </p>
 
             <div class="launcher-actions-sharp">
                 <button type="button" class="btn-sharp-primary" onclick="openRequisitionWorkspace()">
-                    <i class="fas fa-file-signature"></i> Create Requisition / Issue Marine RFQ
+                    <i class="fas fa-file-signature"></i> Submit Your Requirement / Create Requisition
                 </button>
             </div>
 
