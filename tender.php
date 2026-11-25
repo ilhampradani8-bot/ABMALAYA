@@ -1409,46 +1409,72 @@ include 'includes/hero_visual.php';
 
     @media (max-width: 1100px) {
         .split-requisition-layout {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 20px !important;
+            width: 100% !important;
+            max-width: 100% !important;
         }
         .paper-viewport-column {
             position: static !important;
             max-height: none !important;
             order: 2 !important;
-            margin-top: 24px !important;
+            margin-top: 20px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        .form-viewport-column {
+            width: 100% !important;
+            max-width: 100% !important;
         }
     }
 
     @media (max-width: 768px) {
-        /* Container & Padding */
+        /* Global Mobile Overflow Guard */
+        html, body {
+            max-width: 100vw !important;
+            overflow-x: hidden !important;
+        }
+
+        /* Container & Padding - Fits Phone Viewport Exactly */
         .tender-portal-container {
-            padding: 0 12px !important;
+            padding: 0 10px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
         }
         .tender-portal-section {
-            padding: 24px 0 60px 0 !important;
+            padding: 16px 0 40px 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
         }
 
         /* Hero Launcher */
         .portal-hero-launcher {
-            padding: 24px 16px !important;
-            margin-bottom: 16px !important;
+            padding: 20px 14px !important;
+            margin-bottom: 14px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
         .launcher-badge-sharp {
-            font-size: 0.72rem !important;
-            padding: 4px 10px !important;
-            margin-bottom: 12px !important;
+            font-size: 0.7rem !important;
+            padding: 4px 8px !important;
+            margin-bottom: 10px !important;
         }
         .launcher-title-sharp {
-            font-size: 1.65rem !important;
+            font-size: 1.45rem !important;
             line-height: 1.2 !important;
-            margin-bottom: 12px !important;
-            letter-spacing: -0.5px !important;
+            margin-bottom: 10px !important;
+            letter-spacing: -0.3px !important;
+            word-break: break-word !important;
         }
         .launcher-desc-sharp {
-            font-size: 0.88rem !important;
-            line-height: 1.55 !important;
-            margin-bottom: 18px !important;
+            font-size: 0.84rem !important;
+            line-height: 1.5 !important;
+            margin-bottom: 16px !important;
         }
         .launcher-actions-sharp {
             width: 100% !important;
@@ -1456,50 +1482,96 @@ include 'includes/hero_visual.php';
         .launcher-actions-sharp .btn-sharp-primary {
             width: 100% !important;
             justify-content: center !important;
-            padding: 12px 16px !important;
-            font-size: 0.82rem !important;
+            padding: 12px 14px !important;
+            font-size: 0.8rem !important;
+            box-sizing: border-box !important;
         }
         .launcher-statutory-strip {
-            gap: 5px !important;
-            margin-top: 16px !important;
+            gap: 4px !important;
+            margin-top: 14px !important;
+            width: 100% !important;
+            flex-wrap: wrap !important;
         }
         .stat-tag-sharp {
-            font-size: 0.68rem !important;
-            padding: 4px 8px !important;
+            font-size: 0.65rem !important;
+            padding: 4px 6px !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            line-height: 1.25 !important;
+        }
+
+        /* Requisition Workspace Shell */
+        #requisition-workspace {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
         }
 
         /* Top Action Bar in Workspace */
         .workspace-top-bar {
             flex-direction: column !important;
-            align-items: flex-start !important;
+            align-items: stretch !important;
             gap: 10px !important;
-            padding: 10px 14px !important;
+            padding: 10px 12px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
         .workspace-top-bar .top-bar-title {
-            font-size: 0.88rem !important;
+            font-size: 0.8rem !important;
+            word-break: break-word !important;
+            line-height: 1.3 !important;
         }
         .workspace-top-actions {
             width: 100% !important;
             display: flex !important;
+            flex-direction: column !important;
             gap: 6px !important;
         }
         .workspace-top-actions button {
-            flex: 1 !important;
+            width: 100% !important;
             justify-content: center !important;
             font-size: 0.72rem !important;
-            padding: 6px 10px !important;
+            padding: 8px 10px !important;
+            box-sizing: border-box !important;
         }
 
-        /* Form Viewport */
+        /* Grid Layout */
+        .split-requisition-layout {
+            grid-template-columns: minmax(0, 1fr) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            gap: 16px !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+        }
+
+        /* ── FORM VIEWPORT: 100% FIT MOBILE SCREEN (NO LEAK / OVERFLOW) ─── */
         .form-viewport-column {
-            padding: 16px 14px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 14px 10px !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+            border-left: 1px solid #cbd5e1 !important;
+            border-right: 1px solid #cbd5e1 !important;
+        }
+        .step-content-pane {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
         }
         .pane-title-sharp {
-            font-size: 1.15rem !important;
+            font-size: 1.05rem !important;
+            word-break: break-word !important;
+            line-height: 1.25 !important;
         }
         .pane-desc-sharp {
-            font-size: 0.82rem !important;
-            margin-bottom: 14px !important;
+            font-size: 0.78rem !important;
+            margin-bottom: 12px !important;
+            line-height: 1.4 !important;
         }
 
         /* Horizontal Scrollable Step Pills */
@@ -1507,20 +1579,23 @@ include 'includes/hero_visual.php';
             overflow-x: auto !important;
             flex-wrap: nowrap !important;
             -webkit-overflow-scrolling: touch !important;
-            padding-bottom: 8px !important;
-            gap: 6px !important;
-            margin-bottom: 18px !important;
+            padding-bottom: 6px !important;
+            gap: 4px !important;
+            margin-bottom: 14px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
         .step-sharp-btn {
             flex: 0 0 auto !important;
             white-space: nowrap !important;
-            padding: 8px 12px !important;
+            padding: 6px 10px !important;
         }
         .step-sharp-number {
-            font-size: 0.78rem !important;
+            font-size: 0.74rem !important;
         }
         .step-sharp-label {
-            font-size: 0.72rem !important;
+            font-size: 0.7rem !important;
         }
 
         /* Multi-column Grids become 1 column on mobile */
@@ -1530,101 +1605,299 @@ include 'includes/hero_visual.php';
             grid-template-columns: 1fr !important;
             gap: 10px !important;
             margin-bottom: 10px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
 
+        .form-group-sharp {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            margin-bottom: 10px !important;
+        }
         .form-label-sharp {
-            font-size: 0.75rem !important;
-            margin-bottom: 4px !important;
+            font-size: 0.72rem !important;
+            margin-bottom: 3px !important;
         }
         .form-input-sharp,
         .form-select-sharp,
         .form-textarea-sharp {
             padding: 8px 10px !important;
-            font-size: 0.84rem !important;
+            font-size: 0.82rem !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Option Chips Stack Cleanly */
+        .sharp-options-row {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 5px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .sharp-choice-btn {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            font-size: 0.74rem !important;
+            padding: 7px 10px !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+        }
+
+        /* File Upload Inputs on Mobile */
+        input[type="file"].form-input-sharp {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            font-size: 0.74rem !important;
         }
 
         /* Step 2: IMPA Builder */
         .sharp-builder-box {
-            padding: 12px 10px !important;
+            padding: 10px 8px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .impa-inline-search-box {
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .impa-inline-search-input {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            font-size: 0.82rem !important;
         }
 
         /* Step 3: Signature pad */
         .sig-canvas-container {
             width: 100% !important;
             max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
         }
         .sig-canvas-container canvas {
             width: 100% !important;
-            height: 100px !important;
+            max-width: 100% !important;
+            height: 90px !important;
+            box-sizing: border-box !important;
+        }
+        .sig-baseline-guide {
+            font-size: 8px !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            text-overflow: clip !important;
+            width: 100% !important;
+        }
+
+        /* Document Output Action Strip in Step 3 */
+        .form-viewport-column div[style*="background: #093863"] {
+            padding: 14px 10px !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+        }
+        .form-viewport-column div[style*="background: #093863"] .btn-sharp-primary {
+            width: 100% !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            font-size: 0.78rem !important;
+            padding: 10px 12px !important;
         }
 
         /* Bottom Step Nav Controls */
         .form-nav-controls-sharp {
             flex-direction: column !important;
             gap: 8px !important;
-            margin-top: 16px !important;
+            margin-top: 14px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
         .form-nav-controls-sharp button {
             width: 100% !important;
             justify-content: center !important;
-            padding: 10px 14px !important;
+            padding: 10px 12px !important;
+            box-sizing: border-box !important;
+            font-size: 0.78rem !important;
         }
 
-        /* A4 Paper Sheet Mobile Presentation (Horizontal swipe preservation) */
+        /* ── PAPER VIEWPORT: 100% FIT MOBILE SCREEN (EXACT A4 PROPORTIONS) ── */
         .paper-viewport-column {
             width: 100% !important;
-            overflow: hidden !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
         .paper-top-toolbar {
-            padding: 8px 12px !important;
+            padding: 8px 10px !important;
             flex-wrap: wrap !important;
-            gap: 8px !important;
+            gap: 6px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
         .paper-status-tag {
-            font-size: 0.75rem !important;
+            font-size: 0.72rem !important;
         }
+        .paper-quick-actions {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 6px !important;
+        }
+        .paper-quick-actions button {
+            flex: 1 !important;
+            justify-content: center !important;
+            font-size: 0.7rem !important;
+            padding: 6px 8px !important;
+        }
+
         .paper-sheet-scroll {
             width: 100% !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-            padding: 4px 0 16px 0 !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+            padding: 0 0 10px 0 !important;
         }
+
+        /* The Paper Sheet Fits Mobile Screen 100% Without Side-Leak */
         .paper-doc-sheet {
-            min-width: 680px !important; /* Preserves 100% authentic maritime tabular alignment without column squish */
-            padding: 24px 26px !important;
-            margin: 0 auto 16px auto !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+            min-width: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            padding: 10px 8px !important;
+            margin: 0 0 14px 0 !important;
+            font-size: 7.5px !important;
+            line-height: 1.25 !important;
+            overflow-x: hidden !important;
+            border: 1px solid #000000 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
         }
+
+        /* All Tables Inside Paper Fit 100% Width */
+        .sheet-header-table,
+        .sheet-meta-table,
+        .sheet-items-table,
+        .sheet-sign-table {
+            width: 100% !important;
+            max-width: 100% !important;
+            table-layout: fixed !important;
+            word-wrap: break-word !important;
+            word-break: break-word !important;
+            box-sizing: border-box !important;
+            margin-bottom: 5px !important;
+            border-width: 1px !important;
+        }
+
+        /* Header Table on Mobile */
+        .cell-h-title {
+            font-size: 7.5px !important;
+            padding: 3px 4px !important;
+            line-height: 1.2 !important;
+            letter-spacing: -0.2px !important;
+        }
+        .cell-h-attachment {
+            width: 32% !important;
+            font-size: 6px !important;
+            line-height: 1.15 !important;
+            padding: 2px 3px !important;
+        }
+        .cell-h-reqform {
+            font-size: 9px !important;
+            padding: 2px 3px !important;
+            letter-spacing: 0 !important;
+        }
+        .cell-h-logo {
+            width: 24% !important;
+            padding: 2px !important;
+        }
+        .cell-h-logo img {
+            max-height: 24px !important;
+            max-width: 58px !important;
+        }
+
+        /* Criticality Strip */
+        .sheet-critical-strip {
+            font-size: 7px !important;
+            margin-bottom: 3px !important;
+            line-height: 1.2 !important;
+        }
+        .sheet-checkbox-char {
+            font-size: 7.5px !important;
+        }
+
+        /* Meta Table on Mobile */
+        .sheet-meta-table td {
+            font-size: 7px !important;
+            padding: 2px 3px !important;
+            line-height: 1.2 !important;
+        }
+        .sheet-val {
+            font-size: 7px !important;
+        }
+
+        /* Line Items Table on Mobile */
+        .sheet-items-table th {
+            font-size: 7px !important;
+            padding: 3px 2px !important;
+            line-height: 1.2 !important;
+        }
+        .sheet-items-table td {
+            font-size: 7px !important;
+            padding: 3px 2px !important;
+            line-height: 1.25 !important;
+        }
+        .sheet-items-table .item-photos-row img {
+            max-height: 42px !important;
+            max-width: 100% !important;
+            object-fit: contain !important;
+        }
+
+        /* Sign-off Table on Mobile */
+        .sheet-sign-table td {
+            font-size: 7px !important;
+            padding: 3px 4px !important;
+            height: auto !important;
+            min-height: 45px !important;
+            line-height: 1.2 !important;
+        }
+        .stamp-container-box {
+            min-height: 40px !important;
+        }
+        .sheet-sign-table img {
+            max-height: 38px !important;
+            max-width: 100% !important;
+            object-fit: contain !important;
+        }
+
+        /* Hide swipe guide since paper now fits cleanly */
         .mobile-swipe-guide {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #e2e8f0;
-            color: #093863;
-            font-family: 'Aeonik', sans-serif;
-            font-size: 0.74rem;
-            font-weight: 700;
-            padding: 6px 12px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #cbd5e1;
-            text-align: center;
+            display: none !important;
         }
 
         /* 3D Thermal Printer Dock on Mobile */
         .printer-dock {
-            position: static !important; /* Sits naturally below document sheet on mobile so it does not block keyboard/form inputs */
+            position: static !important;
             margin-top: 10px !important;
             width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
         .printer,
         .printer-3d-machine {
             border-radius: 12px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
         }
         .printer-hood-3d {
             padding: 8px 10px !important;
             gap: 6px !important;
+            box-sizing: border-box !important;
         }
         .printer-screw-bolt {
             width: 7px !important;
@@ -1643,6 +1916,7 @@ include 'includes/hero_visual.php';
             padding: 8px 10px !important;
             flex-direction: column !important;
             gap: 8px !important;
+            box-sizing: border-box !important;
         }
         .printer-display-bezel {
             width: 100% !important;
@@ -1655,16 +1929,19 @@ include 'includes/hero_visual.php';
             padding: 8px 10px !important;
             flex-direction: column !important;
             gap: 8px !important;
+            box-sizing: border-box !important;
         }
         .printer-sub-actions {
             width: 100% !important;
             justify-content: space-between !important;
+            box-sizing: border-box !important;
         }
         #printer-main-cta {
             width: 100% !important;
             justify-content: center !important;
             padding: 10px 14px !important;
             font-size: 0.8rem !important;
+            box-sizing: border-box !important;
         }
     }
 
