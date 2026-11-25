@@ -22,12 +22,25 @@ This document serves as the primary technical blueprint and knowledge base for t
 *   `why-us.php`: Corporate credibility showcase presenting certifications and compliance details, featuring an interactive Swiper slider for credentials (without download/view buttons for document security) and a premium, fully-responsive vertical accordion for the 5 Core Strengths.
 *   `certified.php`: Certification gallery showcasing license modals and GPU-accelerated statistics.
 *   `contact.php`: Restructured contact portal with a 4-section vertical flow: (1) **Our Offices** — a 3-column neumorphic grid showcasing HQ (Kuala Lumpur), Penang Office, and Perak Office with horizontal icon-left card layout; (2) **Contact Details** — a 2×2 grid for Phone, Email, Business Hours, and WhatsApp Support cards; (3) **HQ Office Map** — a neo-brutalist Google Maps embed; (4) **Inquiry Form** — a full-width neumorphic form. All section titles use corporate dark blue (`#093862`), text is left-aligned, and cards use a `linear-gradient` raised background for clear visibility. GSAP animations use `ScrollTrigger.create()` with `onEnter` + `gsap.fromTo()` pattern to prevent the opacity-flash bug caused by `gsap.from()` setting `opacity: 0` before the trigger fires.
+*   `tender.php`: Enterprise Maritime Vessel Requisition & RFQ Portal with live HSEMS Attachment 10.1D generation, side-by-side unconstrained natural form flow, dual-mode signature pad, vessel seal upload, and a **Skeuomorphic 3D Industrial Thermal Printer Desk (ABM QC-42M)**.
+*   `view_impa.php`: Certified **49,459+ IMPA Marine Stores** master catalog viewer with category navigation, real-time code filtering, and direct requisition dispatch.
+*   `api_tender.php`: High-performance RESTful API powering live IMPA catalog search, requisition JSON persistence (`data/rfq/`), ERP quotation synchronization, and standalone mail dispatch.
+*   `download_rfq_pdf.php`: Vector PDF compilation endpoint executing the PyMuPDF backend with active client confidentiality redacting.
+*   `receipt_printer.php`: Standalone interactive retro thermal receipt printer showcase (QC-42).
 *   `router.php`: Dynamic clean-URL routing engine that handles clean URLs and overrides PHP's static assets serving bug.
 
 ### Shared Templates (`includes/`)
 *   `header.php`: SEO tags, CSS styles, critical layout shields, glassmorphic header navigation (using corporate dark blue accent `#093862`), and Spotify-style search overlay.
 *   `footer.php`: Dark corporate footer, support capsule, claymorphic Cookie Consent Card, and a reorganized, full-width 3-column regional offices text layout (HQ + Penang & Perak) at the bottom, collapsing to a single-column stack on mobile.
 *   `hero_visual.php`: Shared canvas particle engine and dynamic machinery carousel component.
+*   `tender_mailer.php`: Standalone requisition email dispatch engine featuring pure PHP socket SMTP (SSL/TLS), cPanel Exim `-f` envelope sender integration, auto-BCC sender archival, and local delivery audit logging.
+
+### Configuration (`config/`)
+*   `config/mail_credentials.example.php`: Public template defining SMTP settings and options safe for GitHub.
+*   `config/mail_credentials.php`: Local/cPanel-only configuration file strictly protected by `.gitignore`.
+
+### Scripts Engine (`scripts/`)
+*   `scripts/pdf_engine.py`: High-fidelity PyMuPDF vector drawing engine compiling exact maritime tabular layouts, vertical signatures/stamps, and full-width line item photos.
 
 ### Assets & Styling (`assets/`)
 *   `assets/css/style.css`: Main design system, typography variables, global transitions, and utility classes.
@@ -122,6 +135,14 @@ Replaced the legacy Swiper-based layout for the Core Strengths section with a cu
 *   **GPU Float Animation**: Features animated floating 3D graphic layers wrapper using CSS keyframe-based transforms (`float3d`) for immersive parallax feedback.
 *   **Dynamic Hash Linking & Auto-Expand**: The custom `handleWhyUsHash()` script parses incoming URL hashes (e.g. `#sustainability`, `#expertise`). It auto-expands the matching accordion item and performs a Lenis-aware smooth scroll down to the targeted card offset.
 *   **Synchronized Navigation Anchors**: The 5 accordion strengths (`expertise`, `solutions`, `regional`, `sustainability`, `customer`) are fully synchronized with the site's header navigation dropdown menu links (`/why-us#expertise`, `/why-us#solutions`, etc.) to allow direct page routing and auto-expansion from other pages.
+
+### 🚢 Maritime Requisition & RFQ Portal (`tender.php`)
+*   **HSEMS 10.1D Standard Compliance**: Interactive digital generator for official vessel requisitions with real-time PDF preview and dual-signature capabilities (pen canvas + upload).
+*   **3D Industrial Thermal Printer Desk (`ABM QC-42M`)**: Custom physical skeuomorphic printer interface featuring tactile FEED button (scrolls 160px), stainless-steel serrated cutter bar (SVG teeth), power rocker switch, OLED telemetry console (`260mm/s`), triple status LEDs, and mechanical vibration engine (`printer-shake`).
+*   **Side-by-Side Natural Flow**: Open, unconstrained form on the left with natural window scrolling and no inner scroll container traps; official A4 document feeding through the printer on the right.
+*   **PyMuPDF Vector PDF Engine**: Direct python pipeline generating pixel-perfect printable A4 vector documents with vertical signatures, vessel stamps, and full-width photos.
+*   **Decoupled Requisition Mailer Engine (`includes/tender_mailer.php`)**: Standalone dispatcher using pure PHP socket SMTP (SSL/TLS) or PHP `mail()` with `-f` envelope sender parameter for cPanel Exim delivery, auto-BCC sender archival, and local delivery logging.
+*   **Strict Security Protocol**: Real email passwords stored in `config/mail_credentials.php` (git-ignored), while `config/mail_credentials.example.php` remains public.
 
 ---
 

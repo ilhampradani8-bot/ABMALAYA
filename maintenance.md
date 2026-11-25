@@ -66,4 +66,45 @@ Karena browser sering memuat banyak aset secara bersamaan (CSS, JS, Font `.ttf`,
     ```
 
 ---
+
+## ⚓ 5. Pemeliharaan Requisition Desk, Mailer & PDF Engine
+
+### A. Konfigurasi Kredensial Email di cPanel Produksi
+Untuk menjaga repositori GitHub tetap publik dan aman tanpa membocorkan kata sandi email:
+1. File kredensial asli berada di `config/mail_credentials.php` dan **secara ketat dilindungi oleh `.gitignore`**. File ini tidak akan pernah ter-push ke GitHub.
+2. Template contoh yang aman untuk publik tersedia di `config/mail_credentials.example.php`.
+3. **Langkah Penyiapan di cPanel**:
+   * Buka File Manager cPanel &rarr; masuk ke folder `config/`.
+   * Buat atau edit file `mail_credentials.php`.
+   * Masukkan konfigurasi SMTP cPanel Anda:
+     ```php
+     return [
+         'smtp_enabled'        => true,
+         'smtp_host'           => 'mail.abmalaya.com',
+         'smtp_port'           => 465,
+         'smtp_secure'         => 'ssl',
+         'smtp_auth'           => true,
+         'smtp_username'       => 'procurement@abmalaya.com',
+         'smtp_password'       => 'PASSWORD_EMAIL_CPANEL_ANDA',
+         'from_email'          => 'procurement@abmalaya.com',
+         'from_name'           => 'AB Malaya Marine Procurement Desk',
+         'bcc_copy_to_sender'  => true,
+         'fallback_mail'       => true,
+         'log_delivery'        => true
+     ];
+     ```
+   * Jika password belum diisi, sistem otomatis menggunakan fungsi native `mail()` cPanel dengan parameter envelope sender `-f procurement@abmalaya.com` sehingga email tetap terkirim secara instan.
+
+### B. Menjalankan Engine Kompilasi PDF (PyMuPDF)
+Kompilasi dokumen vektor resmi A4 HSEMS 10.1D dikelola oleh skrip Python di `scripts/pdf_engine.py`.
+* **Kebutuhan Server**: Python 3 dengan pustaka `PyMuPDF` (`pip install pymupdf`).
+* **Eksekusi Otomatis**: Dipanggil otomatis melalui `proc_open` oleh `download_rfq_pdf.php` saat pengguna mengunduh atau mencetak dokumen.
+* **Redaksi Rahasia (Active Confidentiality Guard)**: Skrip otomatis meredaksi atau mengganti identitas sensitif pihak ketiga/kompetitor (misalnya referensi `dutamarine`) menjadi identitas netral AB Malaya.
+
+### C. Pemeliharaan Database Master IMPA
+Katalog 49,459+ item IMPA disimpan dalam tabel MySQL `impa_catalog_master` di database frontend.
+* Endpoint API pencarian: `/api_tender.php?action=search_impa&q=NAMA_BARANG_ATAU_KODE`.
+* Pencarian didukung oleh indeks komposit pada kolom `impa_code`, `product_name`, dan `category_name` untuk memastikan respons secepat kilat (<10ms).
+
+---
 *Dokumen Pemeliharaan Resmi - Tim Pengembang AB Malaya Sdn Bhd*

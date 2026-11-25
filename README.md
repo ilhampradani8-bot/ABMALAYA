@@ -32,15 +32,22 @@ For a detailed breakdown of the roles, performance benefits, and features of eac
 *   `about.php`: Immersive company profile featuring a 3D Neumorphic Parallax Vision & Mission section and custom **Funky Industrial CSS Accordions**.
 *   `certified.php`: High-end certification showcase featuring an interactive Swiper.js-based slider, a custom GPU-accelerated Neumorphic statistics panel, and **Secure Modal Document Preview**.
 *   `contact.php`: Tactile, responsive industrial contact portal combining beautiful **soft-shadow Neumorphic inquiry forms** with a robust, hard-edged **Neo-Brutalist Google Map panel** and specialized external deep links.
+*   `tender.php`: **Enterprise Maritime Vessel Requisition & RFQ Portal** featuring live HSEMS Attachment 10.1D generation, side-by-side unconstrained natural form flow, dual-mode signature pad, vessel seal upload, and a **Skeuomorphic 3D Industrial Thermal Printer Desk (QC-42M)**.
+*   `view_impa.php`: Certified **49,459+ IMPA Marine Stores** master catalog viewer with category navigation, real-time code filtering, and direct requisition dispatch.
+*   `api_tender.php`: High-performance RESTful API powering live IMPA catalog search, requisition JSON persistence (`data/rfq/`), ERP quotation synchronization, and standalone mail dispatch.
+*   `download_rfq_pdf.php`: Precision vector PDF compilation endpoint executing the PyMuPDF backend with active client confidentiality redacting.
+*   `receipt_printer.php`: Standalone interactive retro thermal receipt printer showcase (QC-42).
 *   `router.php`: Dynamic clean-URL routing engine that eliminates `.php` extensions and serves all static assets (images, fonts, scripts, styles) natively to completely bypass PHP built-in server bugs.
 *   `maintenance.md`: Technical guide for future updates, content changes, and server configurations.
 *   `includes/`:
     *   `header.php`: Floating glassmorphic header, top loading bar, SVG navigation indicators, and premium **Neobrutalist Mobile Card Accordion Menu** with multi-level nested accordion submenus.
     *   `footer.php`: Re-engineered dark footer featuring comprehensive services listing, WA liquid-metal capsule, and claymorphic **Cookie Consent Card**.
-*   `assets/`:
-    *   `css/style.css`: Core design system, font faces, global variables, and layout overrides.
-    *   `js/navigation.js`: Global menu, Lenis initialization, search animations, and Lenis-GSAP Bridge.
-    *   `js/index.js` / `about.js` / `certified.js` / `projects.js` / `contact.js`: Highly targeted, modular scripts loaded sequentially per page.
+    *   `tender_mailer.php`: Standalone requisition email dispatch engine featuring pure PHP socket SMTP (SSL/TLS), cPanel Exim `-f` envelope sender integration, auto-BCC sender archival, and local delivery audit logging.
+*   `config/`:
+    *   `mail_credentials.example.php`: Public template defining SMTP settings and options safe for GitHub.
+    *   `mail_credentials.php`: Local/cPanel-only configuration file strictly protected by `.gitignore`.
+*   `scripts/`:
+    *   `pdf_engine.py`: High-fidelity PyMuPDF vector drawing engine compiling exact maritime tabular layouts, vertical signatures/stamps, and full-width line item photos.
 
 ---
 
@@ -128,6 +135,37 @@ Employs a custom-tailored **Swiper.js** architecture optimized separately for de
 *   **Desktop Mode**: Features a perfectly centered **950px** wide card layout with high-end, responsive overlapping images (`translateX(-100px)`) and smooth text fade-in transitions.
 *   **HP / Mobile Mode**: Automatically scales down to a dense, near-fullwidth (**95% width**) card layout with clean **15px** border-radius and soft shadow. Standard arrow buttons are hidden to prevent UI clutter, replaced by an elegant, pulsing **"SLIDE >"** mobile visual hint to guide the swipe behavior seamlessly.
 *   **Tightened Bottom Clearances**: Bottom padding is optimized to **20px/40px** on mobile/desktop, allowing the slider to flow compactly into the footer without large awkward white space.
+
+### 🚢 Enterprise HSEMS 10.1D Maritime Requisition & RFQ Portal (tender.php)
+An industrial-grade procurement desk engineered specifically for offshore vessels and shipping fleet superintendents:
+*   **Exact HSEMS Attachment 10.1D Standard**: Reproduces the authoritative maritime requisition format with formal header, classification (Critical / Non-Critical), department routing, and exact tabular line-item specifications.
+*   **49,459+ Certified IMPA Catalog Live Sync**: Instant autocompleting search engine connected to the official IMPA marine stores database, automatically pulling standard item names, 6-digit codes, and units of measurement.
+*   **Dual-Mode Master Signature Pad**: Supports smooth HTML5 canvas freehand pen signing or uploading high-resolution digital signatures (PNG/JPG) with live raster preview.
+*   **Ship Seal / Rubber Stamp Stacking**: Authentic vertical layout where the vessel stamp is placed directly beneath the master signature, matching authentic maritime physical paperwork conventions.
+*   **Active Confidentiality Guard**: Automatic server-side sanitization preventing unauthorized leakage of confidential third-party or competitor fleet identities across all exported documents.
+
+### 🖨️ Skeuomorphic 3D Industrial Thermal Printer Desk (ABM QC-42M)
+A custom-built tactile 3D physical printer experience integrated directly into the requisition desk:
+*   **Side-by-Side (Kanan - Kiri) Layout**: Open, unconstrained form builder on the left (flowing naturally with window scroll, without nested scrollbox traps) and the live official document emerging from the 3D printer on the right.
+*   **3D Physical Skeuomorphism**: Built entirely with pure CSS gradients, bevel highlights, metallic hex allen bolts, illuminated red power rocker switch, concave tactile `FEED` button (advances paper by 160px), and mechanical cover release latch (`PUSH`).
+*   **Stainless-Steel Serrated Cutter Blade**: Deep 3D mouth cavity featuring a micro-serrated triangular cutter bar (SVG teeth) through which the requisition document emerges.
+*   **Live Telemetry OLED Console & LEDs**: CRT scanline bezel with glowing phosphor cyan display showing speed (`260mm/s • 203DPI`) and status (`READY TO PRINT` -> `PRINTING REQUISITION [LINE X/Y]` -> `HSEMS 10.1D COMPLETE`), accompanied by a pulsing blue data activity strobe and emerald power LED.
+*   **Synced Mechanical Vibration**: The printer casing physically vibrates with high-frequency mechanical oscillation (`printer-shake`) during page scroll. Includes mouse wheel event delegation so hovering the printer smoothly drives window scrolling.
+
+### 📄 High-Precision Vector PDF Engine (PyMuPDF)
+A standalone compilation engine (`scripts/pdf_engine.py` + `download_rfq_pdf.php`):
+*   **Pixel-Perfect Vector Output**: Generates print-ready A4 PDFs matching the exact fonts (Times New Roman), line weights, column widths, and tabular borders of HSEMS 10.1D.
+*   **Multi-Page Overflow Handling**: Automatically breaks large multi-item requisitions into sequential numbered pages with running headers, continuous item counting, and dynamic footnotes.
+*   **Full-Width Item Photo Attachments**: Dual photo uploads per line item are dynamically scaled to 100% column width with preserved aspect ratio, avoiding distortion or clipping.
+
+### 📬 Standalone Enterprise Mailer & Secure Deployment Protocol
+A robust, decoupled notification dispatcher (`includes/tender_mailer.php`):
+*   **Zero ERP Interference**: Operates 100% independently from core ERP modules, ensuring zero risk to enterprise accounting databases.
+*   **Mandatory Routing Validation**: Enforces strict client-side and server-side verification of the recipient email ("Send To") and client reply-to email before submission can proceed.
+*   **Pure PHP Socket SMTP Client**: Connects via SSL (port 465) or STARTTLS (port 587) with AUTH LOGIN, plus a graceful fallback to PHP native `mail()`.
+*   **cPanel Exim Optimization**: Applies the `-f` envelope sender flag (`procurement@abmalaya.com`) to satisfy strict SPF and DMARC policies in cPanel production environments.
+*   **Auto-BCC Sender Archival**: Automatically delivers a carbon copy to the sender mailbox for proof-of-delivery archival in cPanel webmail.
+*   **Public Repository Security**: All real credentials reside in `config/mail_credentials.php` (strictly ignored by `.gitignore`), while only a sanitized template (`config/mail_credentials.example.php`) is committed to GitHub.
 
 ---
 

@@ -108,4 +108,24 @@ This document outlines the complete technology stack used in the **AB Malaya Sdn
     *   Applies a transparent neumorphic protective watermark overlay on top of protected documents to discourage unauthorized copying.
 
 ---
+
+## ⚓ 7. Maritime Requisition & Vector Document Engine
+
+### 🐍 PyMuPDF (Python Vector Engine)
+*   **Role**: Compiles official HSEMS Attachment 10.1D PDF dossiers with high vector fidelity via `scripts/pdf_engine.py` and `download_rfq_pdf.php`.
+*   **Benefits**: Produces authentic printable A4 marine requisitions with precise tabular borders, formal Times New Roman typography, automatic multi-page overflow with sequential numbering, vertical signature/stamp stacking, and unconstrained high-resolution line-item photos.
+
+### 📬 Standalone Pure PHP Socket SMTP Engine (`tender_mailer.php`)
+*   **Role**: A 100% self-contained email delivery engine operating without composer dependencies and zero risk to core ERP modules.
+*   **Benefits**: Supports encrypted SSL (port 465) and TLS (port 587) socket handshakes with native `mail()` fallback, cPanel Exim `-f` envelope sender parameter, auto-BCC sender archiving, and local delivery logging.
+
+### 🗄️ Certified IMPA Marine Stores Master Database (49,459+ Products)
+*   **Role**: Houses the complete international maritime IMPA catalog in MySQL table `impa_catalog_master`, queried directly via `/api_tender.php?action=search_impa`.
+*   **Benefits**: Provides sub-10ms autocomplete suggestions matching 6-digit IMPA codes, standard product names, categories, and units of measurement.
+
+### 🖨️ Skeuomorphic 3D Industrial Thermal Printer (`QC-42M`)
+*   **Role**: Powers the interactive 3D thermal POS receipt printer simulation docked adjacent to the live requisition document.
+*   **Benefits**: Features pure CSS 3D casing, stainless-steel serrated cutter blade (SVG micro-teeth), tactile `FEED` button, power rocker switch, OLED telemetry screen with scanlines, and mechanical vibration synchronized with page scrolling.
+
+---
 *Official Tech Stack Documentation - AB Malaya Sdn Bhd Engineering Team*

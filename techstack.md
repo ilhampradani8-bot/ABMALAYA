@@ -108,4 +108,24 @@ Dokumen ini menjabarkan seluruh spesifikasi tumpukan teknologi (*tech stack*) ya
     *   Menambahkan lapisan transparan pelindung (*watermark overlay*) neumorfik di atas aset agar gambar asli tidak dapat disalin dengan mudah.
 
 ---
+
+## ⚓ 7. Maritime Requisition & Document Vector Engine
+
+### 🐍 PyMuPDF (Python Vector Engine)
+*   **Peran**: Mengompilasi berkas PDF resmi HSEMS Lampiran 10.1D secara presisi tinggi melalui `scripts/pdf_engine.py` dan `download_rfq_pdf.php`.
+*   **Manfaat**: Menghasilkan dokumen cetak A4 berstandar maritim dengan garis tabel presisi, font Times New Roman resmi, multi-halaman berpenomoran otomatis, penempatan stempel di bawah tanda tangan, dan foto beresolusi tinggi tanpa distorsi rasio aspek.
+
+### 📬 Standalone Pure PHP Socket SMTP Engine (`tender_mailer.php`)
+*   **Peran**: Mesin pengirim email dossier requisition yang 100% mandiri tanpa dependensi composer dan tanpa menyentuh modul ERP.
+*   **Manfaat**: Mendukung koneksi socket terenkripsi SSL port 465 dan TLS port 587 dengan fallback native `mail()`, flag envelope sender `-f` untuk Exim cPanel, auto-BCC arsip ke webmail admin, dan pencatatan audit pengiriman lokal.
+
+### 🗄️ Database Master IMPA Marine Stores (49,459+ Produk)
+*   **Peran**: Menyimpan seluruh katalog resmi standar maritim IMPA di database `impa_catalog_master` yang terhubung langsung dengan endpoint `/api_tender.php?action=search_impa`.
+*   **Manfaat**: Memberikan pencarian autocomplete kilat (<10ms) untuk kode 6-digit IMPA, nama suku cadang, dan satuan barang.
+
+### 🖨️ Skeuomorphic 3D Industrial Thermal Printer (`QC-42M`)
+*   **Peran**: Mengelola simulasi antarmuka mesin cetak kasir thermal 3D yang terpasang di sebelah kanan lembar dokumen requisition.
+*   **Manfaat**: Menghadirkan casing 3D murni CSS dengan bilah pisau pemotong stainless-steel bergerigi (SVG teeth), tombol taktil `FEED`, saklar daya rocker, layar OLED dengan garis scanline, dan vibrasi mekanis sinkron saat menggulir halaman.
+
+---
 *Dokumen Teknologi Resmi - Tim Rekayasa Web AB Malaya Sdn Bhd*
