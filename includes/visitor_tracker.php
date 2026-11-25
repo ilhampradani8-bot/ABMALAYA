@@ -275,6 +275,42 @@ if (!defined('ABM_TRACKER_LOADED')) {
                 $data['devices'][$dev] = ($data['devices'][$dev] ?? 0) + 1;
                 $data['os'][$ua_info['os']] = ($data['os'][$ua_info['os']] ?? 0) + 1;
                 $data['browsers'][$ua_info['browser']] = ($data['browsers'][$ua_info['browser']] ?? 0) + 1;
+
+                // Comprehensive Per-Page Deep Tracking
+                if (!isset($data['per_page'])) $data['per_page'] = [];
+                if (!isset($data['per_page'][$display_page])) {
+                    $data['per_page'][$display_page] = [
+                        'title' => $display_page,
+                        'path' => $uri,
+                        'views' => 0,
+                        'uniques' => 0,
+                        'hourly' => array_fill(0, 24, 0),
+                        'devices' => ['Desktop' => 0, 'Mobile' => 0, 'Tablet' => 0],
+                        'ips' => [],
+                        'last_seen' => $now_str,
+                        'peak_hour' => '10:00 - 11:00'
+                    ];
+                }
+                $data['per_page'][$display_page]['views']++;
+                if ($is_daily_unique) {
+                    $data['per_page'][$display_page]['uniques']++;
+                }
+                $data['per_page'][$display_page]['hourly'][$current_hour]++;
+                $data['per_page'][$display_page]['devices'][$dev] = ($data['per_page'][$display_page]['devices'][$dev] ?? 0) + 1;
+                $data['per_page'][$display_page]['last_seen'] = $now_str;
+                $data['per_page'][$display_page]['ips'][$masked_ip] = [
+                    'hits' => ($data['per_page'][$display_page]['ips'][$masked_ip]['hits'] ?? 0) + 1,
+                    'last_seen' => $time_str,
+                    'device' => $dev,
+                    'os' => $ua_info['os'],
+                    'browser' => $ua_info['browser']
+                ];
+
+                $max_h = 0; $best_h = 10;
+                foreach ($data['per_page'][$display_page]['hourly'] as $h_idx => $h_val) {
+                    if ($h_val > $max_h) { $max_h = $h_val; $best_h = $h_idx; }
+                }
+                $data['per_page'][$display_page]['peak_hour'] = sprintf("%02d:00 - %02d:00", $best_h, ($best_h + 1) % 24);
             }
 
             $data['summary']['last_visit'] = $now_str;
@@ -381,6 +417,7 @@ if (!defined('ABM_TRACKER_LOADED')) {
             'journal' => [],
             'per_ip' => [],
             'pages' => [],
+            'per_page' => [],
             'devices' => ['Desktop' => 0, 'Mobile' => 0, 'Tablet' => 0],
             'os' => [],
             'browsers' => [],
