@@ -664,7 +664,24 @@ $pct_tablet = round((($devices['Tablet'] ?? 0) / $total_devices) * 100);
             transform: translateY(0);
         }
 
-        /* ── RESPONSIVE DESIGN (MODE HP) ────────────────────────────────────── */
+        /* ── RESPONSIVE DESIGN (MODE HP / SMARTPHONES) ──────────────────────── */
+        .table-mobile-hint {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            background: rgba(17, 145, 204, 0.1);
+            border: 1px dashed rgba(17, 145, 204, 0.4);
+            color: var(--brand-blue);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+        }
+
         @media (max-width: 1024px) {
             .metrics-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -674,31 +691,173 @@ $pct_tablet = round((($devices['Tablet'] ?? 0) / $total_devices) * 100);
             }
         }
 
-        @media (max-width: 640px) {
-            .metrics-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .dashboard-container {
-                padding: 20px 14px 40px;
-            }
-            .banner-left h1 {
-                font-size: 1.6rem;
-            }
-            .card-value-display {
-                font-size: 2.1rem;
+        @media (max-width: 768px) {
+            /* Header Top Bar Mobile */
+            .standalone-top-bar {
+                padding: 10px 14px;
             }
             .top-bar-inner {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 12px;
+                gap: 10px;
             }
+            .brand-cluster {
+                gap: 10px;
+            }
+            .brand-logo-img {
+                height: 32px;
+            }
+            .brand-name {
+                font-size: 0.88rem;
+            }
+            .telemetry-badge {
+                font-size: 0.6rem;
+                padding: 1px 5px;
+            }
+            .brand-subhead {
+                font-size: 0.65rem;
+            }
+
+            /* 3 Action Buttons on Mobile */
             .minimal-actions {
                 width: 100%;
-                justify-content: space-between;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1.2fr;
+                gap: 6px;
+            }
+            .btn-minimal-link {
+                padding: 7px 6px;
+                font-size: 0.72rem;
+                justify-content: center;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .btn-minimal-link i {
+                font-size: 0.72rem;
+            }
+
+            /* Container & Banner */
+            .dashboard-container {
+                padding: 16px 12px 40px;
+            }
+            .telemetry-banner {
+                margin-bottom: 16px;
+                padding-bottom: 12px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .banner-left h1 {
+                font-size: 1.45rem;
+                line-height: 1.2;
+                margin-bottom: 4px;
+            }
+            .banner-left p {
+                font-size: 0.78rem;
+                line-height: 1.4;
+            }
+            .banner-right {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .live-status-pill {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+
+            /* Metrics 2x2 Grid for Mobile (All 4 cards visible at 1 glance) */
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+                margin-bottom: 18px !important;
+            }
+            .metric-card {
+                padding: 14px 12px !important;
+                border-radius: 8px !important;
+            }
+            .card-header-mini {
+                margin-bottom: 8px !important;
+            }
+            .card-title-mini {
+                font-size: 0.65rem !important;
+                letter-spacing: 0.4px !important;
+            }
+            .card-icon-mini {
+                font-size: 0.82rem !important;
+            }
+            .card-value-display {
+                font-size: 1.65rem !important;
+                margin-bottom: 4px !important;
+                letter-spacing: -0.5px !important;
+            }
+            .card-subtext {
+                font-size: 0.64rem !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Telemetry Split */
+            .telemetry-split {
+                gap: 14px !important;
+                margin-bottom: 18px !important;
+            }
+            .panel-box {
+                padding: 16px 12px !important;
+                border-radius: 8px !important;
+            }
+            .panel-title {
+                font-size: 0.9rem !important;
+                margin-bottom: 12px !important;
+                padding-bottom: 8px !important;
+            }
+            .page-meta-line {
+                font-size: 0.76rem !important;
+            }
+            .page-views-badge {
+                font-size: 0.72rem !important;
+            }
+            .device-legend {
+                gap: 8px !important;
+            }
+            .legend-item {
+                font-size: 0.72rem !important;
             }
             .browser-chips-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 6px !important;
+            }
+            .browser-chip {
+                padding: 6px 8px !important;
+                font-size: 0.72rem !important;
+            }
+
+            /* Feed Table on Mobile */
+            .feed-panel {
+                padding: 16px 12px !important;
+                border-radius: 8px !important;
+            }
+            .table-mobile-hint {
+                display: flex !important;
+            }
+            .feed-table th,
+            .feed-table td {
+                padding: 9px 10px !important;
+                font-size: 0.74rem !important;
+            }
+            .page-badge-cell {
+                font-size: 0.7rem !important;
+                padding: 2px 6px !important;
+            }
+            .device-badge-cell {
+                font-size: 0.72rem !important;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .metrics-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .minimal-actions {
+                grid-template-columns: 1fr !important;
             }
         }
     </style>
@@ -904,6 +1063,11 @@ $pct_tablet = round((($devices['Tablet'] ?? 0) / $total_devices) * 100);
                 <span class="panel-badge">Autonomous Logging</span>
             </div>
 
+            <!-- Table Mobile Swipe Hint -->
+            <div class="table-mobile-hint">
+                <i class="fas fa-arrows-left-right"></i> Touch & geser tabel ke samping untuk melihat seluruh rincian sesi
+            </div>
+
             <div class="feed-table-wrapper">
                 <table class="feed-table">
                     <thead>
@@ -981,14 +1145,36 @@ $pct_tablet = round((($devices['Tablet'] ?? 0) / $total_devices) * 100);
             if (elem) elem.textContent = 'MYT ' + timeStr;
         }, 1000);
 
-        // Copy Shareable Direct URL
+        // Copy Shareable Direct URL with Robust Mobile Fallback
         function copyCurrentLink() {
             const url = window.location.origin + '/visitors';
-            navigator.clipboard.writeText(url).then(function() {
-                const toast = document.getElementById('toast');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(showToast).catch(() => fallbackCopy(url));
+            } else {
+                fallbackCopy(url);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const temp = document.createElement('input');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (e) {
+                prompt('Copy this link:', text);
+            }
+            document.body.removeChild(temp);
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            if (toast) {
                 toast.classList.add('show');
                 setTimeout(() => toast.classList.remove('show'), 2200);
-            });
+            }
         }
 
         // Auto-refresh real-time data every 10 seconds
