@@ -244,7 +244,8 @@ class TenderMailer {
 
         $body .= "--{$boundary}--";
 
-        $ok = @mail($to, $subject, $body, implode("\r\n", $headers));
+        $additional_params = !empty($cfg['from_email']) ? "-f" . escapeshellarg($cfg['from_email']) : '';
+        $ok = @mail($to, $subject, $body, implode("\r\n", $headers), $additional_params);
         if ($ok) {
             return ['success' => true, 'message' => 'Dispatched via PHP mail()'];
         }
@@ -344,8 +345,14 @@ class TenderMailer {
                             </tbody>
                         </table>
 
+                        <div style='margin-top: 24px; text-align: center;'>
+                            <a href='https://abmalaya.com/download_rfq_pdf.php?rfq_id={$rfq_id}' style='background: #093863; color: #ffffff; text-decoration: none; padding: 12px 24px; font-weight: bold; font-size: 13px; border-radius: 4px; display: inline-block;'>
+                                📄 Download Official Signed PDF (HSEMS 10.1D)
+                            </a>
+                        </div>
+
                         <p style='margin-top: 24px; font-size: 12px; color: #475569; line-height: 1.5;'>
-                            <i>Note: Reply directly to this email to contact the fleet superintendent / requesting vessel master. The official signed document is attached or viewable via the AB Malaya portal.</i>
+                            <i>Note: Reply directly to this email to contact the fleet superintendent / requesting vessel master. The official signed document is attached or viewable via the link above.</i>
                         </p>
                     </td>
                 </tr>
