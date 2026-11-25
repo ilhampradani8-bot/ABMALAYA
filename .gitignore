@@ -16,3 +16,8 @@ config/*.local.php
 data/logs/
 __pycache__/
 *.pyc
+
+# Matomo Self-Hosted Analytics (Excluded from Git repo)
+analytics/
+matomo/
+matomo.zip

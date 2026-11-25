@@ -721,10 +721,18 @@ $max_hourly = max(1, max($hourly));
                 <i class="fas fa-network-wired" style="color: #ff9966;"></i>
                 <span>IP Telemetry</span>
             </div>
+            <a href="/analytics/" target="_blank" class="desktop-icon-btn" title="Buka Matomo Enterprise Analytics Suite (Full PHP)">
+                <i class="fas fa-chart-pie" style="color: #ff66cc;"></i>
+                <span>Matomo.exe</span>
+            </a>
             <div class="desktop-icon-btn" onclick="location.reload()" title="Refresh Dashboard (F5)">
                 <i class="fas fa-arrows-rotate" style="color: #ffffff;"></i>
                 <span>Refresh.exe</span>
             </div>
+            <a href="/analytics/" target="_blank" class="desktop-icon-btn" title="Buka Official Matomo Analytics Suite (Full PHP)">
+                <i class="fas fa-chart-pie" style="color: #ff66cc;"></i>
+                <span>Matomo.exe</span>
+            </a>
         </div>
 
         <!-- ── MAIN RETRO APPLICATION WINDOW ───────────────────────────────── -->
@@ -751,6 +759,7 @@ $max_hourly = max(1, max($hourly));
                     <span class="menu-item" onclick="switchWinTab('tab-charts')"><u>C</u>harts</span>
                     <span class="menu-item" onclick="switchWinTab('tab-ip')"><u>I</u>P Log</span>
                     <span class="menu-item" onclick="exportJournalCsv()"><u>E</u>xport CSV</span>
+                    <span class="menu-item" onclick="window.open('/analytics/', '_blank')"><u>M</u>atomo Suite</span>
                     <span class="menu-item" onclick="showAboutDialog()"><u>H</u>elp</span>
                 </div>
 
