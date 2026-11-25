@@ -7,3 +7,10 @@ ui.md
 *.log
 data/rfq/*.json
 *.pdf
+.env
+.env.*
+config/mail_credentials.php
+config/*.local.php
+data/logs/
+__pycache__/
+*.pyc

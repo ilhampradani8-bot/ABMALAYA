@@ -147,27 +147,50 @@ include 'includes/hero_visual.php';
         to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Side-by-Side (Kiri - Kanan) Requisition Desk Layout ────────────────── */
     .split-requisition-layout {
         display: grid;
-        grid-template-columns: 1fr 1.05fr;
-        gap: 28px;
+        grid-template-columns: minmax(460px, 1fr) minmax(560px, 1.25fr);
+        gap: 32px;
         align-items: start;
+        width: 100%;
     }
 
-    /* ── Left Column: Live A4 Paper Sheet ───────────────────────────────────── */
+    /* ── LEFT COLUMN: Multi-Step Requisition Form (Open & Natural Flow, No Scroll Isolation) ── */
+    .form-viewport-column {
+        width: 100%;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        padding: 24px;
+        box-sizing: border-box;
+        position: relative;
+        overflow: visible; /* Natural page scrolling without inner scroll isolation */
+        box-shadow: none;
+    }
+
+    /* ── RIGHT COLUMN: Official Paper View & 3D Thermal Printer ─────────────── */
     .paper-viewport-column {
-        position: sticky;
-        top: 80px;
-        max-height: calc(100vh - 100px);
-        overflow-y: auto;
-        padding-right: 4px;
+        width: 100%;
+        position: relative;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
     }
 
-    .paper-viewport-column::-webkit-scrollbar {
-        width: 6px;
-    }
-    .paper-viewport-column::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
+    .paper-sheet-scroll {
+        width: 100%;
+        background: transparent;
+        padding: 0 0 10px 0;
+        border: none;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: visible; /* Natural page scrolling */
     }
 
     .paper-top-toolbar {
@@ -179,6 +202,8 @@ include 'includes/hero_visual.php';
         border: 1px solid #cbd5e1;
         border-radius: 0;
         margin-bottom: 14px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .paper-status-tag {
@@ -229,52 +254,691 @@ include 'includes/hero_visual.php';
         border-color: #093863;
     }
 
-    /* ── The Official A4 Requisition Document Sheet (Exact Maritime Format) ─── */
+    /* ── The Official Requisition Document Sheet (Exact Maritime Format) ────── */
     .paper-doc-sheet {
         background: #ffffff;
         width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
-        padding: 32px 34px 26px;
+        margin: 0 0 30px 0;
+        padding: 38px 44px;
         border: 1.5px solid #000000;
         color: #000000;
-        font-family: 'Arial', Helvetica, sans-serif;
-        font-size: 0.82rem;
+        font-family: 'Times New Roman', Times, 'Nimbus Roman No9 L', serif;
+        font-size: 11.5px;
         line-height: 1.35;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 10;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       ULTRA-REALISTIC 3D INDUSTRIAL THERMAL REQUISITION PRINTER (QC-42M)
+       ═══════════════════════════════════════════════════════════════════════ */
+    .printer-dock {
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 100;
+        pointer-events: auto;
+        margin-top: -24px; /* Paper visually flows into the recessed mouth */
+    }
+
+    .printer,
+    .printer-3d-machine {
+        pointer-events: auto;
+        width: 100%;
+        background: #111827;
+        border-radius: 16px 16px 6px 6px;
+        border: 1px solid #475569;
+        border-bottom: 2px solid #020617;
+        box-shadow: 
+            0 -18px 40px rgba(0, 0, 0, 0.7),
+            0 -2px 6px rgba(255, 255, 255, 0.15),
+            inset 0 1px 1px rgba(255, 255, 255, 0.25);
+        position: relative;
+        transition: transform 0.06s ease-out;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    @keyframes printer-shake {
+        0% { transform: translateY(0); }
+        25% { transform: translateY(-1px) translateX(0.6px); }
+        50% { transform: translateY(0.7px) translateX(-0.6px); }
+        75% { transform: translateY(-0.6px); }
+        100% { transform: translateY(0); }
+    }
+
+    .printer.is-printing,
+    .printer-3d-machine.is-printing {
+        animation: printer-shake 0.08s infinite ease-in-out;
+    }
+
+    /* ── 3D Upper Hood & Paper Feed Throat ── */
+    .printer-hood-3d {
+        background: linear-gradient(180deg, #374151 0%, #1f2937 25%, #111827 75%, #0b0f17 100%);
+        border-radius: 15px 15px 0 0;
+        padding: 10px 16px 8px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 2px solid #030712;
+        box-shadow: 
+            inset 0 2px 2px rgba(255, 255, 255, 0.2),
+            inset 0 -4px 8px rgba(0, 0, 0, 0.6);
+        position: relative;
+    }
+
+    /* Side Screws & Corner Fasteners */
+    .printer-screw-bolt {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #cbd5e1 0%, #64748b 50%, #334155 100%);
+        border: 1px solid #1e293b;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.6);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .printer-screw-bolt i {
+        display: block;
+        width: 7px;
+        height: 1.5px;
+        background: #0f172a;
+        transform: rotate(35deg);
+    }
+
+    /* Left Side: Rocker Power Switch */
+    .printer-side-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .power-rocker-switch {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: #0b0f17;
+        padding: 3px 6px;
+        border-radius: 4px;
+        border: 1px solid #334155;
+        box-shadow: inset 0 2px 4px #000;
+    }
+
+    .power-rocker-switch .rocker-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 8.5px;
+        font-weight: 700;
+        color: #64748b;
+        letter-spacing: 0.5px;
+    }
+
+    .power-rocker-switch .rocker-toggle {
+        width: 22px;
+        height: 14px;
+        background: linear-gradient(180deg, #ef4444 0%, #991b1b 100%);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8.5px;
+        font-weight: 900;
+        color: #ffffff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.4);
+    }
+
+    /* Center: 3D Paper Mouth Cavity & Serrated Stainless Cutter Blade */
+    .printer-mouth-assembly {
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .printer-slot-recess,
+    .printer-slot {
+        display: block;
+        width: 100%;
+        height: 18px;
+        background: #020617;
+        border-radius: 3px;
+        box-shadow: 
+            inset 0 6px 12px #000000,
+            inset 0 2px 4px #000000,
+            0 1px 0 rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Stainless-steel serrated teeth tear blade */
+    .stainless-cutter-blade {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 35%, #64748b 70%, #334155 100%);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.9), inset 0 1px 0 #ffffff;
+        z-index: 2;
+    }
+
+    .serrated-teeth-svg {
+        display: block;
+        width: 100%;
+        height: 5px;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        pointer-events: none;
+    }
+
+    .printer-slot-recess::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        pointer-events: none;
+    }
+
+    /* Right Side: Tactile FEED Button & Latch */
+    .printer-action-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-feed-3d {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #475569 0%, #1e293b 60%, #0f172a 100%);
+        border: 2px solid #334155;
+        box-shadow: 
+            0 4px 8px rgba(0,0,0,0.7),
+            inset 0 1px 2px rgba(255,255,255,0.35),
+            inset 0 -2px 4px rgba(0,0,0,0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        color: #f1f5f9;
+        transition: all 0.08s ease;
+    }
+
+    .btn-feed-3d:hover {
+        border-color: #38bdf8;
+        box-shadow: 0 4px 10px rgba(56, 189, 248, 0.4), inset 0 1px 2px rgba(255,255,255,0.5);
+    }
+
+    .btn-feed-3d:active {
+        transform: scale(0.92);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.9), inset 0 2px 4px rgba(0,0,0,0.95);
+    }
+
+    .btn-feed-3d .feed-icon {
+        font-size: 8px;
+        line-height: 1;
+        color: #38bdf8;
+    }
+
+    .btn-feed-3d .feed-text {
+        font-family: 'Space Mono', monospace;
+        font-size: 7.5px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        line-height: 1;
+        margin-top: 1px;
+    }
+
+    .cover-open-latch {
+        background: #1e293b;
+        border: 1px solid #475569;
+        border-radius: 3px;
+        padding: 4px 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.15);
+        cursor: default;
+    }
+
+    .cover-open-latch span {
+        font-family: 'Space Mono', monospace;
+        font-size: 7.5px;
+        font-weight: 800;
+        color: #94a3b8;
+        letter-spacing: 0.5px;
+        line-height: 1;
+    }
+
+    .cover-open-latch .latch-ridges {
+        display: flex;
+        gap: 2px;
+    }
+
+    .cover-open-latch .latch-ridges i {
+        display: block;
+        width: 3px;
+        height: 6px;
+        background: #0f172a;
+        border-radius: 1px;
+    }
+
+    /* ── 3D Front Face Control Console ── */
+    .printer-face,
+    .printer-face-3d {
+        background: linear-gradient(180deg, #1e293b 0%, #0f172a 55%, #020617 100%);
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #030712;
+    }
+
+    /* OLED / Dot-Matrix Telemetry Glass Console */
+    .printer-display-bezel {
+        background: #020617;
+        border: 2px solid #1e3a5f;
+        border-radius: 5px;
+        padding: 3px;
+        box-shadow: 
+            inset 0 3px 8px rgba(0,0,0,0.9),
+            0 1px 0 rgba(255,255,255,0.12);
+        max-width: 250px;
+        flex-shrink: 0;
+    }
+
+    .display-screen-glass {
+        background: #011424;
+        border-radius: 3px;
+        padding: 5px 9px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .display-screen-glass::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(0deg, rgba(0,0,0,0.3) 0px, rgba(0,0,0,0.3) 1px, transparent 1px, transparent 2px);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .display-telemetry {
+        position: relative;
+        z-index: 2;
+    }
+
+    .telemetry-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 2px;
+    }
+
+    .telemetry-badge {
+        font-family: 'Space Mono', monospace;
+        font-size: 8px;
+        font-weight: 800;
+        color: #10b981;
+        letter-spacing: 0.5px;
+    }
+
+    .telemetry-sub {
+        font-family: 'Space Mono', monospace;
+        font-size: 8px;
+        color: #64748b;
+        letter-spacing: 0.5px;
+    }
+
+    .telemetry-main,
+    #printer-status {
+        font-family: 'Space Mono', monospace;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        color: #38bdf8;
+        text-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Center: Louvers & Metallic Brand Plate */
+    .printer-center-console {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        flex: 1;
+    }
+
+    .model-badge-plate {
+        background: linear-gradient(135deg, #334155 0%, #1e293b 50%, #475569 100%);
+        border: 1px solid #64748b;
+        border-radius: 3px;
+        padding: 2px 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+
+    .model-badge-plate .brand-text {
+        font-family: 'Aeonik', sans-serif;
+        font-size: 9.5px;
+        font-weight: 800;
+        color: #f1f5f9;
+        letter-spacing: 1px;
+    }
+
+    .model-badge-plate .model-number {
+        font-family: 'Space Mono', monospace;
+        font-size: 9px;
+        font-weight: 700;
+        color: #38bdf8;
+        letter-spacing: 0.5px;
+    }
+
+    .printer-louvers-3d,
+    .printer-vents {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .printer-louvers-3d i,
+    .printer-vents i {
+        display: block;
+        width: 3px;
+        height: 14px;
+        background: #020617;
+        border-radius: 1.5px;
+        box-shadow: inset 0 1px 2px #000, 1px 0 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .printer-caption-spec {
+        font-family: 'Space Mono', monospace;
+        font-size: 7.5px;
+        color: #64748b;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    /* Right: Triple 3D Lens LED Cluster */
+    .printer-led-cluster {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #0b0f17;
+        padding: 5px 9px;
+        border-radius: 4px;
+        border: 1px solid #1e293b;
+        box-shadow: inset 0 2px 4px #000;
+        flex-shrink: 0;
+    }
+
+    .led-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .led-lens,
+    .status-light {
+        width: 8.5px;
+        height: 8.5px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid rgba(0,0,0,0.8);
+        position: relative;
+    }
+
+    .led-lens::after {
+        content: '';
+        position: absolute;
+        top: 1px;
+        left: 2px;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.7);
+    }
+
+    .led-lens.led-power,
+    .status-light {
+        background: #10b981;
+        box-shadow: 0 0 8px #10b981, inset 0 1px 2px rgba(255,255,255,0.4);
+    }
+
+    .led-lens.led-print {
+        background: #334155;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .printer.is-printing .led-lens.led-print,
+    .printer-3d-machine.is-printing .led-lens.led-print {
+        animation: pulse-light 0.12s infinite alternate;
+    }
+
+    .led-lens.led-paper.ready {
+        background: #10b981;
+        box-shadow: 0 0 6px #10b981;
+    }
+
+    @keyframes pulse-light {
+        0% { background: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
+        100% { background: #0284c7; box-shadow: 0 0 2px #0284c7; }
+    }
+
+    .led-tag {
+        font-family: 'Space Mono', monospace;
+        font-size: 7.5px;
+        font-weight: 700;
+        color: #64748b;
+        letter-spacing: 0.5px;
+    }
+
+    /* ── Heavy Industrial Base Trim & Warning Stripe ── */
+    .printer-base-trim {
+        background: #090d16;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .warning-stripe-accent {
+        height: 3px;
+        width: 100%;
+        background: repeating-linear-gradient(45deg, #eab308, #eab308 8px, #18181b 8px, #18181b 16px);
+        opacity: 0.85;
+    }
+
+    .base-counter-strip {
+        padding: 6px 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #020617;
+        border-top: 1px solid #1e293b;
+    }
+
+    .base-counter-strip .print-count {
+        font-family: 'Space Mono', monospace;
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #94a3b8;
+        letter-spacing: 0.8px;
+    }
+
+    .base-counter-strip .print-count strong,
+    .base-counter-strip .print-count #printed-count {
+        color: #38bdf8;
+        font-size: 12px;
+    }
+
+    .printer-sub-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .btn-printer-rewind {
+        background: #1e293b;
+        color: #f8fafc;
+        border: 1px solid #475569;
+        padding: 4px 10px;
+        border-radius: 3px;
+        font-family: 'Aeonik', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .btn-printer-rewind:hover {
+        background: #093863;
+        color: #ffffff;
+        border-color: #38bdf8;
+    }
+
+    .btn-printer-demo {
+        background: rgba(255,255,255,0.06);
+        color: #94a3b8;
+        border: 1px solid #334155;
+        font-size: 10px;
+        padding: 4px 8px;
+        border-radius: 3px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.15s;
+    }
+
+    .btn-printer-demo:hover {
+        color: #f8fafc;
+        border-color: #64748b;
+    }
+
+    @media print {
+        .printer-dock,
+        .printer-base-trim,
+        .printer-hood-3d,
+        .printer-face-3d {
+            display: none !important;
+        }
+    }
+
+    /* Signature Pad Styling */
+    .sig-mode-tab-btn {
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        padding: 4px 10px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        cursor: pointer;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        transition: all 0.15s;
+    }
+    .sig-mode-tab-btn.active {
+        background: #093863;
+        color: #ffffff;
+        border-color: #093863;
+    }
+    .sig-canvas-container {
+        position: relative;
+        background: #ffffff;
+        border: 1.5px dashed #093863;
+        width: 100%;
+        max-width: 360px;
+        box-sizing: border-box;
+    }
+    .sig-canvas-container canvas {
+        display: block;
+        width: 100%;
+        height: 110px;
+        touch-action: none;
+        cursor: crosshair;
+    }
+    .sig-baseline-guide {
+        position: absolute;
+        bottom: 22px;
+        left: 15px;
+        right: 15px;
+        border-bottom: 1px dotted #94a3b8;
+        pointer-events: none;
+        font-size: 0.68rem;
+        color: #94a3b8;
     }
 
     /* Header Table */
     .sheet-header-table {
         width: 100%;
         border-collapse: collapse;
-        border: 1.5px solid #000000;
+        border: 1px solid #000000;
         margin-bottom: 8px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-header-table td {
-        border: 1.5px solid #000000;
+        border: 1px solid #000000;
         vertical-align: middle;
     }
 
     .cell-h-title {
         padding: 6px 10px;
         font-weight: bold;
-        font-size: 1.02rem;
+        font-size: 13px;
         letter-spacing: -0.2px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .cell-h-attachment {
         width: 28%;
         padding: 4px 8px;
-        font-size: 0.72rem;
-        line-height: 1.35;
+        font-size: 9.5px;
+        line-height: 1.3;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .cell-h-reqform {
         text-align: center;
-        font-size: 1.25rem;
-        font-weight: 800;
+        font-size: 16.5px;
+        font-weight: bold;
         letter-spacing: 0.5px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .cell-h-logo {
@@ -293,14 +957,14 @@ include 'includes/hero_visual.php';
     /* Criticality Checkbox Line (Right Aligned) */
     .sheet-critical-strip {
         text-align: right;
-        font-size: 0.8rem;
+        font-size: 11px;
         margin-bottom: 6px;
-        font-family: 'Arial', sans-serif;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-checkbox-char {
         font-family: monospace;
-        font-size: 0.95rem;
+        font-size: 11px;
         font-weight: bold;
     }
 
@@ -308,97 +972,109 @@ include 'includes/hero_visual.php';
     .sheet-meta-table {
         width: 100%;
         border-collapse: collapse;
-        border: 1.5px solid #000000;
+        border: 1px solid #000000;
         margin-bottom: 8px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-meta-table td {
         border: 1px solid #000000;
-        padding: 5px 8px;
-        font-size: 0.8rem;
+        padding: 4px 6px;
+        font-size: 10.5px;
     }
 
     .sheet-val {
         font-weight: bold;
         color: #000000;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     /* Items Table */
     .sheet-items-table {
         width: 100%;
         border-collapse: collapse;
-        border: 1.5px solid #000000;
-        margin-bottom: 12px;
+        border: 1px solid #000000;
+        margin-bottom: 8px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-items-table th {
-        border: 1.5px solid #000000;
-        padding: 6px;
-        font-size: 0.8rem;
+        border: 1px solid #000000;
+        padding: 5px 6px;
+        font-size: 10.5px;
         font-weight: bold;
         background: #ffffff;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-items-table td {
         border: 1px solid #000000;
-        padding: 7px 9px;
+        padding: 5px 6px;
         vertical-align: top;
-        font-size: 0.78rem;
-        line-height: 1.4;
+        font-size: 10.5px;
+        line-height: 1.35;
         page-break-inside: avoid;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-empty-placeholder {
         text-align: center;
         color: #94a3b8;
         font-style: italic;
-        padding: 40px 10px !important;
-        font-size: 0.82rem;
+        padding: 36px 10px !important;
+        font-size: 10.5px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     /* Sign-off Box */
     .sheet-sign-table {
         width: 100%;
         border-collapse: collapse;
-        border: 1.5px solid #000000;
+        border: 1px solid #000000;
         margin-bottom: 8px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-sign-table td {
         border: 1px solid #000000;
         padding: 6px 8px;
-        font-size: 0.78rem;
-        vertical-align: top;
+        font-size: 11px;
+        height: 96px;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .stamp-container-box {
-        min-height: 60px;
+        min-height: 72px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 4px;
+        margin-top: 2px;
+        gap: 4px;
     }
 
     .stamp-container-box img {
-        max-height: 60px;
-        max-width: 160px;
+        max-width: 130px;
         object-fit: contain;
     }
 
     /* Note footer */
     .sheet-notes-footer {
-        font-size: 0.7rem;
-        line-height: 1.45;
+        font-size: 9.5px;
+        line-height: 1.4;
         color: #000000;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     .sheet-page-footer {
         display: flex;
         justify-content: space-between;
-        font-size: 0.72rem;
+        font-size: 9.5px;
         border-top: 1px solid #000000;
-        padding-top: 4px;
+        padding-top: 3px;
+        font-family: 'Times New Roman', Times, serif;
     }
 
     /* ── Right Column: Multi-Step Interactive Form (Sharp Classic Styling) ──── */
@@ -773,9 +1449,14 @@ include 'includes/hero_visual.php';
                         <i class="fas fa-file-contract"></i> Maritime Requisition Workspace (Live Synchronized)
                     </span>
                 </div>
-                <button type="button" onclick="closeRequisitionWorkspace()" class="btn-sharp-action-sm">
-                    <i class="fas fa-chevron-up"></i> Hide Workspace
-                </button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" onclick="document.getElementById('paper-doc-sheet').scrollIntoView({behavior: 'smooth'})" class="btn-sharp-action-sm">
+                        <i class="fas fa-file-invoice"></i> Scroll to Live Paper ↓
+                    </button>
+                    <button type="button" onclick="closeRequisitionWorkspace()" class="btn-sharp-action-sm">
+                        <i class="fas fa-chevron-up"></i> Hide Workspace
+                    </button>
+                </div>
             </div>
 
             <!-- Split Grid -->
@@ -784,145 +1465,8 @@ include 'includes/hero_visual.php';
                 <!-- ═══════════════════════════════════════════════════════════ -->
                 <!-- LEFT COLUMN: LIVE AUTHENTIC A4 PAPER VIEW (HSEMS 10.1D)     -->
                 <!-- ═══════════════════════════════════════════════════════════ -->
-                <div class="paper-viewport-column">
-                    
-                    <!-- Paper Toolbar -->
-                    <div class="paper-top-toolbar">
-                        <div class="paper-status-tag">
-                            <span class="live-dot"></span> Official Paper Preview (A4 Sheet)
-                        </div>
-                        <div class="paper-quick-actions">
-                            <button type="button" class="btn-sharp-action-sm" onclick="printPaperDocument()">
-                                <i class="fas fa-print"></i> Print
-                            </button>
-                            <button type="button" class="btn-sharp-action-sm" style="background: #093863; color: #ffffff;" onclick="downloadDirectPaperPdf()">
-                                <i class="fas fa-download"></i> Download PDF
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- The Authentic Document Sheet (Matches PDF exactly) -->
-                    <div id="paper-doc-sheet" class="paper-doc-sheet">
-                        
-                        <!-- Header Table -->
-                        <table class="sheet-header-table">
-                            <tr>
-                                <td colspan="2" class="cell-h-title">
-                                    Health, Safety and Environmental Management System
-                                </td>
-                                <td rowspan="2" class="cell-h-logo">
-                                    <img id="paper-custom-logo-img" src="assets/img/logo-abmalaya.webp" alt="Client Logo">
-                                    <div id="paper-custom-logo-text" style="font-size: 0.65rem; font-weight: bold; margin-top: 3px;">AB MALAYA MARINE</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="cell-h-attachment">
-                                    Attachment 10.1D<br>
-                                    HSEMS Rev No: 00<br>
-                                    25th January 2018
-                                </td>
-                                <td class="cell-h-reqform">
-                                    REQUISITION FORM
-                                </td>
-                            </tr>
-                        </table>
-
-                        <!-- Criticality Checkbox Line (Right Aligned) -->
-                        <div class="sheet-critical-strip">
-                            <span id="paper-check-critical" class="sheet-checkbox-char">[ ]</span> Critical Equipment 
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span id="paper-check-noncritical" class="sheet-checkbox-char">[ ]</span> Non-Critical Equipment
-                        </div>
-
-                        <!-- Metadata Table -->
-                        <table class="sheet-meta-table">
-                            <tr>
-                                <td style="width: 14%;">Vessel</td>
-                                <td style="width: 44%;"><span id="paper-vessel-name" class="sheet-val">&nbsp;</span></td>
-                                <td style="width: 42%;">Requisition No: <span id="paper-req-no" class="sheet-val"></span></td>
-                            </tr>
-                            <tr>
-                                <td>From</td>
-                                <td colspan="2">
-                                    <span id="paper-from-deck" class="sheet-checkbox-char">[ ]</span> Deck Department
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span id="paper-from-engine" class="sheet-checkbox-char">[ ]</span> Engine Department
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Issue to</td>
-                                <td colspan="2">
-                                    <span id="paper-issue-op" class="sheet-checkbox-char">[ ]</span> Operation Department
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span id="paper-issue-tech" class="sheet-checkbox-char">[ ]</span> Technical Department
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span id="paper-issue-man" class="sheet-checkbox-char">[ ]</span> Manning Department
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Date</td>
-                                <td colspan="2"><span id="paper-date" class="sheet-val">&nbsp;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Name of ordering item:</td>
-                                <td colspan="2"><span id="paper-ordering-item" class="sheet-val">&nbsp;</span></td>
-                            </tr>
-                        </table>
-
-                        <!-- Requisition Line Items Table -->
-                        <table class="sheet-items-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 10%; text-align: center;">NUMBER</th>
-                                    <th style="width: 72%; text-align: left;">DESCRIPTION</th>
-                                    <th style="width: 18%; text-align: center;">QUANTITY</th>
-                                </tr>
-                            </thead>
-                            <tbody id="paper-items-tbody">
-                                <!-- Empty state by default as requested -->
-                                <tr>
-                                    <td colspan="3" class="sheet-empty-placeholder">
-                                        (Requisition Sheet Empty — Configure line items using the panel on the right)
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <!-- Sign-off & Stamp Box -->
-                        <table class="sheet-sign-table">
-                            <tr>
-                                <td style="width: 45%;">
-                                    Master name: <span id="paper-master-name" class="sheet-val">&nbsp;</span>
-                                </td>
-                                <td style="width: 35%; text-align: center;">
-                                    Signature / Stamp:
-                                    <div class="stamp-container-box" id="paper-stamp-box">
-                                        <!-- Rendered dynamically -->
-                                        <span style="font-size: 0.7rem; color: #94a3b8; font-style: italic;">[ Unsigned / No Stamp ]</span>
-                                    </div>
-                                </td>
-                                <td style="width: 20%;">
-                                    Date: <span id="paper-sign-date" class="sheet-val">&nbsp;</span>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <!-- Notes Footnote -->
-                        <div class="sheet-notes-footer">
-                            Note: 1. Send to fleet@dutamarine.com and file copy onboard (or sales@abmalaya.com)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. * Format for report no: Vessel Code/RF/Year/ Running no of that year, (example Duta Pacific/DK/2019/001).
-                        </div>
-
-                        <!-- Page and Section Footer -->
-                        <div class="sheet-page-footer">
-                            <span>Page 1 of 1</span>
-                            <span>Section 10</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- 1. FULL-WIDTH MULTI-STEP REQUISITION FORM -->
+<!-- ═══════════════════════════════════════════════════════════ -->
                 <!-- RIGHT COLUMN: MULTI-STEP REQUISITION FORM (SHARP & ENGLISH) -->
                 <!-- ═══════════════════════════════════════════════════════════ -->
                 <div class="form-viewport-column">
@@ -951,7 +1495,7 @@ include 'includes/hero_visual.php';
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
                             <div>
                                 <h3 class="pane-title-sharp">Step 1: Vessel Identification & Parameters</h3>
-                                <p class="pane-desc-sharp">Complete vessel details and requisition headers. All inputs sync live to the document on the left.</p>
+                                <p class="pane-desc-sharp">Complete vessel details and requisition headers. All inputs sync live to the document on the right.</p>
                             </div>
                             <button type="button" onclick="loadSamplePermataDulangData()" class="btn-sharp-action-sm" style="background: #f0fdf4; border-color: #86efac; color: #166534;">
                                 <i class="fas fa-wand-magic-sparkles"></i> Load Demo Requisition (PD-DECK-2026-099)
@@ -1121,14 +1665,30 @@ include 'includes/hero_visual.php';
                                 </div>
                             </div>
 
-                            <!-- Photo Attachment for this Item -->
+                            <!-- Photo Attachments for this Item (Supports up to 2 Full-Width High-Res Photos) -->
                             <div class="form-group-sharp">
-                                <label class="form-label-sharp"><i class="fas fa-camera"></i> Item Sample Photo / Nameplate Drawing (Optional - Appears in Document Table)</label>
-                                <input type="file" id="item_input_photo" accept="image/*" class="form-input-sharp" style="padding: 6px;" onchange="previewItemPhoto(this)">
-                                <div id="item_photo_preview_wrap" style="display: none; align-items: center; gap: 10px; margin-top: 6px;">
-                                    <img id="item_photo_preview_img" src="" style="max-height: 50px; border: 1px solid #cbd5e1;">
-                                    <button type="button" onclick="clearItemPhoto()" class="btn-sharp-action-sm" style="color: #dc2626;">Remove Photo</button>
+                                <label class="form-label-sharp"><i class="fas fa-camera"></i> Item Photos (Max 2 Photos — Rendered Full-Width in Table without Distortion)</label>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                    <!-- Photo 1 -->
+                                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px;">
+                                        <span style="font-size: 0.72rem; font-weight: 700; color: #093863; display: block; margin-bottom: 4px;">Photo 1 (Primary / Overview):</span>
+                                        <input type="file" id="item_input_photo_1" accept="image/*" class="form-input-sharp" style="padding: 5px;" onchange="previewItemPhoto(this, 1)">
+                                        <div id="item_photo_1_preview_wrap" style="display: none; align-items: center; gap: 8px; margin-top: 6px;">
+                                            <img id="item_photo_1_preview_img" src="" style="max-height: 55px; max-width: 90px; object-fit: contain; border: 1px solid #94a3b8;">
+                                            <button type="button" onclick="clearItemPhoto(1)" class="btn-sharp-action-sm" style="color: #dc2626; padding: 2px 6px; font-size: 0.7rem;">Remove</button>
+                                        </div>
+                                    </div>
+                                    <!-- Photo 2 -->
+                                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px;">
+                                        <span style="font-size: 0.72rem; font-weight: 700; color: #093863; display: block; margin-bottom: 4px;">Photo 2 (Detail / Nameplate):</span>
+                                        <input type="file" id="item_input_photo_2" accept="image/*" class="form-input-sharp" style="padding: 5px;" onchange="previewItemPhoto(this, 2)">
+                                        <div id="item_photo_2_preview_wrap" style="display: none; align-items: center; gap: 8px; margin-top: 6px;">
+                                            <img id="item_photo_2_preview_img" src="" style="max-height: 55px; max-width: 90px; object-fit: contain; border: 1px solid #94a3b8;">
+                                            <button type="button" onclick="clearItemPhoto(2)" class="btn-sharp-action-sm" style="color: #dc2626; padding: 2px 6px; font-size: 0.7rem;">Remove</button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <span style="font-size: 0.7rem; color: #64748b; margin-top: 4px; display: block;">If 1 photo uploaded: displays full-width. If 2 photos uploaded: splits full-width into 2 equal halves. Proportions always preserved.</span>
                             </div>
 
                             <div style="text-align: right; margin-top: 10px;">
@@ -1170,7 +1730,7 @@ include 'includes/hero_visual.php';
                     <div class="step-content-pane" id="pane-step-3">
                         <div style="margin-bottom: 16px;">
                             <h3 class="pane-title-sharp">Step 3: Authorization, Signature & Document Export</h3>
-                            <p class="pane-desc-sharp">Complete officer endorsement, attach digital signature or ship stamp seal, and export official PDF or transmit to ERP.</p>
+                            <p class="pane-desc-sharp">Complete officer endorsement with manual draw signature or file upload, attach ship's seal, configure routing and reply destination, and download official PDF or transmit to ERP.</p>
                         </div>
 
                         <div class="form-grid-sharp-2">
@@ -1188,35 +1748,89 @@ include 'includes/hero_visual.php';
                             </div>
                         </div>
 
-                        <!-- Signature / Stamp Upload Options -->
-                        <div class="form-group-sharp" style="background: #f8fafc; padding: 14px; border: 1px solid #cbd5e1; margin-bottom: 18px;">
-                            <label class="form-label-sharp"><i class="fas fa-stamp"></i> Ship Stamp Seal & Signature Options</label>
+                        <!-- ── DUAL ENDORSEMENT: OFFICER SIGNATURE & SHIP STAMP SEAL (CO-EXIST) ── -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
                             
-                            <div class="sharp-options-row" style="margin-bottom: 10px;">
-                                <label class="sharp-choice-btn" id="chip-sample-stamp" onclick="toggleSampleStamp()">
-                                    <i class="fas fa-stamp"></i> Toggle Official Seal (MT PERMATA DULANG)
-                                </label>
+                            <!-- Box 1: Officer Signature (Draw or Upload) -->
+                            <div class="form-group-sharp" style="background: #f8fafc; padding: 14px; border: 1px solid #cbd5e1;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <label class="form-label-sharp" style="margin-bottom: 0;"><i class="fas fa-signature"></i> Officer Signature</label>
+                                    <div style="display: flex; gap: 4px;">
+                                        <button type="button" id="tab-btn-draw" class="sig-mode-tab-btn active" onclick="switchSignatureMode('draw')">Draw Pad</button>
+                                        <button type="button" id="tab-btn-upload" class="sig-mode-tab-btn" onclick="switchSignatureMode('upload')">Upload</button>
+                                    </div>
+                                </div>
+
+                                <!-- Mode A: Draw Canvas -->
+                                <div id="sig-pane-draw">
+                                    <div class="sig-canvas-container">
+                                        <canvas id="signature-pad-canvas" width="340" height="110"></canvas>
+                                        <div class="sig-baseline-guide">X ________________________________________</div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                                        <span style="font-size: 0.7rem; color: #64748b;"><i class="fas fa-pen-nib"></i> Sign with mouse or touch</span>
+                                        <div style="display: flex; gap: 6px;">
+                                            <button type="button" onclick="clearSignaturePad()" class="btn-sharp-action-sm" style="color: #dc2626;"><i class="fas fa-eraser"></i> Clear</button>
+                                            <button type="button" onclick="applySignaturePad()" class="btn-sharp-action-sm" style="background: #093863; color: #ffffff;"><i class="fas fa-check"></i> Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mode B: Upload Image -->
+                                <div id="sig-pane-upload" style="display: none;">
+                                    <span style="font-size: 0.74rem; color: #64748b; display: block; margin-bottom: 6px;">Upload transparent signature image (PNG/JPG):</span>
+                                    <div style="display: flex; gap: 6px; align-items: center;">
+                                        <input type="file" id="upload_sig_file" accept="image/*" class="form-input-sharp" style="padding: 5px;" onchange="handleSignatureFileUpload(this)">
+                                        <button type="button" onclick="clearUploadedSignature()" class="btn-sharp-action-sm" style="color: #dc2626;">Clear</button>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div>
-                                <span style="font-size: 0.78rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">OR UPLOAD CUSTOM STAMP / SIGNATURE IMAGE:</span>
-                                <div style="display: flex; gap: 8px; align-items: center;">
-                                    <input type="file" id="upload_stamp_file" accept="image/*" class="form-input-sharp" style="padding: 6px;" onchange="handleStampFileUpload(this)">
-                                    <button type="button" onclick="clearUploadedStamp()" class="btn-sharp-action-sm" style="color: #dc2626;">Clear Stamp</button>
+                            <!-- Box 2: Vessel Official Stamp / Seal -->
+                            <div class="form-group-sharp" style="background: #f8fafc; padding: 14px; border: 1px solid #cbd5e1;">
+                                <label class="form-label-sharp"><i class="fas fa-stamp"></i> Ship Official Seal / Stamp</label>
+                                
+                                <div>
+                                    <span style="font-size: 0.74rem; color: #475569; font-weight: 700; display: block; margin-bottom: 6px; text-transform: uppercase;">
+                                        <i class="fas fa-upload"></i> Upload Official Vessel Stamp / Seal (PNG / JPG):
+                                    </span>
+                                    <div style="display: flex; gap: 6px; align-items: center;">
+                                        <input type="file" id="upload_stamp_file" accept="image/*" class="form-input-sharp" style="padding: 5px;" onchange="handleStampFileUpload(this)">
+                                        <button type="button" onclick="clearUploadedStamp()" class="btn-sharp-action-sm" style="color: #dc2626;">Clear</button>
+                                    </div>
+                                    <span style="font-size: 0.71rem; color: #64748b; margin-top: 4px; display: block;">Upload authentic vessel stamp image. Leave empty if vessel stamp is not available.</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Contact for Official Formal Quote Feedback -->
-                        <div class="form-grid-sharp-2">
-                            <div class="form-group-sharp">
-                                <label class="form-label-sharp">Contact Email (For Quotation Dispatch) <span class="req">*</span></label>
-                                <input type="email" id="f_client_email" class="form-input-sharp" placeholder="e.g. fleet@dutamarine.com / superintendent@company.com">
+                        <!-- ── EMAIL ROUTING & QUOTATION DISPATCH CONFIGURATION ── -->
+                        <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 16px; margin-bottom: 18px;">
+                            <div style="font-family: 'Aeonik', sans-serif; font-size: 0.88rem; font-weight: 800; color: #093863; text-transform: uppercase; margin-bottom: 10px;">
+                                <i class="fas fa-envelope-open-text"></i> Email Routing & Quotation Dispatch Configuration
                             </div>
 
-                            <div class="form-group-sharp">
+                            <div class="form-grid-sharp-2">
+                                <div class="form-group-sharp">
+                                    <label class="form-label-sharp">Requisition Routing Email (Send-To / Filing) <span class="req">*</span></label>
+                                    <input type="email" id="f_routing_email" class="form-input-sharp" placeholder="e.g. fleet@abmalaya.com or superintendent@vessel.com" oninput="syncPaperField('routing_email', this.value)">
+                                    <span style="font-size: 0.71rem; color: #64748b; margin-top: 3px; display: block;">Updates "Note 1: Send to [email] and file copy onboard" dynamically on the document.</span>
+                                </div>
+
+                                <div class="form-group-sharp">
+                                    <label class="form-label-sharp">Client Reply-To Email (For Official Quotation Reply) <span class="req">*</span></label>
+                                    <input type="email" id="f_client_email" class="form-input-sharp" placeholder="e.g. superintendent@vessel.com or captain@vessel.com">
+                                    <span style="font-size: 0.71rem; color: #0369a1; margin-top: 3px; display: block;"><strong>Mandatory:</strong> Direct destination for formal quotation feedback & tenders.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group-sharp" style="margin-top: 10px; margin-bottom: 0;">
                                 <label class="form-label-sharp">Telephone / Mobile Line</label>
                                 <input type="tel" id="f_client_phone" class="form-input-sharp" placeholder="e.g. +60 12-345 6789">
+                            </div>
+
+                            <div style="font-size: 0.74rem; color: #475569; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px 12px; margin-top: 12px; line-height: 1.4;">
+                                <i class="fas fa-shield-halved" style="color: #16a34a; margin-right: 5px;"></i>
+                                <strong>Enterprise SMTP/IMAP Delivery Protocol:</strong> Dossiers are sent via verified AB Malaya mail servers to prevent SPF/DMARC rejection. Your Reply-To address is set so that commercial responses route directly to your fleet office.
                             </div>
                         </div>
 
@@ -1229,10 +1843,6 @@ include 'includes/hero_visual.php';
                             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                                 <button type="button" class="btn-sharp-primary" style="background: #ffffff; color: #093863; border-color: #ffffff;" onclick="downloadDirectPaperPdf()">
                                     <i class="fas fa-download"></i> Download PDF Document
-                                </button>
-
-                                <button type="button" class="btn-sharp-primary" style="background: transparent; border-color: #ffffff; color: #ffffff;" onclick="printPaperDocument()">
-                                    <i class="fas fa-print"></i> Print Sheet
                                 </button>
 
                                 <button type="button" id="btn-submit-erp" class="btn-sharp-primary" style="background: #059669; border-color: #059669;" onclick="submitRequisitionToErp()">
@@ -1253,6 +1863,252 @@ include 'includes/hero_visual.php';
 
                 </div>
 
+                <!-- 2. FULL-WIDTH AUTHENTIC A4 PAPER VIEW (HSEMS 10.1D) -->
+<div class="paper-viewport-column">
+                    
+                    <!-- Paper Toolbar -->
+                    <div class="paper-top-toolbar">
+                        <div class="paper-status-tag">
+                            <span class="live-dot"></span> Official Paper Preview (A4 Sheet)
+                        </div>
+                        <div class="paper-quick-actions">
+                            <button type="button" class="btn-sharp-action-sm" style="background: #093863; color: #ffffff;" onclick="downloadDirectPaperPdf()">
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- The Authentic Document Sheet (Matches PDF exactly) -->
+                    <div id="paper-sheet-scroll" class="paper-sheet-scroll">
+                        <div id="paper-doc-sheet" class="paper-doc-sheet">
+                            
+                            <!-- Header Table -->
+                            <table class="sheet-header-table">
+                                <tr>
+                                    <td colspan="2" class="cell-h-title">
+                                        Health, Safety and Environmental Management System
+                                    </td>
+                                    <td rowspan="2" class="cell-h-logo">
+                                        <img id="paper-custom-logo-img" src="assets/img/logo-abmalaya.webp" alt="Ship Logo">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-h-attachment">
+                                        Attachment 10.1D<br>
+                                        HSEMS Rev No: 00<br>
+                                        25th January 2018
+                                    </td>
+                                    <td class="cell-h-reqform">
+                                        REQUISITION FORM
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Criticality Checkbox Line (Right Aligned) -->
+                            <div class="sheet-critical-strip">
+                                <span id="paper-check-critical" class="sheet-checkbox-char">[ ]</span> Critical Equipment 
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span id="paper-check-noncritical" class="sheet-checkbox-char">[ ]</span> Non-Critical Equipment
+                            </div>
+
+                            <!-- Metadata Table -->
+                            <table class="sheet-meta-table">
+                                <tr>
+                                    <td style="width: 14%; white-space: nowrap;">Vessel</td>
+                                    <td style="width: 44%;"><span id="paper-vessel-name" class="sheet-val">&nbsp;</span></td>
+                                    <td style="width: 42%; white-space: nowrap;">Requisition No: <span id="paper-req-no" class="sheet-val"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">From</td>
+                                    <td colspan="2">
+                                        <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+                                            <span style="white-space: nowrap;"><span id="paper-from-deck" class="sheet-checkbox-char">[ ]</span> Deck Department</span>
+                                            <span style="white-space: nowrap;"><span id="paper-from-engine" class="sheet-checkbox-char">[ ]</span> Engine Department</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">Issue to</td>
+                                    <td colspan="2">
+                                        <div style="display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
+                                            <span style="white-space: nowrap;"><span id="paper-issue-op" class="sheet-checkbox-char">[ ]</span> Operation Department</span>
+                                            <span style="white-space: nowrap;"><span id="paper-issue-tech" class="sheet-checkbox-char">[ ]</span> Technical Department</span>
+                                            <span style="white-space: nowrap;"><span id="paper-issue-man" class="sheet-checkbox-char">[ ]</span> Manning Department</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">Date</td>
+                                    <td colspan="2"><span id="paper-date" class="sheet-val">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap; width: 22%;">Name of ordering item:</td>
+                                    <td colspan="2"><span id="paper-ordering-item" class="sheet-val">&nbsp;</span></td>
+                                </tr>
+                            </table>
+
+                            <!-- Requisition Line Items Table -->
+                            <table class="sheet-items-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10%; text-align: center;">NUMBER</th>
+                                        <th style="width: 72%; text-align: left;">DESCRIPTION</th>
+                                        <th style="width: 18%; text-align: center;">QUANTITY</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paper-items-tbody">
+                                    <!-- Empty state by default as requested -->
+                                    <tr>
+                                        <td colspan="3" class="sheet-empty-placeholder">
+                                            (Requisition Sheet Empty — Configure line items using the form on the left)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Sign-off & Stamp Box (Matches Exact Format from PD-DECK-2026-099) -->
+                            <table class="sheet-sign-table">
+                                <tr>
+                                    <td style="width: 40%; vertical-align: middle;">
+                                        <div style="font-size: 11px;"><b>Master name:</b> <span id="paper-master-name" class="sheet-val">&nbsp;</span></div>
+                                    </td>
+                                    <td style="width: 39%; vertical-align: top;">
+                                        <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px;">Signature / Stamp:</div>
+                                        <div class="stamp-container-box" id="paper-stamp-box">
+                                            <span style="font-size: 9.5px; color: #94a3b8; font-style: italic;">[ Unsigned / No Stamp ]</span>
+                                        </div>
+                                    </td>
+                                    <td style="width: 21%; vertical-align: middle;">
+                                        <div style="font-size: 11px;"><b>Date:</b> <span id="paper-sign-date" class="sheet-val">&nbsp;</span></div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Notes Footnote (Dynamic based on user input, empty by default) -->
+                            <div class="sheet-notes-footer">
+                                Note: 1. Send to <span id="paper-note-routing" style="font-weight: bold; text-decoration: underline;">________________________</span> and file copy onboard<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. * Format for report no: Vessel Code/RF/Year/ Running no of that year, (example Vessel Code/DK/2026/001).
+                            </div>
+
+                            <!-- Page and Section Footer -->
+                            <div class="sheet-page-footer">
+                                <span>Page 1 of 1</span>
+                                <span>Section 10</span>
+                            </div>
+
+                        </div>
+                    </div><!-- /#paper-sheet-scroll -->
+
+                    <!-- ═══ ULTRA-REALISTIC 3D INDUSTRIAL THERMAL REQUISITION PRINTER (QC-42M) ═══ -->
+                    <div id="printer-dock" class="printer-dock">
+                        <div class="printer printer-3d-machine" role="img" aria-label="3D Thermal Maritime Requisition Printer">
+                            
+                            <!-- 3D Printer Upper Hood & Serrated Stainless Cutter Throat -->
+                            <div class="printer-hood-3d">
+                                <!-- Left: Corner Allen Bolt & Power Rocker Switch -->
+                                <div class="printer-side-controls">
+                                    <div class="printer-screw-bolt" title="Mounting Bolt"><i></i></div>
+                                    <div class="power-rocker-switch" title="Main Power AC 220V">
+                                        <span class="rocker-label">PWR</span>
+                                        <div class="rocker-toggle"><span>I</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Center: Recessed Mouth Slot & Stainless Steel Serrated Cutter Blade -->
+                                <div class="printer-mouth-assembly">
+                                    <div class="printer-slot-recess printer-slot" title="Thermal Print Head & Feed Throat">
+                                        <!-- Stainless Steel Serrated Cutter Blade -->
+                                        <div class="stainless-cutter-blade">
+                                            <svg class="serrated-teeth-svg" viewBox="0 0 1000 10" preserveAspectRatio="none">
+                                                <defs>
+                                                    <pattern id="teethPattern" width="10" height="10" patternUnits="userSpaceOnUse">
+                                                        <polygon points="0,0 5,8 10,0" fill="#94a3b8" stroke="#334155" stroke-width="0.8"/>
+                                                    </pattern>
+                                                </defs>
+                                                <rect width="100%" height="10" fill="url(#teethPattern)"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right: 3D Concave FEED Button & Cover Release Latch -->
+                                <div class="printer-action-controls">
+                                    <button type="button" class="btn-feed-3d" id="btn-manual-feed" title="FEED: Press to advance paper">
+                                        <span class="feed-icon">▲</span>
+                                        <span class="feed-text">FEED</span>
+                                    </button>
+                                    <div class="cover-open-latch" title="Lid Release Latch">
+                                        <span>PUSH</span>
+                                        <div class="latch-ridges"><i></i><i></i><i></i></div>
+                                    </div>
+                                    <div class="printer-screw-bolt" title="Mounting Bolt"><i></i></div>
+                                </div>
+                            </div>
+
+                            <!-- 3D Front Face Control Console -->
+                            <div class="printer-face-3d printer-face">
+                                <!-- Left: Recessed OLED Telemetry Screen -->
+                                <div class="printer-display-bezel">
+                                    <div class="display-screen-glass">
+                                        <div class="telemetry-row">
+                                            <span class="telemetry-badge">● ONLINE</span>
+                                            <span class="telemetry-sub">260mm/s • 203DPI</span>
+                                        </div>
+                                        <div id="printer-status" class="telemetry-main">READY TO PRINT</div>
+                                    </div>
+                                </div>
+
+                                <!-- Center: Model Plate & Molded Cooling Louvers -->
+                                <div class="printer-center-console">
+                                    <div class="model-badge-plate">
+                                        <span class="brand-text">AB MALAYA</span>
+                                        <span class="model-number">QC-42M</span>
+                                    </div>
+                                    <div class="printer-louvers-3d printer-vents" aria-hidden="true">
+                                        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                                    </div>
+                                    <span class="printer-caption-spec">DIRECT THERMAL REQUISITION ENGINE</span>
+                                </div>
+
+                                <!-- Right: Triple Status 3D Lens LEDs -->
+                                <div class="printer-led-cluster">
+                                    <div class="led-unit" title="Power Ready">
+                                        <span class="led-lens led-power status-light"></span>
+                                        <span class="led-tag">PWR</span>
+                                    </div>
+                                    <div class="led-unit" title="Print Data Activity">
+                                        <span class="led-lens led-print" id="led-print-indicator"></span>
+                                        <span class="led-tag">DATA</span>
+                                    </div>
+                                    <div class="led-unit" title="Paper Present">
+                                        <span class="led-lens led-paper ready"></span>
+                                        <span class="led-tag">PAPER</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Base Trim & Safety Hazard Accent with Counter -->
+                            <div class="printer-base-trim">
+                                <div class="warning-stripe-accent"></div>
+                                <div class="base-counter-strip">
+                                    <span class="print-count">
+                                        PRINTED: <strong id="printed-count">00</strong> / <span id="total-print-count">00</span> ITEMS
+                                    </span>
+                                    <div class="printer-sub-actions">
+                                        <button type="button" class="btn-printer-rewind" id="print-again" onclick="rewindPrinterPaper()" title="Scroll paper back to top">
+                                            <i class="fas fa-undo"></i> REWIND ↗
+                                        </button>
+                                        <a href="receipt_printer.php" target="_blank" class="btn-printer-demo" title="Open standalone Café Receipt demo">
+                                            <i class="fas fa-receipt"></i> DEMO
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- /#printer-dock -->
+
+                </div>
             </div>
         </div>
 
@@ -1274,13 +2130,15 @@ const requisitionState = {
     ordering_item: '',
     master_name: '',
     sign_date: '',
-    has_sample_stamp: false,
+    routing_email: '',
+    signature_base64: null,
     custom_stamp_base64: null,
     custom_logo_base64: null,
     items: []
 };
 
-let currentItemPhotoBase64 = null;
+let currentItemPhoto1Base64 = null;
+let currentItemPhoto2Base64 = null;
 let impaQueryDebounce = null;
 
 // Open / Launch Requisition Workspace
@@ -1351,6 +2209,10 @@ function syncPaperField(field, val) {
         const formatted = formatDateToMarine(val);
         requisitionState.sign_date = formatted;
         document.getElementById('paper-sign-date').innerText = formatted || '\u00A0';
+    } else if (field === 'routing_email') {
+        requisitionState.routing_email = val.trim();
+        const noteEl = document.getElementById('paper-note-routing');
+        if (noteEl) noteEl.innerText = val.trim() ? val.trim() : '________________________';
     }
 }
 
@@ -1367,14 +2229,13 @@ function generateSampleReqNo() {
     syncPaperField('req_no', autoNo);
 }
 
-// Handle Custom Logo Upload
+// Handle Custom Logo Upload (Clean display, no text below logo)
 function handleCustomLogoUpload(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
             requisitionState.custom_logo_base64 = e.target.result;
             document.getElementById('paper-custom-logo-img').src = e.target.result;
-            document.getElementById('paper-custom-logo-text').innerText = 'AUTHORIZED VESSEL';
         };
         reader.readAsDataURL(input.files[0]);
     }
@@ -1384,7 +2245,6 @@ function resetCustomLogo() {
     requisitionState.custom_logo_base64 = null;
     document.getElementById('upload_custom_logo').value = '';
     document.getElementById('paper-custom-logo-img').src = 'assets/img/logo-abmalaya.webp';
-    document.getElementById('paper-custom-logo-text').innerText = 'AB MALAYA MARINE';
 }
 
 // Toggle Equipment Criticality Status
@@ -1484,23 +2344,44 @@ function selectImpaCatalogEntry(code, name, spec, unit) {
     dropdown.innerHTML = '';
 }
 
-// Preview Item Photo Upload
-function previewItemPhoto(input) {
+// Preview Item Photo Upload (Supports Slot 1 & Slot 2)
+function previewItemPhoto(input, slot = 1) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            currentItemPhotoBase64 = e.target.result;
-            document.getElementById('item_photo_preview_img').src = currentItemPhotoBase64;
-            document.getElementById('item_photo_preview_wrap').style.display = 'flex';
+            if (slot === 1) {
+                currentItemPhoto1Base64 = e.target.result;
+                const img = document.getElementById('item_photo_1_preview_img');
+                if (img) img.src = currentItemPhoto1Base64;
+                const wrap = document.getElementById('item_photo_1_preview_wrap');
+                if (wrap) wrap.style.display = 'flex';
+            } else {
+                currentItemPhoto2Base64 = e.target.result;
+                const img = document.getElementById('item_photo_2_preview_img');
+                if (img) img.src = currentItemPhoto2Base64;
+                const wrap = document.getElementById('item_photo_2_preview_wrap');
+                if (wrap) wrap.style.display = 'flex';
+            }
         };
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-function clearItemPhoto() {
-    currentItemPhotoBase64 = null;
-    document.getElementById('item_input_photo').value = '';
-    document.getElementById('item_photo_preview_wrap').style.display = 'none';
+function clearItemPhoto(slot = null) {
+    if (!slot || slot === 1) {
+        currentItemPhoto1Base64 = null;
+        const input = document.getElementById('item_input_photo_1');
+        if (input) input.value = '';
+        const wrap = document.getElementById('item_photo_1_preview_wrap');
+        if (wrap) wrap.style.display = 'none';
+    }
+    if (!slot || slot === 2) {
+        currentItemPhoto2Base64 = null;
+        const input = document.getElementById('item_input_photo_2');
+        if (input) input.value = '';
+        const wrap = document.getElementById('item_photo_2_preview_wrap');
+        if (wrap) wrap.style.display = 'none';
+    }
 }
 
 // Add Item into Requisition State & Render Paper Table
@@ -1524,7 +2405,8 @@ function addCurrentItemToRequisition() {
         purpose: purpose,
         qty: qty,
         unit: unit,
-        photo_url: currentItemPhotoBase64
+        photo_url: currentItemPhoto1Base64,
+        photo_url_2: currentItemPhoto2Base64
     });
 
     // Reset input fields
@@ -1557,23 +2439,54 @@ function clearAllItems() {
     }
 }
 
-// Render Table Rows on Paper Sheet (Left Column)
+// Render Table Rows on Paper Sheet (Left Column - Authentic A4 with Full-Width Proportional Photos)
 function renderPaperItemsTable() {
     const tbody = document.getElementById('paper-items-tbody');
 
     if (requisitionState.items.length === 0) {
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="3" class="sheet-empty-placeholder">
-                    (Requisition Sheet Empty — Configure line items using the panel on the right)
-                </td>
-            </tr>
-        `;
+        let blankRows = '';
+        for (let i = 1; i <= 5; i++) {
+            blankRows += `
+                <tr>
+                    <td style="text-align: center; font-weight: bold; color: #000000; height: 34px;">${i}</td>
+                    <td style="color: #94a3b8; font-style: italic; vertical-align: middle;"></td>
+                    <td style="text-align: center;"></td>
+                </tr>
+            `;
+        }
+        tbody.innerHTML = blankRows;
+        if (typeof updatePrinterFeed === 'function') updatePrinterFeed();
         return;
     }
 
     let html = '';
     requisitionState.items.forEach((it, idx) => {
+        const p1 = it.photo_url || it.photo_1;
+        const p2 = it.photo_url_2 || it.photo_2;
+
+        let photoBlockHtml = '';
+        if (p1 && p2) {
+            // 2 photos: divide full-width into 2 equal halves, large and proportional (tidak penyot)
+            photoBlockHtml = `
+                <div style="margin-top: 8px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; box-sizing: border-box;">
+                    <div style="border: 1px solid #000000; background: #ffffff; padding: 2px; text-align: center;">
+                        <img src="${p1}" style="width: 100%; max-height: 180px; object-fit: contain; display: block; margin: 0 auto;">
+                    </div>
+                    <div style="border: 1px solid #000000; background: #ffffff; padding: 2px; text-align: center;">
+                        <img src="${p2}" style="width: 100%; max-height: 180px; object-fit: contain; display: block; margin: 0 auto;">
+                    </div>
+                </div>
+            `;
+        } else if (p1 || p2) {
+            // 1 photo: fills full-width in photo 1 position, large, proportional (tidak penyot)
+            const singleP = p1 || p2;
+            photoBlockHtml = `
+                <div style="margin-top: 8px; width: 100%; border: 1px solid #000000; background: #ffffff; padding: 2px; text-align: center; box-sizing: border-box;">
+                    <img src="${singleP}" style="width: 100%; max-height: 240px; object-fit: contain; display: block; margin: 0 auto;">
+                </div>
+            `;
+        }
+
         html += `
             <tr>
                 <td style="text-align: center; font-weight: bold;">${idx + 1}</td>
@@ -1582,7 +2495,7 @@ function renderPaperItemsTable() {
                     <div style="margin-top: 2px;">IMPA CODE: <strong>${escapeHtml(it.impa_code)}</strong></div>
                     ${it.specs ? `<div style="white-space: pre-wrap; margin-top: 4px; font-size: 0.74rem;">${escapeHtml(it.specs)}</div>` : ''}
                     ${it.purpose ? `<div style="margin-top: 4px; font-size: 0.74rem; font-weight: 600;">PURPOSE : ${escapeHtml(it.purpose)}</div>` : ''}
-                    ${it.photo_url ? `<div style="margin-top: 6px;"><img src="${it.photo_url}" style="max-height: 60px; border: 1px solid #94a3b8;"></div>` : ''}
+                    ${photoBlockHtml}
                 </td>
                 <td style="text-align: center; font-weight: bold; white-space: nowrap;">
                     ${it.qty} ${it.unit}
@@ -1591,6 +2504,7 @@ function renderPaperItemsTable() {
         `;
     });
     tbody.innerHTML = html;
+    if (typeof updatePrinterFeed === 'function') updatePrinterFeed();
 }
 
 // Render Items List inside Form (Right Column)
@@ -1628,15 +2542,133 @@ function renderFormItemsList() {
     container.innerHTML = html;
 }
 
-// Handle Custom Stamp / Signature Upload
+// ── SIGNATURE & STAMP DUAL CONTROLLER (CO-EXIST / SALING SIMPAN) ─────────────
+let sigCanvas = null;
+let sigCtx = null;
+let isSigDrawing = false;
+let sigHasStrokes = false;
+
+function initSignaturePad() {
+    sigCanvas = document.getElementById('signature-pad-canvas');
+    if (!sigCanvas) return;
+    sigCtx = sigCanvas.getContext('2d');
+    sigCtx.lineWidth = 2.2;
+    sigCtx.lineCap = 'round';
+    sigCtx.lineJoin = 'round';
+    sigCtx.strokeStyle = '#093863';
+
+    function getCoords(e) {
+        const rect = sigCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const scaleX = sigCanvas.width / rect.width;
+        const scaleY = sigCanvas.height / rect.height;
+        return {
+            x: (clientX - rect.left) * scaleX,
+            y: (clientY - rect.top) * scaleY
+        };
+    }
+
+    function startDraw(e) {
+        isSigDrawing = true;
+        sigHasStrokes = true;
+        const pos = getCoords(e);
+        sigCtx.beginPath();
+        sigCtx.moveTo(pos.x, pos.y);
+        e.preventDefault();
+    }
+
+    function moveDraw(e) {
+        if (!isSigDrawing) return;
+        const pos = getCoords(e);
+        sigCtx.lineTo(pos.x, pos.y);
+        sigCtx.stroke();
+        e.preventDefault();
+    }
+
+    function endDraw(e) {
+        if (isSigDrawing) {
+            isSigDrawing = false;
+            applySignaturePad();
+        }
+    }
+
+    sigCanvas.addEventListener('mousedown', startDraw);
+    sigCanvas.addEventListener('mousemove', moveDraw);
+    window.addEventListener('mouseup', endDraw);
+
+    sigCanvas.addEventListener('touchstart', startDraw, { passive: false });
+    sigCanvas.addEventListener('touchmove', moveDraw, { passive: false });
+    sigCanvas.addEventListener('touchend', endDraw, { passive: false });
+}
+
+function switchSignatureMode(mode) {
+    const paneDraw = document.getElementById('sig-pane-draw');
+    const paneUpload = document.getElementById('sig-pane-upload');
+    const tabDraw = document.getElementById('tab-btn-draw');
+    const tabUpload = document.getElementById('tab-btn-upload');
+
+    if (mode === 'draw') {
+        paneDraw.style.display = 'block';
+        paneUpload.style.display = 'none';
+        tabDraw.classList.add('active');
+        tabUpload.classList.remove('active');
+    } else {
+        paneDraw.style.display = 'none';
+        paneUpload.style.display = 'block';
+        tabDraw.classList.remove('active');
+        tabUpload.classList.add('active');
+    }
+}
+
+function clearSignaturePad() {
+    if (sigCanvas && sigCtx) {
+        sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+    }
+    sigHasStrokes = false;
+    requisitionState.signature_base64 = null;
+    renderPaperSignatureAndStamp();
+}
+
+function applySignaturePad() {
+    if (!sigHasStrokes || !sigCanvas) return;
+    requisitionState.signature_base64 = sigCanvas.toDataURL('image/png');
+    renderPaperSignatureAndStamp();
+}
+
+function handleSignatureFileUpload(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            requisitionState.signature_base64 = e.target.result;
+            if (sigCanvas && sigCtx) {
+                sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+                sigHasStrokes = false;
+            }
+            renderPaperSignatureAndStamp();
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function clearUploadedSignature() {
+    requisitionState.signature_base64 = null;
+    const f = document.getElementById('upload_sig_file');
+    if (f) f.value = '';
+    if (sigCanvas && sigCtx) {
+        sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+        sigHasStrokes = false;
+    }
+    renderPaperSignatureAndStamp();
+}
+
+// Handle Custom Stamp Upload
 function handleStampFileUpload(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
             requisitionState.custom_stamp_base64 = e.target.result;
-            requisitionState.has_sample_stamp = false;
-            document.getElementById('chip-sample-stamp').classList.remove('selected');
-            document.getElementById('paper-stamp-box').innerHTML = `<img src="${e.target.result}" style="max-height: 55px; max-width: 150px; object-fit: contain;">`;
+            renderPaperSignatureAndStamp();
         };
         reader.readAsDataURL(input.files[0]);
     }
@@ -1644,32 +2676,46 @@ function handleStampFileUpload(input) {
 
 function clearUploadedStamp() {
     requisitionState.custom_stamp_base64 = null;
-    document.getElementById('upload_stamp_file').value = '';
-    document.getElementById('paper-stamp-box').innerHTML = '<span style="font-size: 0.7rem; color: #94a3b8; font-style: italic;">[ Unsigned / No Stamp ]</span>';
+    const f = document.getElementById('upload_stamp_file');
+    if (f) f.value = '';
+    renderPaperSignatureAndStamp();
 }
 
-// Toggle Official Sample Stamp
-function toggleSampleStamp() {
-    requisitionState.has_sample_stamp = !requisitionState.has_sample_stamp;
-    requisitionState.custom_stamp_base64 = null;
-    document.getElementById('upload_stamp_file').value = '';
-    
-    const chip = document.getElementById('chip-sample-stamp');
-    chip.classList.toggle('selected', requisitionState.has_sample_stamp);
-
+// Render Both Signature & Custom Stamp (Co-existing / Saling Simpan)
+function renderPaperSignatureAndStamp() {
     const stampBox = document.getElementById('paper-stamp-box');
-    if (requisitionState.has_sample_stamp) {
-        const vName = requisitionState.vessel_name || 'MT PERMATA DULANG';
+    if (!stampBox) return;
+
+    const hasSig = !!requisitionState.signature_base64;
+    const hasCustomStamp = !!requisitionState.custom_stamp_base64;
+
+    if (!hasSig && !hasCustomStamp) {
+        stampBox.innerHTML = '<span style="font-size: 9.5px; color: #94a3b8; font-style: italic;">[ Unsigned / No Stamp ]</span>';
+        return;
+    }
+
+    let stampHtml = '';
+    if (hasCustomStamp) {
+        stampHtml = `<img src="${requisitionState.custom_stamp_base64}" style="max-height: 48px; max-width: 125px; object-fit: contain;">`;
+    }
+
+    let sigHtml = '';
+    if (hasSig) {
+        sigHtml = `<img src="${requisitionState.signature_base64}" style="max-height: 36px; max-width: 120px; object-fit: contain;">`;
+    }
+
+    if (hasSig && hasCustomStamp) {
+        // Explicit user rule: "stampnya harusnya di bawah ttd" (stamp is BELOW signature)
         stampBox.innerHTML = `
-            <div style="border: 2px solid #0284c7; padding: 4px 10px; color: #0284c7; font-family: monospace; text-align: center; font-size: 0.7rem; line-height: 1.25; transform: rotate(-2deg);">
-                <strong>MASTER ${vName.toUpperCase()}</strong><br>
-                PORT KELANG &nbsp; IMO 9307140<br>
-                BHP 12,000KW &nbsp; GRT 56,172<br>
-                <span style="font-size: 0.62rem; color: #0369a1;">[ OFFICIAL SHIP SEAL ]</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; align-items: center; justify-content: center;">
+                <div>${sigHtml}</div>
+                <div>${stampHtml}</div>
             </div>
         `;
+    } else if (hasSig) {
+        stampBox.innerHTML = sigHtml;
     } else {
-        stampBox.innerHTML = '<span style="font-size: 0.7rem; color: #94a3b8; font-style: italic;">[ Unsigned / No Stamp ]</span>';
+        stampBox.innerHTML = stampHtml;
     }
 }
 
@@ -1678,25 +2724,73 @@ function printPaperDocument() {
     window.print();
 }
 
-// Download PDF Document using html2pdf with clean A4 margins
-function downloadDirectPaperPdf() {
-    const element = document.getElementById('paper-doc-sheet');
-    const vName = requisitionState.vessel_name.replace(/[^a-zA-Z0-9]/g, '_') || 'Vessel';
-    const rNo = requisitionState.req_no.replace(/[^a-zA-Z0-9]/g, '_') || 'Requisition';
+// Download Vector PDF Document via Server-Side ReportLab Engine
+async function downloadDirectPaperPdf() {
+    // Proactive confidentiality check: ensure no dutamarine traces in requisition state
+    if (requisitionState.routing_email && requisitionState.routing_email.toLowerCase().includes('dutamarine')) {
+        requisitionState.routing_email = '';
+        const fR = document.getElementById('f_routing_email');
+        if (fR) fR.value = '';
+        syncPaperField('routing_email', '');
+    }
+    if (requisitionState.client_email && requisitionState.client_email.toLowerCase().includes('dutamarine')) {
+        requisitionState.client_email = '';
+        const fC = document.getElementById('f_client_email');
+        if (fC) fC.value = '';
+    }
 
-    const opt = {
-        margin:       [10, 12, 10, 12], // mm (top, right, bottom, left)
-        filename:     `Requisition_${rNo}_${vName}.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, letterRendering: true, logging: false },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
-    };
+    const downloadBtns = document.querySelectorAll('[onclick="downloadDirectPaperPdf()"]');
+    downloadBtns.forEach(btn => {
+        btn.disabled = true;
+        btn.dataset.origHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+    });
 
-    if (window.html2pdf) {
-        html2pdf().set(opt).from(element).save();
-    } else {
-        window.print();
+    const vName = requisitionState.vessel_name ? requisitionState.vessel_name.replace(/[^a-zA-Z0-9_\-]/g, '_') : 'VESSEL';
+    const rNo = requisitionState.req_no ? requisitionState.req_no.replace(/[^a-zA-Z0-9_\-]/g, '_') : 'FORM';
+    const fileName = `Requisition_${rNo}_${vName}.pdf`;
+
+    try {
+        const response = await fetch('/download_rfq_pdf.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requisitionState)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server returned status ${response.status}`);
+        }
+
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => window.URL.revokeObjectURL(blobUrl), 2000);
+    } catch (err) {
+        console.error('Vector PDF generation error, falling back:', err);
+        if (window.html2pdf) {
+            const element = document.getElementById('paper-doc-sheet');
+            html2pdf().set({
+                margin: [10, 12, 10, 12],
+                filename: fileName,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            }).from(element).save();
+        } else {
+            window.print();
+        }
+    } finally {
+        downloadBtns.forEach(btn => {
+            btn.disabled = false;
+            btn.innerHTML = btn.dataset.origHtml || '<i class="fas fa-download"></i> Download PDF';
+        });
     }
 }
 
@@ -1731,11 +2825,13 @@ function loadSamplePermataDulangData() {
     document.getElementById('f_sign_date').value = '2026-08-18';
     syncPaperField('sign_date', '2026-08-18');
 
-    document.getElementById('f_client_email').value = 'fleet@dutamarine.com';
+    document.getElementById('f_routing_email').value = '';
+    syncPaperField('routing_email', '');
 
-    if (!requisitionState.has_sample_stamp) {
-        toggleSampleStamp();
-    }
+    document.getElementById('f_client_email').value = '';
+    document.getElementById('f_client_phone').value = '';
+
+    renderPaperSignatureAndStamp();
 
     // Populate the 13 official items from PDF
     requisitionState.items = [
@@ -1766,6 +2862,7 @@ function submitRequisitionToErp() {
     const btnLabel = document.getElementById('btn-submit-erp-label');
     const clientEmail = document.getElementById('f_client_email').value.trim();
     const clientPhone = document.getElementById('f_client_phone').value.trim();
+    const routingEmail = document.getElementById('f_routing_email').value.trim();
 
     if (!requisitionState.vessel_name) {
         alert('Please complete the Vessel Name in Step 1 first.');
@@ -1779,6 +2876,36 @@ function submitRequisitionToErp() {
         return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!routingEmail) {
+        alert('Mandatory Field Required: Please specify the recipient email address (Send To / Routing Email) in Step 3 before transmitting.');
+        goToFormStep(3);
+        document.getElementById('f_routing_email').focus();
+        return;
+    }
+
+    if (!emailRegex.test(routingEmail)) {
+        alert('Invalid Email Format: Please enter a valid recipient email address in Send To.');
+        goToFormStep(3);
+        document.getElementById('f_routing_email').focus();
+        return;
+    }
+
+    if (!clientEmail) {
+        alert('Mandatory Field Required: Please provide your Client Reply-To Email so official quotation tenders and correspondence can be routed back directly.');
+        goToFormStep(3);
+        document.getElementById('f_client_email').focus();
+        return;
+    }
+
+    if (!emailRegex.test(clientEmail)) {
+        alert('Invalid Email Format: Please enter a valid email address in Client Reply-To Email.');
+        goToFormStep(3);
+        document.getElementById('f_client_email').focus();
+        return;
+    }
+
     const payload = {
         vessel_name: requisitionState.vessel_name,
         requisition_no: requisitionState.req_no,
@@ -1789,15 +2916,20 @@ function submitRequisitionToErp() {
         date: requisitionState.date,
         master_name: requisitionState.master_name,
         company: requisitionState.vessel_name,
-        email: clientEmail || 'fleet@dutamarine.com',
+        routing_email: routingEmail,
+        email: clientEmail,
         phone: clientPhone || '-',
+        signature_base64: requisitionState.signature_base64,
+        custom_stamp_base64: requisitionState.custom_stamp_base64,
         items: requisitionState.items.map(it => ({
             impa_code: it.impa_code,
             product_name: it.name,
             specification: it.specs,
             purpose: it.purpose,
             quantity: it.qty,
-            unit: it.unit
+            unit: it.unit,
+            photo_url: it.photo_url || null,
+            photo_url_2: it.photo_url_2 || null
         }))
     };
 
@@ -1820,14 +2952,24 @@ function submitRequisitionToErp() {
             alertBox.style.background = '#ecfdf5';
             alertBox.style.color = '#065f46';
             alertBox.style.border = '1px solid #a7f3d0';
+            const mailNotice = res.mail_status ? `
+                <div style="margin-top: 8px; padding: 6px 10px; background: rgba(5,150,105,0.08); border-left: 3px solid #059669; font-size: 0.78rem;">
+                    <i class="fas fa-paper-plane" style="color: #059669;"></i> <strong>Delivery Protocol:</strong> ${escapeHtml(res.mail_status.message || 'Dispatched')}
+                    <div style="color: #475569; margin-top: 2px;">
+                        Target Recipient: <b>${escapeHtml(res.mail_status.to || routingEmail)}</b> | Reply-To: <b>${escapeHtml(res.mail_status.reply_to || clientEmail)}</b>
+                    </div>
+                </div>
+            ` : '';
+
             alertBox.innerHTML = `
                 <div style="display: flex; gap: 10px; align-items: flex-start;">
                     <i class="fas fa-check-circle" style="font-size: 1.3rem; color: #059669; margin-top: 2px;"></i>
                     <div>
-                        <strong>Requisition Successfully Transmitted! Reference: ${res.rfq_id}</strong>
+                        <strong>Requisition Successfully Transmitted! Reference: ${escapeHtml(res.rfq_id)}</strong>
                         <p style="margin: 3px 0 0 0; font-size: 0.84rem;">
-                            Your maritime requisition has been registered in the AB Malaya ERP procurement pipeline. You may now download the official PDF copy.
+                            Your maritime requisition has been registered in the procurement pipeline.
                         </p>
+                        ${mailNotice}
                     </div>
                 </div>
             `;
@@ -1856,9 +2998,15 @@ function resetEntireForm() {
     if (confirm('Are you sure you want to reset the form back to an empty blank document?')) {
         requisitionState.vessel_name = '';
         requisitionState.req_no = '';
+        requisitionState.critical_status = '';
+        requisitionState.from_dept = '';
+        requisitionState.issue_to = { op: false, tech: false, man: false };
+        requisitionState.date = '';
         requisitionState.ordering_item = '';
         requisitionState.master_name = '';
-        requisitionState.has_sample_stamp = false;
+        requisitionState.sign_date = '';
+        requisitionState.routing_email = '';
+        requisitionState.signature_base64 = null;
         requisitionState.custom_stamp_base64 = null;
         requisitionState.items = [];
 
@@ -1866,14 +3014,40 @@ function resetEntireForm() {
         document.getElementById('f_req_no').value = '';
         document.getElementById('f_ordering_item').value = '';
         document.getElementById('f_master_name').value = '';
-        document.getElementById('chip-sample-stamp').classList.remove('selected');
+        document.getElementById('f_routing_email').value = '';
+        document.getElementById('f_client_email').value = '';
+        document.getElementById('f_client_phone').value = '';
+        
+        clearSignaturePad();
+        clearUploadedSignature();
+        clearUploadedStamp();
+
+        document.getElementById('chip-crit').classList.remove('selected');
+        document.getElementById('chip-noncrit').classList.remove('selected');
+        document.getElementById('chip-dept-deck').classList.remove('selected');
+        document.getElementById('chip-dept-engine').classList.remove('selected');
+        document.getElementById('chip-iss-op').classList.remove('selected');
+        document.getElementById('chip-iss-tech').classList.remove('selected');
+        document.getElementById('chip-iss-man').classList.remove('selected');
+
+        document.getElementById('paper-check-critical').innerText = '[ ]';
+        document.getElementById('paper-check-noncritical').innerText = '[ ]';
+        document.getElementById('paper-from-deck').innerText = '[ ]';
+        document.getElementById('paper-from-engine').innerText = '[ ]';
+        document.getElementById('paper-issue-op').innerText = '[ ]';
+        document.getElementById('paper-issue-tech').innerText = '[ ]';
+        document.getElementById('paper-issue-man').innerText = '[ ]';
 
         document.getElementById('paper-vessel-name').innerText = '\u00A0';
         document.getElementById('paper-req-no').innerText = '';
+        document.getElementById('paper-date').innerText = '\u00A0';
+        document.getElementById('paper-ordering_item') ? document.getElementById('paper-ordering_item').innerText = '\u00A0' : null;
         document.getElementById('paper-ordering-item').innerText = '\u00A0';
         document.getElementById('paper-master-name').innerText = '\u00A0';
-        document.getElementById('paper-stamp-box').innerHTML = '<span style="font-size: 0.7rem; color: #94a3b8; font-style: italic;">[ Unsigned / No Stamp ]</span>';
-
+        document.getElementById('paper-sign-date').innerText = '\u00A0';
+        document.getElementById('paper-note-routing').innerText = '________________________';
+        
+        renderPaperSignatureAndStamp();
         resetCustomLogo();
         renderPaperItemsTable();
         renderFormItemsList();
@@ -1889,8 +3063,117 @@ window.addEventListener('click', function(e) {
     }
 });
 
+// ═══════════════════════════════════════════════════════════════════════════
+// RETRO-INDUSTRIAL PRINTER FEED & VIBRATION ENGINE (QC-42 / ABM THERMAL)
+// ═══════════════════════════════════════════════════════════════════════════
+let printerFramePending = false;
+let printerIdleTimer = null;
+
+function updatePrinterFeed() {
+    const printer = document.querySelector('.printer');
+    const slot = document.querySelector('.printer-slot');
+    const paperSheet = document.getElementById('paper-doc-sheet');
+    const countEl = document.getElementById('printed-count');
+    const totalCountEl = document.getElementById('total-print-count');
+    const statusEl = document.getElementById('printer-status');
+    const balance = document.querySelector('.sheet-sign-table');
+
+    if (!printer || !slot || !paperSheet) return;
+
+    const slotRect = slot.getBoundingClientRect();
+    const slotTop = slotRect.top;
+
+    // Get table line items
+    const rows = [...document.querySelectorAll('#paper-items-tbody tr')];
+    const totalLines = rows.length;
+    if (totalCountEl) totalCountEl.textContent = String(totalLines).padStart(2, '0');
+
+    // How many rows have bottom <= slotTop (emerged out of the slot)
+    const printed = rows.filter(row => row.getBoundingClientRect().bottom <= slotTop).length;
+    if (countEl) countEl.textContent = String(printed).padStart(2, '0');
+
+    const feedProgress = totalLines > 0 ? (printed / totalLines) : 0;
+    document.documentElement.style.setProperty('--feed', feedProgress);
+
+    const isFinished = balance && balance.getBoundingClientRect().bottom <= slotTop;
+
+    if (isFinished) {
+        if (statusEl) statusEl.textContent = 'HSEMS 10.1D COMPLETE';
+        printer.classList.remove('is-printing');
+    } else if (printer.classList.contains('is-printing')) {
+        if (statusEl) statusEl.textContent = `PRINTING REQUISITION [LINE ${Math.min(printed + 1, Math.max(totalLines, 1))}]`;
+    } else {
+        const sheetRect = paperSheet.getBoundingClientRect();
+        if (statusEl) {
+            statusEl.textContent = sheetRect.top < slotTop ? 'READY TO PRINT' : 'WAITING FOR REQUISITION';
+        }
+    }
+}
+
+function onPrinterScroll() {
+    const printer = document.querySelector('.printer');
+    if (printer) printer.classList.add('is-printing');
+    if (!printerFramePending) {
+        printerFramePending = true;
+        requestAnimationFrame(() => {
+            updatePrinterFeed();
+            printerFramePending = false;
+        });
+    }
+    clearTimeout(printerIdleTimer);
+    printerIdleTimer = setTimeout(() => {
+        if (printer) printer.classList.remove('is-printing');
+        updatePrinterFeed();
+    }, 180);
+}
+
+function rewindPrinterPaper() {
+    const paper = document.getElementById('paper-doc-sheet');
+    if (paper) {
+        paper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+function initPrinterFeedEngine() {
+    const dock = document.getElementById('printer-dock');
+
+    // Global window page scroll drives feed and animations
+    window.addEventListener('scroll', onPrinterScroll, { passive: true });
+    window.addEventListener('resize', updatePrinterFeed);
+
+    if (dock) {
+        // When mouse is hovering anywhere over the frozen printer dock, mouse wheel scrolls the page!
+        dock.addEventListener('wheel', (e) => {
+            window.scrollBy({ top: e.deltaY, behavior: 'auto' });
+            onPrinterScroll();
+            e.preventDefault();
+        }, { passive: false });
+    }
+
+    const btnAgain = document.getElementById('print-again');
+    if (btnAgain) {
+        btnAgain.addEventListener('click', rewindPrinterPaper);
+    }
+
+    const btnFeed = document.getElementById('btn-manual-feed');
+    if (btnFeed) {
+        btnFeed.addEventListener('click', () => {
+            window.scrollBy({ top: 160, behavior: 'smooth' });
+            onPrinterScroll();
+        });
+    }
+
+    updatePrinterFeed();
+}
+
 // Auto-open Requisition when redirected with URL query params from view_impa.php
 window.addEventListener('DOMContentLoaded', function() {
+    renderPaperItemsTable();
+    initSignaturePad();
+    initPrinterFeedEngine();
+
     const urlParams = new URLSearchParams(window.location.search);
     const impaParam = urlParams.get('impa');
     const nameParam = urlParams.get('name');

@@ -123,10 +123,31 @@ if ($action === 'submit_rfq' || $_SERVER['REQUEST_METHOD'] === 'POST') {
     $raw_input = file_get_contents('php://input');
     $payload = json_decode($raw_input, true) ?: $_POST;
 
+    // Mandatory Email Routing Validation
+    $routing_email  = trim($payload['routing_email'] ?? '');
+    $email          = trim($payload['email'] ?? '');
+
+    if (empty($routing_email) || !filter_var($routing_email, FILTER_VALIDATE_EMAIL)) {
+        ob_end_clean();
+        echo json_encode([
+            'status'  => 'error',
+            'message' => 'Recipient email address (Send To / Routing Email) is strictly required and must be a valid email address.'
+        ]);
+        exit;
+    }
+
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        ob_end_clean();
+        echo json_encode([
+            'status'  => 'error',
+            'message' => 'Your Client Reply-To email address is strictly required so commercial quotation replies can be routed back directly.'
+        ]);
+        exit;
+    }
+
     // Sanitize parameters
     $company_name   = trim($payload['company'] ?? $payload['company_name'] ?? $payload['vessel_name'] ?? '');
     $contact_person = trim($payload['contact_person'] ?? $payload['master_name'] ?? $payload['name'] ?? '');
-    $email          = trim($payload['email'] ?? '');
     $phone          = trim($payload['phone'] ?? '');
     $vessel_name    = trim($payload['vessel_name'] ?? $company_name);
     $requisition_no = trim($payload['requisition_no'] ?? '');
@@ -175,7 +196,9 @@ if ($action === 'submit_rfq' || $_SERVER['REQUEST_METHOD'] === 'POST') {
             'purpose'       => trim($it['purpose'] ?? ''),
             'quantity'      => (float)($it['quantity'] ?? $it['qty'] ?? 1),
             'unit'          => strtoupper(trim($it['unit'] ?? 'PCS')),
-            'target_date'   => trim($it['target_date'] ?? $closing_date)
+            'target_date'   => trim($it['target_date'] ?? $closing_date),
+            'photo_url'     => $it['photo_url'] ?? null,
+            'photo_url_2'   => $it['photo_url_2'] ?? null
         ];
     }
 
@@ -293,13 +316,18 @@ if ($action === 'submit_rfq' || $_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    // 3. Dispatch official email dossier via Standalone TenderMailer Engine
+    require_once __DIR__ . '/includes/tender_mailer.php';
+    $mail_status = TenderMailer::sendRequisition($routing_email, $email, $rfq_record);
+
     ob_end_clean();
     echo json_encode([
-        'status'     => 'success',
-        'rfq_id'     => $rfq_id,
-        'erp_synced' => $erp_synced,
-        'data'       => $rfq_record,
-        'message'    => 'Official RFQ Dossier ' . $rfq_id . ' has been generated and synchronized with AB Malaya ERP.'
+        'status'      => 'success',
+        'rfq_id'      => $rfq_id,
+        'erp_synced'  => $erp_synced,
+        'mail_status' => $mail_status,
+        'data'        => $rfq_record,
+        'message'     => 'Official RFQ Dossier ' . $rfq_id . ' has been generated, registered in ERP, and dispatched to ' . $routing_email . '.'
     ]);
     exit;
 }
