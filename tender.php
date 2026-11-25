@@ -1396,15 +1396,284 @@ include 'includes/hero_visual.php';
         }
     }
 
+    /* ═══════════════════════════════════════════════════════════════════════
+       MOBILE RESPONSIVE SYSTEM FOR SMARTPHONES (MAX-WIDTH: 1100px & 768px)
+       ═══════════════════════════════════════════════════════════════════════ */
+    .photos-grid-sharp,
+    .endorsement-grid-sharp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+    }
+
     @media (max-width: 1100px) {
         .split-requisition-layout {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
         }
         .paper-viewport-column {
-            position: static;
-            max-height: none;
-            order: 2;
-            margin-top: 30px;
+            position: static !important;
+            max-height: none !important;
+            order: 2 !important;
+            margin-top: 24px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Container & Padding */
+        .tender-portal-container {
+            padding: 0 12px !important;
+        }
+        .tender-portal-section {
+            padding: 24px 0 60px 0 !important;
+        }
+
+        /* Hero Launcher */
+        .portal-hero-launcher {
+            padding: 24px 16px !important;
+            margin-bottom: 16px !important;
+        }
+        .launcher-badge-sharp {
+            font-size: 0.72rem !important;
+            padding: 4px 10px !important;
+            margin-bottom: 12px !important;
+        }
+        .launcher-title-sharp {
+            font-size: 1.65rem !important;
+            line-height: 1.2 !important;
+            margin-bottom: 12px !important;
+            letter-spacing: -0.5px !important;
+        }
+        .launcher-desc-sharp {
+            font-size: 0.88rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 18px !important;
+        }
+        .launcher-actions-sharp {
+            width: 100% !important;
+        }
+        .launcher-actions-sharp .btn-sharp-primary {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 12px 16px !important;
+            font-size: 0.82rem !important;
+        }
+        .launcher-statutory-strip {
+            gap: 5px !important;
+            margin-top: 16px !important;
+        }
+        .stat-tag-sharp {
+            font-size: 0.68rem !important;
+            padding: 4px 8px !important;
+        }
+
+        /* Top Action Bar in Workspace */
+        .workspace-top-bar {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+            padding: 10px 14px !important;
+        }
+        .workspace-top-bar .top-bar-title {
+            font-size: 0.88rem !important;
+        }
+        .workspace-top-actions {
+            width: 100% !important;
+            display: flex !important;
+            gap: 6px !important;
+        }
+        .workspace-top-actions button {
+            flex: 1 !important;
+            justify-content: center !important;
+            font-size: 0.72rem !important;
+            padding: 6px 10px !important;
+        }
+
+        /* Form Viewport */
+        .form-viewport-column {
+            padding: 16px 14px !important;
+        }
+        .pane-title-sharp {
+            font-size: 1.15rem !important;
+        }
+        .pane-desc-sharp {
+            font-size: 0.82rem !important;
+            margin-bottom: 14px !important;
+        }
+
+        /* Horizontal Scrollable Step Pills */
+        .form-steps-nav {
+            overflow-x: auto !important;
+            flex-wrap: nowrap !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding-bottom: 8px !important;
+            gap: 6px !important;
+            margin-bottom: 18px !important;
+        }
+        .step-sharp-btn {
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
+            padding: 8px 12px !important;
+        }
+        .step-sharp-number {
+            font-size: 0.78rem !important;
+        }
+        .step-sharp-label {
+            font-size: 0.72rem !important;
+        }
+
+        /* Multi-column Grids become 1 column on mobile */
+        .form-grid-sharp-2,
+        .endorsement-grid-sharp,
+        .photos-grid-sharp {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .form-label-sharp {
+            font-size: 0.75rem !important;
+            margin-bottom: 4px !important;
+        }
+        .form-input-sharp,
+        .form-select-sharp,
+        .form-textarea-sharp {
+            padding: 8px 10px !important;
+            font-size: 0.84rem !important;
+        }
+
+        /* Step 2: IMPA Builder */
+        .sharp-builder-box {
+            padding: 12px 10px !important;
+        }
+
+        /* Step 3: Signature pad */
+        .sig-canvas-container {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        .sig-canvas-container canvas {
+            width: 100% !important;
+            height: 100px !important;
+        }
+
+        /* Bottom Step Nav Controls */
+        .form-nav-controls-sharp {
+            flex-direction: column !important;
+            gap: 8px !important;
+            margin-top: 16px !important;
+        }
+        .form-nav-controls-sharp button {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 10px 14px !important;
+        }
+
+        /* A4 Paper Sheet Mobile Presentation (Horizontal swipe preservation) */
+        .paper-viewport-column {
+            width: 100% !important;
+            overflow: hidden !important;
+        }
+        .paper-top-toolbar {
+            padding: 8px 12px !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+        }
+        .paper-status-tag {
+            font-size: 0.75rem !important;
+        }
+        .paper-sheet-scroll {
+            width: 100% !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding: 4px 0 16px 0 !important;
+        }
+        .paper-doc-sheet {
+            min-width: 680px !important; /* Preserves 100% authentic maritime tabular alignment without column squish */
+            padding: 24px 26px !important;
+            margin: 0 auto 16px auto !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+        }
+        .mobile-swipe-guide {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #e2e8f0;
+            color: #093863;
+            font-family: 'Aeonik', sans-serif;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            text-align: center;
+        }
+
+        /* 3D Thermal Printer Dock on Mobile */
+        .printer-dock {
+            position: static !important; /* Sits naturally below document sheet on mobile so it does not block keyboard/form inputs */
+            margin-top: 10px !important;
+            width: 100% !important;
+        }
+        .printer,
+        .printer-3d-machine {
+            border-radius: 12px !important;
+        }
+        .printer-hood-3d {
+            padding: 8px 10px !important;
+            gap: 6px !important;
+        }
+        .printer-screw-bolt {
+            width: 7px !important;
+            height: 7px !important;
+        }
+        .power-rocker-switch {
+            padding: 2px 4px !important;
+        }
+        .power-rocker-switch .rocker-label {
+            font-size: 7px !important;
+        }
+        .printer-mouth-assembly {
+            min-width: 0 !important;
+        }
+        .printer-face-3d {
+            padding: 8px 10px !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+        }
+        .printer-display-bezel {
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .printer-center-console {
+            display: none !important;
+        }
+        .printer-base-trim {
+            padding: 8px 10px !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+        }
+        .printer-sub-actions {
+            width: 100% !important;
+            justify-content: space-between !important;
+        }
+        #printer-main-cta {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 10px 14px !important;
+            font-size: 0.8rem !important;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .mobile-swipe-guide {
+            display: none !important;
+        }
+        .mobile-only-btn {
+            display: none !important;
         }
     }
 </style>
@@ -1443,13 +1712,13 @@ include 'includes/hero_visual.php';
         <div id="requisition-workspace">
             
             <!-- Global Action Bar to close or toggle -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; background: #ffffff; padding: 12px 18px; border: 1px solid #cbd5e1;">
+            <div class="workspace-top-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; background: #ffffff; padding: 12px 18px; border: 1px solid #cbd5e1;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-family: 'Aeonik', sans-serif; font-size: 1.05rem; font-weight: 800; color: #093863; text-transform: uppercase; letter-spacing: 0.3px;">
+                    <span class="top-bar-title" style="font-family: 'Aeonik', sans-serif; font-size: 1.05rem; font-weight: 800; color: #093863; text-transform: uppercase; letter-spacing: 0.3px;">
                         <i class="fas fa-file-contract"></i> Maritime Requisition Workspace (Live Synchronized)
                     </span>
                 </div>
-                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <div class="workspace-top-actions" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
                     <button type="button" onclick="document.getElementById('paper-doc-sheet').scrollIntoView({behavior: 'smooth'})" class="btn-sharp-action-sm">
                         <i class="fas fa-file-invoice"></i> Scroll to Live Paper ↓
                     </button>
@@ -1668,7 +1937,7 @@ include 'includes/hero_visual.php';
                             <!-- Photo Attachments for this Item (Supports up to 2 Full-Width High-Res Photos) -->
                             <div class="form-group-sharp">
                                 <label class="form-label-sharp"><i class="fas fa-camera"></i> Item Photos (Max 2 Photos — Rendered Full-Width in Table without Distortion)</label>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div class="photos-grid-sharp">
                                     <!-- Photo 1 -->
                                     <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px;">
                                         <span style="font-size: 0.72rem; font-weight: 700; color: #093863; display: block; margin-bottom: 4px;">Photo 1 (Primary / Overview):</span>
@@ -1749,7 +2018,7 @@ include 'includes/hero_visual.php';
                         </div>
 
                         <!-- ── DUAL ENDORSEMENT: OFFICER SIGNATURE & SHIP STAMP SEAL (CO-EXIST) ── -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+                        <div class="endorsement-grid-sharp">
                             
                             <!-- Box 1: Officer Signature (Draw or Upload) -->
                             <div class="form-group-sharp" style="background: #f8fafc; padding: 14px; border: 1px solid #cbd5e1;">
@@ -1871,7 +2140,10 @@ include 'includes/hero_visual.php';
                         <div class="paper-status-tag">
                             <span class="live-dot"></span> Official Paper Preview (A4 Sheet)
                         </div>
-                        <div class="paper-quick-actions">
+                        <div class="paper-quick-actions" style="display: flex; gap: 6px; align-items: center;">
+                            <button type="button" class="btn-sharp-action-sm mobile-only-btn" onclick="document.querySelector('.form-viewport-column').scrollIntoView({behavior: 'smooth'})">
+                                <i class="fas fa-arrow-up"></i> Edit Form
+                            </button>
                             <button type="button" class="btn-sharp-action-sm" style="background: #093863; color: #ffffff;" onclick="downloadDirectPaperPdf()">
                                 <i class="fas fa-download"></i> Download PDF
                             </button>
@@ -1880,6 +2152,9 @@ include 'includes/hero_visual.php';
 
                     <!-- The Authentic Document Sheet (Matches PDF exactly) -->
                     <div id="paper-sheet-scroll" class="paper-sheet-scroll">
+                        <div class="mobile-swipe-guide">
+                            <i class="fas fa-arrows-left-right"></i> Touch & geser lembar A4 ke samping untuk melihat seluruh kolom
+                        </div>
                         <div id="paper-doc-sheet" class="paper-doc-sheet">
                             
                             <!-- Header Table -->

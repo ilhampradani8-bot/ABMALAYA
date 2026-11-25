@@ -1072,27 +1072,101 @@ document.addEventListener('DOMContentLoaded', function() {
             height: 14px;
         }
     }
+
+    /* Responsive styling for About Brief Section */
+    .about-brief-section {
+        padding: 120px 0;
+        background: #fff;
+    }
+    .about-brief-container {
+        width: 100%;
+        padding: 0 6vw;
+    }
+    .about-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .about-col-left {
+        width: 50%;
+        text-align: left;
+        padding-right: 4rem;
+    }
+    .about-col-right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        padding-left: 4rem;
+    }
+    .about-title-main {
+        font-size: 3.2rem;
+        margin-bottom: 2.5rem;
+        color: #093863;
+        font-family: 'Aeonik', sans-serif;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+    }
+    .about-desc-p {
+        color: #475569;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        font-family: 'Aeonik', sans-serif;
+        margin-bottom: 1.5rem;
+        width: 100%;
+    }
+    @media (max-width: 900px) {
+        .about-brief-section {
+            padding: 60px 0 !important;
+        }
+        .about-brief-container {
+            padding: 0 5vw !important;
+        }
+        .about-flex-container {
+            flex-direction: column !important;
+            gap: 2rem !important;
+        }
+        .about-col-left,
+        .about-col-right {
+            width: 100% !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .about-title-main {
+            font-size: 2.1rem !important;
+            margin-bottom: 1.2rem !important;
+            letter-spacing: -0.5px !important;
+        }
+        .about-desc-p {
+            font-size: 0.95rem !important;
+            line-height: 1.65 !important;
+            margin-bottom: 1rem !important;
+        }
+    }
 </style>
 
 <!-- About Brief -->
-<section id="about" style="padding: 120px 0; background: #fff;">
-    <div style="width: 100%; padding: 0 6vw;"> <!-- Matched Header Padding -->
-        <div style="display: flex; justify-content: space-between; align-items: stretch;">
-            <!-- Left Half: Exactly 50% -->
-            <div style="width: 50%; text-align: left; padding-right: 4rem;">
-                <h2 style="font-size: 3.2rem; margin-bottom: 2.5rem; color: #093863; font-family: 'Aeonik', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;">
+<section id="about" class="about-brief-section">
+    <div class="about-brief-container">
+        <div class="about-flex-container">
+            <!-- Left Column -->
+            <div class="about-col-left">
+                <h2 class="about-title-main">
                     Building Capability. <br><span style="color: #1191cc;">Delivering Solutions.</span>
                 </h2>
-                <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; margin-bottom: 1.5rem; width: 100%;">
+                <p class="about-desc-p">
                     AB Malaya Sdn Bhd is a Malaysian multidisciplinary company providing integrated construction, engineering, marine, logistics and industrial solutions.
                 </p>
-                <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; font-family: 'Aeonik', sans-serif; width: 100%;">
+                <p class="about-desc-p">
                     Our capabilities have developed from marine and industrial support into a broader project delivery platform serving commercial, industrial, infrastructure and marine sectors. Through our experienced team and strategic network of specialist partners, we provide practical solutions designed around our clients' requirements for quality, safety, cost and timely delivery.
                 </p>
             </div>
 
-            <!-- Right Half: Exactly 50% -->
-            <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left; padding-left: 4rem;">
+            <!-- Right Column -->
+            <div class="about-col-right">
                 <div style="margin-top: 1rem; margin-bottom: 2rem;">
                     <a href="/about" class="hero-link" style="color: #000; font-size: 0.85rem;">
                         Discover AB Malaya <i class="fas fa-arrow-right"></i>
@@ -2033,6 +2107,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         #cta .final-cta-btn i {
             font-size: 0.75rem !important;
+        }
+        .cta-btn-group {
+            width: 100% !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+        }
+        .cta-btn-group .final-cta-btn {
+            width: 100% !important;
+            justify-content: center !important;
         }
     }
 </style>
