@@ -168,7 +168,10 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
 
 // JSON API
 if (isset($_GET['format']) && $_GET['format'] === 'json') {
+    $data['per_page'] = $per_page;
+    $data['summary']['active_now'] = $summary['active_now'] ?? 1;
     header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
     echo json_encode($data, JSON_PRETTY_PRINT);
     exit;
 }
@@ -596,35 +599,172 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
             background: #ffffff;
         }
 
-        /* ── MOBILE RESPONSIVE ────────────────────────────────────────────── */
+        /* ── ANIMATIONS ─────────────────────────────────────────────────── */
+        @keyframes livePulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .live-dot-pulse {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            animation: livePulse 2s infinite ease-in-out;
+        }
+
+        .syncing-spin {
+            animation: spin 0.8s linear infinite !important;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .mobile-scroll-hint {
+            display: none;
+            font-size: 11px;
+            font-weight: 600;
+            color: #0284c7;
+            background: #f0f9ff;
+            padding: 7px 12px;
+            border-bottom: 1px dashed #bae6fd;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ── MOBILE RESPONSIVE GUARDS (SMARTPHONE NO-OVERFLOW) ────────────── */
         @media (max-width: 768px) {
+            html, body {
+                width: 100% !important;
+                max-width: 100vw !important;
+                overflow-x: hidden !important;
+            }
             .portal-header {
-                padding: 12px 14px;
+                padding: 10px 12px;
+            }
+            .header-container {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 8px !important;
+            }
+            .header-brand {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .brand-title {
+                font-size: 15px;
+            }
+            .brand-title span {
+                font-size: 12px;
+                display: block;
+            }
+            .header-right-strip {
+                width: 100% !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                gap: 6px !important;
+            }
+            .live-status-pill {
+                font-size: 11px !important;
+                padding: 4px 8px !important;
+                flex: 1 1 100% !important;
+                justify-content: space-between !important;
+            }
+            .btn-header-action {
+                font-size: 11px !important;
+                padding: 6px 8px !important;
+                flex: 1 1 calc(33.333% - 6px) !important;
+                justify-content: center !important;
+                text-align: center !important;
+                min-width: 60px !important;
             }
             .portal-main {
-                padding: 0 10px;
-                margin-top: 14px;
+                padding: 0 8px !important;
+                margin-top: 12px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+            }
+            .kpi-metrics-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+                margin-bottom: 14px !important;
+            }
+            .kpi-card {
+                padding: 10px 10px !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .kpi-value, .kpi-number {
+                font-size: 18px !important;
+            }
+            .kpi-label {
+                font-size: 10.5px !important;
+                letter-spacing: 0 !important;
+            }
+            .kpi-sub {
+                font-size: 9.5px !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            .card-box {
+                margin-bottom: 14px !important;
+                border-radius: 4px !important;
+            }
+            .card-header {
+                padding: 10px 12px !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 6px !important;
+            }
+            .card-header .btn-drilldown-sm {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            .mobile-scroll-hint {
+                display: flex !important;
+            }
+            .per-page-table th, 
+            .per-page-table td {
+                padding: 8px 8px !important;
+                font-size: 12px !important;
+            }
+            .device-ratio-bar {
+                width: 70px !important;
+            }
+            .drilldown-panel {
+                padding: 12px 10px !important;
+                margin-top: 12px !important;
+            }
+            .drilldown-header {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 8px !important;
+            }
+            .drilldown-page-title {
+                font-size: 14px !important;
+            }
+            .page-select-dropdown {
+                width: 100% !important;
+                font-size: 12.5px !important;
+                padding: 8px 10px !important;
+                box-sizing: border-box !important;
             }
             .drilldown-grid {
                 grid-template-columns: 1fr !important;
+                gap: 12px !important;
             }
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
+            .inner-box {
+                padding: 10px !important;
             }
-            .header-right-strip {
-                width: 100%;
-                justify-content: space-between;
+            .inner-box-title {
+                font-size: 11px !important;
             }
-            .kpi-metrics-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .kpi-card {
-                padding: 10px 12px;
-            }
-            .kpi-value {
-                font-size: 19px;
+            .hide-mobile {
+                display: none !important;
             }
         }
     </style>
@@ -640,18 +780,22 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
             </a>
 
             <div class="header-right-strip">
-                <div class="live-status-pill">
+                <div class="live-status-pill" id="live-status-pill" title="Indikator Status Real-Time">
                     <div class="live-dot-pulse"></div>
-                    <span><?php echo $summary['active_now'] ?? 1; ?> Online Now</span>
+                    <span id="live-pill-count"><?php echo $summary['active_now'] ?? 1; ?> Online Now</span>
+                    <span style="opacity: 0.7; font-size: 10px;" id="live-refresh-badge">&bull; Realtime</span>
                 </div>
+                <button type="button" class="btn-header-action" onclick="fetchRealtimeData(true)" title="Perbarui Data Sekarang">
+                    <i class="fas fa-arrows-rotate" id="refresh-icon"></i> <span class="hide-mobile">Refresh</span>
+                </button>
                 <a href="/visitors" class="btn-header-action" title="Buka Mode Retro Windows 95">
-                    <i class="fas fa-window-restore"></i> Win95 Mode
+                    <i class="fas fa-window-restore"></i> Win95
                 </a>
                 <a href="?export=csv" class="btn-header-action" title="Export CSV Report">
-                    <i class="fas fa-file-csv"></i> Export CSV
+                    <i class="fas fa-file-csv"></i> CSV
                 </a>
                 <a href="/" class="btn-header-action" target="_blank" title="Buka Website Resmi">
-                    <i class="fas fa-arrow-up-right-from-square"></i> Visit Site
+                    <i class="fas fa-arrow-up-right-from-square"></i> Web
                 </a>
             </div>
         </div>
@@ -664,32 +808,32 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
         <div class="kpi-metrics-grid">
             <div class="kpi-card blue">
                 <div class="kpi-label">Total Website Views <i class="fas fa-eye"></i></div>
-                <div class="kpi-number"><?php echo number_format($summary['total_views'] ?? 0); ?></div>
-                <div class="kpi-sub">+<?php echo $summary['today_views'] ?? 0; ?> hits recorded today</div>
+                <div class="kpi-value" id="kpi-total-views"><?php echo number_format($summary['total_views'] ?? 0); ?></div>
+                <div class="kpi-sub" id="kpi-today-views">+<?php echo $summary['today_views'] ?? 0; ?> hits recorded today</div>
             </div>
 
             <div class="kpi-card cyan">
                 <div class="kpi-label">Unique Visitors <i class="fas fa-users"></i></div>
-                <div class="kpi-number"><?php echo number_format($summary['total_uniques'] ?? 0); ?></div>
-                <div class="kpi-sub">+<?php echo $summary['today_uniques'] ?? 0; ?> unique devices today</div>
+                <div class="kpi-value" id="kpi-total-uniques"><?php echo number_format($summary['total_uniques'] ?? 0); ?></div>
+                <div class="kpi-sub" id="kpi-today-uniques">+<?php echo $summary['today_uniques'] ?? 0; ?> unique devices today</div>
             </div>
 
             <div class="kpi-card green">
                 <div class="kpi-label">Pages Monitored <i class="fas fa-layer-group"></i></div>
-                <div class="kpi-number"><?php echo count($per_page); ?> Pages</div>
+                <div class="kpi-value" id="kpi-pages-count"><?php echo count($per_page); ?> Pages</div>
                 <div class="kpi-sub">Every subpage tracked individually</div>
             </div>
 
             <div class="kpi-card orange">
                 <div class="kpi-label">Device Share <i class="fas fa-mobile-screen"></i></div>
-                <div class="kpi-number">
+                <div class="kpi-value" id="kpi-device-share">
                     <?php 
                     $tot_d = array_sum($devices_global) ?: 1;
                     $hp_pct = round((($devices_global['Mobile'] ?? 0) / $tot_d) * 100);
                     echo $hp_pct . "% HP";
                     ?>
                 </div>
-                <div class="kpi-sub"><?php echo (100 - $hp_pct); ?>% Desktop Workstation</div>
+                <div class="kpi-sub" id="kpi-device-sub"><?php echo (100 - $hp_pct); ?>% Desktop Workstation</div>
             </div>
         </div>
 
@@ -702,13 +846,21 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                     <i class="fas fa-table-list" style="color: var(--brand-blue);"></i>
                     <span>Tabel Analisis Kunjungan Per Halaman (Per-Page Breakdown)</span>
                 </div>
-                <span style="font-size: 12px; color: var(--text-muted);">
-                    Data Real-Time Live dari Setiap Sub-Page Website
-                </span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span id="sync-status-indicator" style="font-size: 11px; color: #0284c7; background: #e0f2fe; padding: 3px 8px; border-radius: 10px; font-weight: 600;">
+                        <i class="fas fa-bolt"></i> Live Polling 5s
+                    </span>
+                    <span id="last-sync-time" style="font-size: 11px; color: var(--text-muted);">
+                        Auto-syncing...
+                    </span>
+                </div>
             </div>
             <div class="card-body" style="padding: 0;">
+                <div class="mobile-scroll-hint">
+                    <i class="fas fa-arrows-left-right"></i> Geser tabel ke samping untuk melihat detail metrik
+                </div>
                 <div class="table-responsive">
-                    <table class="per-page-table">
+                    <table class="per-page-table" id="master-pages-table">
                         <thead>
                             <tr>
                                 <th>Halaman / Page Title</th>
@@ -721,7 +873,7 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                                 <th style="text-align: center;">Detail Halaman</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="master-pages-tbody">
                             <?php foreach ($per_page as $page_title => $p_data): 
                                 $p_views = $p_data['views'] ?? 0;
                                 $p_uniques = $p_data['uniques'] ?? 0;
@@ -731,8 +883,9 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                                 $dev_tot = ($dev_d + $dev_m + $dev_t) ?: 1;
                                 $pct_m = round(($dev_m / $dev_tot) * 100);
                                 $pct_d = round(($dev_d / $dev_tot) * 100);
+                                $row_key = md5($page_title);
                             ?>
-                                <tr>
+                                <tr id="row-page-<?php echo $row_key; ?>" data-page="<?php echo htmlspecialchars($page_title); ?>">
                                     <td>
                                         <div class="page-badge-link">
                                             <i class="fas fa-file-code" style="color: var(--brand-blue);"></i>
@@ -742,32 +895,32 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                                     <td>
                                         <span class="page-path-tag"><?php echo htmlspecialchars($p_data['path'] ?? '/'); ?></span>
                                     </td>
-                                    <td style="text-align: right; font-weight: 700; color: var(--brand-navy);">
+                                    <td class="cell-views" style="text-align: right; font-weight: 700; color: var(--brand-navy);">
                                         <?php echo number_format($p_views); ?>
                                     </td>
-                                    <td style="text-align: right; font-weight: 600; color: var(--brand-blue);">
+                                    <td class="cell-uniques" style="text-align: right; font-weight: 600; color: var(--brand-blue);">
                                         <?php echo number_format($p_uniques); ?>
                                     </td>
-                                    <td>
+                                    <td class="cell-devices">
                                         <div class="device-ratio-bar">
                                             <div class="ratio-desktop" style="width: <?php echo $pct_d; ?>%;" title="Desktop: <?php echo $pct_d; ?>%"></div>
                                             <div class="ratio-mobile" style="width: <?php echo $pct_m; ?>%;" title="HP: <?php echo $pct_m; ?>%"></div>
                                         </div>
-                                        <div style="font-size: 10.5px; color: var(--text-muted);">
+                                        <div class="cell-device-text" style="font-size: 10.5px; color: var(--text-muted);">
                                             HP <?php echo $pct_m; ?>% | PC <?php echo $pct_d; ?>%
                                         </div>
                                     </td>
-                                    <td>
-                                        <span style="font-size: 11.5px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
+                                    <td class="cell-peak">
+                                        <span style="font-size: 11.5px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 3px; font-weight: 600; white-space: nowrap;">
                                             <i class="far fa-clock"></i> <?php echo htmlspecialchars($p_data['peak_hour'] ?? '10:00 - 11:00'); ?>
                                         </span>
                                     </td>
-                                    <td style="font-size: 11px; color: var(--text-muted);">
+                                    <td class="cell-last-seen" style="font-size: 11px; color: var(--text-muted); white-space: nowrap;">
                                         <?php echo htmlspecialchars($p_data['last_seen'] ?? date('Y-m-d H:i')); ?>
                                     </td>
                                     <td style="text-align: center;">
                                         <button type="button" class="btn-drilldown-sm" onclick="selectPageDrilldown('<?php echo addslashes($page_title); ?>')">
-                                            <i class="fas fa-magnifying-glass-chart"></i> Rincian Grafik ↓
+                                            <i class="fas fa-magnifying-glass-chart"></i> Rincian ↓
                                         </button>
                                     </td>
                                 </tr>
@@ -925,11 +1078,13 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
         </div>
     </footer>
 
-    <!-- ── JAVASCRIPT DRILLDOWN LOGIC ────────────────────────────────────── -->
+    <!-- ── JAVASCRIPT DRILLDOWN & REAL-TIME POLLING ENGINE ───────────── -->
     <script>
-        const perPageData = <?php echo json_encode($per_page); ?>;
+        let perPageData = <?php echo json_encode($per_page); ?>;
         let chartHourly = null;
         let chartDevice = null;
+        let currentSelectedPage = 'Tender & RFQ Portal';
+        let isSyncing = false;
 
         const hoursLabels = [
             "00:00","01:00","02:00","03:00","04:00","05:00",
@@ -938,27 +1093,35 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
             "18:00","19:00","20:00","21:00","22:00","23:00"
         ];
 
-        function selectPageDrilldown(pageName) {
+        function formatNum(num) {
+            return new Intl.NumberFormat().format(num || 0);
+        }
+
+        function selectPageDrilldown(pageName, shouldScroll = true) {
+            currentSelectedPage = pageName;
             const data = perPageData[pageName];
             if (!data) return;
 
             document.getElementById('drilldown-display-title').textContent = data.title;
             document.getElementById('drilldown-display-path').textContent = data.path;
-            document.getElementById('page-picker-select').value = pageName;
+            const selectEl = document.getElementById('page-picker-select');
+            if (selectEl && selectEl.value !== pageName) {
+                selectEl.value = pageName;
+            }
 
             // Update Hourly Chart
             if (chartHourly) {
-                chartHourly.data.datasets[0].data = data.hourly;
-                chartHourly.update();
+                chartHourly.data.datasets[0].data = data.hourly || Array(24).fill(0);
+                chartHourly.update('none');
             }
 
             // Update Device Chart
-            const d = data.devices.Desktop || 0;
-            const m = data.devices.Mobile || 0;
-            const t = data.devices.Tablet || 0;
+            const d = (data.devices && data.devices.Desktop) || 0;
+            const m = (data.devices && data.devices.Mobile) || 0;
+            const t = (data.devices && data.devices.Tablet) || 0;
             if (chartDevice) {
                 chartDevice.data.datasets[0].data = [d, m, t];
-                chartDevice.update();
+                chartDevice.update('none');
             }
 
             const legendEl = document.getElementById('page-device-legend');
@@ -968,32 +1131,148 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
 
             // Update IP table for this page
             const tbody = document.getElementById('page-ip-tbody');
-            tbody.innerHTML = '';
-            const ips = data.ips || {};
-            const ipKeys = Object.keys(ips);
+            if (tbody) {
+                tbody.innerHTML = '';
+                const ips = data.ips || {};
+                const ipKeys = Object.keys(ips);
 
-            if (ipKeys.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #94a3b8; padding: 16px;">Belum ada log IP khusus halaman ini.</td></tr>';
-            } else {
-                ipKeys.forEach(ip => {
-                    const row = ips[ip];
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td><span class="page-path-tag">${ip}</span></td>
-                        <td><strong>${row.location || 'Malaysia'}</strong></td>
-                        <td><span style="font-size: 11px; background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 3px; font-weight: 600;">${row.device || 'Desktop'}</span></td>
-                        <td style="color: #64748b;">${row.os || 'Windows'} / ${row.browser || 'Chrome'}</td>
-                        <td style="font-weight: 700; color: #093863;">${row.hits || 1} hits</td>
-                        <td style="color: #94a3b8; font-size: 11px;">${row.last_seen || 'Recently'}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
+                if (ipKeys.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #94a3b8; padding: 14px;">Belum ada log IP khusus halaman ini.</td></tr>';
+                } else {
+                    ipKeys.forEach(ip => {
+                        const row = ips[ip];
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><span class="page-path-tag">${ip}</span></td>
+                            <td><strong>${row.location || 'Malaysia'}</strong></td>
+                            <td><span style="font-size: 11px; background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 3px; font-weight: 600;">${row.device || 'Desktop'}</span></td>
+                            <td style="color: #64748b; font-size: 11.5px;">${row.os || 'Windows'} / ${row.browser || 'Chrome'}</td>
+                            <td style="font-weight: 700; color: #093863;">${row.hits || 1} hits</td>
+                            <td style="color: #94a3b8; font-size: 11px;">${row.last_seen || 'Recently'}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
             }
 
-            // Scroll smoothly to drilldown section if called from table
-            const section = document.getElementById('drilldown-section');
-            if (section && window.innerWidth < 768) {
-                section.scrollIntoView({ behavior: 'smooth' });
+            // Scroll smoothly on mobile only when initiated by human click
+            if (shouldScroll && window.innerWidth < 768) {
+                const section = document.getElementById('drilldown-section');
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
+        // Realtime Polling Engine (Every 5 seconds)
+        async function fetchRealtimeData(manual = false) {
+            if (isSyncing) return;
+            isSyncing = true;
+
+            const icon = document.getElementById('refresh-icon');
+            if (icon && manual) icon.classList.add('syncing-spin');
+
+            try {
+                const res = await fetch('/analytics/?format=json&_ts=' + Date.now(), {
+                    cache: 'no-store'
+                });
+                if (!res.ok) throw new Error('Network status: ' + res.status);
+                const json = await res.json();
+
+                if (json && json.summary) {
+                    // 1. Update KPI Values
+                    const elViews = document.getElementById('kpi-total-views');
+                    if (elViews) elViews.textContent = formatNum(json.summary.total_views);
+
+                    const elTodayViews = document.getElementById('kpi-today-views');
+                    if (elTodayViews) elTodayViews.textContent = `+${json.summary.today_views || 0} hits recorded today`;
+
+                    const elUniques = document.getElementById('kpi-total-uniques');
+                    if (elUniques) elUniques.textContent = formatNum(json.summary.total_uniques);
+
+                    const elTodayUniques = document.getElementById('kpi-today-uniques');
+                    if (elTodayUniques) elTodayUniques.textContent = `+${json.summary.today_uniques || 0} unique devices today`;
+
+                    const elOnline = document.getElementById('live-pill-count');
+                    if (elOnline) elOnline.textContent = `${json.summary.active_now || 1} Online Now`;
+
+                    // 2. Update Device Share KPI
+                    if (json.devices) {
+                        const d = json.devices.Desktop || 0;
+                        const m = json.devices.Mobile || 0;
+                        const t = json.devices.Tablet || 0;
+                        const tot = (d + m + t) || 1;
+                        const hpPct = Math.round((m / tot) * 100);
+                        const pcPct = 100 - hpPct;
+
+                        const elDev = document.getElementById('kpi-device-share');
+                        if (elDev) elDev.textContent = `${hpPct}% HP`;
+
+                        const elDevSub = document.getElementById('kpi-device-sub');
+                        if (elDevSub) elDevSub.textContent = `${pcPct}% Desktop Workstation`;
+                    }
+
+                    // 3. Update Per-Page Data in Memory & Master Table Rows
+                    if (json.per_page && typeof json.per_page === 'object') {
+                        perPageData = json.per_page;
+
+                        Object.keys(json.per_page).forEach(pTitle => {
+                            const p = json.per_page[pTitle];
+                            const tr = document.querySelector(`tr[data-page="${pTitle}"]`);
+                            if (tr) {
+                                const viewsCell = tr.querySelector('.cell-views');
+                                if (viewsCell) viewsCell.textContent = formatNum(p.views);
+
+                                const uniquesCell = tr.querySelector('.cell-uniques');
+                                if (uniquesCell) uniquesCell.textContent = formatNum(p.uniques);
+
+                                const lastSeenCell = tr.querySelector('.cell-last-seen');
+                                if (lastSeenCell && p.last_seen) lastSeenCell.textContent = p.last_seen;
+
+                                const peakCell = tr.querySelector('.cell-peak span');
+                                if (peakCell && p.peak_hour) {
+                                    peakCell.innerHTML = `<i class="far fa-clock"></i> ${p.peak_hour}`;
+                                }
+
+                                if (p.devices) {
+                                    const dHits = p.devices.Desktop || 0;
+                                    const mHits = p.devices.Mobile || 0;
+                                    const tHits = p.devices.Tablet || 0;
+                                    const sumHits = (dHits + mHits + tHits) || 1;
+                                    const mPct = Math.round((mHits / sumHits) * 100);
+                                    const dPct = Math.round((dHits / sumHits) * 100);
+
+                                    const barD = tr.querySelector('.ratio-desktop');
+                                    if (barD) barD.style.width = `${dPct}%`;
+
+                                    const barM = tr.querySelector('.ratio-mobile');
+                                    if (barM) barM.style.width = `${mPct}%`;
+
+                                    const textDev = tr.querySelector('.cell-device-text');
+                                    if (textDev) textDev.textContent = `HP ${mPct}% | PC ${dPct}%`;
+                                }
+                            }
+                        });
+
+                        // 4. Update Drilldown View without jumping scroll
+                        selectPageDrilldown(currentSelectedPage, false);
+                    }
+
+                    // 5. Update Sync Status Time
+                    const syncTimeEl = document.getElementById('last-sync-time');
+                    if (syncTimeEl) {
+                        const now = new Date();
+                        const timeStr = now.toLocaleTimeString('en-GB', { hour12: false });
+                        syncTimeEl.textContent = `Sync: ${timeStr}`;
+                    }
+                }
+            } catch (err) {
+                console.warn('Realtime polling status:', err.message);
+            } finally {
+                isSyncing = false;
+                if (icon && manual) {
+                    setTimeout(() => icon.classList.remove('syncing-spin'), 400);
+                }
             }
         }
 
@@ -1045,7 +1324,17 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
             });
 
             // Select default page
-            selectPageDrilldown('Tender & RFQ Portal');
+            selectPageDrilldown('Tender & RFQ Portal', false);
+
+            // Start Realtime Polling Loop every 5 seconds
+            setInterval(() => fetchRealtimeData(false), 5000);
+
+            // Instant refresh when user returns to tab
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    fetchRealtimeData(false);
+                }
+            });
         });
     </script>
 </body>
